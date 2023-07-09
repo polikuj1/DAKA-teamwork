@@ -1,0 +1,21 @@
+@import 'base/var.scss';
+@import 'mixin/all.scss';
+@import 'component/btn.scss';
+@import 'component/main_header.scss';
+@import 'page/login.scss';
+@import 'page/cart.scss';
+@import 'page/product.scss';
+@import 'page/product_detail.scss';
+@import 'page/home.scss';
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 60px;
+  color: #fac;
+}
