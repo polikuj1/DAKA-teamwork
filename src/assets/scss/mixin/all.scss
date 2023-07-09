@@ -8,3 +8,14 @@
   margin: 0 auto;
   color: $main_bg;
 }
+
+@mixin s() {
+  @media all and (min-width: $small) {
+    @content;
+  }
+}
+@mixin m() {
+  @media all and (min-width: $medium) {
+    @content;
+  }
+}
