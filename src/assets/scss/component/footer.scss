@@ -1,0 +1,32 @@
+footer {
+  width: 100%;
+  text-align: center;
+  background: $main_bg;
+  .logo {
+    width: 400px;
+    height: 268px;
+    margin: auto;
+    margin-bottom: 100px;
+    a {
+      display: inline-block;
+      @include bgPng(footerLogo)
+    }
+  }
+  .btn_group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+    a {
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+      display: block;
+      @include btn_lg
+    }
+  }
+  .copyright {
+    padding-bottom: 50px;
+    color: $secondary_blue;
+    font-size: 1rem;
+  }
+}

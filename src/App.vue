@@ -1,16 +1,17 @@
 <template>
   <MainHeader></MainHeader>
   <router-view/>
+  <Footer></Footer>
 </template>
 
 
 
 <script>
 import MainHeader from '@/components/MainHeader.vue';
-
+import Footer from '@/components/Footer.vue';
 export default {
   components: {
-    MainHeader,
+    MainHeader,Footer,
   },
   data() {
     return {
