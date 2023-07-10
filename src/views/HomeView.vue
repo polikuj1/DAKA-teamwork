@@ -5,7 +5,7 @@
         <img src="https://picsum.photos/300/200/?random=10">
       </div>
       <div class="txt">
-        <router-link to="/product">go shopping now</router-link>
+        <router-link to="/comic">go shopping now</router-link>
       </div>
     </div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
