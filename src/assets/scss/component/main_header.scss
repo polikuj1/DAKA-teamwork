@@ -4,18 +4,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px;
+  padding: 40px 60px;
   .logo {
-    height: 50px;
-    img {
-      @include img;
+    width: 290px;
+    height: 70px;
+    a {
+      display: block;
+      @include bgPng(logo)
     }
   }
   nav {
     font-size: 1.5rem;
     a {
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
       display: inline-block;
-      margin-right: 40px;
       color: $main_txt_color;
     }
   }

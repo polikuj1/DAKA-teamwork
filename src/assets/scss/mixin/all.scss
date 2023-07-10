@@ -1,21 +1,51 @@
-@mixin img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+// 限制容器寬度+背景
 @mixin container {
   max-width: 1200px;
   margin: 0 auto;
   color: $main_bg;
 }
+// 一般圖檔設定
+@mixin img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+}
+// 背景圖PNG
+@mixin bgPng($url) {
+  width: 100%;
+  height: 100%;
+  background: url(@/assets/images/#{$url}.png) no-repeat center / cover;
+}
+// 背景圖JPG
+@mixin bgJpg($url) {
+  width: 100%;
+  height: 100%;
+  background: url(@/assets/images/#{$url}.jpg) no-repeat center / cover;
+}
 
-@mixin s() {
+
+
+
+
+
+
+
+// RWD的768以上
+@mixin sm() {
   @media all and (min-width: $small) {
     @content;
   }
 }
-@mixin m() {
+// RWD的1024以上
+@mixin md() {
   @media all and (min-width: $medium) {
+    @content;
+  }
+}
+// RWD的1200以上
+@mixin lg() {
+  @media all and (min-width: $large) {
     @content;
   }
 }

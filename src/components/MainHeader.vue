@@ -1,16 +1,11 @@
 <template>
   <div class="container">
     <div class="logo">
-      <router-link to="/"><img src="@/assets/images/logo.png"></router-link>
+      <router-link to="/"></router-link>
     </div>
     <nav>
-      <router-link to="/">關於我們</router-link>
-      <router-link to="/about">最新消息</router-link>
-      <router-link to="/about">餐點介紹</router-link>
-      <router-link to="/about">訂位預約</router-link>
-      <router-link to="/about">漫畫租借</router-link>
-      <router-link to="/about">登入 | 註冊</router-link>
-      <router-link to="/about"><i class="fa-solid fa-user"></i></router-link>
+      <router-link :to="nav.site" v-for="nav in header" :keys="nav">{{ nav.title }}</router-link>
+      <router-link to="/member_center"><i class="fa-solid fa-user"></i></router-link>
     </nav>
   </div>
 </template>
@@ -21,9 +16,32 @@ export default {
   name: 'MainHeader',
   data() {
     return {
-      header: {
-        logoImg: '@/assets/images/logo.png',
-      }
+      header: [
+        {
+          title: '關於我們',
+          site: '/about'
+        },
+        {
+          title: '最新消息',
+          site: '/news'
+        },
+        {
+          title: '餐點介紹',
+          site: '/food'
+        },
+        {
+          title: '訂位預約',
+          site: '/reservation'
+        },
+        {
+          title: '漫畫租借',
+          site: '/comic'
+        },
+        {
+          title: '登入 | 註冊',
+          site: '/login'
+        },
+      ],
     }
   },
 }
