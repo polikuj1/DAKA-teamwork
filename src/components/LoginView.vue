@@ -1,35 +1,35 @@
 <template>
-  <div>
+ 
 
     <div class="login">
      
     
-    <div class="loginContainer">
+    <div class="login_container">
       
 
-<div class="loginPic">
+<div class="login_pic">
   <img :src="require('@/assets/images/footerLogo.png')" alt="">
   <p>
     #快樂就是這麼簡單
   </p>
 </div>
 
-<div class="loginForm">
+<div class="login_form">
   <label for="" @click="closeModal">X</label>
       <form >
         
-        <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="reset" require>
+        <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="reset" require >
         <input type="text" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="reset" require>
         <div class="error_message">{{errorMsg}}</div>
 
 
-        <div class="loginKeep">
-          <div class="loginKeepStatus">
+        <div class="login_keep">
+          <div class="login_keep_status">
             <input type="checkbox">
             <p>保持登入狀態</p>
           </div>
           
-          <div class="forgetPsw">忘記密碼?</div>
+          <div class="forget_psw">忘記密碼?</div>
                   </div>
 
 
@@ -50,7 +50,7 @@
      123
     </div>
   </div>
-    </div>
+    
 </template>
 <style>
 @import '@/assets/scss/page/login.scss';
@@ -95,11 +95,11 @@ if(this.memId==='test'&&this.memPsw==='test'){
  
 }
 
+this.memId='';
+this.memPsw='';
 
 },
 reset(){
-this.memId='';
-this.memPsw='';
   this.errorMsg='';
 }
 
