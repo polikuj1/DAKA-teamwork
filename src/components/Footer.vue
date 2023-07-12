@@ -1,11 +1,11 @@
 <template>
   <footer class="footer">
-    <div class="circle">
+    <!-- <div class="circle">
       <svg viewBox="25 -20 50 10">
         <path d="M 50 50 m -50 0 a 80 50 0 1 1 100 0 a 50 50 0 1 1 -100 0 z" id="circle" />
         <text><textPath xlink:href="#circle">早知道是这样&nbsp;像梦一场&nbsp;我又何必把眼泪锁在自己的眼眶&nbsp;</textPath></text>
       </svg>
-    </div>
+    </div> -->
     <div class="logo">
       <router-link to="/"></router-link>
     </div>
