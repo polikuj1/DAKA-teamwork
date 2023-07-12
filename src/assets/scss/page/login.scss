@@ -3,10 +3,11 @@
 .login{
 width: 100%;
 max-width: 1920px;
-height: 100vh;
+height: 100%;
+top: 0;
 position: fixed;
 z-index: 999;
-background-color: #444;
+background-color: rgba(68, 68, 68,.5);
 
     .login_container{
         width: 50%;
