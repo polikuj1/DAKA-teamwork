@@ -1,26 +1,30 @@
 <template>
   <comicSearch @emit-txt="getSearch"/>
-  <div class="wrap">
+  <div class="search_result" v-show="search">
+    &ldquo;{{ search }}&rdquo;共有{{ comicData.length }}筆符合的漫畫
+  </div>
+  <main class="wrap">
+
     <div class="card" v-for="item in comicData" :keys="item.title" v-if="comicData.length">
       <div class="pic">
         <img :src="item.img">
       </div>
       <div class="txt">
         <div class="title">
-          <span>{{ item.title }}</span>
-          <span>章節導覽</span>
+          <span>{{ item.title }} {{ item.index }}</span>
+          <span>{{ item.author }}</span>
         </div>
         <button>預約</button>
       </div>
     </div>
     <div class="warn_txt" v-else>
-      找不到相關漫畫，請重新搜尋!!
+      請重新搜尋!!
     </div>
-  </div>
+  </main>
 </template>
 
 
-<script type="module">
+<script>
 import comicSearch from '@/components/comic/search.vue';
 import comicData from '@/assets/js/comicInfo.js';
 export default {
