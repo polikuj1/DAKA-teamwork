@@ -3,7 +3,6 @@
 @mixin container {
   max-width: 1200px;
   margin: 0 auto;
-  color: $main_bg;
 }
 // 一般圖檔設定
 @mixin img {

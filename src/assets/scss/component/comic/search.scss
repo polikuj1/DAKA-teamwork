@@ -1,0 +1,27 @@
+.search {
+  display: flex;
+  justify-content: center;
+  input {
+    width: 83.333333%;
+    height: 80px;
+    padding-left: 50px;
+    font-size: 1.5rem;
+    border-radius: 150px 0 0 150px;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    height: 80px;
+    padding: 0 30px;
+    background-color: $secondary_blue;
+    border: none;
+    border-radius: 0 150px 150px 0;
+    cursor: pointer;
+    svg {
+      font-size: 2rem;
+      color: $main_txt_color;
+    }
+  }
+}
