@@ -5,13 +5,16 @@
     </div>
     <nav>
       <router-link :to="nav.site" v-for="nav in header" :keys="nav">{{ nav.title }}</router-link>
+      <a href="" @click.prevent="openModal">登入 | 註冊</a>
       <router-link to="/member_center"><i class="fa-solid fa-user"></i></router-link>
     </nav>
   </div>
+  <login v-if="modalControl" @emit-status="closeModal"></login>
 </template>
 
 
 <script>
+import login from '@/components/LoginView.vue';
 export default {
   name: 'MainHeader',
   data() {
@@ -37,12 +40,24 @@ export default {
           title: '漫畫租借',
           site: '/comic'
         },
-        {
-          title: '登入 | 註冊',
-          site: '/login'
-        },
+        // {
+        //   title: '登入 | 註冊',
+        //   site: '/login'
+        // },
       ],
+      modalControl: false,
     }
+  },
+  methods: {
+    openModal() {
+        this.modalControl = true;
+    },
+    closeModal() {
+      this.modalControl = false;
+    },
+  },
+  components: {
+    login,
   },
 }
 </script>

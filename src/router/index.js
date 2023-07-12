@@ -32,11 +32,11 @@ const routes = [
     name: 'comic',
     component: () => import('../views/ComicView.vue')
   },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('../views/LoginView.vue')
-  },
+  // {
+  //   path: '/login',
+  //   name: 'login',
+  //   component: () => import('../views/LoginView.vue')
+  // },
   {
     path: '/member_center',
     name: 'member_center',
