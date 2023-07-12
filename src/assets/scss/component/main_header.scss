@@ -16,8 +16,10 @@
   nav {
     font-size: 1.5rem;
     a {
+      font-size: 1.75rem;
+      padding: 10px 16px;
       &:not(:last-child) {
-        margin-right: 40px;
+        margin-right: 20px;
       }
       display: inline-block;
       color: $main_txt_color;

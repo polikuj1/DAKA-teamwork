@@ -4,6 +4,14 @@
       <router-link to="/"></router-link>
     </div>
     <nav>
+      <a href="" @click.prevent="this.$router.push('/about')" >
+        關於我們
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </a>
       <router-link :to="nav.site" v-for="nav in header" :keys="nav">{{ nav.title }}</router-link>
       <a href="" @click.prevent="openModal">登入 | 註冊</a>
       <router-link to="/member_center"><i class="fa-solid fa-user"></i></router-link>
@@ -20,10 +28,6 @@ export default {
   data() {
     return {
       header: [
-        {
-          title: '關於我們',
-          site: '/about'
-        },
         {
           title: '最新消息',
           site: '/news'

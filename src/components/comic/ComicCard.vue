@@ -4,7 +4,12 @@
     &ldquo;{{ search }}&rdquo;共有{{ comicData.length }}筆符合的漫畫
   </div>
   <main class="wrap">
-
+    <div class="circle_top">
+      <div></div>
+    </div>
+    <div class="circle_bottom">
+      <div></div>
+    </div>
     <div class="card" v-for="item in comicData" :keys="item.title" v-if="comicData.length">
       <div class="pic">
         <img :src="item.img">
@@ -22,7 +27,6 @@
     </div>
   </main>
 </template>
-
 
 <script>
 import comicSearch from '@/components/comic/search.vue';
