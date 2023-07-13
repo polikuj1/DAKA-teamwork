@@ -1,7 +1,7 @@
 
 // 限制容器寬度+背景
 @mixin container {
-  max-width: 1200px;
+  max-width: $large;
   margin: 0 auto;
 }
 // 一般圖檔設定

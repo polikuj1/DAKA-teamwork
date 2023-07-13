@@ -10,7 +10,8 @@
     <div class="circle_bottom">
       <div></div>
     </div>
-    <div class="card" v-for="item in comicData" :keys="item.title" v-if="comicData.length">
+    <div class="card" v-for="item in comicData" :keys="item.title" 
+    v-if="comicData.length" @click="this.$router.push('/comic_detail')">
       <div class="pic">
         <img :src="item.img">
       </div>

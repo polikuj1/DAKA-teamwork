@@ -33,6 +33,7 @@
     background-color: $main_txt_color;
     border-radius: 10px;
     margin: 0 20px;
+    cursor: pointer;
     .pic {
       padding: 30px 60px;
       height: 400px;
@@ -82,6 +83,7 @@
   width: 83.3333333%;
   margin: 0 auto;
   padding-top: 50px;
+  margin-bottom: -103px;
   font-size: 2.5rem;
   color: $main_txt_color;
 }

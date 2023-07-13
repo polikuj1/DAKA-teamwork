@@ -30,7 +30,12 @@ const routes = [
   {
     path: '/comic',
     name: 'comic',
-    component: () => import('../views/ComicView.vue')
+    component: () => import('../views/ComicView.vue'),
+  },
+  {
+    path: '/comic_detail',
+    name: 'comic_detail',
+    component: () => import('../views/ComicDetail.vue'),
   },
   // {
   //   path: '/login',
