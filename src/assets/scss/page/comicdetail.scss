@@ -1,0 +1,37 @@
+.card {
+	display: flex;
+	width: 100%;
+	max-width: 1140px;
+	margin: auto;
+}
+.pic {
+	padding-right: 120px;
+}
+.text {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.text_title {
+	h2 {
+		font-size: 40px;
+		padding-bottom: 20px;
+	}
+	p {
+		font-size: 20px;
+	}
+}
+.text_reserve {
+	background-color: orange;
+	width: 190px;
+	height: 60px;
+}
+.text_introduce {
+	font-size: 20px;
+}
+.text_introduce_title {
+	padding-bottom: 20px;
+}
+.text_infor {
+	font-size: 20px;
+}
