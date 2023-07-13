@@ -42,7 +42,7 @@ export default {
 }
 </script>
 <style>
-body {
+/* body {
   background: none;
   font: bold 78% Helvetica, sans-serif;
 }
@@ -60,6 +60,6 @@ body {
 }
 .circle path {
   fill: none;
-}
+} */
 
 </style>
