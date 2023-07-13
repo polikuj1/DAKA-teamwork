@@ -1,43 +1,52 @@
 .comic_detail {
+	@include container;
 	.card {
 		display: flex;
 		justify-content: center;
 		width: 100%;
 		max-width: $large;
 		margin: auto;
-		padding: 100px 0;
+		padding: 100px 30px;
 		color: $main_txt_color;
 	}
-}
-.pic {
-	padding-right: 120px;
-}
-.text {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-.text_title {
-	h2 {
-		font-size: 40px;
-		padding-bottom: 20px;
+	.pic {
+		padding-right: 120px;
+	
+		img {
+			@include img;
+			height: 600px;
+		width: 400px;
+		}
 	}
-	p {
-		font-size: 20px;
+	.text {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
-}
-.text_reserve {
-	@include btn_lg;
-	background-color: orange;
-	width: 190px;
-	height: 60px;
-}
-.text_introduce {
-	font-size: 20px;
-}
-.text_introduce_title {
-	padding-bottom: 20px;
-}
-.text_infor {
-	font-size: 20px;
+	.text_title {
+		h2 {
+			font-size: 3.2em;
+			padding-bottom: 1.25rem;
+		}
+		p {
+			font-size: 1.25rem;
+		}
+	}
+	.text_reserve {
+		@include btn_lg;
+		.a{
+			color: white;
+			text-decoration: none;
+		}
+	}
+	.text_introduce {
+		font-size: 1.25rem;
+	}
+	.text_introduce_title {
+		padding-bottom: 1.25rem;
+	}
+	.text_infor {
+		font-size: 1.25rem;
+	}
+	
 }

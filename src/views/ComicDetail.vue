@@ -2,7 +2,7 @@
     <div class="comic_detail">
         <div class="card" v-for="item in card">
                 <div class="pic">
-                    <img src="https://picsum.photos/400/600/?random=10">
+                    <img :src="item.src">
                 </div>
                 <div class="text">
                     <div class="text_title">
@@ -36,14 +36,15 @@ export default {
     data() {
         return {
             card: [{
-                        text_title_h2: '皺術回戰',
+                        text_title_h2: '咒術回戰',
                         text_title_p: 'Wayne',
-                        text_introduce_text: 'asfdsfdsfdsfdslfkjdslfkjdslkdjgldkfjglkfdjgkfdjgfdk',
-                        translate: 'Wayne',
-                        press: '緯育',
-                        date: '2022/2/2',
-                        language: '中文'
-                    }],
+                        text_introduce_text: '澀谷車站地下月台塞滿了一般人與改造人——在眾人無處可逃的慘況下，五條的力量還是凌駕於咒靈之上。然而，敵人卻使出了絕招要封印五條……！虎杖急忙趕往地下月台時，卻有意料之外的伙伴來到了他身邊！',
+                        translate: '張紹仁',
+                        press: '東立',
+                        date: '2023/01/06',
+                        language: '繁體中文',
+                        src:require("@/assets/images/comic/jyujyutsu01.webp"),
+            }],
         }
     },
     methods: {
