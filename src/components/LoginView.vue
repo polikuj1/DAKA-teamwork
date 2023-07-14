@@ -1,8 +1,6 @@
 <template>
   <div class="container">
     <section class="login" v-if="!isRegistered">
-
-
       <div class="login_pic">
         <img :src="require('@/assets/images/footerLogo.png')" alt="">
         <p>
@@ -22,7 +20,7 @@
               <input type="checkbox" name="check" id="check">
               <label for="check">保持登入狀態</label>
             </div>
-            <div class="forget_psw">忘記密碼?</div>
+            <div class="forget_psw" @click="forgetPassword">忘記密碼?</div>
           </div>
           <button class="login_form_submit" @click.prevent="checkLogin">登入</button>
           <button @click.prevent="changeRegister" class="login_form_register">註冊會員</button>
@@ -43,22 +41,22 @@
 
             <div class="inputBox">
               <span>名字</span>
-              <input type="text" class="payment-name-input">
+              <input type="text" class="payment-name-input" required v-model="nameReg">
               <div class="payment-name"></div>
             </div>
             <div class="inputBox">
               <span>信箱</span>
-              <input type="text" class="payment-email-input">
+              <input type="email" class="payment-email-input" required v-model="emailReg">
               <div class="payment-email"></div>
             </div>
             <div class="inputBox">
               <span>密碼</span>
-              <input type="text" class="payment-address-input">
+              <input type="number" class="payment-address-input" required v-model="pswReg">
               <div class="payment-address"></div>
             </div>
             <div class="inputBox">
               <span>再次輸入密碼</span>
-              <input type="text" class="payment-nation-input">
+              <input type="number" class="payment-nation-input" required v-model="pswConfirmReg">
               <div class="payment-nation"></div>
             </div>
 
@@ -67,7 +65,7 @@
           <div class="col">
             <div class="inputBox">
               <span>性別</span>
-              <select>
+              <select v-model="sexReg">
                 <option value="">請選擇</option>
                 <option value="man">男</option>
                 <option value="wowen">女</option>
@@ -75,11 +73,11 @@
             </div>
             <div class="inputBox">
               <span>生日</span>
-              <input type="date" class="payment-card-name-input">
+              <input type="date" class="payment-card-name-input" required v-model="birthReg">
             </div>
             <div class="inputBox">
               <span>連絡電話</span>
-              <input type="text" class="payment-card-number-input" maxlength="12">
+              <input type="tel" class="payment-card-number-input" maxlength="12" required v-model="telReg">
             </div>
           </div>
         </div>
@@ -93,14 +91,28 @@
             <input type="checkbox" name="news_daka" id="news_daka">
             <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
           </div>
-          <button class="register_submit" disabled>註冊會員</button>
+          <button class="register_submit" @click.prevent="columnCheck">註冊會員</button>
         </div>
 
 
       </form>
 
     </section>
+
+    <section class="forget_password" v-if="forgetPsw">
+      <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeModal">
+   <h2>忘記密碼</h2>
+   <p>請輸入您的註冊信箱，進行密碼變更</p>
+   <div class="forget_password_enter">
+    <label for="">請輸入您的信箱</label>
+    <input type="text" placeholder="信箱">
+   </div>
+   <button>下一步</button>
+  </section>
+
+
   </div>
+
 </template>
 <style>
 @import '@/assets/scss/page/login.scss';
@@ -114,19 +126,27 @@ export default {
       memPsw: '',
       loginStatus: false,
       isRegistered: false,
+      forgetPsw: false,
+      nameReg: '',
+      emailReg: '',
+      pswReg: '',
+      pswConfirmReg: '',
+      sexReg: '',
+      birthReg: '',
+      telReg: '',
       errorMsg: '',
       btns: [
         {
           text: '以FACEBOOK帳號登入',
-          pic: require('@/assets/images/login/facebook.png'),
+          pic: require('@/assets/images/login/facebook.svg'),
         },
         {
           text: '以GOOGLE帳號登入',
-          pic: require('@/assets/images/login/google.png')
+          pic: require('@/assets/images/login/google.svg')
         },
         {
           text: '以APPLE帳號登入',
-          pic: require('@/assets/images/login/apple.png')
+          pic: require('@/assets/images/login/apple.svg')
         },
       ]
 
@@ -142,24 +162,43 @@ export default {
     checkLogin() {
       if (this.memId === 'test' && this.memPsw === 'test') {
         window.alert('登入成功');
-        loginStatus: true;
-
+        loginStatus= true;
       } else {
         this.errorMsg = '帳號或密碼輸入錯誤';
-
       }
-
       this.memId = '';
       this.memPsw = '';
-
     },
     reset() {
       this.errorMsg = '';
     },
     changeRegister() {
       this.isRegistered = true;
+      
+    },
+    columnCheck() {
+      if (this.nameReg !== '' && this.emailReg !== '' && this.pswReg !== '' && this.pswConfirmReg !== '' && this.birthReg !== '' && this.sexReg !== '' && this.telReg !== '') {
+        if (this.pswReg === this.pswConfirmReg && this.pswReg.length >= 6 && this.pswReg.length <= 12) {
+          console.log('註冊成功');
+
+        } else {
+          console.log('密碼輸入有誤');
+        }
+      } else {
+        window.alert('請完整輸入');
+      }
+    },
+    forgetPassword(){
+      this.forgetPsw = true;
     }
 
   }
 }
+
 </script>
+
+<script>
+
+</script>
+
+
