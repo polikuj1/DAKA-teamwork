@@ -28,9 +28,24 @@ const routes = [
     component: () => import('../views/ReservationView.vue')
   },
   {
-    path: '/comic',
-    name: 'comic',
-    component: () => import('../views/ComicView.vue')
+    path: '/comic_demo',
+    name: 'comic_demo',
+    component: () => import('../views/ComicDemo.vue'),
+  },
+  {
+    path: '/comic_search',
+    name: '/comic_search',
+    component: () => import('../views/ComicSearch.vue'),
+  },
+  {
+    path: '/comic_rent_rules',
+    name: 'comic_rent_rules',
+    component: () => import('../views/ComicRule.vue'),
+  },
+  {
+    path: '/comic_detail',
+    name: 'comic_detail',
+    component: () => import('../views/ComicDetail.vue'),
   },
   // {
   //   path: '/login',
