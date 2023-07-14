@@ -1,17 +1,17 @@
 <template>
-  <div class="login">
-    <div class="login_container">
+  <div class="container">
+    <section class="login" v-if="!isRegistered">
 
-      <!-- 
-       <div class="login_pic">
+
+      <div class="login_pic">
         <img :src="require('@/assets/images/footerLogo.png')" alt="">
         <p>
-          #快樂就是這麼簡單
+          # 快樂就是這麼簡單
         </p>
-      </div> 
+      </div>
 
-       <div class="login_form">
-        <label for="" class="close_modal" @click="closeModal">X</label>
+      <div class="login_form">
+        <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="closeModal">
         <form>
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="reset" require>
@@ -25,25 +25,18 @@
             <div class="forget_psw">忘記密碼?</div>
           </div>
           <button class="login_form_submit" @click.prevent="checkLogin">登入</button>
-          <button @click.prevent="" class="login_form_register">註冊會員</button>
+          <button @click.prevent="changeRegister" class="login_form_register">註冊會員</button>
           <span>OR</span>
-          <button v-for="btn in btns" class="login_connect">
-<img :src="btn.pic" alt="">
+          <button v-for="btn in btns" class="login_connect" @click.prevent="">
+            <img :src="btn.pic" alt="">
             {{ btn.text }}</button>
-
         </form>
-       
       </div>
-       -->
+    </section>
 
-
-    </div>
-
-
-    <section class="register">
+    <section class="register" v-else>
       <form action="">
-        <img src="require('@/assets/images/login/cross.png')" class="register_close_modal" @click="closeModal">
-        <img src="" alt="">
+        <img :src="require('@/assets/images/login/cross.png')" class="register_close_modal" @click="closeModal">
         <h2>註冊會員</h2>
         <div class="row">
           <div class="col">
@@ -71,9 +64,7 @@
 
 
           </div>
-
           <div class="col">
-
             <div class="inputBox">
               <span>性別</span>
               <select>
@@ -84,41 +75,28 @@
             </div>
             <div class="inputBox">
               <span>生日</span>
-              <input type="text" class="payment-card-name-input">
-              <div class="card-name"></div>
+              <input type="date" class="payment-card-name-input">
             </div>
             <div class="inputBox">
               <span>連絡電話</span>
               <input type="text" class="payment-card-number-input" maxlength="12">
-              <div class="card-number"></div>
             </div>
-
-
-
           </div>
-
-        
-       
-       
+        </div>
+        <div class="register_form_bottom">
+          <div class="">
+            <input type="checkbox" name="membership" id="membership">
+            <label for="membership">我已詳閱並同意<a href="" target="_blank">會員條款</a>與<a href=""
+                target="_blank">隱私權規定</a></label>
+          </div>
+          <div class="">
+            <input type="checkbox" name="news_daka" id="news_daka">
+            <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
+          </div>
+          <button class="register_submit" disabled>註冊會員</button>
         </div>
 
-<div class="register_form_bottom">
-  <div class="">
-          <input type="checkbox" name="membership" id="membership">
-        <label for="membership">我已詳閱並同意<span>會員條款</span>與<span>隱私權規定</span></label>
 
-        </div>
-        <div class="">
-          <input type="checkbox" name="news_daka" id="news_daka">
-        <label for="news_daka">我願意收到 打咖 DAKA 的最新消息</label>
-
-        </div>
-       
-
-        <button class="register_submit">註冊會員</button>
-</div>
-        
-        
       </form>
 
     </section>
@@ -135,6 +113,7 @@ export default {
       memId: '',
       memPsw: '',
       loginStatus: false,
+      isRegistered: false,
       errorMsg: '',
       btns: [
         {
@@ -176,6 +155,9 @@ export default {
     },
     reset() {
       this.errorMsg = '';
+    },
+    changeRegister() {
+      this.isRegistered = true;
     }
 
   }

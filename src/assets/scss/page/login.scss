@@ -1,46 +1,21 @@
-.login {
+.container {
   width: 100%;
   max-width: 1920px;
   height: 100%;
-  top: 0;
-  position: fixed;
-  z-index: 999;
   background-color: rgba(68, 68, 68, 0.5);
-
-  .login_container {
-    width: 70%;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin: auto;
-    display: flex;
+  .login {
     background-color: #fff;
 
     .login_pic {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: $main_bg;
-      gap: 20px;
-      img {
-        width: 70%;
-      }
-      p {
-        font-size: 2rem;
-        color: aliceblue;
-      }
+      display: none;
     }
 
     .login_form {
-      width: 50%;
       display: flex;
       justify-content: center;
-      position: relative;
       padding: 30px 0;
-      margin-bottom: 30px;
+      margin: 15px;
+
       .login_memid {
         margin-top: 30px;
       }
@@ -48,18 +23,11 @@
         padding: 15px 75px;
         border-radius: 10px;
         color: #fff;
-
         border: 1px solid transparent;
         cursor: pointer;
       }
       .close_modal {
-        font-size: 1.3rem;
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-weight: 300;
-        color: #ccc6c6;
-        cursor: pointer;
+        display: none;
       }
       .login_form_submit {
         margin-top: 60px;
@@ -84,6 +52,7 @@
           padding: 15px 30px;
           border-radius: 10px;
           border: 1px solid;
+          margin-right: 5px;
         }
         span {
           font-size: 2rem;
@@ -101,14 +70,16 @@
           display: flex;
           justify-content: space-between;
           cursor: pointer;
+          font-size: 1.2rem;
           .login_keep_status {
-            font-size: 1.2rem;
             display: flex;
             gap: 5px;
             align-items: center;
+            input {
+              transform: scale(1.5);
+            }
           }
           .forget_psw {
-            font-size: 1.2rem;
             border-bottom: 1px solid $secondary_blue;
             color: $secondary_blue;
           }
@@ -117,19 +88,18 @@
         .login_connect {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 15px;
           background-color: $secondary_blue;
           letter-spacing: 2px;
+          padding: 15px 35px;
+          justify-content: center;
         }
       }
     }
   }
   .register {
-    width: 60%;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,12 +109,18 @@
       margin-bottom: 20px;
     }
     form {
-      width: 1000px;
-      padding: 130px;
+      width: 100%;
+      max-width: 1000px;
+      height: 100%;
+      padding: 150px 10px 80px 10px;
       background-color: #fff;
       font-size: 1.1rem;
       border-radius: 10px;
-      background: url('@/assets/images/login/bg_login.png')no-repeat center / cover ;
+      background: url("@/assets/images/login/bg_login.png") no-repeat center /
+        cover;
+      position: relative;
+      display: flex;
+      flex-direction: column;
 
       .register_close_modal {
         width: 40px;
@@ -155,27 +131,30 @@
         cursor: pointer;
       }
       .row {
-        display: flex;
-
         .col {
           flex: 1 1 250px;
           margin: 0 16px;
           .inputBox {
+            display: flex;
+            align-items: center;
+
             margin: 16px 0;
+
             input {
-              width: 100%;
+              font-size: 1rem;
+              width: 80%;
               border: 1px solid #ccc;
               padding: 10px;
-              font-size: 1rem;
               text-transform: none;
               border-radius: 10px;
             }
             span {
+              width: 30%;
               margin-bottom: 10px;
               display: block;
             }
             select {
-              width: 100%;
+              width: 80%;
               border: 1px solid #ccc;
               padding: 10px;
               font-size: 1rem;
@@ -191,12 +170,256 @@
           }
         }
       }
-      .register_submit {
-        padding: 15px 50px;
+
+      .register_form_bottom {
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        input {
+          transform: scale(1.5);
+          margin: 20px 10px;
+        }
+        a {
+          font-size: 1.3rem;
+          color: $secondary_blue;
+          border-bottom: 1px solid $secondary_blue;
+          margin: 0 5px;
+          cursor: pointer;
+        }
+
+        .register_submit {
+          align-self: center;
+          font-size: 1.3rem;
+          padding: 15px 50px;
+          border-radius: 10px;
+          border: 1px solid transparent;
+          background-color: $btn_bg_color;
+          color: #fff;
+          cursor: pointer;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+//768px以上
+@include sm {
+  .container {
+    max-width: 1920px;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(68, 68, 68, 0.5);
+
+    .login {
+      max-width: 1100px;
+      width: 60%;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+
+      .login_pic {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $main_bg;
+        gap: 20px;
+        img {
+          width: 60%;
+        }
+        p {
+          font-size: 2rem;
+          color: aliceblue;
+        }
+      }
+
+      .login_form {
+        max-width: 550px;
+        width: 50%;
+        position: relative;
+        padding: 30px 0;
+        margin-bottom: 30px;
+        form {
+          width: 100%;
+          margin: 0 70px;
+        }
+        button {
+          padding: 15px 75px;
+          border-radius: 10px;
+          color: #fff;
+
+          border: 1px solid transparent;
+          cursor: pointer;
+        }
+        .close_modal {
+          display: block;
+          font-size: 1.3rem;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          font-weight: 300;
+          color: #ccc6c6;
+          cursor: pointer;
+        }
+        .login_form_submit {
+          margin-top: 60px;
+        }
+
+        form {
+          .error_message {
+            color: red;
+            font-size: 1.1rem;
+          }
+          label {
+            align-self: flex-end;
+          }
+
+          span {
+            font-size: 2rem;
+            align-self: center;
+            margin: 30px 0;
+            font-weight: 300;
+          }
+          .login_form_submit,
+          .login_form_register {
+            font-size: 1.4rem;
+            background-color: $btn_bg_color;
+          }
+
+          .login_keep {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            .login_keep_status {
+              font-size: 1.2rem;
+              display: flex;
+              gap: 5px;
+              align-items: center;
+            }
+            .forget_psw {
+              font-size: 1.2rem;
+              border-bottom: 1px solid $secondary_blue;
+              color: $secondary_blue;
+            }
+          }
+          .login_connect {
+            text-align: center;
+          }
+        }
+      }
+    }
+    .register {
+      width: 60%;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        text-align: center;
+      }
+      form {
+        width: 100%;
+        max-width: 1000px;
+        height: 100%;
+        padding: 240px 100px 80px 100px;
+        background-color: #fff;
+        font-size: 1.1rem;
         border-radius: 10px;
-        border: 1px solid transparent;
-        background-color: $btn_bg_color;
-        color: #fff;
+        background: url("@/assets/images/login/bg_login.png") no-repeat center /
+          cover;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        .register_close_modal {
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          cursor: pointer;
+        }
+        .row {
+          display: flex;
+
+          .col {
+            flex: 1 1 250px;
+            margin: 0 16px;
+            .inputBox {
+              display: block;
+              margin: 16px 0;
+              input {
+                width: 100%;
+                border: 1px solid #ccc;
+
+                font-size: 1rem;
+                text-transform: none;
+                border-radius: 10px;
+                outline: 1px solid #ccc;
+              }
+              span {
+                width: 100%;
+                margin-bottom: 10px;
+                display: block;
+              }
+              select {
+                width: 100%;
+                border: 1px solid #ccc;
+                padding: 9px;
+                font-size: 1rem;
+                text-transform: none;
+                border-radius: 10px;
+              }
+            }
+
+            .payment-title {
+              font-size: 1.5rem;
+              color: #333;
+              padding-bottom: 5px;
+            }
+          }
+        }
+
+        .register_form_bottom {
+          align-self: center;
+          display: flex;
+          flex-direction: column;
+          input {
+            transform: scale(1.5);
+            margin: 20px 10px;
+          }
+          a {
+            font-size: 1.3rem;
+            color: $secondary_blue;
+            border-bottom: 1px solid $secondary_blue;
+            margin: 0 5px;
+            cursor: pointer;
+          }
+
+          .register_submit {
+            align-self: center;
+            font-size: 1.3rem;
+            padding: 15px 50px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            background-color: $btn_bg_color;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 20px;
+          }
+        }
       }
     }
   }
