@@ -1,7 +1,7 @@
 <template>
   <comicSearch @emit-txt="getSearch"/>
   <div class="search_result" v-show="search">
-    &ldquo;{{ search }}&rdquo;共有{{ comicData.length }}筆符合的漫畫
+    &ldquo;{{ search }}&rdquo; 共有 {{ comicData.length }} 筆符合的漫畫
   </div>
   <main class="wrap">
     <div class="circle_top">
@@ -17,10 +17,10 @@
       </div>
       <div class="txt">
         <div class="title">
-          <span>{{ item.title }} {{ item.index }}</span>
+          <h4>{{ item.title }} {{ item.index }}</h4>
           <span>{{ item.author }}</span>
         </div>
-        <button>預約</button>
+        <button>預約此書 <i class="fa-solid fa-book-open-reader"></i></button>
       </div>
     </div>
     <div class="warn_txt" v-else>

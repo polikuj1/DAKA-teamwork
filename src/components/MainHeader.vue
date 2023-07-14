@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <div class="logo">
+    <h1 class="logo">
       <router-link to="/"></router-link>
-    </div>
+    </h1>
     <nav>
       <a href="#" v-for="nav in header" :keys="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
         {{ nav.title }}
@@ -58,21 +58,17 @@ export default {
           title_list: [],
         },
         {
-          title: '漫畫租借',
+          title: '漫畫預約',
           site: '/comic_demo',
           title_list: [
-            {
-              li: '漫畫展示',
-              site: '/comic_demo',
-            },
             {
               li: '漫畫查詢',
               site: '/comic_search',
             },
-            {
-              li: '租借須知',
-              site: '/comic_rent_rules',
-            },
+            // {
+            //   li: '漫畫查詢',
+            //   site: '/comic_search',
+            // },
           ],
         },
         // {
