@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <h1 class="logo">
-      <router-link to="/"></router-link>
+      <router-link to="/"><img :src="logoImg" alt="DAKA網咖"></router-link>
     </h1>
     <nav>
       <a href="#" v-for="nav in header" :keys="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
@@ -23,6 +23,7 @@ export default {
   name: 'MainHeader',
   data() {
     return {
+      logoImg: require('@/assets/images/logo.png'),
       header: [
         {
           title: '關於我們',

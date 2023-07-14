@@ -9,5 +9,7 @@ import '@fortawesome/fontawesome-free/js/all.js'
 // 字體引入
 import "@/assets/fonts/font.css";
 
-
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App);
+app.use(store);
+app.use(router);
+app.mount('#app');

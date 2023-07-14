@@ -1,7 +1,7 @@
 <template>
   <div class="pageTitle">
     <h2><slot>default</slot></h2>
-    <div class="graphics">
+    <div class="graphics" ref="one">
       <span class="circle"></span>
       <span class="square"></span>
       <span class="circle"></span>
@@ -9,7 +9,7 @@
       <span class="circle"></span>
       <span class="square"></span>
     </div>
-    <div class="graphics">
+    <div class="graphics" ref="two">
       <span class="circle"></span>
       <span class="square"></span>
       <span class="circle"></span>
@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-
+      windowWidth: 0,
     }
   },
   methods: {
@@ -33,6 +33,15 @@ export default {
   },
   computed: {
 
+  },
+  mounted() {
+    // window.addEventListener('resize',() => {
+    //   this.windowWidth = window.innerWidth;
+    //   console.log(this.windowWidth);
+    // })
+  },
+  created() {
+    
   },
 }
 </script>
