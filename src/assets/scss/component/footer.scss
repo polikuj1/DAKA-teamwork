@@ -20,6 +20,9 @@ footer {
       &:not(:last-child) {
         margin-right: 40px;
       }
+      &:hover {
+        @include btn_hover1;
+      }
       display: block;
       @include btn_lg
     }

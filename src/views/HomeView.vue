@@ -1,13 +1,6 @@
 <template>
   <div class="home">
-    <div class="card">
-      <div class="pic">
-        <img src="https://picsum.photos/300/200/?random=10">
-      </div>
-      <div class="txt">
-        <router-link to="/comic">go shopping now</router-link>
-      </div>
-    </div>
+    
   </div>
 </template>
 

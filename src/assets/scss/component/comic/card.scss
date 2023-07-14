@@ -43,11 +43,12 @@
       @include img;
     }
     .txt {
-      padding: 20px;
+      padding: 40px;
       text-align: center;
       color: $main_bg;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       flex-grow: 1;
     }
@@ -65,12 +66,13 @@
       }
     }
     button {
-      width: 50%;
       margin-top: auto;
-      padding: 10px 0px;
       cursor: pointer;
-      font-size: 1.5rem;
-      background-color: rgba(255, 255, 255, 0.815);
+      @include btn_res;
+      background-color: transparent;
+      &:hover {
+        @include btn_hover;
+      }
     }
   }
   .warn_txt {
@@ -84,6 +86,6 @@
   margin: 0 auto;
   padding-top: 50px;
   margin-bottom: -103px;
-  font-size: 2.5rem;
+  font-size: 1.875rem;
   color: $main_txt_color;
 }

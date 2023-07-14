@@ -33,11 +33,32 @@
   color: $main_txt_color;
   border-radius: $btn_br;
 }
-
-
-
-
-
+// 書籍預約按鈕
+@mixin btn_res {
+  padding: 20px 40px;
+  font-size: 1.25rem;
+  color: $btn_bg_color;
+  border: 1px solid $btn_bg_color;
+  border-radius: $btn_br;
+}
+// login按鈕
+@mixin login_btn {
+  width: 390px;
+  padding: 20px 0;
+  color: $main_txt_color;
+  background-color: $btn_bg_color;
+  border-radius: 10px;
+}
+// 白字橘底hover效果
+@mixin btn_hover {
+  color: $main_txt_color;
+  background-color: $btn_bg_color;
+}
+// 橘字白底hover效果
+@mixin btn_hover1 {
+  color: $btn_bg_color;
+  background-color: $main_txt_color;
+}
 
 // RWD的768以上
 @mixin sm() {

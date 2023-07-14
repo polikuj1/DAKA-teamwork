@@ -37,7 +37,7 @@ export default {
         return {
             card: [{
                         text_title_h2: '咒術回戰',
-                        text_title_p: 'Wayne',
+                        text_title_p: '芥見下下',
                         text_introduce_text: '澀谷車站地下月台塞滿了一般人與改造人——在眾人無處可逃的慘況下，五條的力量還是凌駕於咒靈之上。然而，敵人卻使出了絕招要封印五條……！虎杖急忙趕往地下月台時，卻有意料之外的伙伴來到了他身邊！',
                         translate: '張紹仁',
                         press: '東立',

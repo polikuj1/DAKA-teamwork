@@ -1,4 +1,7 @@
 <template>
+  <PageTitle>
+    {{ title }}
+  </PageTitle>
   <div class="comic">
     <comicCard />
     <ComicSlider />
@@ -7,15 +10,16 @@
 
 
 <script>
+import PageTitle from '@/components/PageTitle.vue';
 import comicCard from '@/components/comic/ComicCard.vue';
 import ComicSlider from '@/components/comic/ComicSlider.vue';
 export default {
   components: {
-    comicCard, ComicSlider
+    comicCard, ComicSlider, PageTitle,
   },
   data() {
     return {
-      test: 132,
+      title: '漫畫查詢',
     }
   },
 }

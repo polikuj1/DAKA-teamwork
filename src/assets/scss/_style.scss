@@ -3,6 +3,7 @@
 @import 'component/footer.scss';
 @import 'component/main_header.scss';
 @import 'component/comic/search.scss';
+@import 'component/pageTitle.scss';
 @import 'page/comic.scss';
 @import 'component/home/news.scss';
 @import 'component/comic/card.scss';
@@ -10,6 +11,7 @@
 @import 'page/login.scss';
 @import 'page/comic.scss';
 @import 'page/home.scss';
+@import 'page/news.scss';
 
 
 *{
@@ -18,4 +20,20 @@
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+h1 {
+  // font-size: 3rem;
+}
+h2 {
+  font-size: 80px;
+}
+h3 {
+  font-size: 60px;
+}
+h4 {
+  font-size: 30px;
+}
+h5 {
+  font-size: 24px;
 }
