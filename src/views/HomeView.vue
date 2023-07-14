@@ -14,4 +14,3 @@ export default {
   }
 }
 </script>
-6666666
