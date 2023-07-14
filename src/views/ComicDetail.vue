@@ -1,6 +1,6 @@
 <template>
     <div class="comic_detail">
-        <div class="card" v-for="item in card">
+        <div class="card" v-for="item in card" :key="item.text_title_h2">
                 <div class="pic">
                     <img :src="item.src">
                 </div>
