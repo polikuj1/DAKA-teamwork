@@ -3,7 +3,7 @@
     {{ title }}
   </PageTitle>
   <div>
-    food
+    
   </div>
 </template>
 

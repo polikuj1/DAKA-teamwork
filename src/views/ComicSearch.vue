@@ -4,7 +4,7 @@
   </PageTitle>
   <div class="comic">
     <comicCard />
-    <ComicSlider />
+    <!-- <ComicSwiper /> -->
   </div>
 </template>
 
@@ -12,10 +12,10 @@
 <script>
 import PageTitle from '@/components/PageTitle.vue';
 import comicCard from '@/components/comic/ComicCard.vue';
-import ComicSlider from '@/components/comic/ComicSlider.vue';
+import ComicSwiper from '@/components/comic/ComicSwiper.vue';
 export default {
   components: {
-    comicCard, ComicSlider, PageTitle,
+    comicCard, ComicSwiper, PageTitle,
   },
   data() {
     return {

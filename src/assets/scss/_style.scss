@@ -2,11 +2,16 @@
 @import 'mixin/all.scss';
 @import 'component/footer.scss';
 @import 'component/main_header.scss';
-@import 'component/comic/search.scss';
 @import 'component/pageTitle.scss';
+@import 'layout/comic/search.scss';
+@import 'layout/comic/card.scss';
+@import 'layout/home/service.scss';
 @import 'page/comic.scss';
+<<<<<<< HEAD
 @import 'component/home/news.scss';
 @import 'component/comic/card.scss';
+=======
+>>>>>>> 625c213dd6eac3c413097fb147057f8421306dc7
 @import 'page/comicdetail.scss';
 @import 'page/login.scss';
 @import 'page/comic.scss';
@@ -32,7 +37,7 @@ h3 {
   font-size: 60px;
 }
 h4 {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 h5 {
   font-size: 24px;

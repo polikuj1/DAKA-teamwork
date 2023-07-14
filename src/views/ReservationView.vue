@@ -3,7 +3,6 @@
     {{ title }}
   </PageTitle>
   <div>
-    reservation
   </div>
 </template>
 
