@@ -17,7 +17,8 @@
   }
   nav {
     a {
-      font-size: 1.75rem;
+      font-size: 1.875rem;
+      // font-weight: bold;
       padding: 10px 16px;
       position: relative;
       &:not(:last-child) {
@@ -30,7 +31,7 @@
           display: block;
         }
         &::after {
-          width: 100%;
+          width: 80%;
         }
       }
       &::after {
@@ -41,18 +42,25 @@
         position: absolute;
         bottom: 6px;
         left: 0;
+        right: 0;
+        margin: 0 auto;
         z-index: -1;
-        transition: .5s;
+        transition: width .5s;
       }
     }
     ul {
       position: absolute;
       display: none;
       top: 100%;
-      border-left: 1px solid $main_txt_color;
-      padding-left: 10px;
+      border-left: 2px solid $main_txt_color;
+      padding-left: 15px;
       li {
+        font-size: 1.75rem;
+        // font-weight: bold;
         margin-top: 20px;
+        &:hover {
+          color: $secondary_yellow;
+        }
       }
     }
   }

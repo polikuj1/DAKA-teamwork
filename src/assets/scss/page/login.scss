@@ -40,8 +40,8 @@ background-color: rgba(68, 68, 68,.5);
             width: 50%;
             display:flex ;
             justify-content: center;
-                    position: relative;
-padding: 30px 0;
+            position: relative;
+            padding: 30px 0;
 
 .login_memid{
     margin-top: 2em;
@@ -64,8 +64,8 @@ padding: 30px 0;
             }
             .login_form_submit{
                 margin-top: 60px;
+                @include login_btn;
             }
-           
             form{
                 display: flex;
                 flex-direction: column;
