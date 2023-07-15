@@ -11,7 +11,7 @@
       <div></div>
     </div>
     <div class="card" v-for="item in comicData" :keys="item.title" 
-    v-if="comicData.length" @click="this.$router.push('/comic_detail')">
+    v-show="comicData.length" @click="this.$router.push('/comic_detail')">
       <div class="pic">
         <img :src="item.img">
       </div>
@@ -23,7 +23,7 @@
         <button>預約此書 <i class="fa-solid fa-book-open-reader"></i></button>
       </div>
     </div>
-    <div class="warn_txt" v-else>
+    <div class="warn_txt" v-if="comicData.length === 0">
       請重新搜尋!!
     </div>
   </main>
