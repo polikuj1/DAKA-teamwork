@@ -4,13 +4,13 @@
   justify-content: space-between;
   padding: 100px 0;
   .service_list {
-    width: 45%;
     text-align: center;
   }
   .service_item {
     width: 100%;
+    display: flex;
     .pic {
-      width: 90%;
+      width: 100%;
       aspect-ratio: 1.16/1;
       position: relative;
       &::before {

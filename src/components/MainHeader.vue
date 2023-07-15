@@ -7,10 +7,11 @@
       <a href="#" v-for="nav in header" :keys="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
         {{ nav.title }}
         <ul>
-          <li v-for="item in nav.title_list" :keys="item.li" @click.prevent.stop="goPage(item.site)">{{ item.li }}</li>
+          <li v-for="item in nav.title_list" :keys="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
         </ul>
       </a>
-      <a href="#" @click.prevent="openModal">登入 | 註冊</a>
+      <a href="#" @click.prevent="this.$router.push('/member_center')"><i class="fa-solid fa-user"></i></a>
+
     </nav>
   </div>
   <login v-if="modalControl" @emit-status="closeModal"></login>
@@ -72,11 +73,11 @@ export default {
             // },
           ],
         },
-        // {
-        //   title: '登入 | 註冊',
-        //   site: '',
-        //   title_list: [],
-        // },
+        {
+          title: '登入 | 註冊',
+          site: '',
+          title_list: [],
+        },
       ],
       modalControl: false,
     }
@@ -89,8 +90,11 @@ export default {
       this.modalControl = false;
     },
     goPage(site,e) {
-      console.log(site);
-      console.log(e);
+      if(e.target.innerText === '登入 | 註冊') {
+        this.openModal();
+      }
+      // console.log(site);
+      // console.log(e);
       this.$router.push(site);
     },
   },
