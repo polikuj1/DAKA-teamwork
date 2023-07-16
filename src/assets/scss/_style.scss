@@ -3,6 +3,7 @@
 @import 'component/footer.scss';
 @import 'component/main_header.scss';
 @import 'component/pageTitle.scss';
+@import 'component/hb_menu.scss';
 @import 'layout/comic/search.scss';
 @import 'layout/comic/card.scss';
 @import 'layout/home/service.scss';
@@ -21,9 +22,8 @@
   text-decoration: none;
 }
 
-h1 {
-  // font-size: 3rem;
-}
+
+
 h2 {
   font-size: 5rem;
 }

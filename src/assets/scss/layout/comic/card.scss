@@ -12,7 +12,7 @@
     bottom: -100px;
     z-index: -1;
     div {
-      @include bgPng(decoration/circle01);
+      @include bgSvg(decoration/circle01);
     }
   }
   .circle_bottom {
@@ -23,7 +23,7 @@
     top: 50px;
     z-index: -1;
     div {
-      @include bgPng(decoration/circle02);
+      @include bgSvg(decoration/circle02);
     }
   }
   .card {

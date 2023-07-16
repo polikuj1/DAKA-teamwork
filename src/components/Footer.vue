@@ -7,7 +7,9 @@
       </svg>
     </div> -->
     <div class="logo">
-      <router-link to="/"></router-link>
+      <router-link to="/">
+        <img src="@/assets/images/footerLogo.png" alt="">
+      </router-link>
     </div>
     <div class="btn_group">
       <router-link :to="btn.site" v-for="btn in btns" :key="btn.title">{{ btn.title }}</router-link>
