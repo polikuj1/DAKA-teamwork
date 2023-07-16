@@ -10,7 +10,7 @@
     <div class="circle_bottom">
       <div></div>
     </div>
-    <div class="card" v-for="item in comicData" :keys="item.title" 
+    <div class="card" v-for="item in comicData" :key="item.title" 
     v-show="comicData.length">
       <div class="pic"  @click="this.$router.push('/comic_detail')">
         <img :src="item.img">
@@ -27,14 +27,16 @@
       請重新搜尋!!
     </div>
   </main>
+  <CartIcon />
 </template>
 
 <script>
 import comicSearch from '@/components/comic/search.vue';
 import comicData from '@/assets/js/comicInfo.js';
+import CartIcon from '@/components/comic/CartIcon.vue';
 export default {
   components: {
-    comicSearch,
+    comicSearch, CartIcon,
   },
   name: 'ComicCard',
   data() {

@@ -1,0 +1,67 @@
+.cart_icon {
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  .wrap {
+    .icon {
+      width: 120px;
+      position: relative;
+      cursor: pointer;
+      span {
+        width: 50px;
+        cursor: pointer;
+        @include ps_center;
+      }
+      img {
+        cursor: pointer;
+        @include img;
+      }
+    }
+    .cart_info {
+      width: 300px;
+      padding: 100px 50px;
+      background-color: #fff;
+      position: absolute;
+      left: -160px;
+      top: -295px;
+      border-radius: 50px;
+      box-shadow: 0 0 3px #193867;
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 50px;
+        bottom: -98px;
+        border-top: 50px solid #fff;
+        border-bottom: 50px solid transparent;
+        border-left: 50px solid transparent;
+        // border-right: 50px solid transparent;
+      }
+      span {
+        display: block;
+        line-height: $line_height;
+        font-size: 20px;
+        a {
+          font-size: 20px;
+          position: relative;
+          color: $secondary_blue;
+          &::after {
+            @include sudo(0,-2);
+          }
+        }
+      }
+      button {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 22px;
+        right: 33px;
+        svg {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
