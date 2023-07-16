@@ -20,7 +20,7 @@
           <h4>{{ item.title }} {{ item.index }}</h4>
           <span>{{ item.author }}</span>
         </div>
-        <button>預約此書 <i class="fa-solid fa-book-open-reader"></i></button>
+        <button @click="reserve(item)">預約此書 <i class="fa-solid fa-book-open-reader"></i></button>
       </div>
     </div>
     <div class="warn_txt" v-if="comicData.length === 0">
@@ -43,6 +43,7 @@ export default {
     return {
       comicData,
       search: '',
+      reservation: [],
     }
   },
   methods: {
@@ -50,7 +51,10 @@ export default {
       this.search = txt;
       if (this.search === '') {this.comicData = comicData;}
       this.comicData = comicData.filter(item => item.title.includes(this.search));
-    }
+    },
+    reserve(item) {
+      this.reservation.push(item);
+    },
   },
   computed: {
 
