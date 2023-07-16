@@ -1,0 +1,39 @@
+.reservation {
+  @include container;
+  width: 100%;
+margin-top: 112px;
+  &_read {
+    margin-bottom: 120px;
+    h2 {
+      font-size: 3.2rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+    &_rules {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      li {
+        font-size: 1.5rem;
+        list-style: none;
+        margin-bottom: 22px;
+
+        .reservation_rules_img {
+          margin-right: 22px;
+        }
+      }
+    }
+  }
+
+  &_date {
+    h2 {
+      font-size: 3.2rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+  }
+}
