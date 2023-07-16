@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-   
     <Services></Services>
   </div>
 </template>
@@ -14,4 +13,3 @@ export default {
   }
 }
 </script>
-6666666

@@ -2,12 +2,14 @@
   <div class="header">
     <h1 class="logo">
       <router-link to="/"><img :src="logoImg" alt="DAKA網咖"></router-link>
+      <span>打</span>
+      <span>咖</span>
     </h1>
     <nav>
-      <a href="#" v-for="nav in header" :keys="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
+      <a href="#" v-for="nav in header" :key="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
         {{ nav.title }}
         <ul>
-          <li v-for="item in nav.title_list" :keys="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
+          <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
         </ul>
       </a>
       <a href="#" @click.prevent="this.$router.push('/member_center')"><i class="fa-solid fa-user"></i></a>

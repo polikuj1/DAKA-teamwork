@@ -1,8 +1,8 @@
 <template>
   <section class="home_service">
-    <div :class="item" v-for="item in circle" :key="item">
+    <!-- <div :class="item" v-for="item in circle" :key="item">
       <span></span>
-    </div>
+    </div> -->
     <h3>服務項目</h3>
     <div class="service_list">
       <div v-for="item in service" :key="item.title" :class="item.class">

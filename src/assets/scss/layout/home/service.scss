@@ -1,19 +1,18 @@
 .home_service {
   @include container;
   width: 100%;
-  padding: 0 100px;
+  padding: 0 65px;
   position: relative;
   h3 {
+    font-size: 30px;
     color: $main_txt_color;
-    padding: $section_pd 0;
+    padding: ($section_pd / 2) 0;
     text-align: center;
   }
   .service_item {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+    padding-bottom: 80px;
     .pic {
-      width: 40%;
       position: relative;
       aspect-ratio: 1.16/1;
       &::before {
@@ -21,8 +20,8 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        left: -40px;
-        top: -40px;
+        left: -8%;
+        top: -10%;
         background-color: #F8D0AF;
         z-index: -1;
         border-radius: 20px
@@ -34,7 +33,7 @@
         border-radius: 20px;
         background-color: #ED9B59;
         position: absolute;
-        bottom: -50px;
+        bottom: -30px;
         left: 0;
       }
       img {
@@ -44,8 +43,8 @@
       h4 {
         color: $main_txt_color;
         position: absolute;
-        bottom: -50px;
-        right: -50px;
+        bottom: -40px;
+        right: -20px;
         width: 35%;
         aspect-ratio: 1/1;
         border-radius: 50%;
@@ -58,15 +57,15 @@
     }
     .side_txt {
       position: absolute;
-      right: -40px;
+      right: -30px;
       top: 0;
       writing-mode: vertical-lr;
       color: #ED9B59;
       font-size: 1.25rem;
       text-transform: uppercase;
       .decoration {
-        width: 30px;
-        height: 30px;
+        width: 20px;
+        height: 20px;
         display: inline-block;
         border-radius: 50%;
         background: #ED9B59;
@@ -74,22 +73,14 @@
       }
     }
     .txt {
-      width: 50%;
       color: $main_txt_color;
-      margin-top: 50px;
+      margin-top: 60px;
       line-height: $line_height;
       font-size: 1.875rem;
     }
   }
-  .normal {
-    .txt {
-      transform: translate(50px,-80px);
-    }
-  }
   .reverse {
     padding-bottom: 100px;
-    align-items: flex-end;
-    transform: translateY(-100px);
     .pic {
       h4 {
         background-color: #5AC4C4;
@@ -100,10 +91,6 @@
       &::after {
         background-color: #5AC4C4;
       }
-    }
-    .txt {
-      order: -1;
-      transform: translate(-50px,50px);
     }
     .side_txt {
       color: #5AC4C4;
@@ -140,6 +127,91 @@
       right: -750px;
       span {
         @include bgSvg(decoration/circle01);
+      }
+    }
+  }
+}
+@include sm() {
+  .home_service {
+    padding: 0 100px;
+    h3 {
+      padding: $section_pd 0;
+    }
+    .service_item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      .pic {
+        width: 40%;
+        &::after {
+          bottom: -50px;
+        }
+        h4 {
+          bottom: -50px;
+          right: -50px;
+        }
+      }
+      .side_txt {
+        right: -40px;
+        font-size: 1.1rem;
+        .decoration {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      .txt {
+        width: 50%;
+      }
+    }
+    .normal {
+      .txt {
+        transform: translate(50px,-80px);
+      }
+    }
+    .reverse {
+      padding-bottom: 100px;
+      align-items: flex-end;
+      transform: translateY(-80px);
+      .txt {
+        order: -1;
+        transform: translate(-50px,50px);
+      }
+      .side_txt {
+        color: #5AC4C4;
+        .decoration {
+          background-color: #5AC4C4;
+        }
+      }
+    }
+    // 底圖圓圈裝飾物
+    .circle {
+      width: 400px;
+      height: 350px;
+      position: absolute;
+      z-index: -1;
+      span {
+        display: block;
+      }
+      &_one {
+        bottom: 200px;
+        left: -250px;
+        span {
+          @include bgSvg(decoration/circle01);
+        }
+      }
+      &_two {
+        bottom: 400px;
+        right: -150px;
+        span {
+          @include bgSvg(decoration/circle02);
+        }
+      }
+      &_three {
+        bottom: 800px;
+        right: -750px;
+        span {
+          @include bgSvg(decoration/circle01);
+        }
       }
     }
   }
