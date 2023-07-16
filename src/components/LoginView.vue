@@ -110,7 +110,14 @@
    <button>下一步</button>
   </section>
 
-
+  <section class="enter_valid" v-if="forgetPsw">
+      <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeModal">
+   <h2>輸入驗證碼</h2>
+   <p>已發送驗證碼至sm********@gmail.com</p>
+   <p>10 分鐘內若未收到驗證碼
+<br>請按此重新發送</p>
+   <button>送出</button>
+  </section>
   </div>
 
 </template>
