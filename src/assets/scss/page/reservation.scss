@@ -1,9 +1,14 @@
 .reservation {
-  @include container;
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
-margin-top: 112px;
+  margin-top: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   &_read {
     margin-bottom: 120px;
+
     h2 {
       font-size: 3.2rem;
       color: #fff;
@@ -28,12 +33,76 @@ margin-top: 112px;
   }
 
   &_date {
+    display: flex;
+    flex-direction: column;
     h2 {
       font-size: 3.2rem;
       color: #fff;
       text-align: center;
       margin-bottom: 40px;
       font-weight: 400;
+    }
+  }
+
+  &_confirm {
+    margin-bottom: 100px;
+    h2 {
+      font-size: 3.2rem;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    &_data {
+      display: flex;
+      padding: 50px 130px;
+      background-color: #7a7d7a;
+      gap: 122px;
+      border-radius: 10px;
+      .confirm_data_time {
+        display: flex;
+        flex-direction: column;
+        gap: 21px;
+        .data_time_start,
+        .data_time_end,
+        .data_time_sum,
+        .data_time_stored {
+          
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .stored_error {
+            font-size: 1rem;
+            margin-bottom: 2px;
+            color: red;
+            align-self: center;
+            a{
+              color: red;
+              border-bottom: 1px solid red;
+            }
+          }
+        }
+
+        input {
+          padding: 10px 20px;
+          border-radius: 10px;
+          outline: 1px solid transparent;
+        }
+        p {
+          font-size: 1.3rem;
+        }
+      }
+      .confirm_data_seat{
+        p{
+          font-size: 1.3rem;
+          margin-bottom: 10px;
+        }
+        input{
+          padding: 70px 40px;
+          border-radius: 10px;
+          outline: 1px solid transparent;
+        }
+      }
+    }
+    .reservation_submit {
     }
   }
 }
