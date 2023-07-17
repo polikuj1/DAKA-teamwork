@@ -40,3 +40,9 @@
     background: $secondary_yellow;
   }
 }
+
+@media screen and (max-width:767px){
+  .pageTitle {
+    padding: 50px 0;
+  }
+}
