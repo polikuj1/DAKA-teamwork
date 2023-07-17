@@ -29,8 +29,8 @@
   <h2>
         <span>2</span> 選擇日期及時間
       </h2>
-</section>
-
+      
+    </section>
   </main>
 
 
@@ -46,8 +46,10 @@
 <style>
 @import '@/assets/scss/page/reservation.scss';
 </style>
+
 <script>
 import PageTitle from '@/components/PageTitle.vue';
+
 
 
 export default {

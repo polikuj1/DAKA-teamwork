@@ -275,7 +275,7 @@ if(this.register.pswReg === this.register.pswConfirmReg && this.register.pswReg 
       
     },
     validCheck() {
-      if (!this.number1 || !this.number2 || !this.number3 || !this.number4 || typeof(this.number1)!=Number) {
+      if (!this.number1 || !this.number2 || !this.number3 || !this.number4 ) {
         alert("請輸入驗證碼");
       } else {
         this.number1 = this.number2 = this.number3 = this.number4 = '';
