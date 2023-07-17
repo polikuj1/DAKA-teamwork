@@ -3,6 +3,8 @@
 @import 'component/footer.scss';
 @import 'component/main_header.scss';
 @import 'component/pageTitle.scss';
+@import 'component/hb_menu.scss';
+@import 'component/cart_icon.scss';
 @import 'layout/comic/search.scss';
 @import 'layout/comic/card.scss';
 @import 'layout/home/service.scss';
@@ -12,6 +14,8 @@
 @import 'page/comic.scss';
 @import 'page/home.scss';
 @import 'page/news.scss';
+@import 'page/reservation.scss';
+
 
 *{
   margin: 0;
@@ -21,18 +25,17 @@
   text-decoration: none;
 }
 
-h1 {
-  // font-size: 3rem;
-}
+
+
 h2 {
-  font-size: 80px;
+  font-size: 5rem;
 }
 h3 {
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 h4 {
   font-size: 1.875rem;
 }
 h5 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }

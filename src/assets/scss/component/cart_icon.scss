@@ -1,0 +1,113 @@
+.cart_icon {
+  position: fixed;
+  right: 30px;
+  bottom: 100px;
+  // pointer-events: none;
+  .wrap {
+    .icon {
+      width: 120px;
+      margin-left: auto;
+      position: relative;
+      cursor: pointer;
+      span {
+        width: 50px;
+        cursor: pointer;
+        @include ps_center;
+      }
+      img {
+        cursor: pointer;
+        @include img;
+      }
+    }
+    .cart_info {
+      padding: 50px;
+      background-color: #fff;
+      position: relative;
+      z-index: 2;
+      top: -30px;
+      border-radius: 50px;
+      box-shadow: 0 0 3px #193867;
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 50px;
+        bottom: -98px;
+        border-top: 50px solid #fff;
+        border-bottom: 50px solid transparent;
+        border-left: 50px solid transparent;
+        // border-right: 50px solid transparent;
+      }
+      > span {
+        display: block;
+        line-height: $line_height;
+        font-size: 20px;
+        a {
+          font-size: 20px;
+          position: relative;
+          color: $secondary_blue;
+          &::after {
+            @include sudo(0,-2);
+          }
+        }
+      }
+      > button {
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        svg {
+          font-size: 25px;
+        }
+      }
+    }
+    .reservation_list {
+      li {
+        background-color: $secondary_blue;
+        color: $main_txt_color;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        &:not(:first-child) {
+          border-top: 1px solid #fff;
+        }
+        div {
+          padding-right: 10px;
+          flex-shrink: 0;
+          span {
+            display: block;
+          }
+        }
+        svg {
+          margin-left: auto;
+          cursor: pointer;
+        }
+      }
+      button {
+        display: block;
+        width: 160px;
+        margin: 20px auto 0;
+        padding: 15px 0;
+        background-color: #fff;
+        border-radius: 50px;
+        color: $secondary_blue;
+        border: 1px solid $secondary_blue;
+        cursor: pointer;
+        &:hover {
+          color: #fff;
+          background-color: $secondary_blue;
+        }
+      }
+    }
+  }
+}
+
+@include md() {
+  .cart_icon {
+    right: 100px;
+  }
+}

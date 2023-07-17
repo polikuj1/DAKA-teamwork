@@ -1,36 +1,48 @@
 .pageTitle {
-  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
   padding: 100px 0px;
+  overflow: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
   h2 {
-    width: 25%;
+    // width: 400px;
+    flex-shrink: 0;
     text-align: center;
     color: $btn_bg_color;
   }
   .graphics {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-shrink: 1;
     width: 35%;
+    overflow: hidden;
     &:nth-of-type(1) {
       order: -1;
     }
   }
   span {
+    flex-shrink: 0;
     &:not(:last-child) {
       margin-right: 40px;
     }
   }
   .circle {
-    width: 8.6%;
-    padding-bottom: 8.6;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: $secondary_blue;
   }
   .square {
-    width: 8.1%;
-    padding-bottom: 8.1%;
+    width: 50px;
+    height: 50px;
     background: $secondary_yellow;
+  }
+}
+
+@media screen and (max-width:767px){
+  .pageTitle {
+    padding: 50px 0;
   }
 }

@@ -1,35 +1,81 @@
-footer {
+.footer {
   width: 100%;
   text-align: center;
   background: $main_bg;
   .logo {
-    width: 400px;
-    height: 268px;
-    margin: auto;
-    margin-bottom: 100px;
+    width: 50%;
+    margin: 0 auto 50px;
     a {
-      display: inline-block;
-      @include bgPng(footerLogo)
+      display: block;
+      img {
+        @include img
+      }
     }
   }
   .btn_group {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     a {
-      &:not(:last-child) {
-        margin-right: 40px;
-      }
+      display: block;
+      width: 50%;
+      margin: 0 auto 30px;
+      padding: 10px 40px;
+      font-size: 1.25rem;
+      background: $btn_bg_color;
+      color: $main_txt_color;
+      border-radius: $btn_br;
       &:hover {
         @include btn_hover1;
       }
-      display: block;
-      @include btn_lg
     }
   }
   .copyright {
     padding-bottom: 50px;
     color: $secondary_blue;
     font-size: 1rem;
+  }
+}
+
+@include sm() {
+  .footer {
+    .logo {
+      width: 20%;
+      margin-bottom: 0;
+    }
+    .btn_group {
+      width: 70%;
+      margin: 80px auto;
+      display: flex;
+      justify-content: space-between;
+      a {
+        width: 30%;
+        margin: 0;
+      }
+    }
+  }
+}
+
+@include md() {
+  .footer {
+    .logo {
+      width: 20%;
+    }
+    .btn_group {
+      width: 60%;
+    }
+  }
+}
+
+@include lg() {
+  .footer {
+    .btn_group {
+      width: 50%;
+    }
+  }
+}
+@include screen(1920) {
+  .footer {
+    .btn_group {
+      width: 30%;
+    }
   }
 }

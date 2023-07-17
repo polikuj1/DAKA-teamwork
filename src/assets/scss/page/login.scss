@@ -204,7 +204,8 @@
   }
 
   .forget_password {
-    width: 60%;
+    width: 50%;
+    height: 85%;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -216,14 +217,16 @@
     align-items: center;
     background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
       cover;
-    padding: 300px 100px;
-
+    justify-content: center;
+    gap: 40px;
     h2 {
-      font-size: 2rem;
+      font-size: 3rem;
+      font-weight: 500;
     }
     p {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
+
     .forget_close_modal {
       width: 40px;
       height: 40px;
@@ -234,13 +237,236 @@
     }
 
     .forget_password_enter {
+      width: 40%;
       display: flex;
       flex-direction: column;
+      gap: 15px;
       input {
         width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+      }
+      label {
+        font-size: 1.3rem;
       }
     }
+
+    .forget_password_submit {
+      font-size: 1.3rem;
+      background-color: $btn_bg_color;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 20px 60px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
   }
+
+  .enter_valid {
+    width: 50%;
+    height: 85%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+      cover;
+    justify-content: center;
+    gap: 60px;
+    h2 {
+      font-size: 3rem;
+      font-weight: 500;
+    }
+    p {
+      font-size: 2rem;
+    }
+  
+    .enter_valid_input{
+      display: flex;
+      gap: 20px;
+      input{
+        font-size: 2rem;
+        text-align: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 10px;
+      }
+    }
+    .enter_valid_re{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+       a{
+        
+      color: $secondary_blue;
+      border-bottom: 1px solid $secondary_blue;
+    }
+  
+    }
+   
+    .forget_close_modal {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+    .enter_valid_submit {
+      font-size: 1.3rem;
+      background-color: $btn_bg_color;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 20px 60px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+  
+  
+  }
+  
+  .enter_modify {
+    width: 50%;
+    height: 85%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+      cover;
+    justify-content: center;
+    gap: 50px;
+    h2 {
+      font-size: 3rem;
+      font-weight: 500;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 2rem;
+    }
+  
+    .enter_modify_input{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      label{
+        font-size: 1.3rem;
+      }
+      input{
+        font-size: 2rem;
+        padding: 10px;
+        margin-bottom: 40px;
+        width: 100%;
+       
+        border-radius: 10px;
+      }
+    }
+    
+   
+    .modify_close_modal {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+    .enter_modify_submit {
+      font-size: 1.3rem;
+      background-color: $btn_bg_color;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 20px 60px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+  
+  
+  }
+
+  .enter_modify_success {
+    width: 50%;
+    height: 85%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+      cover;
+    justify-content: center;
+    gap: 50px;
+    .enter_modify_success_logo{
+      width: 30%;
+      margin-top: 35px;
+    }
+    h2 {
+      font-size: 3rem;
+      font-weight: 500;
+      margin-top: 60px;
+      margin-bottom: 30px;
+    }
+    p {
+      font-size: 2rem;
+    }
+  
+    .enter_modify_input{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      label{
+        font-size: 1.3rem;
+      }
+      input{
+        font-size: 2rem;
+        padding: 10px;
+        margin-bottom: 40px;
+        width: 100%;
+       
+        border-radius: 10px;
+      }
+    }
+    
+   
+    .modify_close_success_modal{
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+    button {
+      font-size: 1.3rem;
+      background-color: $btn_bg_color;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 20px 60px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  
+  
+  
+  }
+
 }
 
 //768px以上
