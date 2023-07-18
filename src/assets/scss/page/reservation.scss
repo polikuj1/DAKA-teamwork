@@ -2,45 +2,6 @@ body{
   background-color:#263238;
 }
 
-.reservation {
-  
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  margin-top: 112px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &_read {
-    margin-bottom: 120px;
-
-    h2 {
-      font-size: 3.2rem;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 400;
-    }
-    &_rules {
-      background-color: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      li {
-        font-size: 1.5rem;
-        list-style: none;
-        margin-bottom: 22px;
-
-        .reservation_rules_img {
-          margin-right: 22px;
-        }
-      }
-    }
-  }
-
-  &_date {
-    width: 100%;
-  background-color: #263238;
   .reservation {
     max-width: 1200px;
     margin: 0 auto;
@@ -140,10 +101,10 @@ body{
           }
   
           input {
-            text-align: right;
+           text-align: right;
             color: #7a7d7a;
             font-size: 1.2rem;
-            padding: 10px;
+            padding: 10px ;
             border-radius: 10px;
             outline: 1px solid transparent;
           }
@@ -173,8 +134,10 @@ body{
       }
     }
   }
-}
-}
+
+
+
+
 @media screen and (min-width:768px) {
   .reservation {
     max-width: 1200px;
@@ -227,6 +190,10 @@ body{
     }
   
     &_confirm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 120px;
       h2 {
         font-size: 3.2rem;
         text-align: center;
@@ -235,8 +202,10 @@ body{
       .reservation_confirm_data {
         display: flex;
         padding: 50px 130px;
-       
-        
+       background-color: #fff;
+       border-radius: 10px;
+       gap: 60px;
+        margin-bottom: 120px;
         .confirm_data_time {
           display: flex;
           flex-direction: column;
@@ -287,6 +256,7 @@ body{
         }
       }
       .reservation_submit {
+        
         padding: 16px 40px;
         border-radius: 100px;
         cursor: pointer;
