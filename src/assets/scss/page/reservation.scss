@@ -1,5 +1,4 @@
 body{
-<<<<<<< HEAD
   background-color:#263238;
 }
 
@@ -41,10 +40,8 @@ body{
 
   &_date {
     width: 100%;
-=======
   background-color: #263238;
   .reservation {
->>>>>>> dev
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -177,7 +174,7 @@ body{
     }
   }
 }
-
+}
 @media screen and (min-width:768px) {
   .reservation {
     max-width: 1200px;
