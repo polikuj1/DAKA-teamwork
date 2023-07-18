@@ -1,0 +1,19 @@
+.member_bread_crumb {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0 10px 100px;
+  a {
+    color: $main_txt_color;
+  }
+  button {
+    padding: 15px 50px;
+    background-color: $btn_bg_color;
+    color: $main_txt_color;
+    font-size: 1.5rem;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+}
