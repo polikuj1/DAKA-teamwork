@@ -5,12 +5,12 @@
   // pointer-events: none;
   .wrap {
     .icon {
-      width: 120px;
+      width: 80px;
       margin-left: auto;
       position: relative;
       cursor: pointer;
       span {
-        width: 50px;
+        width: 40px;
         cursor: pointer;
         @include ps_center;
       }
@@ -76,15 +76,21 @@
           border-top: 1px solid #fff;
         }
         div {
+          width: 150px;
           padding-right: 10px;
           flex-shrink: 0;
           span {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
             display: block;
           }
         }
-        svg {
+        > span {
           margin-left: auto;
-          cursor: pointer;
+          svg {
+            cursor: pointer;
+          }
         }
       }
       button {
@@ -109,5 +115,22 @@
 @include md() {
   .cart_icon {
     right: 100px;
+    .wrap {
+      .icon {
+        width: 120px;
+        span {
+          width: 50px;
+        }
+      }
+      .reservation_list {
+        li {
+          div {
+            width: 300px;
+            padding-right: 10px;
+            flex-shrink: 0;
+          }
+        }
+      }
+    }
   }
 }
