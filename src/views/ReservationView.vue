@@ -93,6 +93,7 @@
 <script>
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
+
 import '@/assets/scss/page/reservation.scss';
 
 export default {

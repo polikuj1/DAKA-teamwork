@@ -23,9 +23,12 @@
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
+  
 }
 
-
+body{
+  background-color:$main_bg;
+}
 
 h2 {
   font-size: 5rem;
