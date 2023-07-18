@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   &_read {
     margin-bottom: 120px;
 
@@ -33,8 +34,11 @@
   }
 
   &_date {
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 120px;
     h2 {
       font-size: 3.2rem;
       color: #fff;
@@ -45,6 +49,9 @@
   }
 
   &_confirm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 100px;
     h2 {
       font-size: 3.2rem;
@@ -57,6 +64,7 @@
       background-color: #7a7d7a;
       gap: 122px;
       border-radius: 10px;
+      margin-bottom: 100px;
       .confirm_data_time {
         display: flex;
         flex-direction: column;
@@ -82,7 +90,10 @@
         }
 
         input {
-          padding: 10px 20px;
+          text-align: center;
+          color: #7a7d7a;
+          font-size: 1.2rem;
+          padding: 10px 0;
           border-radius: 10px;
           outline: 1px solid transparent;
         }
@@ -103,6 +114,12 @@
       }
     }
     .reservation_submit {
+      padding: 16px 40px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      
+      
     }
   }
 }
