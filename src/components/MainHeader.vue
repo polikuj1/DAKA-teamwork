@@ -12,7 +12,7 @@
           <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
         </ul>
       </a>
-      <a href="#" @click.prevent="this.$router.push('/member_center')"><i class="fa-solid fa-user"></i></a>
+      <a href="#" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
 
     </nav>
   </div>

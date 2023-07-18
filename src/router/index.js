@@ -45,7 +45,14 @@ const routes = [
   {
     path: '/member_center',
     name: 'member_center',
-    component: () => import('../views/MemberCenter.vue')
+    component: () => import('../views/MemberCenter.vue'),
+    children: [
+      {
+        path: 'member_nav',
+        name: 'member_nav',
+        component: () => import('../components/member_center/MemberNav.vue')
+      },
+    ],
   },
   {
     path: '/about_member',

@@ -13,7 +13,7 @@
     <main class="wrap">
       <div class="card" v-for="item in comicData" :key="item.title"
       v-show="comicData.length">
-        <div class="pic"  @click="this.$router.push('/comic_detail')">
+        <div class="pic"  @click="this.$router.push({ path: `/comic_detail`})">
           <img :src="item.img">
         </div>
         <div class="txt">
