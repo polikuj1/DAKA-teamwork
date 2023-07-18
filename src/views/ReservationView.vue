@@ -32,7 +32,7 @@
 
     <section class="reservation_date">
       <h2> <span>2</span> 選擇日期及時間</h2>
-      <Date></Date>
+      <Date @convertDate="dateConvert" @convertTime="timeConvert"></Date>
     </section>
 
 
@@ -45,12 +45,12 @@
           <div class="data_time_start">
 
             <p for="">預約開始時間</p>
-            <input type="text" readonly value="April  25, 2023  10:00 PM">
+            <input type="text" readonly :value="reservation.startDate + reservation.startTime">
           </div>
           <div class="data_time_end">
 
             <p for="">預約結束時間</p>
-            <input type="text" readonly value="April  25, 2023  08:00 AM">
+            <input type="text" readonly :value="reservation.startDate + reservation.endTime">
           </div>
           <div class="data_time_sum">
 
@@ -62,14 +62,14 @@
             <p for="">目前儲值金</p>
             <input type="text" readonly>
             <div class="stored_error">儲值金不足，請先至 <a href="">會員中心</a>
-               儲值。</div>
+              儲值。</div>
           </div>
         </div>
 
         <div class="confirm_data_seat">
           <p for="">選定座位</p>
-            <input type="text" readonly>
-          
+          <input type="text" readonly>
+
         </div>
 
       </div>
@@ -88,26 +88,44 @@
   <div>
   </div>
 </template>
-<style>
-@import '@/assets/scss/page/reservation.scss';
-</style>
+<style></style>
 
 <script>
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
-
+import '@/assets/scss/page/reservation.scss';
 
 export default {
+
   components: {
     PageTitle, Date
   },
   data() {
     return {
       title: '訂位預約',
+      reservation: {
+        startDate: '',
+        startTime:'',
+        endTime:'',
+        seat:[]
+      },
+
+
+
     }
   },
   methods: {
 
+    //轉換日期
+    dateConvert(date) {
+      this.reservation.startDate = date.toString().substr(4, 11);
+    },
+    //轉換時間
+    timeConvert(time) {
+      this.reservation.startTime = time.toString().substr(0,5);
+      this.reservation.endTime = time.toString().substr(9,5);
+     
+    }
   },
   computed: {
 
