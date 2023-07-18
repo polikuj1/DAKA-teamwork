@@ -31,10 +31,10 @@ computed(){
 },
 methods:{
 convertDate(){
-  this.$emit('convertDate',this.selectedDate);
+  this.$emit('convert-date',this.selectedDate);
 },
 convertTime(){
-  this.$emit('convertTime',this.selectedTime);
+  this.$emit('convert-time',this.selectedTime);
 }
 }
 }

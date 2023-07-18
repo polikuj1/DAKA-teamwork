@@ -32,7 +32,7 @@
 
     <section class="reservation_date">
       <h2> <span>2</span> 選擇日期及時間</h2>
-      <Date @convertDate="dateConvert" @convertTime="timeConvert"></Date>
+      <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
     </section>
 
 
@@ -88,7 +88,9 @@
   <div>
   </div>
 </template>
-<style></style>
+<style>
+
+</style>
 
 <script>
 import PageTitle from '@/components/PageTitle.vue';
