@@ -1,125 +1,261 @@
-.reservation {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  margin-top: 112px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &_read {
-    margin-bottom: 120px;
-
-    h2 {
-      font-size: 3.2rem;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 400;
-    }
-    &_rules {
-      background-color: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      li {
-        font-size: 1.5rem;
-        list-style: none;
-        margin-bottom: 22px;
-
-        .reservation_rules_img {
-          margin-right: 22px;
-        }
-      }
-    }
-  }
-
-  &_date {
-    width: 100%;
+body{
+  background-color: #263238;
+  .reservation {
     max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 120px;
-    h2 {
-      font-size: 3.2rem;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 400;
-    }
-  }
-
-  &_confirm {
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 112px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 100px;
-    h2 {
-      font-size: 3.2rem;
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    &_data {
-      display: flex;
-      padding: 50px 130px;
-      background-color: #7a7d7a;
-      gap: 122px;
-      border-radius: 10px;
-      margin-bottom: 100px;
-      .confirm_data_time {
-        display: flex;
-        flex-direction: column;
-        gap: 21px;
-        .data_time_start,
-        .data_time_end,
-        .data_time_sum,
-        .data_time_stored {
-          
+  
+    &_read {
+      margin-bottom: 120px;
+  padding: 20px;
+      h2 {
+        font-size: 3.2rem;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+      &_rules {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        li {
           display: flex;
-          flex-direction: column;
-          gap: 10px;
-          .stored_error {
-            font-size: 1rem;
-            margin-bottom: 2px;
-            color: red;
-            align-self: center;
-            a{
-              color: red;
-              border-bottom: 1px solid red;
-            }
+          align-items: flex-start;
+          font-size: 1.5rem;
+          list-style: none;
+          margin-bottom: 22px;
+  
+          .reservation_rules_img {
+            margin-right: 22px;
           }
         }
-
-        input {
-          text-align: center;
-          color: #7a7d7a;
-          font-size: 1.2rem;
-          padding: 10px 0;
-          border-radius: 10px;
-          outline: 1px solid transparent;
-        }
-        p {
-          font-size: 1.3rem;
-        }
-      }
-      .confirm_data_seat{
-        p{
-          font-size: 1.3rem;
-          margin-bottom: 10px;
-        }
-        input{
-          padding: 70px 40px;
-          border-radius: 10px;
-          outline: 1px solid transparent;
-        }
       }
     }
-    .reservation_submit {
-      padding: 16px 40px;
-      border-radius: 100px;
-      cursor: pointer;
-      font-size: 1.5rem;
+  
+    &_date {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 120px;
+      h2 {
+        font-size: 3.2rem;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+    }
+  
+    &_confirm {
       
-      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+  
+      h2 {
+        font-size: 3.2rem;
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 60px;
+        color: #fff;
+      }
+      &_data {
+        
+       
+        padding: 50px ;
+        background-color: #fff;
+        gap: 122px;
+        border-radius: 10px;
+        margin-bottom: 100px;
+        .confirm_data_time {
+          display: flex;
+          flex-direction: column;
+          gap: 21px;
+          .data_time_start,
+          .data_time_end,
+          .data_time_sum,
+          .data_time_stored {
+            
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .stored_error {
+              font-size: 1rem;
+              margin-bottom: 2px;
+              color: red;
+              align-self: center;
+              a{
+                color: red;
+                border-bottom: 1px solid red;
+              }
+            }
+          }
+  
+          input {
+            text-align: right;
+            color: #7a7d7a;
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 10px;
+            outline: 1px solid transparent;
+          }
+          p {
+            font-size: 1.3rem;
+          }
+        }
+        .confirm_data_seat{
+          p{
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+          }
+          input{
+            padding: 70px 40px;
+            border-radius: 10px;
+            outline: 1px solid transparent;
+          }
+        }
+      }
+      .reservation_submit {
+        padding: 16px 40px;
+        border-radius: 100px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        
+        
+      }
     }
   }
 }
+
+@media screen and (min-width:768px) {
+  .reservation {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    &_read {
+      margin-bottom: 120px;
+  
+      h2 {
+        font-size: 3.2rem;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+      &_rules {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        li {
+          font-size: 1.5rem;
+          list-style: none;
+          margin-bottom: 22px;
+  
+          .reservation_rules_img {
+            margin-right: 22px;
+          }
+        }
+      }
+    }
+  
+    &_date {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 120px;
+      h2 {
+        font-size: 3.2rem;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+    }
+  
+    &_confirm {
+      h2 {
+        font-size: 3.2rem;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .reservation_confirm_data {
+        display: flex;
+        padding: 50px 130px;
+       
+        
+        .confirm_data_time {
+          display: flex;
+          flex-direction: column;
+          gap: 21px;
+          .data_time_start,
+          .data_time_end,
+          .data_time_sum,
+          .data_time_stored {
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .stored_error {
+              font-size: 1rem;
+              margin-bottom: 2px;
+              color: red;
+              align-self: center;
+              a{
+                color: red;
+                border-bottom: 1px solid red;
+              }
+            }
+          }
+  
+          input {
+            
+            color: #7a7d7a;
+            font-size: 1.2rem;
+            padding: 10px ;
+            border-radius: 10px;
+            
+            outline: 1px solid transparent;
+          }
+          p {
+            font-size: 1.3rem;
+          }
+        }
+        .confirm_data_seat{
+          p{
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+          }
+          input{
+            padding: 70px 40px;
+            border-radius: 10px;
+            outline: 1px solid transparent;
+          }
+        }
+      }
+      .reservation_submit {
+        padding: 16px 40px;
+        border-radius: 100px;
+        cursor: pointer;
+        font-size: 1.5rem;
+        
+        
+      }
+    }
+  }
+}
+
+
+

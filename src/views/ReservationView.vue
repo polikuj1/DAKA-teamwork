@@ -45,22 +45,22 @@
           <div class="data_time_start">
 
             <p for="">預約開始時間</p>
-            <input type="text" readonly :value="reservation.startDate + reservation.startTime">
+            <input type="text" readonly :value="`${reservation.startDate}  ${reservation.startTime}`">
           </div>
           <div class="data_time_end">
 
             <p for="">預約結束時間</p>
-            <input type="text" readonly :value="reservation.startDate + reservation.endTime">
+            <input type="text" readonly :value="`${reservation.startDate}  ${reservation.endTime}`">
           </div>
           <div class="data_time_sum">
 
-            <p for="">金額總計</p>
-            <input type="text" readonly>
+            <p for="" >金額總計</p>
+            <input type="text" readonly :value="`${reservation.price}元`">
           </div>
           <div class="data_time_stored">
 
             <p for="">目前儲值金</p>
-            <input type="text" readonly>
+            <input type="text" readonly value="元">
             <div class="stored_error">儲值金不足，請先至 <a href="">會員中心</a>
               儲值。</div>
           </div>
@@ -108,7 +108,8 @@ export default {
         startDate: '',
         startTime:'',
         endTime:'',
-        seat:[]
+        seat:[],
+        price:0
       },
 
 
@@ -119,13 +120,23 @@ export default {
 
     //轉換日期
     dateConvert(date) {
-      this.reservation.startDate = date.toString().substr(4, 11);
+      this.reservation.startDate = date.toString().substr(4,11);
     },
     //轉換時間
     timeConvert(time) {
       this.reservation.startTime = time.toString().substr(0,5);
       this.reservation.endTime = time.toString().substr(9,5);
+
+      let a =+(time.toString().substr(0,2));
+      let b=+(time.toString().substr(9,2));
+      console.log(a,b,typeof(a),typeof(b));
      
+
+      
+
+        this.reservation.price=(b-a)*20;
+      
+
     }
   },
   computed: {
