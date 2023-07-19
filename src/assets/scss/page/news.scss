@@ -1,0 +1,199 @@
+.news{
+    width: 100%;
+    box-sizing: border-box;
+    // padding: $section_pd;
+    @include container;
+    margin: auto;
+    .news a{
+        text-decoration: none;
+    }
+    .news_tabs{
+        display: flex;
+        justify-content: center;
+        .news_tab{
+            box-sizing: border-box;
+            border: 1px solid #F9BB8A;
+            border-radius: $btn_br;
+            cursor: pointer;
+            background-color: #F9BB8A;
+            color: $main_txt_color;
+        }
+        .news_tab.active{
+            background-color:$btn_bg_color;
+            border: 1px solid $btn_bg_color;
+        }
+    }
+}
+.news_tab_content{
+    display: flex;
+    .message{
+        margin: auto;
+        box-sizing: border-box;
+        justify-content: space-around;
+        width: 90%;    
+        .news_pic img{
+            border-radius: 5px;
+            @include img;
+        }
+        .news_category{
+            color: $main_txt_color;
+            box-sizing: border-box;
+            padding: 5px;
+            width: fit-content;
+        }
+        .news_title{
+            background-color: #fff;
+            box-sizing: border-box;
+            color: $main_bg;
+        }
+        .news_date{
+            color: $main_txt_color;
+        }
+        .news_more{
+            color: #fff;
+            font-weight: bold;
+            text-align: end;
+            position: relative;
+        }
+        .news_more::before {
+            content: "";
+            position: absolute;
+            height: 1px;
+            background-color: #fff;
+            bottom: 10px;
+        }
+    }
+}
+
+ //頁數按鈕
+.news_pagination{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+.news_pagination button{
+    cursor: pointer;
+    color: $main_bg;
+    border: none !important;
+    //外框消不掉，求救！！！！
+}
+//手機版
+@media screen and (max-width: 767px) {
+    .news{
+        padding-top: 40px;
+    }
+    .news_tabs{
+        gap: 20px;
+        .news_tab{
+            font-size: 0.875rem;
+            padding: 10px 20px;
+        }
+    }
+    .message{
+        padding-top: 40px;
+        .news_category{
+            margin-top: 10px;
+            font-size: 0.875rem;
+        }
+        .news_title{
+            padding: 10px 20px;
+            font-size: 0.875rem;
+            border-radius: 5px;
+        }
+        .news_date{
+            margin: 10px 0 10px ;
+            font-size: 0.875rem;
+        }  
+        .news_more{
+            font-size: 0.875rem;
+            margin-top: 10px;
+        }
+        .news_more::before {
+            right: 80px;
+            width: 80px;
+        }
+    }
+    //頁數按鈕
+    .news_pagination{
+        padding: 30px;
+        gap: 5px;
+    }
+    .news_pagination button{
+        font-size: 0.75rem;
+        padding: 5px;
+        border-radius: 5px;
+        //外框消不掉，求救！！！！
+    }
+}
+//電腦版
+@media screen and (min-width: 768px) {
+    .news{
+        padding-top: 80px;
+    }
+    .news_tabs{
+        gap: 60px;
+        .news_tab{
+            font-size: 2rem;
+            padding: 16px 40px;
+        }
+    }
+    .message{
+        padding-top: 80px;
+        display: flex;
+        gap: 30px;
+        .news_message_content{
+            width: 50%;
+        }
+        .news_category{
+            font-size: 1.5rem;
+        }
+        .news_title{
+            width: 120%;
+            padding: 20px 40px;
+            font-size: 1.875rem;
+            border-radius: 10px;
+        }
+        .news_date{
+            margin: 10px 0 40px ;
+            font-size: 1.5rem;
+        }
+        .news_more{
+            font-size: 1.125rem;
+            margin-top: 20px;
+        }
+        .news_more::before {
+            right: 100px;
+            width: 100px;
+        }
+    }
+    //頁數按鈕
+    .news_pagination{
+        padding: 60px;
+        gap: 10px;
+    }
+    .news_pagination button{
+        font-size: 1rem;
+        padding: 10px;
+        border-radius: 10px;
+        //外框消不掉，求救！！！！
+    }
+
+    //圖片位置交換
+    .message:nth-child(odd){
+        flex-direction: row;
+        .news_title{
+            margin-left: -20%;
+        }
+    }
+    .message:nth-child(even){
+        flex-direction: row-reverse;
+        .news_title{
+            //文字被壓住上不來，求救！！！！
+        }
+    }
+}
+
+
+
+
+  
