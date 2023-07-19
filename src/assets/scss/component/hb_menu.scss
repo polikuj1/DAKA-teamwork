@@ -1,0 +1,126 @@
+.main_menu {
+  width: 100%;
+  color: #fff;
+  background-color: $main_txt_color;
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;
+  .bottom_header {
+    width: 100%;
+    display: flex;
+    position: relative;
+  }
+  .social_media {
+    width: 80%;
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    span, svg {
+      cursor: pointer;
+      color: $secondary_blue;
+      font-size: 2rem;
+      text-transform: uppercase;
+    }
+    svg {
+      font-size: 2.5rem;
+    }
+  }
+  .hb_menu {
+    width: 80px;
+    background-color: #5AC4C4;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    span{
+      transition: .5s;
+      display: block;
+      width: 50%;
+      background-color: #fff;
+      height: 3px;
+    }
+  }
+  #hb_menu {
+    display: none;
+    font-size: 50px;
+    &:checked {
+      // ~ nav {
+      //   // display: block;
+      //   top: -93vh;
+      // }
+      + label {
+        span {
+          &:nth-of-type(1) {
+            transform: rotate(40deg) translateY(6px) translateX(3px);
+          }
+          &:nth-of-type(2) {
+            display: none;
+          }
+          &:nth-of-type(3) {
+            transform-origin: left bottom;
+            transform: rotate(-40deg) translateY(5px) translateX(-2px);
+          }
+        }
+      }
+    }
+  }
+  nav {
+    background-color: #fff;
+    color: #000;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    left: 0;
+    top: 93vh;
+    transition: .5s ease-out;
+    z-index: -1;
+    ul {
+      height: 100%;
+      padding: 20px 0 70px 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    li {
+      font-size: 24px;
+      color: $secondary_blue;
+      font-weight: 700;
+      padding: calc((100vh - 120px) / 32);
+      cursor: pointer;
+      &:hover {
+        color: $main_txt_color;
+        background-color: $secondary_blue;
+      }
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+  .disappear {
+    display: none;
+  }
+  .show {
+    top: -93vh;
+  }
+}
+
+@include md() {
+  .main_menu {
+    .hb_menu {
+      span {
+        width: 65%;
+      }
+    }
+  }
+}
+
+@include lg() {
+  .main_menu {
+    display: none;
+  }
+}
