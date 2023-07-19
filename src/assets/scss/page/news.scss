@@ -143,6 +143,7 @@
         gap: 30px;
         .news_message_content{
             width: 50%;
+            z-index: 1;
         }
         .news_category{
             font-size: 1.5rem;
@@ -191,6 +192,7 @@
             //文字被壓住上不來，求救！！！！
         }
     }
+   
 }
 
 
