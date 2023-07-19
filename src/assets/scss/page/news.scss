@@ -26,6 +26,7 @@
 }
 .news_tab_content{
     display: flex;
+    justify-content: center;
     .message{
         margin: auto;
         box-sizing: border-box;
@@ -54,6 +55,7 @@
             font-weight: bold;
             text-align: end;
             position: relative;
+            display: inline-block;
         }
         .news_more::before {
             content: "";
@@ -77,8 +79,9 @@
     border: none !important;
     //外框消不掉，求救！！！！
 }
+
 //手機版
-@media screen and (max-width: 767px) {
+@include screen_one(767) {
     .news{
         padding-top: 40px;
     }
@@ -125,7 +128,9 @@
         //外框消不掉，求救！！！！
     }
 }
+
 //電腦版
+
 @media screen and (min-width: 768px) {
     .news{
         padding-top: 80px;
@@ -188,9 +193,6 @@
     }
     .message:nth-child(even){
         flex-direction: row-reverse;
-        .news_title{
-            //文字被壓住上不來，求救！！！！
-        }
     }
    
 }

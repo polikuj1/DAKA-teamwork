@@ -12,19 +12,17 @@
         <div class="news_tab_content">
           <!-- 全部消息 -->
           <div v-show="currentTab === 'all'">
-            <a href="#">
-              <div v-for="(message, index) in paginatedAllMessages" :key="message.id" class="message">
-                <div class="news_pic">
-                  <img :src="message.img" alt="Message Image" >
-                </div>
-                <div class="news_message_content">
-                  <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
-                  <p class="news_date">{{ message.date }}</p>
-                  <p class="news_title">{{ message.content }}</p>
-                  <p class="news_more">view more</p>
-                </div>
+            <div v-for="(message, index) in paginatedAllMessages" :key="message.id" class="message">
+              <div class="news_pic">
+                <img :src="message.img" alt="Message Image" >
               </div>
-            </a>
+              <div class="news_message_content">
+                <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
+                <p class="news_date">{{ message.date }}</p>
+                <p class="news_title">{{ message.content }}</p>
+                <a href="#"><p class="news_more">view more</p></a>
+              </div>
+            </div>
             <!-- 下一頁按鈕 -->
             <div class="news_pagination">
               <button @click="goToPreviousPage" :disabled="page === 1"><i class="fa-solid fa-arrow-left"></i></button>
@@ -38,19 +36,17 @@
 
           <!-- 最新消息 -->
           <div v-show="currentTab === 'latest'">
-            <a href="#">
-              <div v-for="(message, index) in paginatedlatestMessages" :key="message.id" class="message">
-                <div class="news_pic">
-                  <img :src="message.img" alt="Message Image">
-                </div>
-                <div class="news_message_content">
-                  <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
-                  <p class="news_date">{{ message.date }}</p>
-                  <p class="news_title">{{ message.content }}</p>
-                  <p class="news_more">view more</p>
-                </div>
+            <div v-for="(message, index) in paginatedlatestMessages" :key="message.id" class="message">
+              <div class="news_pic">
+                <img :src="message.img" alt="Message Image">
               </div>
-            </a>
+              <div class="news_message_content">
+                <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
+                <p class="news_date">{{ message.date }}</p>
+                <p class="news_title">{{ message.content }}</p>
+                <a href="#"><p class="news_more">view more</p></a>
+              </div>
+            </div>
             <!-- 下一頁按鈕 -->
             <div class="news_pagination">
               <button @click="goToPreviousPage" :disabled="page === 1"><i class="fa-solid fa-arrow-left"></i></button>
@@ -63,19 +59,17 @@
           </div>
           <!-- 活動消息 -->
           <div v-show="currentTab === 'activity'">
-            <a href="#">
-              <div v-for="(message, index) in paginatedActivityMessages" :key="message.id" class="message">
-                  <div class="news_pic">
-                    <img :src="message.img" alt="Message Image">
-                  </div>
-                  <div class="news_message_content">
-                    <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
-                    <p class="news_date">{{ message.date }}</p>
-                    <p class="news_title">{{ message.content }}</p>
-                    <p class="news_more">view more</p>
-                  </div>
+            <div v-for="(message, index) in paginatedActivityMessages" :key="message.id" class="message">
+                <div class="news_pic">
+                  <img :src="message.img" alt="Message Image">
                 </div>
-            </a>
+                <div class="news_message_content">
+                  <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
+                  <p class="news_date">{{ message.date }}</p>
+                  <p class="news_title">{{ message.content }}</p>
+                  <a href="#"><p class="news_more">view more</p></a>
+                </div>
+              </div>
             <!-- 下一頁按鈕 -->
             <div class="news_pagination">
               <button @click="goToPreviousPage" :disabled="page === 1"><i class="fa-solid fa-arrow-left"></i></button>
