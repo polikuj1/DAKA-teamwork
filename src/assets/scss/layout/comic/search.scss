@@ -1,8 +1,9 @@
 .search {
+  @include container;
   display: flex;
   justify-content: center;
   input {
-    width: 83.333333%;
+    width: 100%;
     height: 80px;
     padding: 0 20px 0 50px;
     font-size: 1.5rem;
@@ -13,7 +14,6 @@
     }
   }
   button {
-    height: 80px;
     padding: 0 30px;
     background-color: $secondary_blue;
     border: none;
@@ -22,6 +22,16 @@
     svg {
       font-size: 2rem;
       color: $main_txt_color;
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  .search {
+    padding: 0 20px;
+    input {
+      width: 83.333333%;
+      height: 50px;
     }
   }
 }

@@ -3,15 +3,25 @@
 @import 'component/footer.scss';
 @import 'component/main_header.scss';
 @import 'component/pageTitle.scss';
+@import 'component/hb_menu.scss';
+@import 'component/cart_icon.scss';
+@import 'component/bread_crumb.scss';
 @import 'layout/comic/search.scss';
 @import 'layout/comic/card.scss';
 @import 'layout/home/service.scss';
+@import 'layout/member/member_nav.scss';
 @import 'page/comic.scss';
+@import 'component/home/news.scss';
+@import 'component/comic/card.scss';
 @import 'page/comicdetail.scss';
 @import 'page/login.scss';
 @import 'page/comic.scss';
 @import 'page/home.scss';
 @import 'page/news.scss';
+@import 'page/reservation.scss';
+@import 'page/member_center.scss';
+
+
 
 *{
   margin: 0;
@@ -19,20 +29,22 @@
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
+  
 }
 
-h1 {
-  // font-size: 3rem;
+body{
+  background-color:#263238;
 }
+
 h2 {
-  font-size: 80px;
+  font-size: 5rem;
 }
 h3 {
-  font-size: 60px;
+  font-size: 3.75rem;
 }
 h4 {
   font-size: 1.875rem;
 }
 h5 {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
