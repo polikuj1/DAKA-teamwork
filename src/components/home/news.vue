@@ -4,7 +4,7 @@
             <div class="category">{{ item.category }}</div>
             <div class="date">{{ item.date }}</div>
             <div class="text">{{ item.text }}</div>
-            <img class="pic" src="{{item.pic}}" alt="箭頭">
+            <img class="pic" :src="item.pic" alt="箭頭">
         </a>
 
 
@@ -20,7 +20,7 @@ export default {
                     category: 'NEWS',
                     date: '2023.05.01',
                     text: '五月會員好康禮',
-                    pic: ''
+                    pic: '@/assets/images/index/arrow_green.png'
                 },
 
                 {
