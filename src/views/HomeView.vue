@@ -1,11 +1,13 @@
 d<template>
   <div class="home">
     <Services></Services>
+    <Meals/>
   </div>
 </template>
 
 <script>
 import Services from '@/components/home/Services.vue';
+import Meals from '@/components/home/Meal.vue';
 export default {
   name: '',
   data() {
@@ -20,7 +22,7 @@ export default {
 
   },
   components: {
-    Services,
+    Services, Meals,
   },
   mounted() {
     
