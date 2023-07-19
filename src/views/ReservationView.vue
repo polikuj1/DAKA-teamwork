@@ -63,6 +63,7 @@
 
     <section class="reservation_date">
       <h2><span>2</span> 選擇日期及時間</h2>
+      <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
     </section>
 
     <section class="reservation_seat">
@@ -87,8 +88,8 @@
           </div>
         </div>
       </div>
-      <h2> <span>2</span> 選擇日期及時間</h2>
-      <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
+      
+      
     </section>
 
 

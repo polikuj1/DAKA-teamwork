@@ -10,7 +10,14 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import('../views/AboutusView.vue')
+    component: () => import('../views/AboutusView.vue'),
+    children: [
+      {
+        path: 'member_nav',
+        name: 'member_nav',
+        component: () => import('../components/member_center/MemberNav.vue')
+      }
+    ]
   },
   {
     path: '/news',
