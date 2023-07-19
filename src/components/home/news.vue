@@ -6,8 +6,6 @@
             <div class="text">{{ item.text }}</div>
             <img class="pic" :src="item.pic" alt="箭頭">
         </a>
-
-
     </section>
 </template>
 
@@ -20,28 +18,27 @@ export default {
                     category: 'NEWS',
                     date: '2023.05.01',
                     text: '五月會員好康禮',
-                    pic: '@/assets/images/index/arrow_green.png'
+                    pic: require('@/assets/images/index/arrow_green.png'),
+                },
+                {
+                    category: 'ACTICIVY',
+                    date: '2023.05.01',
+                    text: '五月會員好康禮',
+                    pic: require('@/assets/images/index/arrow_green.png'),
                 },
 
                 {
                     category: 'ACTICIVY',
                     date: '2023.05.01',
                     text: '五月會員好康禮',
-                    pic: ''
-                },
-
-                {
-                    category: 'ACTICIVY',
-                    date: '2023.05.01',
-                    text: '五月會員好康禮',
-                    pic: ''
+                    pic: require('@/assets/images/index/arrow_green.png'),
                 },
 
                 {
                     category: 'NEWS',
                     date: '2023.05.01',
                     text: '五月會員好康禮',
-                    pic: ''
+                    pic: require('@/assets/images/index/arrow_green.png'),
                 }],
         }
     },
