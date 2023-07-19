@@ -1,11 +1,14 @@
 .reservation {
   @include container;
   width: 100%;
-margin-top: 112px;
+  margin-top: 112px;
   &_read {
     margin-bottom: 120px;
+    span {
+      font-size: 5rem;
+    }
     h2 {
-      font-size: 3.2rem;
+      font-size: 2.5rem;
       color: #fff;
       text-align: center;
       margin-bottom: 40px;
@@ -28,12 +31,79 @@ margin-top: 112px;
   }
 
   &_date {
+    span {
+      font-size: 5rem;
+    }
     h2 {
-      font-size: 3.2rem;
+      font-size: 2.5rem;
       color: #fff;
       text-align: center;
       margin-bottom: 40px;
       font-weight: 400;
+    }
+  }
+  &_seat {
+    span {
+      font-size: 5rem;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+    .reservation_hallseat {
+      width: 922px;
+      height: 690px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      .reservation_eSports_seat {
+        display: flex;
+        flex-wrap: wrap;
+        width: 385px;
+        height: 586px;
+        justify-content: space-between;
+        .seat_btn {
+          width: 69px;
+          height: 65px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #54c1ba;
+          color: #fff;
+        }
+        /* 空位樣式 */
+        .state-0 {
+          background-color: #ddd; /* 灰色背景代表空位 */
+          cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
+        }
+        /* 使用中樣式 */
+        .state-1 {
+          background-color: #ff6b6b; /* 紅色背景代表使用中 */
+        }
+
+        /* 預約中樣式 */
+        .state-2 {
+          background-color: #ffa07a; /* 橙色背景代表預約中 */
+        }
+      }
+      .reservation_general_seat {
+        display: flex;
+        flex-wrap: wrap;
+        width: 385px;
+        height: 586px;
+        justify-content: space-between;
+        .seat_btn {
+          width: 69px;
+          height: 65px;
+          background-color: #54c1ba;
+        }
+      }
     }
   }
 }
