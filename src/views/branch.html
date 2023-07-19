@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .all {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            color: #4C3818;
+            font-size: 3.75rem;
+            margin-bottom: 12%;
+        }
+
+        .map {
+            position: relative;
+
+
+            .taiwan {
+                width: 147%;
+                transform: translateX(-23%);
+            }
+
+            .tp_shop {
+                position: absolute;
+                width: 91%;
+                right: -140%;
+                top: -6%;
+
+            }
+
+            .zl_shop {
+                position: absolute;
+                left: -108%;
+                top: -14%;
+                width: 88%;
+            }
+
+            .tn_shop {
+                position: absolute;
+                width: 88%;
+                bottom: -12%;
+                left: -130%;
+
+
+            }
+
+            .man {
+                position: absolute;
+                top: 70%;
+                width: 125%;
+                right: -135%;
+            }
+
+            .tp_text {
+                font-size: 1.875rem;
+                color: #4C3818;
+                position: absolute;
+                right: -124%;
+                top: 31%;
+                font-weight: 600;
+
+            }
+
+            .zl_text {
+                font-size: 1.875rem;
+                color: #4C3818;
+                position: absolute;
+                left: -88%;
+                top: 19%;
+                font-weight: 600;
+
+
+            }
+
+            .tn_text {
+                font-size: 1.875rem;
+                color: #4C3818;
+                position: absolute;
+                bottom: -21%;
+                left: -110%;
+                font-weight: 600;
+            }
+
+            .taipei {
+                position: absolute;
+                right: -13%;
+                top: 0;
+                width: 57%;
+                transition: transform 0.5s;
+            }
+            .taipei:hover{
+                transform: scale(1.4);
+            }
+
+            .taoyuan {
+                position: absolute;
+                left:33%;
+                top: 5.7%;
+                width: 39%;
+                transition: transform 0.5s;
+            }
+            .taoyuan:hover{
+                transform: scale(1.4);
+            }
+
+            .tainan {
+                position: absolute;
+                width: 48%;
+                bottom: 29%;
+                left: -34%;
+                transition: transform 0.5s;
+            }
+            .tainan:hover{
+                transform: scale(1.4) ;
+            }
+        }
+
+
+    }
+</style>
+
+<body>
+    <div class="all">
+        <div class="title"> 分店資訊</div>
+        <div class="map">
+            <img src="../assets/images/index/taiwan.svg" alt="台灣" class="taiwan">
+            <img src="../assets/images/index/台北分店.png" alt="台北分店" class="tp_shop">
+            <img src="../assets/images/index/中壢分店.png" alt="中壢分店" class="zl_shop">
+            <img src="../assets/images/index/台南分店.png" alt="台南分店" class="tn_shop">
+            <img src="../assets/images/index/man.png" alt="man" class="man">
+            <div class="tp_text">台北分館</div>
+            <div class="zl_text">中壢總館</div>
+            <div class="tn_text">台南分館</div>
+            <img src="../assets/images/index/taipei.svg" alt="taipei" class="taipei">
+            <img src="../assets/images/index/taoyuan.svg" alt="taoyuan" class="taoyuan">
+            <img src="../assets/images/index/tainan.svg" alt="tainan" class="tainan">
+
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
