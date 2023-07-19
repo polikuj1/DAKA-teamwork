@@ -52,6 +52,11 @@ const routes = [
         name: 'member_nav',
         component: () => import('../components/member_center/MemberNav.vue')
       },
+      {
+        path: 'member_add_value',
+        name: 'member_add_value',
+        component: () => import('../components/member_center/Add_Value.vue')
+      },
     ],
   },
   {
