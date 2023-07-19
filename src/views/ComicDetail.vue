@@ -1,6 +1,6 @@
 <template>
     <div class="comic_detail">
-        <div class="card" v-for="item in card" :key="item.text_title_h2">
+        <div class="card" v-for="item in card" :key="item.title">
                 <div class="pic">
                     <img :src="item.src">
                 </div>
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import comicData from '@/assets/js/comicInfo.js';
 export default {
     data() {
         return {
@@ -45,10 +46,20 @@ export default {
                         language: '繁體中文',
                         src:require("@/assets/images/comic/jyujyutsu01.webp"),
             }],
+            // comicData,
+            Data: [],
+            id: 0,
         }
     },
     methods: {
-
+        filter() {
+            this.Data = this.comicData.filter(item => item.id === this.$route.params.id);
+        },
+    },
+    created() {
+        // console.log(this.$route.params.id);
+        // this.id = this.$route.params.id;
+        // this.filter();
     },
 }
 </script>
