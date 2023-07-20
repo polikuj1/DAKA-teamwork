@@ -126,8 +126,8 @@ img {
             background-color: #54c1ba; /* 深綠色背景代表空位 */
             cursor: pointer; /* 鼠標顯示為禁止標誌 */
           }
-          .state-0 :focus,
-          .state-0 :hover {
+          .state-0:focus,
+          .state-0:hover {
             outline: 0.01rem solid #263238;
           }
 
