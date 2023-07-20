@@ -2,7 +2,7 @@ const seat_a = [
     {
       area: 'A', //A=大廳電競區
       no: '01',
-      state:1,//0=空位、1=使用中、2=預約中
+      state:'1',//0=空位、1=使用中、2=預約中
       index: '01',
     },
     {
@@ -26,7 +26,7 @@ const seat_a = [
       {
         area: 'A',
         no: '05',
-        state:0,
+        state:'0',
         index: '05',
       },
       {
@@ -38,7 +38,7 @@ const seat_a = [
       {
         area: 'A',
         no: '07',
-        state:2,
+        state:'2',
         index: '07',
       },
       {
@@ -183,128 +183,153 @@ const seat_a = [
   
   const seat_b = [
     {
-      area: 'B', //A=大廳電競區
+      area: 'B', //B=大廳一般區
       no: '01',
+      state:'0',
       index: '01',
     },
     {
         area: 'B',
         no: '02',
+        state:'1',
         index: '02',
       },
       {
         area: 'B',
         no: '03',
+        state:'1',
         index: '03',
       },
       {
         area: 'B',
         no: '04',
+        state:'0',
         index: '04',
       },
       {
         area: 'B',
         no: '05',
+        state:'2',
         index: '05',
       },
       {
         area: 'B',
         no: '06',
+        state:'2',
         index: '06',
       },
       {
         area: 'B',
         no: '07',
+        state:'1',
         index: '07',
       },
       {
         area: 'B',
         no: '08',
+        state:'1',
         index: '08',
       },
       {
         area: 'B',
         no: '09',
+        state:'0',
         index: '09',
       },
       {
         area: 'B',
         no: '10',
+        state:'1',
         index: '10',
       },
       {
         area: 'B',
         no: '11',
+        state:'2',
         index: '11',
       },
       {
         area: 'B',
         no: '12',
+        state:'2',
         index: '12',
       },
       {
         area: 'B',
         no: '13',
+        state:'0',
         index: '13',
       },
       {
         area: 'B',
         no: '14',
+        state:'1',
         index: '14',
       },
       {
         area: 'B',
         no: '15',
+        state:'0',
         index: '15',
       },
       {
         area: 'B',
         no: '16',
+        state:'0',
         index: '16',
       },
       {
         area: 'B',
         no: '17',
+        state:'0',
         index: '17',
       },
       {
         area: 'B',
         no: '18',
+        state:'1',
         index: '18',
       },
       {
         area: 'B',
         no: '19',
+        state:'1',
         index: '19',
       },
       {
         area: 'B',
         no: '20',
+        state:'1',
         index: '20',
       },
       {
         area: 'B',
         no: '21',
+        state:'1',
         index: '21',
       },
       {
         area: 'B',
         no: '22',
+        state:'1',
         index: '22',
       },
       {
         area: 'B',
         no: '23',
+        state:'1',
         index: '23',
       },
       {
         area: 'B',
         no: '24',
+        state:'0',
         index: '24',
       },
       {
         area: 'B',
         no: '25',
+        state:'0',
         index: '25',
       },
   ];
