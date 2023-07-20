@@ -241,15 +241,8 @@ export default {
 
     },
     columnCheck() {
-      // if (!this.register.nameReg || !this.register.emailReg || !this.register.pswReg || !this.register.pswConfirmReg || !this.register.birthReg || !this.register.sexReg || !this.register.telReg) {
-      //    alert("請完整輸入");
-      //    return;
-      //   }
-      //   else if (this.register.pswReg === this.register.pswConfirmReg) {
-      //     this.isRegistered = false;
-      //     this.step = 5;
-      //   }
-if(this.register.pswReg === this.register.pswConfirmReg && this.register.pswReg && this.register.pswConfirmReg){
+ 
+if(this.register.pswReg === this.register.pswConfirmReg ){
   
   this.isRegistered = false;
   this.step = 5;
