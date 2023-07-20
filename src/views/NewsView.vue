@@ -23,15 +23,6 @@
                 <a href="#"><p class="news_more">view more</p></a>
               </div>
             </div>
-            <!-- 下一頁按鈕 -->
-            <div class="news_pagination">
-              <button @click="goToPreviousPage" :disabled="page === 1"><i class="fa-solid fa-arrow-left"></i></button>
-              <span v-for="pageNumber in totalPages" :key="pageNumber">
-                <button v-if="pageNumber === page" :class="{ active: pageNumber === page }">{{ pageNumber }}</button>
-                <button v-else @click="goToPage(pageNumber)">{{ pageNumber }}</button>
-              </span>
-              <button @click="goToNextPage" :disabled="isLastPage"><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
           </div>
 
           <!-- 最新消息 -->
@@ -47,15 +38,6 @@
                 <a href="#"><p class="news_more">view more</p></a>
               </div>
             </div>
-            <!-- 下一頁按鈕 -->
-            <div class="news_pagination">
-              <button @click="goToPreviousPage" :disabled="page === 1"><i class="fa-solid fa-arrow-left"></i></button>
-              <span v-for="pageNumber in totalPages" :key="pageNumber">
-                <button v-if="pageNumber === page" :class="{ active: pageNumber === page }">{{ pageNumber }}</button>
-                <button v-else @click="goToPage(pageNumber)">{{ pageNumber }}</button>
-              </span>
-              <button @click="goToNextPage" :disabled="isLastPage"><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
           </div>
           <!-- 活動消息 -->
           <div v-show="currentTab === 'activity'">
@@ -69,15 +51,6 @@
                   <p class="news_title">{{ message.content }}</p>
                   <a href="#"><p class="news_more">view more</p></a>
                 </div>
-              </div>
-            <!-- 下一頁按鈕 -->
-            <div class="news_pagination">
-              <button @click="goToPreviousPage" :disabled="page === 1"><i class="fa-solid fa-arrow-left"></i></button>
-              <span v-for="pageNumber in totalPages" :key="pageNumber">
-                <button v-if="pageNumber === page" :class="{ active: pageNumber === page }">{{ pageNumber }}</button>
-                <button v-else @click="goToPage(pageNumber)">{{ pageNumber }}</button>
-              </span>
-              <button @click="goToNextPage" :disabled="isLastPage"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
           </div>
         </div>
@@ -174,7 +147,7 @@ export default {
       
       ],
       page:1,
-      isLastPage: false,
+      // isLastPage: false,
 
     }
   },
@@ -187,21 +160,7 @@ export default {
         } else if (tabName === 'activity') {
           this.activityMessages = this.allMessages.filter(message => message.category === 'ACTIVITY');
         }
-    },
-    goToNextPage() {
-      this.page++;
-      this.isLastPage = this.page * 5 >= this.allMessages.length; // 檢查是否為最後一頁
-    },
-
-    goToPreviousPage() {
-      this.page--;
-      this.isLastPage = false; // 當切換上一頁時，不再被視為最後一頁
-    },
-
-    goToPage(pageNumber) {
-      this.page = pageNumber;
-      this.isLastPage = this.page * 5 >= this.allMessages.length; // 檢查是否為最後一頁
-    },
+    }
   },
   computed: {
     paginatedAllMessages() {
