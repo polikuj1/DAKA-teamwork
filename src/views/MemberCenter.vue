@@ -10,9 +10,9 @@
   <div class="member_center">
     <div class="user_profile">
       <div class="pic">
-        <img src="https://picsum.photos/id/684/600/400" alt="">
+        <img :src="member_img" alt="會員照片">
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
-        <input type="file" id="user">
+        <input type="file" id="user" @change="getImage">
       </div>
       <span><i class="fa-solid fa-crown"></i> 白金會員</span>
       <ul>
@@ -55,7 +55,22 @@ export default {
   data() {
     return {
       title: '會員中心',
+      member_img: 'https://picsum.photos/id/182/600/400',
     }
+  },
+  methods: {
+    getImage(e) {
+      // console.log(e);
+      const file = e.target.files.item(0);
+      if(file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg') {alert('只能上傳圖檔');return;};
+      // console.log(file);
+      const reader = new FileReader();
+      reader.addEventListener('load', this.imageLoaded);
+      reader.readAsDataURL(file);
+    },
+    imageLoaded(e) {
+      this.member_img = e.target.result;
+    },
   },
 }
 </script>

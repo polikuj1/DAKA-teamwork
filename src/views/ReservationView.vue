@@ -137,16 +137,15 @@
 
   <div></div>
 </template>
+
+
+
 <style>
 @import "@/assets/scss/page/reservation.scss";
 </style>
 
-
-
-
-
-
 <script>
+import 'view-ui-plus/dist/styles/viewuiplus.css';
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
 import '@/assets/scss/page/reservation.scss';
