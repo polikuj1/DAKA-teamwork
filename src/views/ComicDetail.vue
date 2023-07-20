@@ -44,7 +44,7 @@ export default {
                         press: '東立',
                         date: '2023/01/06',
                         language: '繁體中文',
-                        src:require("@/assets/images/comic/jyujyutsu01.webp"),
+                        src: require ("@/assets/images/comic/jyujyutsu01.webp"),
             }],
             // comicData,
             Data: [],

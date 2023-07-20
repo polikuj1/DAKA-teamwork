@@ -96,6 +96,11 @@
           <div class="color_reserve_seat"></div> <p class="p_reserve_seat">預約中</p>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      
+      
+>>>>>>> 6a95d012a3058a671ecb62c7911e0f72006c4fe3
     </section>
 
 
@@ -143,16 +148,15 @@
 
   <div></div>
 </template>
+
+
+
 <style>
 @import "@/assets/scss/page/reservation.scss";
 </style>
 
-
-
-
-
-
 <script>
+import 'view-ui-plus/dist/styles/viewuiplus.css';
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
 import '@/assets/scss/page/reservation.scss';

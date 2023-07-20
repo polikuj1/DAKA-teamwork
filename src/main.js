@@ -12,7 +12,8 @@ import "@/assets/fonts/font.css";
 
 //外部函式庫 view-ui-plus
 import ViewUIPlus from 'view-ui-plus';
-import 'view-ui-plus/dist/styles/viewuiplus.css';
+
+
 
 
 

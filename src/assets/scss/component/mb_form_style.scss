@@ -1,0 +1,41 @@
+.member_form {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  .title {
+    border-bottom: 2px solid $main_bg;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    h3 {
+      font-size: 2.5rem;
+    }
+    button {
+      background-color: transparent;
+      border: none;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      svg {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@include sm() {
+  .member_form {
+    margin: 0 auto 0 50px;
+    .title {
+      button {
+        left: 30px;
+        svg {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+}
