@@ -90,6 +90,12 @@
   }
 }
 
+@mixin screen_one($size) {
+  @media all and (max-width: #{$size}px) {
+    @content;
+  }
+}
+
 @mixin ps_center {
   position: absolute;
   left: 50%;

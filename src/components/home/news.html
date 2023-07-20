@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<style>
+    .news {
+        max-width: 1036px;
+
+        .infor {
+            background-color: rgb(255, 223, 223);
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            font-size: 1.5rem;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            border-radius: 50px;
+            margin-bottom: 2.5%;
+
+
+            .category {
+                color: white;
+                background-color: #5AC4C4;
+                font-size: 1.5rem;
+                width: 8.5%;
+                margin-left: 6%;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .date {
+                color: #78684D;
+                position: absolute;
+                left: 23%;
+
+            }
+
+            .text {
+                color: #78684D;
+                position: absolute;
+                left: 39%;
+            }
+
+            .pic {
+                margin-right: 6%;
+            }
+
+        }
+    }
+</style>
+
+<body>
+    <div id="app">
+        <section class="news">
+            <a class="infor" v-for="item in news" :key="item.text">
+                <div class="category">{{item.category}}</div>
+                <div class="date">{{item.date}}</div>
+                <div class="text">{{item.text}}</div>
+                <img class="pic" :src="item.pic" alt="箭頭">
+            </a>
+
+
+        </section>
+    </div>
+
+
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    news: [
+                        {
+                            category: 'NEWS',
+                            date: '2023.05.01',
+                            text: '五月會員好康禮',
+                            pic: require('@/assets/images/index/arrow_green.png')
+                        },
+
+                        {
+                            category: 'ACTICIVY',
+                            date: '2023.05.01',
+                            text: '五月會員好康禮',
+                            pic: ''
+                        },
+
+                        {
+                            category: 'ACTICIVY',
+                            date: '2023.05.01',
+                            text: '五月會員好康禮',
+                            pic: ''
+                        },
+
+                        {
+                            category: 'NEWS',
+                            date: '2023.05.01',
+                            text: '五月會員好康禮',
+                            pic: ''
+                        }],
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+
+</html>
