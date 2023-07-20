@@ -1,2 +1,113 @@
+.no_credit {
+  height: 300px;
+  text-align: center;
+  span {
+    font-size: 1.5rem;
+    display: block;
+    padding: 75px 0;
+  }
+  a {
+    font-size: 1.25rem;
+    margin: 0 auto;
+    background-color: #FF5E1E;
+    color: #fff;
+    padding: 5px 40px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+}
+@include sm() {
+  .credit {
+    height: calc(100% - 80px);
+    span {
+      padding: 150px 0;
+    }
+    a {
+      padding: 15px 40px;
+    }
+  }
+}
 
 
+.add_credit {
+  form {
+    padding: 50px 20px;
+    > label,input {
+      display: block;
+      width: 100%;
+      font-size: 1.5rem;
+    }
+    > label {
+      padding-bottom: 10px;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      input {
+        padding-right: 10px;
+        display: inline;
+        width: 15px;
+        height: 15px;
+        background: #aaa;
+        margin-bottom: 0;
+      }
+      label {
+        width: auto;
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 12px;
+      }
+    }
+    input {
+      padding: 10px 0 10px 10px;
+      margin-bottom: 20px;
+      background-color: $main_bg;
+      border-radius: 5px;
+      color: $main_txt_color;
+    }
+    button {
+      width: 120px;
+      margin: 30px auto 0;
+      font-size: 1.5rem;
+      display: block;
+      color: $main_txt_color;
+      background-color: $btn_bg_color;
+      padding: 5px 0;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
+@include sm() {
+  .add_credit {
+    height: calc(100% - 84px);
+    form {
+      height: 100%;
+      > label,input {
+        width: 70%;
+        margin: auto;
+      }
+      > div {
+        width: 70%;
+        margin: auto;
+        input {
+          width: 20px;
+          height: 20px;
+          margin: 0;
+        }
+        label {
+          font-size: 20px;
+        }
+      }
+      input {
+        margin-bottom: 40px;
+      }
+      button {
+        width: 200px;
+        padding: 8px 0;
+        margin: 100px auto 0;
+      }
+    }
+  }
+}
