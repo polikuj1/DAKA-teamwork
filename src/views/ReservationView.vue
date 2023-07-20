@@ -63,32 +63,39 @@
 
     <section class="reservation_date">
       <h2><span>2</span> 選擇日期及時間</h2>
+      <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
     </section>
 
     <section class="reservation_seat">
       <h2><span>3</span> 選擇座位</h2>
-      <div class="reservation_hallseat">
-        <div class="reservation_eSports_seat">
-          <div class="seat_btn" v-for="item in seats_a" :key="item.no" :class="`state-${item.state}`">
-            <div class="txt">
-              <div class="title">
-                <h4>{{ item.area }} <br> {{ item.no }}</h4>
+      <div class="reservation_all_seat">
+        <div class="reservation_hall_seat">
+          <div class="reservation_eSports_seat">
+            <button class="seat_btn eSports_seat" v-for="item in seats_a" :key="item.no" :class="`state-${item.state}`">
+                <div class="content">
+                  <h4 class="text">{{ item.area }} <br> {{ item.no }}</h4>
+                  <!-- <img class="chair" src="../assets/images/reservation/chair.svg" alt=""> -->
+                </div>
+            </button>
+          </div>
+          <div class="reservation_general_seat">
+            <div class="seat_btn general_seat" v-for="item in seats_b" :key="item.no" :class="`state-${item.state}`">
+                <div class="content">
+                  <h4>{{ item.area }} <br> {{ item.no }}</h4>
+                  <!-- <img class="chair" src="../assets/images/reservation/chair.svg" alt=""> -->
+                </div>
               </div>
-            </div>
+            <div class="counter"> <p>櫃台</p> </div>
           </div>
         </div>
-        <div class="reservation_general_seat">
-          <div class="seat_btn" v-for="item in seats_b" :key="item.no">
-            <div class="txt">
-              <div class="title">
-                <h4>{{ item.area }} <br> {{ item.no }}</h4>
-              </div>
-            </div>
-          </div>
+        <div class="seat_color_comment">
+          <div class="color_seSports_seat"></div> <p class="p_seSports_seat">A_電競區</p>
+          <div class="color_general_seat"></div> <p class="p_general_seat">B_一般區</p>
+          <div class="color_vacancy_seat"></div> <p class="p_vacancy_seat">空位</p>
+          <div class="color_use_seat"></div> <p class="p_use_seat">使用中</p>
+          <div class="color_reserve_seat"></div> <p class="p_reserve_seat">預約中</p>
         </div>
       </div>
-      <h2> <span>2</span> 選擇日期及時間</h2>
-      <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
     </section>
 
 
