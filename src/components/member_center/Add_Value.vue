@@ -1,66 +1,67 @@
 <template>
-  <div id="member_charge">
-    <div class="online_charge">
-      <span class="charge_icon"><i class="fa-solid fa-circle-chevron-left"></i></span>
-      <p class="charge_title">線上儲值</p>
-    </div>
-
-    <form action="" class="charge_content">
-      <label for="amount" class="charge_amount">選擇金額</label>
-      <select id="amount" class="amount_option" v-model="selectedAmount" required>
-        <option value="請選擇" disabled selected>請選擇</option>
-        <option v-for="amount in amounts" :key="amount" :value="amount">{{ amount }}</option>
-      </select>
-      <br>
-      <label for="creditCard" class="charge_card">選擇扣款信用卡</label>
-      <select id="creditCard" class="card_option" v-model="selectedCreditCard" required>
-        <option value="請選擇" disabled selected>請選擇</option>
-        <option v-for="card in boundCreditCards" :key="card" :value="card">{{ card }}</option>
-        <option value="其他">其他</option>
-      </select>
-      <br>
-      <div v-if="selectedCreditCard === '其他'">
-        <label for="cardNumber" class="charge_cardnumber">輸入卡號：</label>
-        <input type="text" id="cardNumber" name="cardNumber" v-model="cardNumber" required maxlength="16" pattern="[0-9]*">
-        <br>
-        <label for="expiryDate">輸入卡片有效期限</label>
-        <div class="charge_goodthru">
-          <select v-model="selectedYear" required>
-            <option value="請選擇" disabled selected>請選擇年份</option>
-            <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
+  <MbForm>
+    <template v-slot:mb_form_title>
+      <h3>線上儲值</h3>
+    </template>
+    <template v-slot:mb_content>
+      <div id="member_charge">
+        <form action="" class="charge_content">
+          <label for="amount" class="charge_amount">選擇金額</label>
+          <select id="amount" class="amount_option" v-model="selectedAmount" required>
+            <option value="請選擇" disabled selected>請選擇</option>
+            <option v-for="amount in amounts" :key="amount" :value="amount">{{ amount }}</option>
           </select>
-          <select v-model="selectedMonth" required>
-            <option value="請選擇" disabled selected>請選擇月份</option>
-            <option v-for="month in months" :key="month" :value="month">{{ month }}</option>
+          
+          <label for="creditCard" class="charge_card">選擇扣款信用卡</label>
+          <select id="creditCard" class="card_option" v-model="selectedCreditCard" required>
+            <option value="請選擇" disabled selected>請選擇</option>
+            <option v-for="card in boundCreditCards" :key="card" :value="card">{{ card }}</option>
+            <option value="其他">其他</option>
           </select>
-        </div>
-        <label for="verificationCode">輸入驗證碼3碼</label>
-        <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" pattern="[0-9]*">
-        <br>
-        <div class="charge_bind">
-          <input type="checkbox" id="isBound" value="true" v-model="isBound">
-          <label for="isBound">是否綁定此信用卡</label>
-        </div>
-        <div class="charge_default">
-          <input type="checkbox" id="isdefault" value="true" v-model="isDefault">
-          <label for="isdefault">是否將此信用卡設為預設卡片</label>
-        </div>
+          
+          <div v-if="selectedCreditCard === '其他'">
+            <label for="cardNumber" class="charge_cardnumber">輸入卡號</label>
+            <input type="text" id="cardNumber" name="cardNumber" v-model="cardNumber" required maxlength="16" pattern="[0-9]*">
+            <label for="expiryDate" class="charge_expirydate">輸入卡片有效期限</label>
+            <div class="charge_goodthru">
+              <select v-model="selectedYear" required>
+                <option value="請選擇" disabled selected>請選擇年份</option>
+                <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
+              </select>
+              <select v-model="selectedMonth" required>
+                <option value="請選擇" disabled selected>請選擇月份</option>
+                <option v-for="month in months" :key="month" :value="month">{{ month }}</option>
+              </select>
+            </div>
+            <label for="verificationCode" class="charge_verification">輸入驗證碼</label>
+            <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" pattern="[0-9]*">
+            <br>
+            <br>
+            <div class="charge_bind">
+              <input type="checkbox" id="isBound" value="true" v-model="isBound">
+              <label for="isBound">是否綁定此信用卡</label>
+            </div>
+            <div class="charge_default">
+              <input type="checkbox" id="isdefault" value="true" v-model="isDefault">
+              <label for="isdefault">是否將此信用卡設為預設卡片</label>
+            </div>
+          </div>
+          <br>
+          <button type="button" @click="submit" class="submit_btn">確認送出</button>
+        </form>
       </div>
-      <br>
-      <button type="button" @click="submit">送出</button>
-    </form>
-  </div>
+    </template>
+  </MbForm>
 </template>
 
 <script>
-import PageTitle from '@/components/PageTitle.vue';
+import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
-    
+    MbForm,
   },
   data() {
     return {
-      title: '會員中心',
       selectedAmount: '請選擇',
       amounts: ['100', '500', '1000', '5000'], 
       selectedCreditCard: '請選擇', // 初始化選擇的信用卡為空
@@ -98,5 +99,4 @@ export default {
 
   },
 }
-
 </script>
