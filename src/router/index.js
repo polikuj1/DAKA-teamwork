@@ -10,7 +10,8 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import('../views/AboutusView.vue')
+    component: () => import('../views/AboutusView.vue'),
+    
   },
   {
     path: '/news',
