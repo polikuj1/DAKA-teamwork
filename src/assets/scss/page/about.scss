@@ -10,14 +10,15 @@
     top: 0;
     z-index: -1;
     div {
-      @include bgSvg(about/circle/circle_first);
+        @include bgSvg(about/circle/circle_first);
+       
     }
   }
   .about_circle_middle {
     width: 300px;
     height: 259px;
     position: absolute;
-    right: 150px;
+    right: 200px;
     top: 420px;
     z-index: -1;
     div {
@@ -79,6 +80,29 @@
           line-height: 24px;
         }
       }
+      .carousel__item {
+        width: 60%;
+        height: 100%;
+        background-color: var(--vc-clr-primary);
+        color: var(--vc-clr-white);
+        font-size: 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .carousel__slide {
+        padding: 10px;
+      }
+      
+      .carousel__prev,
+      .carousel__next {
+        box-sizing: content-box;
+       color: #fff;
+      }
     }
   }
 }
+
+
