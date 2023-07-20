@@ -2,9 +2,9 @@
   <PageTitle>
     {{ title }}
   </PageTitle>
-  <BreadCrumb>
+  <BreadCrumb @emit-title="getContent">
     <template v-slot:third_nav>
-      <!-- <span> / 信用卡</span> -->
+      <span v-show="content"> / {{ content }}</span>
     </template>
   </BreadCrumb>
   <div class="member_center">
@@ -41,7 +41,7 @@
       </ul>
       <button type="button">線上儲值</button>
     </div>
-    <router-view></router-view>
+    <router-view @emit-title="getContent"></router-view>
   </div>
 </template>
 <script>
@@ -56,6 +56,7 @@ export default {
     return {
       title: '會員中心',
       member_img: 'https://picsum.photos/id/182/600/400',
+      content: '',
     }
   },
   methods: {
@@ -71,6 +72,9 @@ export default {
     imageLoaded(e) {
       this.member_img = e.target.result;
     },
+    getContent(title) {
+      this.content = title;
+    }
   },
 }
 </script>
