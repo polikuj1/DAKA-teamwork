@@ -58,6 +58,11 @@ const routes = [
         name: 'member_add_value',
         component: () => import('../components/member_center/Add_Value.vue')
       },
+      {
+        path: 'member_bind_credit',
+        name: 'member_bind_credit',
+        component: () => import('../components/member_center/BindCredit.vue')
+      },
     ],
   },
   {
