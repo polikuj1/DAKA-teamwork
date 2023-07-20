@@ -96,11 +96,8 @@
           <div class="color_reserve_seat"></div> <p class="p_reserve_seat">預約中</p>
         </div>
       </div>
-<<<<<<< HEAD
-=======
       
       
->>>>>>> 6a95d012a3058a671ecb62c7911e0f72006c4fe3
     </section>
 
 
