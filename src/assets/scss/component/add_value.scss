@@ -82,8 +82,9 @@
         padding: 10px 40px;
         font-size: 1.5rem;
     }
-    input[type="checkbox"] {
-        transform: scale(2);
-      }
-
+    .charge_bind, .charge_default{
+        input[type="checkbox"] {
+            transform: scale(2);
+        }
+    }    
 }
