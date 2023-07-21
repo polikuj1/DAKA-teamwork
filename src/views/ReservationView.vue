@@ -226,7 +226,7 @@ import 'view-ui-plus/dist/styles/viewuiplus.css';
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
 import '@/assets/scss/page/reservation.scss';
-import { seat_a, seat_b } from "@/assets/js/seatinfo.js";
+import { seat_a, seat_b,seat_c,seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
   components: {
@@ -246,7 +246,7 @@ export default {
         seat: [],
         price: 0
       },
-      seats_a: seat_a,
+      seats_a:seat_a,
       seats_b: seat_b,
       seats_c: seat_c,
       seats_d: seat_d,
