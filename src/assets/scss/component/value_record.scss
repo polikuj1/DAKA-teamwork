@@ -5,12 +5,11 @@
     margin: auto;
     .record_card {
       width: 100%;
-      height: 120px;
+      // height: 120px;
       border-radius: 10px;
       box-sizing: border-box;
       background-color: $secondary_blue;
     }
-    
     .record_id,.record_amount {
       color: $main_txt_color;
     }
@@ -19,64 +18,74 @@
     }
   }
   
-//手機版
-@include screen_one(900){
+//RWD
+@include screen(0){
     .value_record{
       margin-top: 30px;
       .record_card {
-        padding:20px 40px;
         margin-bottom: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-  
+        justify-content: center;
+        text-align: center;
+      }
+      .line_first{
+        box-sizing: border-box;
+        padding: 10px 20px 0 20px;
+      }
+      .line_second{
+        box-sizing: border-box;
+        padding: 0 20px 10px 20px;
       }
       .record_id,.record_amount {
-        font-size: 1.125rem;
-        box-sizing: border-box;
+        font-size: 1.5rem;
+        padding: 2px;
       }
       .record_date,.record_method {
-        font-size: 0.875rem;
+        font-size: 1.33rem;
+        padding: 2px;
       }
     }
 }
-//電腦版
-@include screen(901){
+
+@include screen(950){
     .value_record{
       margin-top: 60px;
       .record_card {
-        position: relative;
         margin-bottom: 60px;
+      }
+      .line_first{
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 20px 40px 0 40px;
+      }
+      .line_second{
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 0 40px 20px 40px;
       }
       .record_id,.record_amount {
         font-size: 1.25rem;
         margin: 5px;
-        position: absolute; 
+        padding: 0;
         color: $main_txt_color;
       }
       .record_date,.record_method {
         font-size: 1rem;
         margin: 5px;
-        position: absolute; 
         color: #D5F0F0;
-      }
-      .record_id{
-        top: 20px;
-        left: 40px;
-      }
-      .record_date{
-        top: 20px;
-        right: 40px;
-      }
-      
-      .record_method{
-        bottom: 20px;
-        left: 40px;
-      }
-      
-      .record_amount{
-        bottom: 20px;
-        right: 40px;
+        padding: 0;
       }
     } 
+}
+//這裡沒成功
+@include md(){
+  .record_id,.record_amount {
+    font-size: 1.25rem;
+  }
+  .record_date,.record_method {
+    font-size: 1rem;
+  }
 }

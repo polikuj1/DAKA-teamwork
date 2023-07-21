@@ -31,7 +31,9 @@
         }
 
         a {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
             background-color: $main_txt_color;
@@ -42,7 +44,6 @@
             img {
                 width: 2rem;
                 height: auto;
-                vertical-align: middle;
             }
         }
     }
@@ -59,6 +60,8 @@
             height: fit-content;
             @include bgSvg(home/meal_bg);
             position: relative;
+            display: flex;
+            justify-content: center;
 
             img {
                 vertical-align: middle;
@@ -87,6 +90,7 @@
         width: 100%;
 
         img {
+            margin: 0 auto;
             width: 100%;
             height: auto;
             vertical-align: bottom;
