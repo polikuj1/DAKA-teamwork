@@ -9,6 +9,7 @@ d<template>
 <script>
 import Services from '@/components/home/Services.vue';
 import Meals from '@/components/home/Meal.vue';
+import Map from '@/components/home/Map.vue';
 import News from '@/components/home/news.vue';
 export default {
   name: '',
