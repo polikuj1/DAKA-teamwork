@@ -1,0 +1,82 @@
+.value_record{
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: auto;
+    .record_card {
+      width: 100%;
+      height: 120px;
+      border-radius: 10px;
+      box-sizing: border-box;
+      background-color: $secondary_blue;
+    }
+    
+    .record_id,.record_amount {
+      color: $main_txt_color;
+    }
+    .record_date,.record_method {
+      color: #D5F0F0;
+    }
+  }
+  
+//手機版
+@include screen_one(900){
+    .value_record{
+      margin-top: 30px;
+      .record_card {
+        padding:20px 40px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+  
+      }
+      .record_id,.record_amount {
+        font-size: 1.125rem;
+        box-sizing: border-box;
+      }
+      .record_date,.record_method {
+        font-size: 0.875rem;
+      }
+    }
+}
+//電腦版
+@include screen(901){
+    .value_record{
+      margin-top: 60px;
+      .record_card {
+        position: relative;
+        margin-bottom: 60px;
+      }
+      .record_id,.record_amount {
+        font-size: 1.25rem;
+        margin: 5px;
+        position: absolute; 
+        color: $main_txt_color;
+      }
+      .record_date,.record_method {
+        font-size: 1rem;
+        margin: 5px;
+        position: absolute; 
+        color: #D5F0F0;
+      }
+      .record_id{
+        top: 20px;
+        left: 40px;
+      }
+      .record_date{
+        top: 20px;
+        right: 40px;
+      }
+      
+      .record_method{
+        bottom: 20px;
+        left: 40px;
+      }
+      
+      .record_amount{
+        bottom: 20px;
+        right: 40px;
+      }
+    } 
+}

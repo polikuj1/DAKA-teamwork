@@ -12,6 +12,11 @@
         display: block;
         box-sizing: border-box;
         padding: 10px;
+        background-color: $main_bg;
+        color: $main_txt_color;
+    }
+    p{
+        font-size: 1rem;
     }
     #cardNumber{
         width: 100%;
@@ -23,11 +28,16 @@
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
+        background-color: $main-bg;
+        color: $main_txt_color;
     }
     .charge_goodthru select{
-        width: 50%;
+        width: 40%;
         box-sizing: border-box;
         padding: 10px;
+        margin-right: 10px;
+        background-color: $main-bg;
+        color: $main_txt_color;
     }
     .charge_bind,.charge_default{
         display: flex;
@@ -57,6 +67,9 @@
 @include sm{
     .charge_content{
         font-size: 1.875rem;
+        input{
+            font-size: 1rem;
+        }
     }
     .amount_option,.card_option{
         font-size: 1rem;
