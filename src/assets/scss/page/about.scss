@@ -40,7 +40,7 @@
     width: 300px;
     height: 259px;
     position: absolute;
-    right: 150px;
+    right: 200px;
     top: 1500px;
     z-index: -1;
     div {
@@ -56,6 +56,7 @@
     padding: 0 20px;
 
     .about_card {
+        
       .about_card_pic {
         img {
           width: 100%;
@@ -69,6 +70,7 @@
         padding: 20px 40px;
         border-radius: 0 0 50px 0;
         font-weight: 400;
+        margin-bottom: 40px;
         h3 {
           font-size: 1.3rem;
           margin-bottom: 20px;
@@ -106,3 +108,53 @@
 }
 
 
+@include sm(){
+    .about_card_list{
+        max-width: 1200px;
+    }
+    .about_circle_top {
+        width: 300px;
+        height: 259px;
+        position: absolute;
+        right: -150px;
+        top: 0;
+        z-index: -1;
+        div {
+            @include bgSvg(about/circle/circle_first);
+           
+        }
+      }
+      .about_circle_middle {
+        width: 300px;
+        height: 259px;
+        position: absolute;
+        right: 200px;
+        top: 420px;
+        z-index: -1;
+        div {
+          @include bgSvg(about/circle/circle_second);
+        }
+      }
+      .about_circle_under {
+        width: 300px;
+        height: 259px;
+        position: absolute;
+        right: -150px;
+        top: 1000px;
+        z-index: -1;
+        div {
+          @include bgSvg(about/circle/circle_third);
+        }
+      }
+      .about_circle_bottom {
+        width: 300px;
+        height: 259px;
+        position: absolute;
+        right: 200px;
+        top: 1500px;
+        z-index: -1;
+        div {
+          @include bgSvg(about/circle/circle_fourth);
+        }
+      }
+}

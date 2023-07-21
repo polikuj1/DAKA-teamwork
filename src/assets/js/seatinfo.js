@@ -333,4 +333,92 @@ const seat_a = [
         index: '25',
       },
   ];
-  export { seat_a, seat_b };
+  const seat_c = [
+    {
+      area: 'C', //C=包廂單人區
+      no: '01',
+      state:'0',
+      index: '01',
+    },
+    {
+        area: 'C',
+        no: '02',
+        state:'1',
+        index: '02',
+      },
+      {
+        area: 'C',
+        no: '03',
+        state:'1',
+        index: '03',
+      },
+      {
+        area: 'C',
+        no: '04',
+        state:'0',
+        index: '04',
+      },
+      {
+        area: 'C',
+        no: '05',
+        state:'2',
+        index: '05',
+      },
+      {
+        area: 'C',
+        no: '06',
+        state:'2',
+        index: '06',
+      },
+      {
+        area: 'C',
+        no: '07',
+        state:'1',
+        index: '07',
+      },
+      {
+        area: 'C',
+        no: '08',
+        state:'1',
+        index: '08',
+      },
+      {
+        area: 'C',
+        no: '09',
+        state:'0',
+        index: '09',
+      },
+      {
+        area: 'C',
+        no: '10',
+        state:'2',
+        index: '10',
+      },
+  ];
+  const seat_d = [
+    {
+      area: 'd', //d=包廂雙人區
+      no: '01',
+      state:'0',
+      index: '01'
+    },
+    {
+        area: 'd',
+        no: '02',
+        state:'1',
+        index: '02',
+      },
+      {
+        area: 'd',
+        no: '03',
+        state:'2',
+        index: '03',
+      },
+      {
+        area: 'd',
+        no: '04',
+        state:'0',
+        index: '04',
+      },
+  ];
+  export { seat_a, seat_b, seat_c, seat_d};

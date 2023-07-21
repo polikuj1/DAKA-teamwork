@@ -68,6 +68,16 @@ const routes = [
         name: 'member_value_record',
         component: () => import('../components/member_center/ValueRecord.vue')
       },
+      {
+        path: 'member_coupon',
+        name: 'member_coupon',
+        component: () => import('../components/member_center/Coupon.vue')
+      },
+      {
+        path: 'member_edit',
+        name: 'member_edit',
+        component: () => import('../components/member_center/Edit.vue')
+      },
     ],
   },
   {
