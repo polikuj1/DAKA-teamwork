@@ -64,6 +64,11 @@ const routes = [
         component: () => import('../components/member_center/BindCredit.vue')
       },
       {
+        path: 'member_value_record',
+        name: 'member_value_record',
+        component: () => import('../components/member_center/ValueRecord.vue')
+      },
+      {
         path: 'member_coupon',
         name: 'member_coupon',
         component: () => import('../components/member_center/Coupon.vue')

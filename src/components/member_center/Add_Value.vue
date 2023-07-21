@@ -21,7 +21,8 @@
           
           <div v-if="selectedCreditCard === '其他'">
             <label for="cardNumber" class="charge_cardnumber">輸入卡號</label>
-            <input type="text" id="cardNumber" name="cardNumber" v-model="cardNumber" required maxlength="16" pattern="[0-9]*">
+            <input type="text" id="cardNumber" name="cardNumber" v-model="cardNumber" required maxlength="16" @input="checkCardNumberInput">
+            <p v-if="showCardNumberWarning" style="color: #FF5E1E;">請輸入有效的卡號</p>
             <label for="expiryDate" class="charge_expirydate">輸入卡片有效期限</label>
             <div class="charge_goodthru">
               <select v-model="selectedYear" required>
@@ -34,7 +35,8 @@
               </select>
             </div>
             <label for="verificationCode" class="charge_verification">輸入驗證碼</label>
-            <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" pattern="[0-9]*">
+            <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" @input="checkVerificationCodeInput">
+            <p v-if="showVerificationCodeWarning" style="color:#FF5E1E;">請輸入有效的驗證碼</p>
             <br>
             <br>
             <div class="charge_bind">
@@ -42,8 +44,8 @@
               <label for="isBound">是否綁定此信用卡</label>
             </div>
             <div class="charge_default">
-              <input type="checkbox" id="isdefault" value="true" v-model="isDefault">
-              <label for="isdefault">是否將此信用卡設為預設卡片</label>
+              <input type="checkbox" id="isDefault" value="true" v-model="isDefault">
+              <label for="isDefault">是否將此信用卡設為預設卡片</label>
             </div>
           </div>
           <br>
@@ -74,6 +76,8 @@ export default {
       verificationCode: '', // 輸入的驗證碼
       isBound: false, // 是否綁定此信用卡
       isDefault: false, // 是否將此信用卡設為預設卡片
+      showCardNumberWarning: false,
+      showVerificationCodeWarning: false,
     }
   },
   methods: {
@@ -92,6 +96,15 @@ export default {
 
       // 模擬儲值成功的彈窗
       alert('儲值成功！');
+    },
+    checkCardNumberInput() {
+      const regex = /^[0-9]*$/; // 正則表達式，只允許數字字符
+      this.showCardNumberWarning = !regex.test(this.cardNumber);
+    },
+
+    checkVerificationCodeInput() {
+      const regex = /^[0-9]*$/; // 正則表達式，只允許數字字符
+      this.showVerificationCodeWarning = !regex.test(this.verificationCode);
     }
 
   },
