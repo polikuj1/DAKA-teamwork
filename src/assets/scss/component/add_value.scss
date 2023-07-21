@@ -1,0 +1,76 @@
+.charge_content{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+    .charge_amount,.charge_card,.charge_cardnumber,.charge_expirydate,.charge_verification{
+        display: block;
+        box-sizing: border-box;
+        padding-top: 40px;
+    }
+    input{
+        display: block;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    #cardNumber{
+        width: 100%;
+    }
+    #verificationCode{
+        width: 100%;
+    }
+    .amount_option,.card_option{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .charge_goodthru select{
+        width: 50%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    .charge_bind,.charge_default{
+        display: flex;
+        gap: 20px;
+        box-sizing: border-box;
+        padding-top: 10px;
+    }
+}
+.submit_btn{
+    box-sizing: border-box;
+    color: $main_txt_color;
+    background-color: $btn_bg_color;
+    border-radius: 100px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+//手機版
+@include screen_one(767){
+    .submit_btn{
+        width: 120px;
+        padding: 5px 20px;
+        font-size: 1rem;
+    }
+}
+//電腦版
+@include sm{
+    .charge_content{
+        font-size: 1.875rem;
+    }
+    .amount_option,.card_option{
+        font-size: 1rem;
+    }
+    .charge_goodthru select{
+        font-size: 1rem;
+    }
+    .submit_btn{
+        width: 200px;
+        padding: 10px 40px;
+        font-size: 1.5rem;
+    }
+    input[type="checkbox"] {
+        transform: scale(2);
+      }
+
+}

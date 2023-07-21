@@ -8,43 +8,29 @@
       <div class="reservation_read_rules">
         <ul>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />
+            <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
             為利於其餘客戶權益，每次預約僅保留30分鐘，逾時未到視同放棄，
             如需取消預約，請於1日前取消。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />目前線上付款僅提供扣除儲值金。
+            <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
             恕不另行通知。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />座位區預約上限5位，包廂區預約上限2間。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
           </li>
           <li>如需取消預約，請於1日前取消。</li>
           <li>
@@ -195,37 +181,33 @@
       <div class="reservation_confirm_data">
         <div class="confirm_data_time">
           <div class="data_time_start">
+
             <p>預約開始時間</p>
-            <input
-              type="text"
-              readonly
-              :value="`${reservation.startDate}  ${reservation.startTime}`"
-            />
+            <input type="text" readonly :value="`${reservation.startDate}  ${reservation.startTime}`">
           </div>
           <div class="data_time_end">
+
             <p>預約結束時間</p>
-            <input
-              type="text"
-              readonly
-              :value="`${reservation.startDate}  ${reservation.endTime}`"
-            />
+            <input type="text" readonly :value="`${reservation.startDate}  ${reservation.endTime}`">
           </div>
           <div class="data_time_sum">
+
             <p>金額總計</p>
-            <input type="text" readonly :value="`${reservation.price}元`" />
+            <input type="text" readonly :value="`${reservation.price}元`">
           </div>
           <div class="data_time_stored">
+
             <p>目前儲值金</p>
-            <input type="text" readonly value="元" />
-            <div class="stored_error">
-              儲值金不足，請先至 <a href="">會員中心</a> 儲值。
-            </div>
+            <input type="text" readonly value="元">
+            <div class="stored_error">儲值金不足，請先至 <a href="">會員中心</a>
+              儲值。</div>
           </div>
         </div>
 
         <div class="confirm_data_seat">
           <p>選定座位</p>
-          <input type="text" readonly />
+          <input type="text" readonly :value="reservation.seat">
+
         </div>
       </div>
       <button class="reservation_submit">確認預約</button>
@@ -240,11 +222,11 @@
 </style>
 
 <script>
-import "view-ui-plus/dist/styles/viewuiplus.css";
-import PageTitle from "@/components/PageTitle.vue";
-import Date from "@/components/reservation/Date.vue";
-import "@/assets/scss/page/reservation.scss";
-import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
+import 'view-ui-plus/dist/styles/viewuiplus.css';
+import PageTitle from '@/components/PageTitle.vue';
+import Date from '@/components/reservation/Date.vue';
+import '@/assets/scss/page/reservation.scss';
+import { seat_a, seat_b } from "@/assets/js/seatinfo.js";
 
 export default {
   components: {
@@ -253,12 +235,14 @@ export default {
   },
 
   data() {
+
+
     return {
       title: "訂位預約",
       reservation: {
-        startDate: "",
-        startTime: "",
-        endTime: "",
+        startDate: '',
+        startTime: '',
+        endTime: '',
         seat: [],
         price: 0
       },
@@ -270,9 +254,17 @@ export default {
       tabItems: {
         1: "大廳區",
         2: "包廂區"
-      }
-    };
+      },
+      selectedArea: '',
+      selectedState: 0,
+      selectedSeat: '',
+      selected: '',
+    }
+      
+
+
   },
+  
   methods: {
     // 切換tab
     updateTab(index) {
@@ -287,11 +279,24 @@ export default {
       this.reservation.startTime = time.toString().substr(0, 5);
       this.reservation.endTime = time.toString().substr(9, 5);
 
-      let a = +time.toString().substr(0, 2);
-      let b = +time.toString().substr(9, 2);
-      console.log(a, b, typeof a, typeof b);
+      let a = +(time.toString().substr(0, 2));
+      let b = +(time.toString().substr(9, 2));
+
 
       this.reservation.price = (b - a) * 20;
+
+    },
+    seatSelected(i, area, state) {
+      if (state !== 0) {
+        return;
+      } else {
+        this.selectedArea = this.selectedArea === "A" ? "大廳電競A" : "大廳一般B";
+        this.selectedSeat = i;
+      }
+      this.selected='';
+      console.log(i, area, state);
+
+      this.reservation.seat.push();
     }
   },
   computed: {}
