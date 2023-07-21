@@ -1,0 +1,70 @@
+.title {
+    max-width: 1200px;
+    width: 100%;
+    border-bottom: 2px rgb(252, 0, 0) solid;
+    padding-bottom: 2.5%;
+
+
+    .title_infor {
+        display: flex;
+        max-width: 1140px;
+        width: 100%;
+        margin-bottom: 6.5%;
+
+        .title_category {
+            background-color: #FF5E1E;
+            font-size: 1.87rem;
+            width: 9%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .title_date {
+            font-size: 1.87rem;
+            margin-left: 3%;
+        }
+
+    }
+
+    .title_text {
+        font-size: 2.5rem;
+
+    }
+}
+
+.card {
+    max-width: 1140px;
+    max-height: 500px;
+    width: 100%;
+    padding: 40px 29px;
+
+    .text {
+        font-size: 1.5rem;
+        max-width: 1001.81px;
+        padding: 80px;
+        background-color: bisque;
+        border-radius: 10px;
+        margin-top: 40px;
+
+        .text_bottom {
+            font-size: 1rem;
+            vertical-align: bottom;
+            margin-top: 5.2%;
+        }
+    }
+
+    .options {
+        font-size: 1.875rem;
+        display: flex;
+        justify-content: space-between;
+
+        .a {
+            color: rgb(255, 190, 190);
+            text-decoration: none;
+            margin-top: 3%;
+        }
+    }
+}

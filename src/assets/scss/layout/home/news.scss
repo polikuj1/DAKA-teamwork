@@ -2,7 +2,7 @@
     max-width: 1036px;
 
     .infor {
-        background-color: rgb(255, 223, 223);
+        background-color: white;
         width: 100%;
         display: flex;
         flex-direction: row;
@@ -25,6 +25,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        .category.active {
+            background-color: orange;
+            width: 10%;
+
         }
 
         .date {
