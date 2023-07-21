@@ -1,11 +1,27 @@
 <template>
-  <MbForm>
+  <MbForm @emit-back="triggerParent">
     <template v-slot:mb_form_title>
-      <h3>信用卡綁定</h3>
+      <h3>{{ title }}</h3>
     </template>
     <template v-slot:mb_content>
-      <div class="credit">
+      <div class="no_credit" v-show="!openEdit">
         <span>無可用信用卡</span>
+        <a @click="openEdit = true">新增信用卡</a>
+      </div>
+      <div class="add_credit" v-show="openEdit">
+        <form action="">
+          <label for="credit_num">輸入卡號</label>
+          <input type="text" id="credit_num" maxlength="16" v-model.number="credit_data.number">
+          <label for="credit_expire">輸入卡片有效期限</label>
+          <input type="month" id="credit_expire" v-model="credit_data.date">
+          <label for="security_num" >輸入安全碼</label>
+          <input type="text" id="security_num" maxlength="3" v-model.number="credit_data.security">
+          <div>
+            <input type="checkbox" id="default_card" v-model="credit_data.default">
+            <label for="default_card">是否將此信用卡設為預設卡片</label>
+          </div>
+          <button type="submit" @click.prevent="">確認送出</button>
+        </form>
       </div>
     </template>
   </MbForm>
@@ -19,8 +35,23 @@ export default {
   },
   data() {
     return {
-
+      title: '信用卡綁定',
+      credit_data: {
+        number: null,
+        date: '',
+        security: null,
+        default: false,
+      },
+      openEdit: false,
     }
+  },
+  methods: {
+    triggerParent() {
+      this.$emit('emit-title','');
+    }
+  },
+  created() {
+    this.$emit('emit-title',this.title);
   },
 }
 </script>
