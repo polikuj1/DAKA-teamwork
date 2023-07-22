@@ -397,28 +397,40 @@ const seat_a = [
   ];
   const seat_d = [
     {
-      area: 'd', //d=包廂雙人區
+      area: 'D', //d=包廂雙人區
       no: '01',
       state:'0',
       index: '01'
     },
     {
-        area: 'd',
+        area: 'D',
         no: '02',
         state:'1',
         index: '02',
       },
       {
-        area: 'd',
+        area: 'D',
         no: '03',
         state:'2',
         index: '03',
       },
       {
-        area: 'd',
+        area: 'D',
         no: '04',
         state:'0',
         index: '04',
+      },
+      {
+        area: 'D',
+        no: '05',
+        state:'0',
+        index: '05',
+      },
+      {
+        area: 'd',
+        no: '06',
+        state:'2',
+        index: '06',
       },
   ];
   export { seat_a, seat_b, seat_c, seat_d};
