@@ -4,24 +4,27 @@
       <h3>{{ title }}</h3>
     </template>
     <template v-slot:mb_content>
-      <div class="no_credit" v-show="!openEdit">
+      <div class="no_credit">
         <span>無可用信用卡</span>
-        <a @click="openEdit = true">新增信用卡</a>
+        <a @click="this.$router.push('/member_center/member_add_credit')">新增信用卡</a>
       </div>
-      <div class="add_credit" v-show="openEdit">
-        <form action="">
-          <label for="credit_num">輸入卡號</label>
-          <input type="text" id="credit_num" maxlength="16" v-model.number="credit_data.number">
-          <label for="credit_expire">輸入卡片有效期限</label>
-          <input type="month" id="credit_expire" v-model="credit_data.date">
-          <label for="security_num" >輸入安全碼</label>
-          <input type="text" id="security_num" maxlength="3" v-model.number="credit_data.security">
-          <div>
-            <input type="checkbox" id="default_card" v-model="credit_data.default">
-            <label for="default_card">是否將此信用卡設為預設卡片</label>
+      <div class="have_credit">
+        <div class="credit_wrap" v-for="card in credit_card" :key="card.number">
+          <div class="credit_card" :class="card.publish_copy === 'VISA'? 'blue': 'red'">
+            <button><i class="fa-solid fa-x"></i></button>
+            <span>{{ card.publish_copy }}</span>
+            <span><i class="fa-solid fa-microchip"></i></span>
+            <span class="credit_number">{{ card.number }}</span>
+            <div class="credit_info">
+              <span>{{ card.date }}</span>
+              <span>cvv {{ card.cvv }}</span>
+            </div>
           </div>
-          <button type="submit" @click.prevent="">確認送出</button>
-        </form>
+          <label>
+            <input type="radio" name="default_card">
+            選擇此卡為預設卡片
+          </label>
+        </div>
       </div>
     </template>
   </MbForm>
@@ -35,14 +38,21 @@ export default {
   },
   data() {
     return {
-      title: '信用卡綁定',
-      credit_data: {
-        number: null,
-        date: '',
-        security: null,
-        default: false,
-      },
-      openEdit: false,
+      title: '付款方式',
+      credit_card: [
+        {
+          publish_copy: 'VISA',
+          number: 1234567812345678,
+          date: '06 / 27',
+          cvv: 124,
+        },
+        {
+          publish_copy: 'MasterCard',
+          number: 1234567812345678,
+          date: '06 / 27',
+          cvv: 124,
+        },
+      ],
     }
   },
   methods: {

@@ -68,6 +68,11 @@ const routes = [
         component: () => import('../components/member_center/BindCredit.vue')
       },
       {
+        path: 'member_add_credit',
+        name: 'member_add_credit',
+        component: () => import('../components/member_center/AddCredit.vue')
+      },
+      {
         path: 'member_value_record',
         name: 'member_value_record',
         component: () => import('../components/member_center/ValueRecord.vue')

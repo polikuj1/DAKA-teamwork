@@ -22,7 +22,7 @@ export default {
           title: '會員資料管理',
           list: ['個人資料編輯', '/member_center/member_edit'],
           list_one: ['線上儲值', '/member_center/member_add_value'],
-          list_two: ['信用卡綁定', '/member_center/member_bind_credit'],
+          list_two: ['付款方式', '/member_center/member_bind_credit'],
         },
         {
           title: '交易紀錄',
