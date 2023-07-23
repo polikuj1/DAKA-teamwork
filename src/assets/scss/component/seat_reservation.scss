@@ -25,6 +25,7 @@
             box-sizing: border-box;
             padding: 5px;
             border-radius: 5px;
+            width: fit-content;
         }
         button{
             border: none;
@@ -32,13 +33,14 @@
             box-sizing: border-box;
             padding: 5px;
             color: #97F0F0;
+            cursor: pointer;
         }
     }
 }
 
 
-
-@media screen and (max-width: 1023px) {
+//斷點如果設在1024，1042左右字會全部擠在一起
+@media screen and (max-width: 1041px) {
     .reservation_container {
         margin-top: 40px;
         margin-bottom: 40px;
@@ -58,7 +60,7 @@
     }
 }
 
-@include md{
+@media screen and (min-width: 1042px){
     .reservation_container {
         margin-top: 60px;
         margin-bottom: 60px;
@@ -75,8 +77,12 @@
     .seat_reservation_status{
         flex-direction: column;
         justify-content: space-between;
+        .reservation_status{
+            margin-left: auto;
+        }
     }
 }
+
 @include lg{
     .reservation_container {
         font-size: 18px;    

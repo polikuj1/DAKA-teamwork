@@ -110,7 +110,7 @@
         },
         //狀態不同背景顏色不同
         statusStyle(status){
-            if(status==='已完成'){
+            if(status==='已完成'|| status === '已取消'){
                 return{
                     backgroundColor:'#F6CE6E',
                     opacity: '0.5',
