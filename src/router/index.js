@@ -11,7 +11,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutusView.vue'),
-    
+  },
+  {
+    path: '/location',
+    name: 'location',
+    component: () => import('../views/LocationView.vue'),
   },
   {
     path: '/news',

@@ -38,7 +38,7 @@ export default {
         {
           title: '店鋪情報',
           class: '',
-          site: '/about',
+          site: '/location',
         },
         {
           title: '最新消息',
@@ -51,9 +51,9 @@ export default {
           site: '/food',
         },
         {
-          title: '漫畫租借',
+          title: '漫畫預約',
           class: 'fa-solid fa-book-open-reader',
-          site: '/comic_demo',
+          site: '/comic_search',
         },
         {
           title: '訂位預約',

@@ -17,7 +17,7 @@
         <ul>
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
-        <button v-for="btn in btns" :key="btn.title"><i :class="btn.class"></i> {{ btn.title }}</button>
+        <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{ btn.title }}</button>
       </nav>
     </aside>
     <div class="banner">
@@ -42,7 +42,7 @@ export default {
         },
         {
           title: '店鋪情報',
-          site: '/about'
+          site: '/location'
         },
         {
           title: '最新消息',
@@ -57,14 +57,17 @@ export default {
         {
           title: '登入 | 註冊',
           class: '',
+          site: '',
         },
         {
           title: '訂位預約',
           class: 'fa-solid fa-calendar-days',
+          site: '/reservation',
         },
         {
           title: '漫畫租借',
           class: 'fa-solid fa-book-open-reader',
+          site: '/comic_search',
         },
       ],
     }
