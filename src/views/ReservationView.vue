@@ -331,8 +331,7 @@ export default {
       if (state !== 0) {
         return;
       } else {
-        this.selectedArea =
-          this.selectedArea === "A" ? "大廳電競A" : "大廳一般B";
+        this.selectedArea = this.selectedArea === "A" ? "大廳電競A" : "大廳一般B";
         this.selectedSeat = i;
       }
       this.selected = "";
