@@ -2,8 +2,11 @@
   width: 100%;
   background-color: $main_bg;
   padding: 40px 60px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 999;
+  transition: .5s all;
   .logo {
     display: flex;
     justify-content: center;
@@ -29,6 +32,9 @@
   nav {
     display: none;
   }
+}
+.disappear {
+  opacity: 0;
 }
 
 @include lg() {
