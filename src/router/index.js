@@ -78,6 +78,11 @@ const routes = [
         name: 'member_edit',
         component: () => import('../components/member_center/Edit.vue')
       },
+      {
+        path: 'member_seat_reservation',
+        name: 'member_seat_reservation',
+        component: () => import('../components/member_center/SeatReservation.vue')
+      },
     ],
   },
   {
