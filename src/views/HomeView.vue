@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <Hero />
+    <Hero @emit-go="goDown"/>
     <Banner/>
     <Services></Services>
     <Meals/>
@@ -25,7 +25,10 @@ export default {
     }
   },
   methods: {
-
+    goDown() {
+      console.log(window.scrollY);
+      window.scrollTo(0, 1000);
+    }
   },
   computed: {
 

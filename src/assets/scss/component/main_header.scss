@@ -7,6 +7,7 @@
   left: 0;
   z-index: 999;
   transition: .5s all;
+  opacity: 1 !important;
   .logo {
     display: flex;
     justify-content: center;
@@ -33,15 +34,13 @@
     display: none;
   }
 }
-.disappear {
-  opacity: 0;
-}
 
 @include lg() {
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 1 !important;
     .logo {
       a {
         width: 290px;
@@ -104,4 +103,12 @@
       }
     }
   }
+}
+
+.disappear {
+  opacity: 0 !important;
+}
+
+.show_now {
+  opacity: 1 !important;
 }

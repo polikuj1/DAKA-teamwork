@@ -26,8 +26,8 @@ export default {
   props: ['path','show'],
   name: 'MainHeader',
   watch: {
+    // 處理header只有在首頁時需要先消失
     path() {
-      console.log(this.path);
       if(this.path === '/') {
         this.style = 'disappear';
       } else {
