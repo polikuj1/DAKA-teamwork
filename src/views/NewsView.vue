@@ -77,7 +77,7 @@ export default {
         },
         {
           category:'ACTIVITY',
-          img: require('@/assets/images/news/annual_01.png'),
+          img: require('@/assets/images/news/annual_04.png'),
           date:'2022-04-01',
           content:'🎉 超值年度回饋～打咖獻給忠實顧客的感謝之心！'
         }, {
