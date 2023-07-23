@@ -31,9 +31,6 @@ export default {
   components: {
     Services, News, Meals, Banner, Hero,
   },
-  mounted() {
-    
-  },
 }
 </script>
 

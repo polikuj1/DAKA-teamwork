@@ -1,5 +1,5 @@
 <template>
-  <MainHeader></MainHeader>
+  <MainHeader :path="path" :show="show"></MainHeader>
   <router-view/>
   <Footer></Footer>
   <MainMenu />
@@ -17,11 +17,29 @@ export default {
   },
   data() {
     return {
-
+      path: '',
+      show: false,
+    }
+  },
+  watch: {
+    '$route.path': function(newPath, oldPath) {
+      // console.log('新的',newPath);
+      this.path = newPath;
+      // console.log(this.path);
     }
   },
   mounted() {
-    console.log(this.$router.params);
+    this.path = this.$route.path;
+  },
+  created() {
+    document.addEventListener('scroll', () => {
+      if(window.scrollY > 1000 && this.path === '/') {
+        console.log(123);
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+    })
   }
 }
 </script>
