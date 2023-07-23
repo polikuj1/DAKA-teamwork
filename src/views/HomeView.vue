@@ -33,9 +33,6 @@ export default {
   components: {
     Services, News, Meals, Banner, Hero, Socialmedia,
   },
-  mounted() {
-    
-  },
 }
 </script>
 

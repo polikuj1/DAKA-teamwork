@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" ref="header" :class="style">
     <h1 class="logo">
       <router-link to="/"><img :src="logoImg" alt="DAKA網咖"></router-link>
       <span>打</span>
@@ -23,9 +23,28 @@
 <script>
 import login from '@/components/LoginView.vue';
 export default {
+  props: ['path','show'],
   name: 'MainHeader',
+  watch: {
+    path() {
+      console.log(this.path);
+      if(this.path === '/') {
+        this.style = 'disappear';
+      } else {
+        this.style = '';
+      }
+    },
+    show() {
+      if(this.show) {
+        this.style = '';
+      } else {
+        this.style = 'disappear';
+      }
+    },
+  },
   data() {
     return {
+      style: '',
       logoImg: require('@/assets/images/logo.png'),
       header: [
         {
