@@ -44,22 +44,22 @@ export default {
             meals: [
                 {
                     id: 'meal01',
-                    imgSrc: require('@/assets/images/home/onigiri.png'),
+                    imgSrc: require('@/assets/images/food/onigiri.png'),
                     alt: 'onigiri'
                 },
                 {
                     id: 'meal02',
-                    imgSrc: require('@/assets/images/home/ramen.png'),
+                    imgSrc: require('@/assets/images/food/ramen.png'),
                     alt: 'ramen'
                 },
                 {
                     id: 'meal03',
-                    imgSrc: require('@/assets/images/home/fried_chicken.png'),
+                    imgSrc: require('@/assets/images/food/fried_chicken.png'),
                     alt: 'fried_chicken'
                 },
                 {
                     id: 'meal04',
-                    imgSrc: require('@/assets/images/home/takoyaki.png'),
+                    imgSrc: require('@/assets/images/food/takoyaki.png'),
                     alt: 'takoyaki'
                 },
             ]

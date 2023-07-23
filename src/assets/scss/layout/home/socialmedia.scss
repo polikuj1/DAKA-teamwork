@@ -10,30 +10,42 @@
         padding-bottom: ($section_pd / 4);
     }
 
-    .post_slides {
-        iframe {
-            width: 30%;
-            height: 800px;
-        }
+
+    .carousel__track {
+        gap: 20px;
     }
 
-}
+    iframe {
+        width: 380px;
+        height: 650px;
+    }
 
-.carousel__slide
-.carousel__prev {
-    margin-left: -40px;
-}
+    .carousel__prev,
+    .carousel__next {
+        color: #fff;
+        transform: scale(2);
+    }
 
-.carousel__next {
-    margin-right: -40px;
-}
-
-@include sm() {
     .carousel__prev {
-        margin-left: 0;
+        margin-left: -40px !important;
     }
     
     .carousel__next {
-        margin-right: 0;
+        margin-right: -40px !important;
+    }
+    
+}
+
+@include screen_one(768) {
+
+    .social_media {
+        
+        .carousel__prev {
+            margin-left: 0;
+        }
+        
+        .carousel__next {
+            margin-right: 0;
+        }
     }
 }
