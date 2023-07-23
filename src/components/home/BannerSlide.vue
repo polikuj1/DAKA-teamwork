@@ -1,13 +1,15 @@
 <template>
-    <Carousel :autoplay="2000" :wrap-around="true">
-        <Slide v-for="slide in 10" :key="slide">
-            <div class="carousel__item">{{ slide }}</div>
-        </Slide>
-
-        <template #addons>
-            <Pagination />
-        </template>
-    </Carousel>
+    <section class="home_banner">
+        <Carousel :autoplay="2000" :wrap-around="true">
+            <Slide v-for="slide in 10" :key="slide">
+                <div class="carousel__item">{{ slide }}</div>
+            </Slide>
+    
+            <template #addons>
+                <Pagination />
+            </template>
+        </Carousel>
+    </section>
 </template>
 
 <script>
@@ -25,28 +27,3 @@ export default defineComponent({
     },
 })
 </script>
-
-<style>
-.carousel__item {
-    min-height: 200px;
-    height: 500px;
-    width: 100%;
-    background-color: var(--vc-clr-primary);
-    color: var(--vc-clr-white);
-    font-size: 20px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.carousel__slide {
-    padding: 10px;
-}
-
-.carousel__prev,
-.carousel__next {
-    box-sizing: content-box;
-    
-}
-</style>

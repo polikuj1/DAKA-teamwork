@@ -1,0 +1,42 @@
+.popmeals {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: ($section_pd / 2);
+
+    
+    .meal_intro {
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        padding-top: ($section_pd / 2);
+        position: relative;
+        
+
+        .meal_pic{
+            position: absolute;
+            top: -20%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+
+            img {
+                vertical-align: bottom;
+            }
+        }
+
+        .meal_text {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 80%;
+            height: fit-content;
+            padding: 60px 40px;
+            box-sizing: border-box;
+            text-align: center;
+            @include bgSvg(decoration/circle02);
+            // margin: 0 20px;
+        }
+    }
+}
