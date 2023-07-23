@@ -217,15 +217,13 @@
   <div></div>
 </template>
 
-<style>
-@import "@/assets/scss/page/reservation.scss";
-</style>
+
 
 <script>
-import 'view-ui-plus/dist/styles/viewuiplus.css';
+
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
-import '@/assets/scss/page/reservation.scss';
+
 import { seat_a, seat_b,seat_c,seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
@@ -304,3 +302,6 @@ export default {
 
 
 </script>
+<style>
+@import "@/assets/scss/page/reservation.scss";
+</style>
