@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <Hero />
     <Banner/>
     <Services></Services>
     <Meals/>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import Hero from '@/components/home/Hero.vue';
 import Banner from '@/components/home/BannerSlide.vue';
 import Services from '@/components/home/Services.vue';
 import Meals from '@/components/home/Meal.vue';
@@ -27,10 +29,14 @@ export default {
 
   },
   components: {
-    Services, News, Meals, Banner,
+    Services, News, Meals, Banner, Hero,
   },
   mounted() {
     
   },
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

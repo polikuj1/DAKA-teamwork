@@ -20,10 +20,13 @@ export default {
 
     }
   },
+  mounted() {
+    console.log(this.$router.params);
+  }
 }
 </script>
 
 
 <style lang="scss">
-@import "@/assets/scss/_style.scss";
+
 </style>

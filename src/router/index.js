@@ -90,6 +90,11 @@ const routes = [
     name: 'about_member',
     component: () => import('../views/AboutMember.vue')
   },
+  {
+    path: '/comic_cart',
+    name: 'comic_cart',
+    component: () => import('../views/ComicCart.vue')
+  },
   // {
   //   path: '/login',
   //   name: 'login',
