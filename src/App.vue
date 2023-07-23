@@ -28,6 +28,7 @@ export default {
       if(this.path === '/' && this.windowWidth < 1200) {
         this.show = true;
       }
+      window.scrollTo(0, 0);
     }
   },
   methods: {

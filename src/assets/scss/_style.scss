@@ -17,6 +17,8 @@
 @import 'layout/home/socialmedia.scss';
 @import 'layout/member/member_nav.scss';
 @import 'layout/member/bind_credit.scss';
+@import 'layout/member/add_credit.scss';
+@import 'layout/food_intro/popmeals.scss';
 @import 'page/comic.scss';
 @import 'page/comicdetail.scss';
 @import 'page/login.scss';
@@ -37,7 +39,7 @@
 
 // comiccart
 @import 'page/comiccart.scss';
-@import '@/assets/scss/page/reservation.scss';
+@import 'page/reservation.scss';
 
 *{
   margin: 0;
