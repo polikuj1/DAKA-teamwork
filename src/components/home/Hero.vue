@@ -1,14 +1,23 @@
 <template>
   <section class="hero_section">
+    <div class="circle">
+      <img src="@/assets/images/home/circle05.svg" alt="裝飾">
+    </div>
+    <div class="circle">
+      <img src="@/assets/images/home/circle06.svg" alt="裝飾">
+    </div>
     <aside>
+      <a class="scroll" @click.prevent="this.$emit('emit-go')">
+        <img src="@/assets/images/home/scroll.svg" alt="滑鼠下滑">
+      </a>
       <div class="pic">
         <img src="@/assets/images/footerLogo.svg" alt="">
       </div>
       <nav>
         <ul>
-          <li v-for="item in nav" :key="item.title"><router-link :to="item.site">{{ item.title }}</router-link></li>
+          <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
-        <button v-for="btn in btns" :key="btn.title"><i :class="btn.class"></i>{{ btn.title }}</button>
+        <button v-for="btn in btns" :key="btn.title"><i :class="btn.class"></i> {{ btn.title }}</button>
       </nav>
     </aside>
     <div class="banner">
@@ -60,5 +69,10 @@ export default {
       ],
     }
   },
+  methods: {
+    goBottom() {
+      this.$emit('emit-go');
+    }
+  }
 }
 </script>

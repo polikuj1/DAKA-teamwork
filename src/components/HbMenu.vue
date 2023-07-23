@@ -63,7 +63,7 @@ export default {
         {
           title: '會員中心',
           class: 'fa-solid fa-user',
-          site: '/member_center',
+          site: '/member_center/member_nav',
         },
         {
           title: '登入註冊',

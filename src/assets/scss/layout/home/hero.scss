@@ -3,9 +3,17 @@
   padding: 0px 50px 50px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
   aside {
     width: 25%;
     text-align: center;
+    position: relative;
+    .scroll {
+      position: absolute;
+      bottom: 80px;
+      right: -30px;
+    }
     .pic {
       margin: 0 auto 60px;
       width: 300px;
@@ -29,6 +37,7 @@
       background-color: $btn_bg_color;
       color: $main_txt_color;
       display: block;
+      border: none;
     }
   }
   .banner {
@@ -41,10 +50,23 @@
       }
     }
   }
+  .circle {
+    position: absolute;
+    z-index: -1;
+    &:nth-child(1) {
+      left: 0;
+      bottom: -400px;
+    }
+    &:nth-child(2) {
+      right: -150px;
+      top: -200px;
+    }
+  }
 }
 
 @include screen_one(1199) {
   .hero_section {
+    padding: 200px 50px 50px;
     aside {
       display: none;
     }
