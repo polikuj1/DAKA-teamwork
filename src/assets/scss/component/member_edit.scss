@@ -1,3 +1,49 @@
-.credit{
-    background-color: bisque;
+.edit_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    gap: 65px;
+    margin-top: 70px;
+    font-size: 1.875rem;
+    color: $main-bg;
+    background-color: rgb(243, 206, 104);
+    .edit_item{
+        display: flex;
+        justify-content: space-between;
+        input{
+            background-color: $main-bg;
+            border-radius: 10px;
+        }
+        input::placeholder {
+            font-size: 1.5rem;
+            color: #7B7979;
+            text-indent: 0.5em;
+        }
+    }
+    .confirm_password{
+        text-align: end;
+        input{
+            background-color: $main-bg;
+            border-radius: 10px;
+        }
+        input::placeholder {
+            font-size: 1.5rem;
+            color: #7B7979;
+            text-indent: 0.5em;
+        }
+    }
+}
+.sumbit_edit{
+    color: $main_txt_color;
+    background-color: $btn_bg_color;
+    border-radius: 100px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 200px;
+    padding: 10px 40px;
+    font-size: 1.5rem;
 }
