@@ -1,0 +1,174 @@
+.order_wrap {
+  margin: 10px 40px;
+  > span {
+    display: block;
+    padding: 20px 0;
+    font-size: 1.5rem;
+  }
+  .order_detail {
+    ul.box {
+      margin-bottom: 20px;
+      border: 1px solid $main_bg;
+      border-radius: 10px;
+      li {
+        &:first-child {
+          span {
+            &:first-child {
+              border-radius: 10px 0 0 0;
+            }
+          }
+        }
+        &:last-child {
+          span {
+            &:first-child {
+              border-radius: 0 0 0 10px;
+            }
+          }
+        }
+        &:nth-of-type(2), &:nth-of-type(3) {
+          span {
+            &:first-child {
+              border-top: 2px solid $main_txt_color;
+            }
+            &:last-child {
+              border-top: 2px solid $main_bg;
+            }
+          }
+        }
+      }
+      span {
+        font-size: 1rem;
+        display: inline-block;
+        padding: 15px 10px;
+        &:first-child {
+          width: 50%;
+          background-color: $main_bg;
+          color: $main_txt_color;
+        }
+        &:last-child {
+          width: 50%;
+          color: $main_bg;
+        }
+      }
+    }
+  }
+  .book_detail {
+    padding: 20px 0;
+    nav {
+      > input {
+        display: none;
+        &:checked {
+          ~ table {
+            display: table;
+          }
+          + .top_nav {
+            label {
+              border-bottom: 0px;
+              border-radius: 10px 10px 0 0;
+            }
+          }
+        }
+      }
+      .top_nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        label {
+          color: $main_bg;
+          padding: 10px;
+          border: 1px solid $main_bg;
+          border-radius: 10px;
+        }
+        span {
+          cursor: pointer;
+          color: #B4B4B4;
+        }
+      }
+      table {
+        display: none;
+        padding: 10px;
+        width: 100%;
+        border: 1px solid $main_bg;
+        border-radius: 0 10px 10px 10px;
+        tr, td {
+          border: 1px solid #aaa;
+        }
+      }
+      thead {
+        width: 100%;
+        background-color: $main_bg;
+        tr {
+          width: 100%;
+          color: $main_txt_color;
+        }
+        th {
+          width: 50%;
+          padding: 8px 0;
+        }
+      }
+      tbody {
+        tr {
+          text-align: center;
+        }
+        td {
+          padding: 8px 0;
+        }
+      }
+    }
+  }
+}
+
+@include lg() {
+  .order_wrap {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #797878;
+    .order_detail {
+      margin-top: 20px;
+      border: 1px solid $main_bg;
+      ul.box {
+        width: 100%;
+        display: flex;
+        margin-bottom: 0px;
+        border: 0px;
+        li {
+          width: 33.33333%;
+          &:first-child {
+            span {
+              &:first-child {
+                border-radius: 0px 0 0 0;
+              }
+            }
+          }
+          &:last-child {
+            span {
+              &:first-child {
+                border-radius: 0 0 0 0px;
+              }
+            }
+          }
+        }
+        span {
+          &:last-child {
+            border-top: 2px solid $main_bg;
+          }
+        }
+      }
+    }
+    .book_detail {
+      nav {
+        .top_nav {
+          label {
+            border-bottom: 0px;
+            border-radius: 10px 10px 0 0;
+          }
+        }
+        table {
+          display: table;
+        }
+      }
+    }
+  }
+}

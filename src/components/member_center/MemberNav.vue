@@ -28,7 +28,7 @@ export default {
           title: '交易紀錄',
           list: ['儲值金交易紀錄', '/member_center/member_value_record'],
           list_one: ['座位預約紀錄', '/member_center/member_seat_reservation'],
-          list_two: ['書籍租借紀錄', '/member_center'],
+          list_two: ['書籍租借紀錄', '/member_center/member_book_reservation'],
         },
         {
           title: '優惠序號管理',

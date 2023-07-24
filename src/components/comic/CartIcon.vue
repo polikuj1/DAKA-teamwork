@@ -18,6 +18,7 @@
         </div>
       </div>
       <div class="icon" @click="infoOpen = true">
+        <span class="reservation_num" v-show="bookData.length !== 0">{{ bookData.length }}</span>
         <span><img src="@/assets/images/comic/book.svg" alt="bool"></span>
         <img src="@/assets/images/home/circle04.png" alt="circle">
       </div>
