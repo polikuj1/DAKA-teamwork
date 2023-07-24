@@ -92,6 +92,11 @@ const routes = [
         name: 'member_seat_reservation',
         component: () => import('../components/member_center/SeatReservation.vue')
       },
+      {
+        path: 'member_book_reservation',
+        name: 'member_book_reservation',
+        component: () => import('../components/member_center/BookRecord.vue')
+      },
     ],
   },
   {

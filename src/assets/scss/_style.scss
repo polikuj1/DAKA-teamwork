@@ -18,6 +18,7 @@
 @import 'layout/member/member_nav.scss';
 @import 'layout/member/bind_credit.scss';
 @import 'layout/member/add_credit.scss';
+@import 'layout/member/book_record.scss';
 @import 'layout/food_intro/popmeals.scss';
 @import 'page/comic.scss';
 @import 'page/comicdetail.scss';
@@ -51,7 +52,7 @@
 }
 
 body{
-  background-color:#263238;
+  background-color:$main_bg;
 }
 
 h2 {

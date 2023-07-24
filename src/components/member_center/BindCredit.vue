@@ -13,7 +13,7 @@
           <div class="credit_card" :class="card.publish_copy === 'VISA'? 'blue': 'red'">
             <button><i class="fa-solid fa-x"></i></button>
             <span>{{ card.publish_copy }}</span>
-            <span><i class="fa-solid fa-microchip"></i></span>
+            <span><img src="@/assets/images/member/creditcard.svg" alt=""></span>
             <span class="credit_number">{{ card.number }}</span>
             <div class="credit_info">
               <span>{{ card.date }}</span>

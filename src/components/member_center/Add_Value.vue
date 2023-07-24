@@ -1,7 +1,7 @@
 <template>
-  <MbForm>
+  <MbForm @emit-back="triggerParent">
     <template v-slot:mb_form_title>
-      <h3>線上儲值</h3>
+      <h3>{{ title }}</h3>
     </template>
     <template v-slot:mb_content>
       <div id="member_charge">
@@ -64,6 +64,7 @@ export default {
   },
   data() {
     return {
+      title: '線上儲值',
       selectedAmount: '請選擇',
       amounts: ['100', '500', '1000', '5000'], 
       selectedCreditCard: '請選擇', // 初始化選擇的信用卡為空
@@ -101,15 +102,16 @@ export default {
       const regex = /^[0-9]*$/; // 正則表達式，只允許數字字符
       this.showCardNumberWarning = !regex.test(this.cardNumber);
     },
-
     checkVerificationCodeInput() {
       const regex = /^[0-9]*$/; // 正則表達式，只允許數字字符
       this.showVerificationCodeWarning = !regex.test(this.verificationCode);
+    },
+    triggerParent() {
+      this.$emit('emit-title','');
     }
-
   },
-  computed: {
-
+  created() {
+    this.$emit('emit-title',this.title);
   },
 }
 </script>
