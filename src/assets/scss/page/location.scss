@@ -1,70 +1,151 @@
 .location_container{
+    width: 70%;
     max-width: 1200px;
-    width: 50%;
-    margin: auto;
-    font-size: 30px;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    margin: auto;
+    margin-bottom: 60px;
+    gap: 40px;
     .location_collapse{
-        box-sizing: border-box;
-        padding: 30px;
         border-radius: 10px;
     }
-}
-.panel_content{
-    display: inline;
-    .fa-location-dot{
-        color: #ED6F68;
-    }
-    .location{
-        margin-right: 100px;
-    }
-}
-.location_content{
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 20px 40px;
-    margin-bottom: 20px;
-    .location_serve{
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        margin: 20px 0 20px 20px;
-        .fa-computer{
-            font-size: 25px;
+    .panel_content{
+        display: inline;
+        font-size: 1.4rem;
+        .fa-location-dot{
+            color: #ED6F68;
+        }
+        .address{
+            display: none;
         }
     }
-    .location_map{
-        width: 70%;
-    }
+}
+.location_address a{
+    color: $main-bg;
+}
+.location_content, .for_price{
+    display: none;
 }
 .price_container{
     display: flex;
     flex-direction: column;
-    margin-top: 10px;
+    gap: 30px;
+    margin-top: 20px;
 }
 .price_content, .price_list{
     display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-    padding: 40px 20px 20px 20px;
+    flex-direction: column;
+    gap: 30px;
     .normal_computer, .gaming_computer,.box_space, .comic_price{
         border: 1px solid $main-bg;
         box-sizing: border-box;
         padding: 10px 30px;
-        font-size: 24px;
         .price_title{
-            text-align: center;
-            margin-top: -30px;
             background-color: #fff;
             width: fit-content;
-            font-size: 20px;
-        }
-        .comic_notice{
-            font-size: 12px;
-            margin-top: 30px;
+            margin-top: -20px;
         }
     }
+}
+@include sm{
+    .location_container{
+        gap: 80px;
+        .location_collapse{
+            padding: 10px;
+        }
+        .panel_content{
+            font-size: 1.5rem;
+        }
+        .panel_content{
+            display: inline;
+            .location{
+                margin-right: 20%;
+            }
+            .address{
+                display: inline;
+            }
+        }
+    }
+    .location_address{
+        display: none;
+    }
+    .location_content{
+        display: flex;
+        justify-content:space-between;
+        .location_serve{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+            padding: 20px 30px;
+        }
+        .location_map{
+            width: 70%;
+        }
+    }
+    .for_price{
+        display: block;
+        margin-top: 20px;
+    }
+}
+@include md{
+    .location_container{
+        width: 65%;
+        font-size: 1rem;
+        .location_collapse{
+            padding: 20px;
+        }
+        .panel_content{
+            font-size: 1.25rem;
+        }
+    }
+    .location_content{
+        .location_serve{
+            padding: 20px 40px;
+        }
+    }
+    .price_content, .price_list{
+        flex-direction: row;
+        .normal_computer, .gaming_computer,.box_space, .comic_price{
+            width: 60%;
+            .comic_notice{
+                font-size: 14px;
+            }
+        }
+    } 
+}
+@include lg{
+    .location_container{
+        font-size: 1.25rem;
+        .location_collapse{
+            padding: 20px;
+        }
+        .panel_content{
+            font-size: 1.5rem;
+        }
+    }
+    .location_content{
+        .location_serve{
+            padding: 20px 40px;
+        }
+    }
+    .price_container{
+        gap: 40px;
+        padding-top: 30px;
+        
+    }
+    .price_content, .price_list{
+        flex-direction: row;
+        .normal_computer, .gaming_computer,.box_space, .comic_price{
+            width: 70%;
+            padding: 10px 40px;
+            .price_title{
+                margin-top: -30px;
+            }
+            .comic_notice{
+                font-size: 14px;
+            }
+        }
+    }
+    
 }
