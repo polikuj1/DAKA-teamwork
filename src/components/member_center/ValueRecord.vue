@@ -1,7 +1,7 @@
 <template>
-    <MbForm>
+    <MbForm @emit-back="triggerParent">
       <template v-slot:mb_form_title>
-        <h3>儲值金交易紀錄</h3>
+        <h3>{{ title }}</h3>
       </template>
       <template v-slot:mb_content>
         <div class="value_record" v-for="record in transactionRecords" :key="record.transactionId">
@@ -58,12 +58,19 @@
         },
         data() {
             return {
-            transactionRecords: [],
+                title: '儲值金交易紀錄',
+                transactionRecords: [],
             };
+        },
+        methods: {
+            triggerParent() {
+                this.$emit('emit-title','');
+            }
         },
         created() {
             // 將假資料載入交易紀錄
             this.transactionRecords = valueRecord;
+            this.$emit('emit-title',this.title);
         },
     };
   </script>

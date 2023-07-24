@@ -1,7 +1,7 @@
 <template>
-    <MbForm>
+    <MbForm @emit-back="triggerParent">
       <template v-slot:mb_form_title>
-        <h3>座位預約紀錄</h3>
+        <h3>{{ title }}</h3>
       </template>
       <template v-slot:mb_content>
         <div class="reservation_container" v-for="reservation in reservations" :key="reservation.id">
@@ -50,6 +50,7 @@
     },
     data() {
         return {
+            title: '座位預約紀錄',
             reservations: [
                 {
                 id: 1,
@@ -121,12 +122,16 @@
                     opacity: '1',
                 };
             }
-        }
+        },
+        triggerParent() {
+            this.$emit('emit-title','');
+        },
   },
-    
-
     computed: {
   
     },
+    created() {
+        this.$emit('emit-title',this.title);
+    }
   }
   </script>

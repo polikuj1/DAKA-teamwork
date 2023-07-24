@@ -32,7 +32,7 @@ export default {
         },
         {
           title: '優惠序號管理',
-          list: ['優惠序號清單', '/member_center/member_coupon'],
+          list: ['優惠券', '/member_center/member_coupon'],
           list_one: ['', ''],
           list_two: ['', ''],
         },
