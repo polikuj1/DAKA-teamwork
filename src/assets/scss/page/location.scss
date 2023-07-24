@@ -1,0 +1,70 @@
+.location_container{
+    max-width: 1200px;
+    width: 50%;
+    margin: auto;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    .location_collapse{
+        box-sizing: border-box;
+        padding: 30px;
+        border-radius: 10px;
+    }
+}
+.panel_content{
+    display: inline;
+    .fa-location-dot{
+        color: #ED6F68;
+    }
+    .location{
+        margin-right: 100px;
+    }
+}
+.location_content{
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 20px 40px;
+    margin-bottom: 20px;
+    .location_serve{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin: 20px 0 20px 20px;
+        .fa-computer{
+            font-size: 25px;
+        }
+    }
+    .location_map{
+        width: 70%;
+    }
+}
+.price_container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.price_content, .price_list{
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    padding: 40px 20px 20px 20px;
+    .normal_computer, .gaming_computer,.box_space, .comic_price{
+        border: 1px solid $main-bg;
+        box-sizing: border-box;
+        padding: 10px 30px;
+        font-size: 24px;
+        .price_title{
+            text-align: center;
+            margin-top: -30px;
+            background-color: #fff;
+            width: fit-content;
+            font-size: 20px;
+        }
+        .comic_notice{
+            font-size: 12px;
+            margin-top: 30px;
+        }
+    }
+}
