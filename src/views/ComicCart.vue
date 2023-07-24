@@ -65,11 +65,12 @@
       </div>
       <div class="cart_m_rule_title">
         <div class="cart_s_text">
-          <p>（一）一本書籍借期三日，每多借一本則借期延後一日。</p>
-          <p>（二）書籍借期皆無法續借，到期時需重新預約租借。</p>
-          <p>（三）預約書籍其保留時間為三日，超過三日還未到店取書時，系統會自動扣除該筆預約金額。</p>
-          <p>（四）書籍借閱未於期限內歸還者：每冊逾期 1 日罰款 1 元，依此類推。</p>
-          <p>（五）每個會員帳號最多只能借五本書</p>
+          <p>一本書籍借期三日，每多借一本則借期延後一日。</p>
+          <p>書籍借期皆無法續借，到期時需重新預約租借。</p>
+          <p>預約書籍其保留時間為三日。</p>
+          <p>超過三日還未到店取書者，系統會自動扣除該預約金。</p>
+          <p>逾期歸還者：每冊逾期 1 日罰款 1 元，依此類推。</p>
+          <p>每個會員帳號最多只能借五本書。</p>
         </div>
       </div>
     </div>
@@ -93,7 +94,7 @@ export default {
       shoppingCartData: [
         {
           id: "first",
-          imgSrc: "../assets/images/comic/jyujyutsu02.png",
+          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 01",
           name: "作者：芥見下々",
           price: 10,
@@ -101,7 +102,7 @@ export default {
         },
         {
           id: "second",
-          imgSrc: "../assets/images/comic/jyujyutsu02.png",
+          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 02",
           name: "作者：芥見下々",
           price: 10,
@@ -109,7 +110,7 @@ export default {
         },
         {
           id: "third",
-          imgSrc: "../assets/images/comic/jyujyutsu03.png",
+          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 03",
           name: "作者：芥見下々",
           price: 10,
@@ -117,7 +118,7 @@ export default {
         },
         {
           id: "fourth",
-          imgSrc: "../assets/images/comic/jyujyutsu02.png",
+          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 04",
           name: "作者：芥見下々",
           price: 10,
@@ -125,7 +126,7 @@ export default {
         },
         {
           id: "fifth",
-          imgSrc: "../assets/images/comic/jyujyutsu03.png",
+          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 05",
           name: "作者：芥見下々",
           price: 10,
