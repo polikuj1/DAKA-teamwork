@@ -1,174 +1,180 @@
-.cart {
+.comiclist_cart {
   @include container;
 
-  // 文字大小
-  .cart_l_text {
-    font-size: 1.875rem;
-    font-weight: 700;
-  }
-
-  .cart_m_text {
-    font-size: 1.5rem;
-    font-weight: 400;
-    line-height: 150%;
-    /* 2.25rem */
-    margin-bottom: 2%;
-  }
-
-  .cart_products {
-    width: 62.5%;
-    /* 1200px / 1920px = 0.625 = 62.5% */
-    margin: 0rem auto 3%;
+  .comiclist_content {
+    width: 650px;
+    margin: 0 auto 50px;
     background-color: $main_txt_color;
     border-radius: 0.625rem;
+    padding: 1rem;
+    // 上中下的白色區域
 
-    .cart_reserve_title,
-    .cart_count_title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.5rem 3.75rem;
-      line-height: 150%;
-      /* 2.25rem */
-      margin-top: 1%;
-
-      .cart_reserve_title .cart_m_text:nth-child(2) {
-        margin-left: 62%;
-      }
-
-      .cart_reserve_title .cart_m_text:nth-child(3) {
-        margin-right: 10%;
-      }
+    .cart_l_text {
+      font-size: 1.875rem;
+      font-weight: 700;
     }
-
-    /* 書本照片 */
-    .cart_product_pic {
-      width: 8.33331rem;
-      height: 12.5rem;
-      margin-left: 3.6rem;
-    }
-
-    .cart_product_pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* 書本名稱 */
-    .cart_product_name {
-      display: block;
-      width: 25rem;
-      margin-left: 2%;
-    }
-
-    .cart_product_name .cart_m_text {
-      margin-left: 0rem;
-    }
-
-    /* 書本數量 */
-    .cart_product_count,
-    .cart_product_cash {
-      display: flex;
-      margin-left: 5%;
-    }
-
-    .cart_product_cash .cart_m_text {
-      width: 30%;
-      align-items: center;
-      margin-left: -1%;
-    }
-
-    .cart_rule_title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 2% 3.75rem;
-
-      .cart_s_text {
-        margin: -3% -.5% 1%;
-        font-size: 1.25rem;
-        font-weight: 400;
-        line-height: 150%;
-        /* 2.25rem */
-      }
-    }
-
-    /* 刪除鈕 */
-    .cart_product_delete {
-      position: relative;
-      cursor: pointer;
-      width: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    // 30
+    .cart_m_text {
       font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+    // 24
+    .cart_s_text {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 150%;
+    }
+    //20
+
+    .cart_l_reserve_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      border-bottom: 1px solid #263238;
     }
 
-    .cart_count_title .cart_m_text:nth-child(2) {
-      margin-left: 5%;
+    .cart_m_reserve_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      margin-top: 10px;
+      .cart_m_text:nth-child(1) {
+        margin-left: 0px;
+      }
+      .cart_m_text:nth-child(2) {
+        margin-left: 350px;
+      }
+      .cart_m_text:nth-child(3) {
+        margin-right: 100px;
+      }
     }
 
-    .cart_count_title .cart_m_text:nth-child(3) {
-      margin-left: 4%;
+
+    .cart_book_content {
+      .cart_book {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+
+        .cart_book_pic {
+          width: 8.33331rem;
+          height: 12.5rem;
+          margin-right: 1.6rem;
+          flex-shrink: 0;
+          .img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .cart_book_name {
+          display: block;
+          flex-grow: 1;
+        }
+
+        .cart_book_count {
+          display: flex;
+          align-items: center;
+          margin-left: 5%;
+        }
+
+        .cart_book_cash {
+          display: flex;
+          align-items: center;
+          margin-left: 5%;
+          .cart_book_delete {
+            position: relative;
+            cursor: pointer;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+          }
+        }
+      }
     }
 
-    .cart_count_title .cart_m_text:nth-child(4) {
-      margin-left: 0%;
-      margin-right: 1%;
-    }
-
-    .cart_l_reserve_title,
+    // 計算
     .cart_l_count_title {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 3.75rem;
+      padding: 5px 10px 10px;
       border-bottom: 1px solid #263238;
+      .cart_m_text:nth-child(1) {
+        margin-left: 0px;
+      }
+      .cart_m_text:nth-child(2) {
+        margin-left: 0px;
+      }
+      .cart_m_text:nth-child(3) {
+        margin-right: 0px;
+      }
+      .cart_m_text:nth-child(4) {
+        margin-right: 0px;
+      }
     }
-
-    .cart_l_count_title .cart_m_text:nth-child(3) {
-      margin-left: 8%;
+    .cart_m_count_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      margin-top: 10px;
+      .cart_m_text:nth-child(1) {
+        margin-left: 0px;
+      }
+      .cart_m_text:nth-child(2) {
+        margin-left: 0px;
+      }
+      .cart_m_text:nth-child(3) {
+        margin-right: 0px;
+      }
+      .cart_m_text:nth-child(4) {
+        margin-right: 0px;
+      }
     }
-
-    .cart_l_count_title .cart_m_text:nth-child(2) {
-      margin-left: 11%;
+    
+    // 預約須知
+    .cart_l_rule_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+    }
+    .cart_m_rule_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
     }
   }
 
-  .cart_summary_checkout_btn {
-    padding: 20px 40px;
-    font-size: 1.25rem;
+  // 按鈕
+  .comiclist_cartbtn {
+    padding: 10px 40px;
     background-color: $btn_bg_color;
     border-radius: $btn_br;
-    width: 13rem;
-    display: inline-flex;
-    margin-left: 64%;
-    align-items: center;
-    gap: 0.25rem;
+    font-size: 1.25rem;
     color: $main_txt_color;
     font-weight: 400;
-    letter-spacing: 0.1875rem;
     cursor: pointer;
-  }
-
-  // RWD的768以上
-  @mixin sm() {
-    @media all and (min-width: $small) {
-      @content;
-    }
-  }
-
-  // RWD的1024以上
-  @mixin md() {
-    @media all and (min-width: $medium) {
-      @content;
-    }
-  }
-
-  // RWD的1200以上
-  @mixin lg() {
-    @media all and (min-width: $large) {
-      @content;
-    }
+    width: 165px;
+    display: inline-flex;
+    margin-left: 550px;
+    margin-bottom: 100px;
+    align-items: center;
+    gap: 3px;
   }
 }
+
+// Media Queries
+@include sm() {}
+
+@include md() {}
+
+@include lg() {}

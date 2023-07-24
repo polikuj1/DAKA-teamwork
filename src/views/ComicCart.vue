@@ -4,39 +4,39 @@
     {{ title }}
   </PageTitle>
 
-  <div class="cart">
-    <div class="cart_products">
+  <div class="comiclist_cart">
+    <div class="comiclist_content">
       <div class="cart_l_reserve_title">
         <p class="cart_l_text">目前的預約（{{ shoppingCartItemsCount }} 件）</p>
       </div>
-      <div class="cart_reserve_title">
+      <div class="cart_m_reserve_title">
         <p class="cart_m_text">書名</p>
         <p class="cart_m_text">數量</p>
         <p class="cart_m_text">小計</p>
       </div>
 
       <!-- 書本照片 -->
-      <div class="cart_products_content">
-        <div v-for="item in shoppingCartData" :key="item.id" class="cart_product">
-          <div class="cart_product_pic">
+      <div class="cart_book_content">
+        <div v-for="item in shoppingCartData" :key="item.id" class="cart_book">
+          <div class="cart_book_pic">
             <img :src="item.imgSrc" :alt="item.name" />
           </div>
 
           <!-- 書本名稱 -->
-          <div class="cart_product_name">
+          <div class="cart_book_name">
             <p class="cart_m_text">{{ item.category }}</p>
             <p class="cart_s_text">{{ item.name }}</p>
           </div>
 
           <!-- 數量 -->
-          <div class="cart_product_count">
+          <div class="cart_book_count">
             <div class="cart_m_text">{{ item.quantity }}</div>
           </div>
 
           <!-- 錢 -->
-          <div class="cart_product_cash">
+          <div class="cart_book_cash">
             <div class="cart_m_text">$ {{ item.price }}</div>
-            <div class="cart_product_delete" @click="deleteProduct(item.id)"><i class="fa-solid fa-trash"
+            <div class="cart_book_delete" @click="deleteProduct(item.id)"><i class="fa-solid fa-trash"
                 style="color: #263238;"></i>
             </div>
           </div>
@@ -44,14 +44,14 @@
       </div>
     </div>
 
-    <div class="cart_products">
+    <div class="comiclist_content">
       <div class="cart_l_count_title">
         <p class="cart_m_text">取書日期</p>
         <p class="cart_m_text">歸還日期</p>
         <p class="cart_m_text">數量</p>
         <p class="cart_m_text">總計</p>
       </div>
-      <div class="cart_count_title">
+      <div class="cart_m_count_title">
         <p class="cart_m_text">{{ borrowDate }}</p>
         <p class="cart_m_text">{{ returnDate }}</p>
         <p class="cart_m_text">{{ shoppingCartItemsCount }}</p>
@@ -59,11 +59,11 @@
       </div>
     </div>
 
-    <div class="cart_products">
-      <div class="cart_rule_title">
+    <div class="comiclist_content">
+      <div class="cart_l_rule_title">
         <p class="cart_l_text">預約須知</p>
       </div>
-      <div class="cart_rule_title">
+      <div class="cart_m_rule_title">
         <div class="cart_s_text">
           <p>（一）一本書籍借期三日，每多借一本則借期延後一日。</p>
           <p>（二）書籍借期皆無法續借，到期時需重新預約租借。</p>
@@ -74,8 +74,7 @@
       </div>
     </div>
 
-    <button class="cart_summary_checkout_btn">送出預約<i class="fa-sharp fa-solid fa-book-open-reader"
-        style="color: #ffffff;"></i>
+    <button class="comiclist_cartbtn">送出預約<i class="fa-sharp fa-solid fa-book-open-reader" style="color: #ffffff;"></i>
     </button>
   </div>
 </template>
