@@ -1,0 +1,46 @@
+[
+  {
+    "reservation_no": 20230724001,
+    "order_status": "尚未取書",
+    "reservation_date" : "2023/07/16",
+    "get_book_date": "---",
+    "should_return_date": "2023/07/18",
+    "return_date": "2023/07/18",
+    "fine": 2,
+    "book_count": 2,
+    "price_total": 20,
+    "payment": "儲值金",
+    "book_detail": [
+      {
+        "book_no": 123456789,
+        "book_name": "航海王"
+      },
+      {
+        "book_no": 123456780,
+        "book_name": "我推的孩子"
+      }
+    ]
+  },
+  {
+    "reservation_no": 20230724002,
+    "order_status": "尚未取書",
+    "reservation_date" : "2023/07/16",
+    "get_book_date": "---",
+    "should_return_date": "2023/07/18",
+    "return_date": "2023/07/18",
+    "fine": 2,
+    "book_count": 2,
+    "price_total": 20,
+    "payment": "儲值金",
+    "book_detail": [
+      {
+        "book_no": 123456789,
+        "book_name": "進擊的巨人"
+      },
+      {
+        "book_no": 123456780,
+        "book_name": "火影忍者"
+      }
+    ]
+  }
+]

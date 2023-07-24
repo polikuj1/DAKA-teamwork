@@ -11,7 +11,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutusView.vue'),
-    
+  },
+  {
+    path: '/location',
+    name: 'location',
+    component: () => import('../views/LocationView.vue'),
   },
   {
     path: '/news',
@@ -64,6 +68,11 @@ const routes = [
         component: () => import('../components/member_center/BindCredit.vue')
       },
       {
+        path: 'member_add_credit',
+        name: 'member_add_credit',
+        component: () => import('../components/member_center/AddCredit.vue')
+      },
+      {
         path: 'member_value_record',
         name: 'member_value_record',
         component: () => import('../components/member_center/ValueRecord.vue')
@@ -77,6 +86,16 @@ const routes = [
         path: 'member_edit',
         name: 'member_edit',
         component: () => import('../components/member_center/Edit.vue')
+      },
+      {
+        path: 'member_seat_reservation',
+        name: 'member_seat_reservation',
+        component: () => import('../components/member_center/SeatReservation.vue')
+      },
+      {
+        path: 'member_book_reservation',
+        name: 'member_book_reservation',
+        component: () => import('../components/member_center/BookRecord.vue')
       },
     ],
   },

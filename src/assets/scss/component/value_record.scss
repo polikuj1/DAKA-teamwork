@@ -1,91 +1,41 @@
 .value_record{
-    display: flex;
-    flex-wrap: wrap;
-    width: 70%;
-    margin: auto;
-    .record_card {
-      width: 100%;
-      // height: 120px;
-      border-radius: 10px;
-      box-sizing: border-box;
-      background-color: $secondary_blue;
-    }
-    .record_id,.record_amount {
-      color: $main_txt_color;
-    }
-    .record_date,.record_method {
-      color: #D5F0F0;
-    }
-  }
-  
-//RWD
-@include screen(0){
-    .value_record{
-      margin-top: 30px;
-      .record_card {
-        margin-bottom: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-      }
-      .line_first{
-        box-sizing: border-box;
-        padding: 10px 20px 0 20px;
-      }
-      .line_second{
-        box-sizing: border-box;
-        padding: 0 20px 10px 20px;
-      }
-      .record_id,.record_amount {
-        font-size: 1.5rem;
-        padding: 2px;
-      }
-      .record_date,.record_method {
-        font-size: 1.33rem;
-        padding: 2px;
-      }
-    }
+	background-color: $secondary_blue;
+	width: 80%;
+	margin: auto;
+	border-radius: 10px;
+	color: $main_txt_color;
+	margin-top: 40px;
+	box-sizing: border-box;
+	padding: 20px 40px;
+	margin-bottom: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 20px;
+	.record_list, .record_content{
+		display: flex;
+		justify-content: space-between;
+		.record_date, .record_method{
+			color:#D5F0F0;
+			font-size: 16px;
+		}
+	}
 }
-
-@include screen(950){
-    .value_record{
-      margin-top: 60px;
-      .record_card {
-        margin-bottom: 60px;
-      }
-      .line_first{
-        display: flex;
-        justify-content: space-between;
-        box-sizing: border-box;
-        padding: 20px 40px 0 40px;
-      }
-      .line_second{
-        display: flex;
-        justify-content: space-between;
-        box-sizing: border-box;
-        padding: 0 40px 20px 40px;
-      }
-      .record_id,.record_amount {
-        font-size: 1.25rem;
-        margin: 5px;
-        padding: 0;
-        color: $main_txt_color;
-      }
-      .record_date,.record_method {
-        font-size: 1rem;
-        margin: 5px;
-        color: #D5F0F0;
-        padding: 0;
-      }
-    } 
+	
+@media screen and (max-width: 900px){
+	.value_record{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		gap: 5px;
+		font-size: 18px;
+		.record_list, .record_content{
+			flex-direction: column;
+			gap:5px;
+			.record_date, .record_method{
+				font-size: 14px;
+			}
+		}
+		
+	}
 }
-//這裡沒成功
-@include md(){
-  .record_id,.record_amount {
-    font-size: 1.25rem;
-  }
-  .record_date,.record_method {
-    font-size: 1rem;
-  }
-}
+//底部分不開

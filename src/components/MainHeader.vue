@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" ref="header" :class="style">
     <h1 class="logo">
       <router-link to="/"><img :src="logoImg" alt="DAKA網咖"></router-link>
       <span>打</span>
@@ -23,9 +23,28 @@
 <script>
 import login from '@/components/LoginView.vue';
 export default {
+  props: ['path','show'],
   name: 'MainHeader',
+  watch: {
+    // 處理header只有在首頁時需要先消失
+    path() {
+      if(this.path === '/') {
+        this.style = 'disappear';
+      } else {
+        this.style = '';
+      }
+    },
+    show() {
+      if(this.show) {
+        this.style = '';
+      } else {
+        this.style = 'disappear';
+      }
+    },
+  },
   data() {
     return {
+      style: '',
       logoImg: require('@/assets/images/logo.png'),
       header: [
         {
@@ -33,16 +52,12 @@ export default {
           site: '/about',
           title_list: [
             {
-              li: '緣起',
-              site: '/about',
-            },
-            {
               li: '服務項目',
               site: '/about',
             },
             {
               li: '店鋪情報',
-              site: '/about',
+              site: '/location',
             },
           ],
         },
@@ -63,11 +78,11 @@ export default {
         },
         {
           title: '漫畫預約',
-          site: '/comic_demo',
+          site: '/comic_search',
           title_list: [
             {
-              li: '漫畫查詢',
-              site: '/comic_search',
+              li: '漫畫推薦',
+              site: '/comic_demo',
             },
             // {
             //   li: '漫畫查詢',

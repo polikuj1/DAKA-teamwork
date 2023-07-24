@@ -1,19 +1,17 @@
 <template>
-    <MbForm>
+    <MbForm @emit-back="triggerParent">
       <template v-slot:mb_form_title>
-        <h3>儲值金交易紀錄</h3>
+        <h3>{{ title }}</h3>
       </template>
       <template v-slot:mb_content>
-        <div class="value_record">
-            <div class="record_card" v-for="record in transactionRecords" :key="record.transactionId">
-                <div class="line_first">
-                    <div class="record_id">交易序號 {{ record.transactionId }}</div>
-                    <div class="record_date">{{ record.transactionDate }}</div>
-                </div>
-                <div class="line_second">
-                    <div class="record_method">儲值方式 {{ record.transactionMethod }}</div>
-                    <div class="record_amount">金額 {{ record.transactionAmount }}</div>
-                </div>
+        <div class="value_record" v-for="record in transactionRecords" :key="record.transactionId">
+            <div class="record_list">
+                <div class="record_id">交易序號 {{ record.transactionId }}</div>
+                <div class="record_date">{{ record.transactionDate }}</div>
+            </div>
+            <div class="record_content">
+                <div class="record_method">儲值方式 {{ record.transactionMethod }}</div>
+                <div class="record_amount">金額 {{ record.transactionAmount }}</div>
             </div>
         </div>
       </template>
@@ -60,12 +58,19 @@
         },
         data() {
             return {
-            transactionRecords: [],
+                title: '儲值金交易紀錄',
+                transactionRecords: [],
             };
+        },
+        methods: {
+            triggerParent() {
+                this.$emit('emit-title','');
+            }
         },
         created() {
             // 將假資料載入交易紀錄
             this.transactionRecords = valueRecord;
+            this.$emit('emit-title',this.title);
         },
     };
   </script>

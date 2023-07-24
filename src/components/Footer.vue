@@ -8,7 +8,7 @@
     </div> -->
     <div class="logo">
       <router-link to="/">
-        <img src="@/assets/images/footerLogo.png" alt="">
+        <img src="@/assets/images/footerLogo.svg" alt="">
       </router-link>
     </div>
     <div class="btn_group">

@@ -267,16 +267,14 @@
   <div></div>
 </template>
 
-<style>
-@import "@/assets/scss/page/reservation.scss";
-</style>
+
 
 <script>
-import "view-ui-plus/dist/styles/viewuiplus.css";
-import PageTitle from "@/components/PageTitle.vue";
-import Date from "@/components/reservation/Date.vue";
-import "@/assets/scss/page/reservation.scss";
-import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
+
+import PageTitle from '@/components/PageTitle.vue';
+import Date from '@/components/reservation/Date.vue';
+
+import { seat_a, seat_b,seat_c,seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
   components: {
@@ -333,8 +331,7 @@ export default {
       if (state !== 0) {
         return;
       } else {
-        this.selectedArea =
-          this.selectedArea === "A" ? "大廳電競A" : "大廳一般B";
+        this.selectedArea = this.selectedArea === "A" ? "大廳電競A" : "大廳一般B";
         this.selectedSeat = i;
       }
       this.selected = "";
@@ -346,3 +343,6 @@ export default {
   computed: {}
 };
 </script>
+<style>
+@import "@/assets/scss/page/reservation.scss";
+</style>

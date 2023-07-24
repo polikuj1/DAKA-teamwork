@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       title: '會員中心',
-      member_img: 'https://picsum.photos/id/182/600/400',
+      member_img: require('@/assets/images/member/user_pic.png'),
       content: '',
     }
   },

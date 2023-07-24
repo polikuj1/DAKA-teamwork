@@ -13,8 +13,13 @@
 @import 'layout/home/service.scss';
 @import 'layout/home/news.scss';
 @import 'layout/home/meal.scss';
+@import 'layout/home/hero.scss';
+@import 'layout/home/socialmedia.scss';
 @import 'layout/member/member_nav.scss';
 @import 'layout/member/bind_credit.scss';
+@import 'layout/member/add_credit.scss';
+@import 'layout/member/book_record.scss';
+@import 'layout/food_intro/popmeals.scss';
 @import 'page/comic.scss';
 @import 'page/comicdetail.scss';
 @import 'page/login.scss';
@@ -30,7 +35,12 @@
 @import 'component/member_edit.scss';
 @import 'page/newsdetail.scss';
 @import 'page/map.scss';
+@import 'component/seat_reservation.scss';
+@import 'page/location.scss';
+
+// comiccart
 @import 'page/comiccart.scss';
+@import 'page/reservation.scss';
 
 *{
   margin: 0;
@@ -38,11 +48,11 @@
   list-style: none;
   box-sizing: border-box;
   text-decoration: none;
-  
+  scroll-behavior: smooth;
 }
 
 body{
-  background-color:#263238;
+  background-color:$main_bg;
 }
 
 h2 {

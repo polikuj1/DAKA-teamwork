@@ -1,0 +1,51 @@
+.socialmedia{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; 
+    text-align: center;
+    padding: $section_pd 0;
+
+    h3 {
+        color: $main_txt_color;
+        padding-bottom: ($section_pd / 4);
+    }
+
+
+    .carousel__track {
+        gap: 20px;
+    }
+
+    iframe {
+        width: 380px;
+        height: 650px;
+    }
+
+    .carousel__prev,
+    .carousel__next {
+        color: #fff;
+        transform: scale(2);
+    }
+
+    .carousel__prev {
+        margin-left: -40px !important;
+    }
+    
+    .carousel__next {
+        margin-right: -40px !important;
+    }
+    
+}
+
+@include screen_one(768) {
+
+    .social_media {
+        
+        .carousel__prev {
+            margin-left: 0;
+        }
+        
+        .carousel__next {
+            margin-right: 0;
+        }
+    }
+}

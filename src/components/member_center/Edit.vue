@@ -1,7 +1,7 @@
 <template>
-    <MbForm>
+    <MbForm @emit-back="triggerParent">
       <template v-slot:mb_form_title>
-        <h3>會員資料修改</h3>
+        <h3>會{{ title }}</h3>
       </template>
       <template v-slot:mb_content>
         <div class="credit">
@@ -23,8 +23,16 @@
     },
     data() {
       return {
-  
+        title: '個人資料編輯',
       }
+    },
+    methods: {
+      triggerParent() {
+        this.$emit('emit-title','');
+      }
+    },
+    created() {
+      this.$emit('emit-title',this.title);
     },
   }
   </script>
