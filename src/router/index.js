@@ -43,9 +43,14 @@ const routes = [
     component: () => import('../views/ComicSearch.vue'),
   },
   {
-    path: '/comic_detail',
+    path: '/comic_detail/:id',
     name: 'comic_detail',
     component: () => import('../views/ComicDetail.vue'),
+  },
+  {
+    path: '/comic_cart',
+    name: 'comic_cart',
+    component: () => import('../views/ComicCart.vue')
   },
   {
     path: '/member_center',
@@ -103,11 +108,6 @@ const routes = [
     path: '/about_member',
     name: 'about_member',
     component: () => import('../views/AboutMember.vue')
-  },
-  {
-    path: '/comic_cart',
-    name: 'comic_cart',
-    component: () => import('../views/ComicCart.vue')
   },
   // {
   //   path: '/login',

@@ -14,7 +14,7 @@
               <span @click="deleteBook(index)"><i class="fa-solid fa-trash-can"></i></span>
             </li>
           </ul>
-          <button>前往預約</button>
+          <button @click="this.$router.push('/comic_cart')">前往預約</button>
         </div>
       </div>
       <div class="icon" @click="infoOpen = true">
