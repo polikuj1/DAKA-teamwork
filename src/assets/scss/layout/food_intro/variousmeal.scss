@@ -1,0 +1,58 @@
+.aboutorigin_container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  h3 {
+    font-size: 3.75rem;
+    text-align:center;
+    color: $main_txt_color;
+    padding: 100px 0px;
+  }
+
+  #app {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0px 20px 420px;
+
+
+    .category-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
+    }
+
+    .category-buttons button {
+      margin: 0 10px;
+      padding: 20px 40px;
+      font-size: 1.25rem;
+      color: $main_txt_color;
+      background-color: $btn_bg_color;
+      border-radius: $btn_br;
+      border: none;
+      cursor: pointer;
+    }
+    .category-buttons button:hover {
+      color: #4C3818;
+      background-color: #FBDFB7;
+    }
+
+    .food-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 5%;
+      flex-direction: row;
+      align-content: space-around;
+    }
+
+    .food-card {
+      width: calc(30% - 20px);
+      background-color: $main_txt_color;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    
+  }
+}
