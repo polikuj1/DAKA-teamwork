@@ -109,6 +109,11 @@ const routes = [
     name: 'about_member',
     component: () => import('../views/AboutMember.vue')
   },
+  {
+    path: '/about_origin',
+    name: 'about_origin',
+    component: () => import('../views/AboutoriginView.vue')
+  },
   // {
   //   path: '/login',
   //   name: 'login',
