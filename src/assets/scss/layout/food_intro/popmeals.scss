@@ -1,8 +1,10 @@
 .popmeals {
+    min-width: 320px;
     width: 100%;
     margin: 0 auto;
-    padding-bottom: ($section_pd / 2);
+    padding: ($section_pd / 4) 0 ($section_pd / 2);
     text-align: center;
+    color: #4C3818;
 
     h3 {
         color: $main_txt_color;
@@ -15,11 +17,11 @@
         .meal_intro {
             padding-top: 120px;
             position: relative;
-            width: 90%;
+            width: 100%;
 
             .meal_pic {
                 position: absolute;
-                bottom: 220px;
+                bottom: 240px;
                 left: 0;
                 right: 0;
                 display: flex;
@@ -34,16 +36,19 @@
             .meal_text {
                 display: flex;
                 flex-direction: column;
-                width: 80%;
+                gap: 20px;
+                width: 90%;
+                margin: 0 auto;
                 height: fit-content;
-                padding: 80px 30px;
+                padding: 100px 30px;
                 box-sizing: border-box;
                 text-align: center;
-                @include bgSvg(decoration/circle02);
+                background: url(@/assets/images/decoration/circle02.svg) no-repeat center center;
+                background-size: contain;
 
                 p {
                     line-height: $line_height;
-                    padding: 10px 20px;
+                    padding: 10px;
                 }
             }
 
@@ -51,7 +56,7 @@
 
         // vue3-carousel pagination settings
         .carousel__pagination {
-            width: 80%;
+            width: 90%;
             flex-wrap: wrap;
             margin: 0 auto;
             position: absolute;
@@ -106,28 +111,34 @@
 
 @include sm() {
     .popmeals {
-        max-width: 768px;
+        min-width: 768px;
+        // padding: ($section_pd / 2) 0;
 
         .meals_slides {
             // position: relative;
-            // padding-top: 100px;
+            padding-top: 120px;
+            margin: 0 auto;
 
             .meal_intro {
                 padding-top: 280px;
                 width: 80%;
 
+
                 .meal_pic {
-                    bottom: 300px;
+                    bottom: 45%;
                 }
 
                 .meal_text {
-                    width: 50%;
+                    width: 80%;
+                    margin: 0 auto;
                     padding: 100px 120px;
-                    @include bgSvg(decoration/circle02);
+                    background: url(@/assets/images/decoration/circle02.svg) no-repeat center center;
+                    background-size: contain;
+                    // @include bgSvg(decoration/circle02);
 
                     p {
                         line-height: $line_height;
-                        font-size: 20px;
+                        font-size: 1.5rem;
                     }
                 }
             }
@@ -207,105 +218,175 @@
 }
 
 @include md() {
+    .popmeals {
+        min-width: 1024px;
 
-        .popmeals {
-            max-width: 1024px;
-    
-            .meals_slides {
-                // position: relative;
-                // padding-top: 100px;
-    
-                .meal_intro {
-                    padding-top: 280px;
-                    width: 80%;
-    
-                    .meal_pic {
-                        bottom: 300px;
-                    }
-    
-                    .meal_text {
-                        width: 70%;
-                        padding: 100px 180px;
-                        @include bgSvg(decoration/circle02);
-    
-                        p {
-                            line-height: $line_height;
-                            font-size: 24px;
-                        }
+        .meals_slides {
+            // position: relative;
+            // padding-top: 100px;
+
+            .meal_intro {
+                padding-top: 280px;
+                width: 80%;
+
+                .meal_pic {
+                    bottom: 60%;
+
+                    img {
+                        transform: scale(1.5);
                     }
                 }
-    
-    
-                // vue3-carousel pagination settings
-                .carousel__pagination {
-                    width: 100%;
-                    gap: 8px;
-                    // flex-wrap: wrap;
-                    // margin: 0;
-                    // position: absolute;
-                    // top: -90px;
-                    // left: 0;
-                    // right: 0;
-                }
-    
-                .carousel__pagination-item button {
-                    width: 100px;
-                    height: 100px;
-                    margin: 0px;
-                    // background: no-repeat center center;
-                    // background-size: 110%;
-                }
-    
-    
-                .carousel__pagination-item:first-child button {
-                    background-image: url(@/assets/images/food/drink.png);
-                    position: relative;
-                    left: 10px;
-                    top: 220px;
-                }
-    
-                .carousel__pagination-item:nth-child(2) button {
-                    background-image: url(@/assets/images/food/takoyaki.png);
-                    position: relative;
-                    right: 10px;
-                    top: 130px;
-                }
-    
-                .carousel__pagination-item:nth-child(3) button {
-                    background-image: url(@/assets/images/food/curry.png);
-                    position: relative;
-                    right: 10px;
-                    top: 70px;
-                }
-    
-                .carousel__pagination-item:nth-child(4) button {
-                    background-image: url(@/assets/images/food/fried_chicken.png);
-                    position: relative;
-                    left: 10px;
-                    top: 40px;
-                }
-    
-                .carousel__pagination-item:nth-child(5) button {
-                    background-image: url(@/assets/images/food/ramen.png);
-                    position: relative;
-                    left: 30px;
-                    top: 75px;
-                }
-    
-                .carousel__pagination-item:nth-child(6) button {
-                    background-image: url(@/assets/images/food/hotdog.png);
-                    position: relative;
-                    left: 20px;
-                    top: 140px;
-                }
-    
-                .carousel__pagination-item:nth-child(7) button {
-                    background-image: url(@/assets/images/food/onigiri.png);
-                    position: relative;
-                    right: 20px;
-                    top: 240px;
+
+                .meal_text {
+                    //width: 50%;
+                    padding: 100px 180px;
+                    background: url(@/assets/images/decoration/circle02.svg) no-repeat center center;
+                    background-size: contain;
+
+                    p {
+                        //line-height: $line_height;
+                        font-size: 1.75rem;
+                    }
                 }
             }
+
+
+            // vue3-carousel pagination settings
+            .carousel__pagination {
+                width: 100%;
+                gap: 8px;
+                // flex-wrap: wrap;
+                // margin: 0;
+                // position: absolute;
+                // top: -90px;
+                // left: 0;
+                // right: 0;
+            }
+
+            .carousel__pagination-item button {
+                width: 120px;
+                height: 120px;
+                margin: 0px;
+                // background: no-repeat center center;
+                // background-size: 110%;
+            }
+
         }
-    
+    }
+
+}
+
+@include lg() {
+    .popmeals {
+        min-width: 1200px;
+
+        .meals_slides {
+            // position: relative;
+            // padding-top: 100px;
+
+            .meal_intro {
+                padding-top: 320px;
+                width: 80%;
+
+                .meal_pic {
+                    bottom: 55%;
+                    right: 20%;
+
+                    img {
+                        transform: scale(2);
+                    }
+                }
+
+                .meal_text {
+                    //width: 60%;
+                    padding: 160px 160px 180px;
+                    background: url(@/assets/images/decoration/circle02.svg) no-repeat center center;
+                    background-size: contain;
+                    align-items: flex-end;
+
+                    h4 {
+                        padding-right: 60px;
+                        font-size: 1.875rem;
+                    }
+
+                    p {
+                        //line-height: $line_height;
+                        font-size: 1.75rem;
+                        margin: 0 10px;
+                        text-align: left;
+                    }
+                }
+            }
+
+
+            // vue3-carousel pagination settings
+            .carousel__pagination {
+                width: 100%;
+                gap: 20px;
+            }
+
+            .carousel__pagination-item button {
+                width: 150px;
+                height: 150px;
+                margin: 0px;
+            }
+
+        }
+    }
+}
+
+
+
+@media screen and (min-width: 1440px) {
+    .popmeals {
+        min-width: 1440px;
+
+        .meals_slides {
+
+            .meal_intro {
+                padding-top: 320px;
+                width: 100%;
+
+                .meal_pic {
+                    bottom: 50%;
+                    right: 20%;
+
+                    img {
+                        transform: scale(2);
+                    }
+                }
+
+                .meal_text {
+                    //width: 60%;
+                    padding: 160px 360px 180px;
+                    background: url(@/assets/images/decoration/circle02.svg) no-repeat center center;
+                    background-size: contain;
+                    align-items: flex-end;
+
+                    h4 {
+                        padding-right: 160px;
+                        font-size: 1.875rem;
+                    }
+
+                    p {
+                        font-size: 1.75rem;
+                        margin: 0 100px;
+                        text-align: left;
+                    }
+                }
+            }
+
+            // vue3-carousel pagination settings
+            .carousel__pagination {
+                width: 100%;
+                gap: 20px;
+            }
+
+            .carousel__pagination-item button {
+                width: 160px;
+                height: 160px;
+                margin: 0px;
+            }
+        }
+    }
 }
