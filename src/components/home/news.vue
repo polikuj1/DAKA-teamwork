@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <section class="news">
         <a href="#" class="infor" v-for="item in news" :key="item.text">
             <div class="infor_top">
@@ -11,7 +11,27 @@
             </div>
         </a>
     </section>
+</template> -->
+
+<template>
+    <div class="index_news">
+        <div class="title">最新消息</div>
+        <section class="news">
+            <a href="#" class="news_all" v-for="item in news">
+                <div class="infor_top">
+                    <div :class="['category', item.category === 'ACTIVITY' ? 'active' : '']">{{ item.category }}</div>
+                    <div class="date">{{ item.date }}</div>
+                </div>
+
+                <div class="infor_bottom">
+                    <div class="text">{{ item.text }}</div>
+                    <img :src="item.pic" alt="箭頭" class="arrow_green">
+                </div>
+            </a>
+        </section>
+    </div>
 </template>
+
 <script>
 export default {
     data() {
@@ -47,3 +67,7 @@ export default {
     },
 }
 </script>
+
+
+
+

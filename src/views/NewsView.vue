@@ -3,7 +3,7 @@
     {{ title }}
   </PageTitle>
   <div id="news_container">
-    <section class="news">
+    <section class="news_page">
         <div class="news_tabs">
           <button class="news_tab" :class="{ active: currentTab === 'all' }" @click="changeTab('all')">全部消息</button>
           <button class="news_tab" :class="{ active: currentTab === 'latest' }" @click="changeTab('latest')">最新消息</button>

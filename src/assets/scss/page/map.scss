@@ -5,6 +5,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 400px;
+
 
     .title {
         color: #4C3818;
@@ -92,6 +94,12 @@
         .taipei:hover{
             transform: scale(1.4);
         }
+        .tp_shop:hover~.taipei {
+            transform: scale(1.4);
+        }
+        .tp_text:hover~.taipei {
+            transform: scale(1.4);
+        }
 
         .taoyuan {
             position: absolute;
@@ -101,6 +109,12 @@
             transition: transform 0.5s;
         }
         .taoyuan:hover{
+            transform: scale(1.4);
+        }
+        .zl_shop:hover~.taoyuan {
+            transform: scale(1.4);
+        }
+        .zl_text:hover~.taoyuan {
             transform: scale(1.4);
         }
 
@@ -113,6 +127,12 @@
         }
         .tainan:hover{
             transform: scale(1.4) ;
+        }
+        .tn_shop:hover~.tainan {
+            transform: scale(1.4);
+        }
+        .tn_text:hover~.tainan {
+            transform: scale(1.4);
         }
     }
 

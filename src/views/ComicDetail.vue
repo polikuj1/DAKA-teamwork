@@ -6,7 +6,7 @@
                 </div>
                 <div class="text">
                     <div class="text_title">
-                        <h2>{{item.text_title}}</h2>
+                        <h2>{{item.title}}</h2>
                         <p>作者：{{item.author}}</p>
                     </div>
                     <div class="text_reserve">
