@@ -1,0 +1,98 @@
+.all {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.all .title {
+  color: #4C3818;
+  font-size: 3.75rem;
+  margin-bottom: 12%;
+}
+.all .map {
+  position: relative;
+}
+.all .map .taiwan {
+  width: 147%;
+  transform: translateX(-23%);
+}
+.all .map .tp_shop {
+  position: absolute;
+  width: 91%;
+  right: -140%;
+  top: -6%;
+}
+.all .map .zl_shop {
+  position: absolute;
+  left: -108%;
+  top: -14%;
+  width: 88%;
+}
+.all .map .tn_shop {
+  position: absolute;
+  width: 88%;
+  bottom: -12%;
+  left: -130%;
+}
+.all .map .man {
+  position: absolute;
+  top: 70%;
+  width: 125%;
+  right: -135%;
+}
+.all .map .tp_text {
+  font-size: 1.875rem;
+  color: #4C3818;
+  position: absolute;
+  right: -124%;
+  top: 31%;
+  font-weight: 600;
+}
+.all .map .zl_text {
+  font-size: 1.875rem;
+  color: #4C3818;
+  position: absolute;
+  left: -88%;
+  top: 19%;
+  font-weight: 600;
+}
+.all .map .tn_text {
+  font-size: 1.875rem;
+  color: #4C3818;
+  position: absolute;
+  bottom: -21%;
+  left: -110%;
+  font-weight: 600;
+}
+.all .map .taipei {
+  position: absolute;
+  right: -13%;
+  top: 0;
+  width: 57%;
+  transition: transform 0.5s;
+}
+.all .map .taipei:hover {
+  transform: scale(1.4);
+}
+.all .map .taoyuan {
+  position: absolute;
+  left: 33%;
+  top: 5.7%;
+  width: 39%;
+  transition: transform 0.5s;
+}
+.all .map .taoyuan:hover {
+  transform: scale(1.4);
+}
+.all .map .tainan {
+  position: absolute;
+  width: 48%;
+  bottom: 29%;
+  left: -34%;
+  transition: transform 0.5s;
+}
+.all .map .tainan:hover {
+  transform: scale(1.4);
+}/*# sourceMappingURL=map.css.map */

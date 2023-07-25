@@ -119,6 +119,11 @@ const routes = [
     name: 'game',
     component: () => import('../views/GameView.vue')
   },
+  {
+    path: '/about_origin',
+    name: 'about_origin',
+    component: () => import('../views/AboutoriginView.vue')
+  },
   // {
   //   path: '/login',
   //   name: 'login',
