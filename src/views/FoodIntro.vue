@@ -3,6 +3,7 @@
     {{ title }}
   </PageTitle>
   <PopularMeals/>
+  <VariousMeal/>
   <div>
     
   </div>
@@ -11,10 +12,11 @@
 <script>
 import PageTitle from '@/components/PageTitle.vue';
 import PopularMeals from '@/components/food_intro/PopularMeals.vue';
+import VariousMeal from '@/components/food_intro/VariousMeal.vue';
 
 export default {
   components: {
-    PageTitle, PopularMeals,
+    PageTitle, PopularMeals, VariousMeal,
   },
   data() {
     return {
