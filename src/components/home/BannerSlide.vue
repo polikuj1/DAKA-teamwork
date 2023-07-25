@@ -1,7 +1,7 @@
 <template>
     <section class="home_banner">
         <Carousel :autoplay="2000" :wrap-around="true">
-            <Slide v-for="slide in 10" :key="slide">
+            <Slide v-for="slide in 5" :key="slide">
                 <div class="carousel__item">{{ slide }}</div>
             </Slide>
     
