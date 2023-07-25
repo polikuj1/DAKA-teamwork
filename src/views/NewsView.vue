@@ -143,25 +143,12 @@ export default {
     },
   },
   computed: {
-    paginatedAllMessages() {
-    const startIndex = (this.page - 1) * 5;
-    const endIndex = this.allMessages.length;
-    // const endIndex = startIndex + 5;
-    return this.allMessages.slice(startIndex, endIndex);
-  },
-    paginatedlatestMessages() {
+      paginatedAllMessages() {
       const startIndex = (this.page - 1) * 5;
-      const endIndex = startIndex + 5;
-      return this.latestMessages.slice(startIndex, endIndex);
+      const endIndex = this.allMessages.length;
+      // const endIndex = startIndex + 5;
+      return this.allMessages.slice(startIndex, endIndex);
     },
-    paginatedActivityMessages() {
-      const startIndex = (this.page - 1) * 5;
-      const endIndex = startIndex + 5;
-      return this.activityMessages.slice(startIndex, endIndex);
-    },
-    totalPages() {
-        return Math.ceil(this.allMessages.length / 5); // 每頁顯示 5 則消息，計算總頁數
-      },
   },
   created() {
     this.data = this.allMessages;
