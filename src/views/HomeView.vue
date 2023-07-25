@@ -3,6 +3,7 @@ d<template>
     <Banner/>
     <Services></Services>
     <Meals/>
+    <Map></Map>
     <News/>
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
 
   },
   components: {
-    Services, News, Meals, Banner,
+    Services, News, Meals, Banner, Map
   },
   mounted() {
     

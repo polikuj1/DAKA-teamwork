@@ -1,3 +1,4 @@
+.news_detail_title{
 .title {
     max-width: 1200px;
     width: 100%;
@@ -34,10 +35,12 @@
 
     }
 }
+}
 
+
+.news_detail_card{
 .card {
-    max-width: 1140px;
-    max-height: 500px;
+    max-width: 1200px;
     width: 100%;
     padding: 40px 29px;
 
@@ -67,4 +70,5 @@
             margin-top: 3%;
         }
     }
+}
 }

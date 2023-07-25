@@ -13,40 +13,82 @@
         border-radius: 50px;
         margin-bottom: 2.5%;
 
+        .infor_top{
 
-        .category {
-            color: white;
-            background-color: #5AC4C4;
-            font-size: 1.5rem;
-            width: 8.5%;
-            margin-left: 6%;
-            margin-top: 2%;
-            margin-bottom: 2%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            .category {
+                color: white;
+                background-color: #5AC4C4;
+                font-size: 1.5rem;
+                width: 8.5%;
+                margin-left: 6%;
+                margin-top: 2%;
+                margin-bottom: 2%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .category.active {
+                background-color: orange;
+                width: 10%;
+
+            }
+
+            .date {
+                color: #78684D;
+                position: absolute;
+                left: 23%;
+
+            }
         }
-        .category.active {
-            background-color: orange;
-            width: 10%;
-
-        }
-
-        .date {
-            color: #78684D;
-            position: absolute;
-            left: 23%;
-
-        }
-
-        .text {
-            color: #78684D;
-            position: absolute;
-            left: 39%;
-        }
-        .pic{
+        .infor_bottom{
+            .text {
+                color: #78684D;
+                position: absolute;
+                left: 39%;
+            }
+            .pic{
             margin-right: 6%;
+            }
         }
-
     }
 }
+
+
+// @mixin screen_one($size) {
+//     @media all and (max-width: #{$size}px) {
+//       @content;
+
+//       .category {
+//         color: rgb(255, 6, 6);
+//         background-color: #6cc45a;
+//     }
+    
+//     }
+// }
+
+@media screen and (max-width: 768px) {
+    .news {
+        .infor {
+            width: 80%;
+            .category {
+                font-size: 1rem;
+
+            }
+            .date{
+                font-size: 1rem;
+                
+
+            }
+            
+            .gg{
+                .text{
+                font-size: 1rem;
+
+            }
+            .pic{
+                width: 10%;
+            }
+            }
+        }
+    }
+  }
