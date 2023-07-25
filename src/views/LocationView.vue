@@ -3,12 +3,13 @@
         {{ title }}
       </PageTitle>
       <div class="location_container">
-        <Collapse v-for="location in locations" :key="location.id" v-model="value" accordion class="location_collapse">
+        <Collapse v-for="(location,index) in locations" :key="location.id" v-model="value" accordion class="location_collapse">
           <Panel :name="location.id">
-            <div class="panel_content">
+            <div class="panel_content" @click="switch_open(index)">
               <i class="fa-solid fa-location-dot"></i>&nbsp;
               <span class="location">{{ location.name }}</span>
               <span class="address">{{ location.address }}</span>
+              <span :class="style[index]"><i class="fa-solid fa-angle-up"></i></span>
             </div>
             <template #content>
               <div class="location_address">
@@ -74,6 +75,7 @@
       return {
         title: '店舖情報',
         value: '1',
+        isOpen: [true,false,false],
         locations: [
           {
             id: '1',
@@ -105,7 +107,7 @@
             name: '台中分館',
             address: '台中市西區向上路一段333號',
             googleMapsLink: 'https://www.google.com/maps?q=台中市西區向上路一段333號',
-            mapEmbedURL: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.249178846376!2d121.22244777501729!3d24.957635477865935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468223631e2f209%3A0x581275cd0db5d98f!2zMzIw5qGD5Zut5biC5Lit5Z2c5biC5b6p6IiI6LevNDbomZ855qiT!5e0!3m2!1szh-TW!2stw!4v1690125294654!5m2!1szh-TW!2stw',
+            mapEmbedURL: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.7129153342553!2d120.6541764749892!3d24.146718178402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693da2841301cb%3A0x6129d623f31be02d!2zNDAz5Y-w5Lit5biC6KW_5Y2A5ZCR5LiK6Lev5LiA5q61MzMz6Jmf!5e0!3m2!1szh-TW!2stw!4v1690263896728!5m2!1szh-TW!2stw',
             normalPrice: {
               oneHour: '$30',
               fourHour: '$120',
@@ -130,7 +132,7 @@
             name: '台南分館',
             address: '台南市東區崇善十二街7號',
             googleMapsLink: 'https://www.google.com/maps?q=台南市東區崇善十二街7號',
-            mapEmbedURL: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.249178846376!2d121.22244777501729!3d24.957635477865935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468223631e2f209%3A0x581275cd0db5d98f!2zMzIw5qGD5Zut5biC5Lit5Z2c5biC5b6p6IiI6LevNDbomZ855qiT!5e0!3m2!1szh-TW!2stw!4v1690125294654!5m2!1szh-TW!2stw',
+            mapEmbedURL: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3673.482467113028!2d120.22892607495001!3d22.96927947921115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e741ed0bc1f95%3A0x8c77b6c26012574c!2zNzAx5Y-w5Y2X5biC5p2x5Y2A5bSH5ZaE5Y2B5LqM6KGXN-iZnw!5e0!3m2!1szh-TW!2stw!4v1690264064283!5m2!1szh-TW!2stw',
             normalPrice: {
               oneHour: '$25',
               fourHour: '$100',
@@ -151,9 +153,20 @@
             },
           },
         ],
+        style: ['','down','down'],
       };
     },
-    methods: {},
+    methods: {
+      switch_open(index) {
+        if(this.isOpen[index]) {
+          this.style[index] = 'down';
+          this.isOpen[index] = false;
+        } else {
+          this.style[index] = '';
+          this.isOpen[index] = true;
+        }
+    },
+    },
     computed: {},
   };
   </script>

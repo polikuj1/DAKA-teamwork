@@ -23,6 +23,11 @@ const routes = [
     component: () => import('../views/NewsView.vue')
   },
   {
+    path: '/news_detail',
+    name: 'news_detail',
+    component: () => import('../views/NewsDetail.vue')
+  },
+  {
     path: '/food',
     name: 'food',
     component: () => import('../views/FoodIntro.vue')
@@ -110,9 +115,9 @@ const routes = [
     component: () => import('../views/AboutMember.vue')
   },
   {
-    path: '/about_origin',
-    name: 'about_origin',
-    component: () => import('../views/AboutoriginView.vue')
+    path: '/game',
+    name: 'game',
+    component: () => import('../views/GameView.vue')
   },
   // {
   //   path: '/login',

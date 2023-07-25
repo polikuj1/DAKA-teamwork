@@ -1,9 +1,13 @@
 <template>
   <div class="home">
+    <div class="home_game" @click="this.$router.push('/game')">
+      <img src="@/assets/images/home/game.svg" alt="小遊戲圖">
+    </div>
     <Hero @emit-go="goDown"/>
     <Banner/>
     <Services></Services>
     <Meals/>
+    <Map></Map>
     <News/>
     <SocialMedia/>
   </div>
@@ -34,7 +38,7 @@ export default {
 
   },
   components: {
-    Services, News, Meals, Banner, Hero, SocialMedia,
+    Services, News, Meals, Banner, Map, Hero, SocialMedia,
   },
 }
 </script>

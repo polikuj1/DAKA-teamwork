@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="all" v-for="item in all" :key="item.tp_shop">
+        <div class="store" v-for="item in store" :key="item.tp_shop">
             <div class="title"> 分店資訊</div>
             <div class="map">
                 <img src="@/assets/images/index/taiwan.svg" alt="台灣" class="taiwan">
@@ -21,15 +21,28 @@
 </template>
 
 <script>
-Vue.createApp({
-    data() {
-        return {
-            all: [{
+export default {
+name: '',
+data() {
+return {
+    store: [{
                 tp_shop: require('@/assets/images/index/台北分店.png'),
                 zl_shop: require('@/assets/images/index/中壢分店.png'),
                 tn_shop: require('@/assets/images/index/台南分店.png'),
             }],
-        }
-    }
-}).mount("#app")
+}
+},
+methods: {
+
+},
+computed: {
+
+},
+components: {
+
+},
+mounted() {
+
+},
+}
 </script>

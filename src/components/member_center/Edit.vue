@@ -12,7 +12,7 @@
             </div>
             <div class="edit_item">
               <label for="birthday">生日</label>
-              <input type="date" class="birth_date" v-model="birthday" />
+              <input type="date" v-model="birthday" :readonly="true" />
             </div>
             <div class="edit_item">
               <label for="address">地址</label>
@@ -20,7 +20,7 @@
             </div>
             <div class="edit_item">
               <label for="phone">電話</label>
-              <input type="tel" v-model="phone" />
+              <input type="tel" v-model="phone" maxlength="12"/>
             </div>
             <div class="edit_item">
               <label for="email">信箱</label>
@@ -28,10 +28,10 @@
             </div>
             <div class="edit_item">
               <label for="password">修改密碼</label>
-              <input type="password" v-model="password" placeholder="請輸入新密碼" />
+              <input type="password" v-model="password" pattern="[A-Za-z0-9]{6,12}" placeholder="請輸入新密碼" />
             </div>
             <div class="confirm_password">
-              <input type="password" v-model="confirmPassword" placeholder="請再次輸入新密碼" />
+              <input type="password" v-model="confirmPassword" pattern="[A-Za-z0-9]{6,12}" placeholder="請再次輸入新密碼" />
             </div>
             <button type="submit" @click="submitForm" class="sumbit_edit">確認修改</button>
           </form>
