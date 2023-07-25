@@ -1,7 +1,7 @@
-.socialmedia{
+.socialmedia {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
     text-align: center;
     padding: $section_pd 0;
 
@@ -31,22 +31,29 @@
     .carousel__prev {
         left: -20px;
     }
-    
+
     .carousel__next {
         right: -20px;
     }
-    
+
 }
 
-@include screen_one(768) {
+@media screen and (max-width: 768px) {
 
     .socialmedia {
-        .carousel__prev {
-            left: 0px;
-        }
-        
+
+        .carousel__prev,
         .carousel__next {
-            right: 0px;
+            color: #fff;
+            transform: scale(2.5);
+        }
+
+        .carousel__prev {
+            left: 260px;
+        }
+
+        .carousel__next {
+            right: 260px;
         }
     }
 }

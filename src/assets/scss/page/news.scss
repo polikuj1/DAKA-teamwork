@@ -1,11 +1,11 @@
-.news{
+.news_page{
     width: 100%;
     box-sizing: border-box;
     // padding: $section_pd;
     @include container;
     margin: auto;
     margin-bottom: 160px;
-    .news a{
+    .news_page a{
         text-decoration: none;
     }
     .news_tabs{
@@ -81,7 +81,7 @@
 
 //手機版
 @include screen_one(767) {
-    .news{
+    .news_page{
         padding-top: 40px;
     }
     .news_tabs{
@@ -120,7 +120,7 @@
 
 //電腦版
 @include sm{
-    .news{
+    .news_page{
         padding-top: 80px;
     }
     .news_tabs{
