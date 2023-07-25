@@ -10,15 +10,17 @@
         padding-bottom: ($section_pd / 4);
     }
 
-
-    .carousel__track {
-        gap: 20px;
+    .ig_post {
+        border-radius: 20px;
+        overflow: hidden;
     }
 
-    iframe {
-        width: 380px;
+    .carousel__slide {
         height: 650px;
+        align-items: flex-start;
     }
+
+
 
     .carousel__prev,
     .carousel__next {
@@ -27,25 +29,24 @@
     }
 
     .carousel__prev {
-        margin-left: -40px !important;
+        left: -20px;
     }
     
     .carousel__next {
-        margin-right: -40px !important;
+        right: -20px;
     }
     
 }
 
 @include screen_one(768) {
 
-    .social_media {
-        
+    .socialmedia {
         .carousel__prev {
-            margin-left: 0;
+            left: 0px;
         }
         
         .carousel__next {
-            margin-right: 0;
+            right: 0px;
         }
     }
 }

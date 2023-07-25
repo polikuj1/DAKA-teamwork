@@ -2,8 +2,10 @@
     <section class="socialmedia">
         <h3>\ Instagram /</h3>
         <div class="post_slides">
-            <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true">
-                <Slide v-for="code in embedCodes" :key="code.id" v-html="code.code">
+            <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
+            :slideWidth="400">
+                <Slide v-for="code in embedCodes" :key="code.id">
+                    <div class="ig_post" v-html="code.code"></div>
                 </Slide>
 
                 <template #addons>
