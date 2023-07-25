@@ -2,7 +2,7 @@
     <section class="popmeals">
         <h3>\ 熱門餐點 /</h3>
         <div class="meals_slides">
-            <Carousel :items-to-show="1" :autoplay="5000" :wrap-around="true">
+            <Carousel :items-to-show="1"  :wrap-around="true">
 
                 <Slide v-for="item in popmeals" :key="item.title">
                     <div class="meal_intro">
@@ -79,6 +79,11 @@ export default defineComponent({
                 img: require('@/assets/images/food/onigiri.png'),
             },
         ],
+        //carousel settings
+        settings: {
+            itemsToShow: 1,
+            snapAlign: 'center',
+        },
     }),
 })
 </script>

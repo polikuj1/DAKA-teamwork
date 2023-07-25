@@ -6,7 +6,8 @@
             <p>
                 無需離開遊戲環境，您只需輕輕一按，美味餐點就能送到您的桌前。您可以在享受遊戲的同時，隨心品味各式佳餚，為遊戲體驗增添一份風味與滿足。
             </p>
-            <a href="#">more <img src="@/assets/images/index/arrow_orange.png" alt="arrow"></a>
+            <div class="btn_more">
+            <router-link to="/food">more <img src="@/assets/images/index/arrow_orange.png" alt="arrow"></router-link></div>
         </div>
 
         <div class="meal_group">
