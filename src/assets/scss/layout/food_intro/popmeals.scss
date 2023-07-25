@@ -1,0 +1,311 @@
+.popmeals {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: ($section_pd / 2);
+    text-align: center;
+
+    h3 {
+        color: $main_txt_color;
+    }
+
+    .meals_slides {
+        position: relative;
+        padding-top: 100px;
+
+        .meal_intro {
+            padding-top: 120px;
+            position: relative;
+            width: 90%;
+
+            .meal_pic {
+                position: absolute;
+                bottom: 220px;
+                left: 0;
+                right: 0;
+                display: flex;
+                justify-content: center;
+
+                img {
+                    vertical-align: bottom;
+                }
+
+            }
+
+            .meal_text {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                height: fit-content;
+                padding: 80px 30px;
+                box-sizing: border-box;
+                text-align: center;
+                @include bgSvg(decoration/circle02);
+
+                p {
+                    line-height: $line_height;
+                    padding: 10px 20px;
+                }
+            }
+
+        }
+
+        // vue3-carousel pagination settings
+        .carousel__pagination {
+            width: 80%;
+            flex-wrap: wrap;
+            margin: 0 auto;
+            position: absolute;
+            top: -90px;
+            left: 0;
+            right: 0;
+        }
+
+        .carousel__pagination-item button {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            background: no-repeat center center;
+            background-size: 110%;
+        }
+
+        .carousel__pagination-item:first-child button {
+            background-image: url(@/assets/images/food/drink.png);
+        }
+
+        .carousel__pagination-item:nth-child(2) button {
+            background-image: url(@/assets/images/food/takoyaki.png);
+        }
+
+        .carousel__pagination-item:nth-child(3) button {
+            background-image: url(@/assets/images/food/curry.png);
+        }
+
+        .carousel__pagination-item:nth-child(4) button {
+            background-image: url(@/assets/images/food/fried_chicken.png);
+        }
+
+        .carousel__pagination-item:nth-child(5) button {
+            background-image: url(@/assets/images/food/ramen.png);
+        }
+
+        .carousel__pagination-item:nth-child(6) button {
+            background-image: url(@/assets/images/food/hotdog.png);
+        }
+
+        .carousel__pagination-item:nth-child(7) button {
+            background-image: url(@/assets/images/food/onigiri.png);
+        }
+
+        .carousel__pagination-button::after {
+            height: 0;
+        }
+
+    }
+}
+
+
+@include sm() {
+    .popmeals {
+        max-width: 768px;
+
+        .meals_slides {
+            // position: relative;
+            // padding-top: 100px;
+
+            .meal_intro {
+                padding-top: 280px;
+                width: 80%;
+
+                .meal_pic {
+                    bottom: 300px;
+                }
+
+                .meal_text {
+                    width: 50%;
+                    padding: 100px 120px;
+                    @include bgSvg(decoration/circle02);
+
+                    p {
+                        line-height: $line_height;
+                        font-size: 20px;
+                    }
+                }
+            }
+
+
+            // vue3-carousel pagination settings
+            .carousel__pagination {
+                width: 100%;
+                gap: 8px;
+                // flex-wrap: wrap;
+                // margin: 0;
+                // position: absolute;
+                // top: -90px;
+                // left: 0;
+                // right: 0;
+            }
+
+            .carousel__pagination-item button {
+                width: 100px;
+                height: 100px;
+                margin: 0px;
+                // background: no-repeat center center;
+                // background-size: 110%;
+            }
+
+
+            .carousel__pagination-item:first-child button {
+                background-image: url(@/assets/images/food/drink.png);
+                position: relative;
+                left: 10px;
+                top: 220px;
+            }
+
+            .carousel__pagination-item:nth-child(2) button {
+                background-image: url(@/assets/images/food/takoyaki.png);
+                position: relative;
+                right: 10px;
+                top: 130px;
+            }
+
+            .carousel__pagination-item:nth-child(3) button {
+                background-image: url(@/assets/images/food/curry.png);
+                position: relative;
+                right: 10px;
+                top: 70px;
+            }
+
+            .carousel__pagination-item:nth-child(4) button {
+                background-image: url(@/assets/images/food/fried_chicken.png);
+                position: relative;
+                left: 10px;
+                top: 40px;
+            }
+
+            .carousel__pagination-item:nth-child(5) button {
+                background-image: url(@/assets/images/food/ramen.png);
+                position: relative;
+                left: 30px;
+                top: 75px;
+            }
+
+            .carousel__pagination-item:nth-child(6) button {
+                background-image: url(@/assets/images/food/hotdog.png);
+                position: relative;
+                left: 20px;
+                top: 140px;
+            }
+
+            .carousel__pagination-item:nth-child(7) button {
+                background-image: url(@/assets/images/food/onigiri.png);
+                position: relative;
+                right: 20px;
+                top: 240px;
+            }
+        }
+    }
+}
+
+@include md() {
+
+        .popmeals {
+            max-width: 1024px;
+    
+            .meals_slides {
+                // position: relative;
+                // padding-top: 100px;
+    
+                .meal_intro {
+                    padding-top: 280px;
+                    width: 80%;
+    
+                    .meal_pic {
+                        bottom: 300px;
+                    }
+    
+                    .meal_text {
+                        width: 70%;
+                        padding: 100px 180px;
+                        @include bgSvg(decoration/circle02);
+    
+                        p {
+                            line-height: $line_height;
+                            font-size: 24px;
+                        }
+                    }
+                }
+    
+    
+                // vue3-carousel pagination settings
+                .carousel__pagination {
+                    width: 100%;
+                    gap: 8px;
+                    // flex-wrap: wrap;
+                    // margin: 0;
+                    // position: absolute;
+                    // top: -90px;
+                    // left: 0;
+                    // right: 0;
+                }
+    
+                .carousel__pagination-item button {
+                    width: 100px;
+                    height: 100px;
+                    margin: 0px;
+                    // background: no-repeat center center;
+                    // background-size: 110%;
+                }
+    
+    
+                .carousel__pagination-item:first-child button {
+                    background-image: url(@/assets/images/food/drink.png);
+                    position: relative;
+                    left: 10px;
+                    top: 220px;
+                }
+    
+                .carousel__pagination-item:nth-child(2) button {
+                    background-image: url(@/assets/images/food/takoyaki.png);
+                    position: relative;
+                    right: 10px;
+                    top: 130px;
+                }
+    
+                .carousel__pagination-item:nth-child(3) button {
+                    background-image: url(@/assets/images/food/curry.png);
+                    position: relative;
+                    right: 10px;
+                    top: 70px;
+                }
+    
+                .carousel__pagination-item:nth-child(4) button {
+                    background-image: url(@/assets/images/food/fried_chicken.png);
+                    position: relative;
+                    left: 10px;
+                    top: 40px;
+                }
+    
+                .carousel__pagination-item:nth-child(5) button {
+                    background-image: url(@/assets/images/food/ramen.png);
+                    position: relative;
+                    left: 30px;
+                    top: 75px;
+                }
+    
+                .carousel__pagination-item:nth-child(6) button {
+                    background-image: url(@/assets/images/food/hotdog.png);
+                    position: relative;
+                    left: 20px;
+                    top: 140px;
+                }
+    
+                .carousel__pagination-item:nth-child(7) button {
+                    background-image: url(@/assets/images/food/onigiri.png);
+                    position: relative;
+                    right: 20px;
+                    top: 240px;
+                }
+            }
+        }
+    
+}

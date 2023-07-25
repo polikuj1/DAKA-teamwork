@@ -20,19 +20,19 @@ export default {
       nav_content: [
         {
           title: '會員資料管理',
-          list: ['個人資料編輯', '/member_center'],
+          list: ['個人資料編輯', '/member_center/member_edit'],
           list_one: ['線上儲值', '/member_center/member_add_value'],
-          list_two: ['信用卡綁定', '/member_center/member_bind_credit'],
+          list_two: ['付款方式', '/member_center/member_bind_credit'],
         },
         {
           title: '交易紀錄',
-          list: ['儲值金交易紀錄', '/member_center'],
-          list_one: ['座位預約紀錄', '/member_center'],
-          list_two: ['書籍租借紀錄', '/member_center'],
+          list: ['儲值金交易紀錄', '/member_center/member_value_record'],
+          list_one: ['座位預約紀錄', '/member_center/member_seat_reservation'],
+          list_two: ['書籍租借紀錄', '/member_center/member_book_reservation'],
         },
         {
           title: '優惠序號管理',
-          list: ['優惠序號清單', '/member_center'],
+          list: ['優惠券', '/member_center/member_coupon'],
           list_one: ['', ''],
           list_two: ['', ''],
         },

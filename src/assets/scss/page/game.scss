@@ -1,0 +1,30 @@
+.drop-zone {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  background-color: #aaa;
+  display: flex;
+  flex-wrap : wrap;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+  div {
+    width: 95px;
+    height: 95px;
+    margin: 2px 0;
+    background-color: #cfa;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+.puzzle img {
+  display: inline-block;
+  width: 95px;
+  height: 95px;
+  margin-right: 10px;
+}

@@ -12,7 +12,7 @@
         <div class="news_tab_content">
           <!-- 全部消息 -->
           <div v-show="currentTab === 'all'">
-            <div v-for="(message, index) in paginatedAllMessages" :key="message.id" class="message">
+            <div v-for="(message) in paginatedAllMessages" :key="message.id" class="message">
               <div class="news_pic">
                 <img :src="message.img" alt="Message Image" >
               </div>
@@ -27,7 +27,7 @@
 
           <!-- 最新消息 -->
           <div v-show="currentTab === 'latest'">
-            <div v-for="(message, index) in paginatedlatestMessages" :key="message.id" class="message">
+            <div v-for="(message) in paginatedlatestMessages" :key="message.id" class="message">
               <div class="news_pic">
                 <img :src="message.img" alt="Message Image">
               </div>
@@ -41,7 +41,7 @@
           </div>
           <!-- 活動消息 -->
           <div v-show="currentTab === 'activity'">
-            <div v-for="(message, index) in paginatedActivityMessages" :key="message.id" class="message">
+            <div v-for="(message) in paginatedActivityMessages" :key="message.id" class="message">
                 <div class="news_pic">
                   <img :src="message.img" alt="Message Image">
                 </div>
@@ -77,7 +77,7 @@ export default {
         },
         {
           category:'ACTIVITY',
-          img: require('@/assets/images/news/annual_01.png'),
+          img: require('@/assets/images/news/annual_04.png'),
           date:'2022-04-01',
           content:'🎉 超值年度回饋～打咖獻給忠實顧客的感謝之心！'
         }, {
@@ -181,6 +181,6 @@ export default {
     totalPages() {
         return Math.ceil(this.allMessages.length / 5); // 每頁顯示 5 則消息，計算總頁數
       },
-    },
+  },
 }
 </script>

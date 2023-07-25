@@ -1,24 +1,29 @@
 <template>
-    1111
-    <carousel>
-        <slide>
-            Slide 1 Content
-        </slide>
-        <slide>
-            Slide 2 Content
-        </slide>
-    </carousel>
+    <section class="home_banner">
+        <Carousel :autoplay="2000" :wrap-around="true">
+            <Slide v-for="slide in 5" :key="slide">
+                <div class="carousel__item">{{ slide }}</div>
+            </Slide>
+    
+            <template #addons>
+                <Pagination />
+            </template>
+        </Carousel>
+    </section>
 </template>
 
 <script>
-// import Vue from 'vue';
-// import VueCarousel from 'vue-carousel';
-// Vue.use(VueCarousel);
-// import { Carousel, Slide } from 'vue-carousel';
-// export default {
-//     components: {
-//         Carousel,
-//         Slide
-//     }
-// };
+import { defineComponent } from 'vue'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
+
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
+    name: 'Autoplay',
+    components: {
+        Carousel,
+        Slide,
+        Pagination,
+    },
+})
 </script>

@@ -1,0 +1,52 @@
+.socialmedia{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto; 
+    text-align: center;
+    padding: $section_pd 0;
+
+    h3 {
+        color: $main_txt_color;
+        padding-bottom: ($section_pd / 4);
+    }
+
+    .ig_post {
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .carousel__slide {
+        height: 650px;
+        align-items: flex-start;
+    }
+
+
+
+    .carousel__prev,
+    .carousel__next {
+        color: #fff;
+        transform: scale(2);
+    }
+
+    .carousel__prev {
+        left: -20px;
+    }
+    
+    .carousel__next {
+        right: -20px;
+    }
+    
+}
+
+@include screen_one(768) {
+
+    .socialmedia {
+        .carousel__prev {
+            left: 0px;
+        }
+        
+        .carousel__next {
+            right: 0px;
+        }
+    }
+}

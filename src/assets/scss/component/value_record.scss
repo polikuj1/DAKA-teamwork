@@ -1,0 +1,41 @@
+.value_record{
+	background-color: $secondary_blue;
+	width: 80%;
+	margin: auto;
+	border-radius: 10px;
+	color: $main_txt_color;
+	margin-top: 40px;
+	box-sizing: border-box;
+	padding: 20px 40px;
+	margin-bottom: 40px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	font-size: 20px;
+	.record_list, .record_content{
+		display: flex;
+		justify-content: space-between;
+		.record_date, .record_method{
+			color:#D5F0F0;
+			font-size: 16px;
+		}
+	}
+}
+	
+@media screen and (max-width: 900px){
+	.value_record{
+		margin-top: 20px;
+		margin-bottom: 20px;
+		gap: 5px;
+		font-size: 18px;
+		.record_list, .record_content{
+			flex-direction: column;
+			gap:5px;
+			.record_date, .record_method{
+				font-size: 14px;
+			}
+		}
+		
+	}
+}
+//底部分不開

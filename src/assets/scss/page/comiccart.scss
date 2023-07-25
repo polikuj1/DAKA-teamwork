@@ -1,0 +1,326 @@
+.comiclist_cart {
+  @include container;
+
+  .comiclist_content {
+    width: 650px;
+    margin: 0 auto 50px;
+    background-color: $main_txt_color;
+    border-radius: 0.625rem;
+    padding: 1rem;
+    // 上中下的白色區域
+
+    .cart_l_text {
+      font-size: 1.875rem;
+      font-weight: 700;
+    }
+
+    // 30
+    .cart_m_text {
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    // 24
+    .cart_s_text {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 150%;
+    }
+
+    //20
+
+    .cart_l_reserve_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      border-bottom: 1px solid #263238;
+    }
+
+    .cart_m_reserve_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      margin-top: 10px;
+
+      .cart_m_text:nth-child(1) {
+        margin-left: 0px;
+      }
+
+      .cart_m_text:nth-child(2) {
+        margin-left: 350px;
+      }
+
+      .cart_m_text:nth-child(3) {
+        margin-right: 100px;
+      }
+    }
+
+
+    .cart_book_content {
+      .cart_book {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+
+        .cart_book_pic {
+          width: 133.33px;
+          height: 200px;
+          margin-right: 20px;
+          margin-left: 10px;
+          flex-shrink: 0;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .cart_book_name {
+          display: block;
+          flex-grow: 1;
+        }
+
+        .cart_book_count {
+          display: flex;
+          align-items: center;
+          margin-right: -30px;
+        }
+
+        .cart_book_cash {
+          display: flex;
+          align-items: center;
+          margin-left: 65px;
+
+          .cart_book_delete {
+            margin-right: -40px;
+            margin-bottom: 15px;
+            position: relative;
+            cursor: pointer;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+
+    // 計算
+    .cart_l_count_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      border-bottom: 1px solid #263238;
+
+      .cart_m_text:nth-child(1) {
+        margin-left: 0px;
+      }
+
+      .cart_m_text:nth-child(2) {
+        margin-left: 0px;
+      }
+
+      .cart_m_text:nth-child(3) {
+        margin-right: 0px;
+      }
+
+      .cart_m_text:nth-child(4) {
+        margin-right: 0px;
+      }
+    }
+
+    .cart_m_count_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      margin-top: 10px;
+
+      .cart_m_text:nth-child(1) {
+        margin-left: 0px;
+      }
+
+      .cart_m_text:nth-child(2) {
+        margin-left: -35px;
+      }
+
+      .cart_m_text:nth-child(3) {
+        margin-left: -23px;
+      }
+
+      .cart_m_text:nth-child(4) {
+        margin-right: 5px;
+      }
+    }
+
+    // 預約須知
+    .cart_l_rule_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+    }
+
+    .cart_m_rule_title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 10px 10px;
+      .cart_s_text {
+        counter-reset: item;
+      }
+      .cart_s_text p::before {
+        counter-increment: item;
+        content: "(" counter(item) ") ";
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  // 按鈕
+  .comiclist_cartbtn {
+    padding: 10px 40px;
+    background-color: $btn_bg_color;
+    border-radius: $btn_br;
+    font-size: 1.25rem;
+    color: $main_txt_color;
+    font-weight: 400;
+    cursor: pointer;
+    width: 165px;
+    display: inline-flex;
+    margin-left: 550px;
+    margin-bottom: 100px;
+    align-items: center;
+    gap: 3px;
+  }
+}
+
+// Media Queries
+@include sm() {}
+
+// 1024
+@include md() {
+  .comiclist_cart {
+    .comiclist_content {
+      .cart_m_reserve_title {
+        .cart_m_text:nth-child(1) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(2) {
+          margin-left: 325px;
+        }
+        .cart_m_text:nth-child(3) {
+          margin-right: 95px;
+        }
+      }
+
+      // 計算
+      .cart_l_count_title {
+        .cart_m_text:nth-child(1) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(2) {
+          margin-left: -10px;
+        }
+        .cart_m_text:nth-child(3) {
+          margin-left: -20px;
+        }
+        .cart_m_text:nth-child(4) {
+          margin-right: 0px;
+        }
+      }
+
+      .cart_m_count_title {
+        .cart_m_text:nth-child(1) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(2) {
+          margin-left: -50px;
+        }
+        .cart_m_text:nth-child(3) {
+          margin-left: -45px;
+        }
+        .cart_m_text:nth-child(4) {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    // 按鈕
+    .comiclist_cartbtn {
+      width: 190px;
+      margin-left: 640px;
+    }
+  }
+}
+
+// 1200
+@include lg() {
+  .comiclist_cart {
+    // 按鈕
+    .comiclist_cartbtn {
+      margin-left: 740px;
+    }
+  }
+}
+
+@include screen(1920) {
+  .comiclist_cart {
+    .comiclist_content {
+      .cart_m_reserve_title {
+        .cart_m_text:nth-child(1) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(2) {
+          margin-left: 300px;
+        }
+        .cart_m_text:nth-child(3) {
+          margin-right: 90px;
+        }
+      }
+  
+      // 計算
+      .cart_l_count_title {
+        .cart_m_text:nth-child(1) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(2) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(3) {
+          margin-left: -40px;
+        }
+        .cart_m_text:nth-child(4) {
+          margin-right: 0px;
+        }
+      }
+  
+      .cart_m_count_title {
+        .cart_m_text:nth-child(1) {
+          margin-left: 0px;
+        }
+        .cart_m_text:nth-child(2) {
+          margin-left: -45px;
+        }
+        .cart_m_text:nth-child(3) {
+          margin-left: -60px;
+        }
+        .cart_m_text:nth-child(4) {
+          margin-right: 5px;
+        }
+      }
+    }
+    // 按鈕
+    .comiclist_cartbtn {
+      width: 200px;
+      margin-left: 725px;
+    }
+  }
+}

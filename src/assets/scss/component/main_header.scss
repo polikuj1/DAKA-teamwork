@@ -2,8 +2,12 @@
   width: 100%;
   background-color: $main_bg;
   padding: 40px 60px;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 999;
+  transition: .5s all;
+  opacity: 1 !important;
   .logo {
     display: flex;
     justify-content: center;
@@ -36,6 +40,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    opacity: 1 !important;
     .logo {
       a {
         width: 290px;
@@ -98,4 +103,13 @@
       }
     }
   }
+}
+
+.disappear {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
+.show_now {
+  opacity: 1 !important;
 }

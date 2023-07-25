@@ -11,7 +11,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutusView.vue'),
-    
+  },
+  {
+    path: '/location',
+    name: 'location',
+    component: () => import('../views/LocationView.vue'),
   },
   {
     path: '/news',
@@ -44,9 +48,14 @@ const routes = [
     component: () => import('../views/ComicSearch.vue'),
   },
   {
-    path: '/comic_detail',
+    path: '/comic_detail/:id',
     name: 'comic_detail',
     component: () => import('../views/ComicDetail.vue'),
+  },
+  {
+    path: '/comic_cart',
+    name: 'comic_cart',
+    component: () => import('../views/ComicCart.vue')
   },
   {
     path: '/member_center',
@@ -68,12 +77,47 @@ const routes = [
         name: 'member_bind_credit',
         component: () => import('../components/member_center/BindCredit.vue')
       },
+      {
+        path: 'member_add_credit',
+        name: 'member_add_credit',
+        component: () => import('../components/member_center/AddCredit.vue')
+      },
+      {
+        path: 'member_value_record',
+        name: 'member_value_record',
+        component: () => import('../components/member_center/ValueRecord.vue')
+      },
+      {
+        path: 'member_coupon',
+        name: 'member_coupon',
+        component: () => import('../components/member_center/Coupon.vue')
+      },
+      {
+        path: 'member_edit',
+        name: 'member_edit',
+        component: () => import('../components/member_center/Edit.vue')
+      },
+      {
+        path: 'member_seat_reservation',
+        name: 'member_seat_reservation',
+        component: () => import('../components/member_center/SeatReservation.vue')
+      },
+      {
+        path: 'member_book_reservation',
+        name: 'member_book_reservation',
+        component: () => import('../components/member_center/BookRecord.vue')
+      },
     ],
   },
   {
     path: '/about_member',
     name: 'about_member',
     component: () => import('../views/AboutMember.vue')
+  },
+  {
+    path: '/game',
+    name: 'game',
+    component: () => import('../views/GameView.vue')
   },
   // {
   //   path: '/login',

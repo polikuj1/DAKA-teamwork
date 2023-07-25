@@ -1,0 +1,68 @@
+.edit_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    margin: auto;
+    gap: 65px;
+    margin-top: 70px;
+    font-size: 1.7rem;
+    color: $main-bg;
+    .edit_item{
+        display: flex;
+        justify-content: space-between;
+        input{
+            background-color: $main-bg;
+            border-radius: 10px;
+            width: 60%;
+            color: $main_txt_color;
+            text-indent: 0.5em;
+        }
+        input::placeholder {
+            font-size: 1.5rem;
+            color: #7B7979;
+            text-indent: 0.5em;
+        }
+    }
+    .confirm_password{
+        text-align: end;
+        input{
+            background-color: $main-bg;
+            border-radius: 10px;
+            width: 60%;
+            color: $main_txt_color;
+            text-indent: 0.5em;
+        }
+        input::placeholder {
+            font-size: 1.5rem;
+            color: #7B7979;
+            text-indent: 0.5em;
+        }
+    }
+}
+.sumbit_edit{
+    color: $main_txt_color;
+    background-color: $btn_bg_color;
+    border-radius: 100px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 200px;
+    padding: 10px 40px;
+    font-size: 1.5rem;
+    border: none;
+}
+@media screen and (max-width: 768px){
+    .edit_content{
+        width: 80%;
+        font-size: 1.4rem;
+        .edit_item, .confirm_password{
+            input{
+                border-radius: 5px;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+        }
+    }
+}

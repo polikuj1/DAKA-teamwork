@@ -8,14 +8,15 @@
     </div> -->
     <div class="logo">
       <router-link to="/">
-        <img src="@/assets/images/footerLogo.png" alt="">
+        <img src="@/assets/images/footerLogo.svg" alt="">
       </router-link>
     </div>
     <div class="btn_group">
       <router-link :to="btn.site" v-for="btn in btns" :key="btn.title">{{ btn.title }}</router-link>
     </div>
     <div class="copyright">
-      {{ copyright }}
+      <span>{{ copyright }}</span>
+      <p v-html="text"></p>
     </div>
   </footer>
 </template>
@@ -39,6 +40,7 @@ export default {
         },
       ],
       copyright: '版權所有 © 2023 打咖 DAKA',
+      text: '本網站為 緯育 TibaMe 前端設計工程師班第83期學員專題成果作品。本平台僅供學習、展示之用。<br>若有抵觸有關著作權，或有第三人主張侵害智慧財產權等情事，均由學員負法律上責任，緯育公司概不負責。<br>若有侵權疑慮，您可以私訊 緯育 TibaMe，後續會由專人協助處理。',
     }
   },
 }

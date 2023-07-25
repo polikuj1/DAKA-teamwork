@@ -22,7 +22,7 @@
       <div class="about_card_list">
         <div class="about_card_one  about_card">
           <div class="about_card_pic">
-            <img :src="require('@/assets/images/about/about_lobby.svg')" alt="">
+            <img :src="require('@/assets/images/about/about_lobby.svg')" alt="DAKA_LOBBY">
           </div>
           <div class="about_card_text">
             <h3>大廳環境</h3>
@@ -32,17 +32,17 @@
 
         <div class="about_card_two about_card">
           <div class="about_card_pic">
-            <img :src="require('@/assets/images/about/about_chairs.svg')" alt="">
+            <img :src="require('@/assets/images/about/about_chairs.svg')" alt="DAKA_CHAIR">
           </div>
           <div class="about_card_text">
             <h3>包廂環境</h3>
             <p>我們有單人房和雙人房可供選擇，擁有高規格電腦、舒適床鋪和迷你餐桌。讓你感受到奢華與便利的完美結合！無論是過夜狂歡還是欣賞電影，這裡都是你最佳的選擇。</p>
           </div>
-          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true">
+          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"  class="about_slider_up">
             <Slide v-for="item in sliderTop" :key="item.index">
 
 
-              <img class="carousel__item" :src="item.src" alt="">
+              <img class="about_carousel_item" :src="item.src" alt="">
 
             </Slide>
 
@@ -52,9 +52,9 @@
           </Carousel>
         </div>
 
-        <div class="about_card_third about_card">
+        <div class="about_card_three about_card">
           <div class="about_card_pic">
-            <img :src="require('@/assets/images/about/about_comic.svg')" alt="">
+            <img :src="require('@/assets/images/about/about_comic.svg')" alt="DAKA_COMIC">
           </div>
           <div class="about_card_text">
             <h3>漫畫區域</h3>
@@ -64,17 +64,17 @@
 
         <div class="about_card_four about_card">
           <div class="about_card_pic">
-            <img :src="require('@/assets/images/about/about_bathroom.svg')" alt="">
+            <img :src="require('@/assets/images/about/about_bathroom.svg')" alt="DAKA_BATHROOM">
           </div>
           <div class="about_card_text">
             <h3>衛浴設施</h3>
             <p>我們還提供設施齊全的廁所和清爽的淋浴間，給你完美的休憩體驗。而且，別擔心停車問題，我們還提供免費停車場，讓你輕鬆享受遊戲時光。快來這個完美的環境，感受舒適和便利的雙重享受！</p>
           </div>
-          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true">
+          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true" class="about_slider_down">
             <Slide v-for="slide in sliderDown" :key="slide.index">
 
 
-              <img class="carousel__item" :src="slide.src" alt="">
+              <img class="about_carousel_item" :src="slide.src" alt="">
 
             </Slide>
 

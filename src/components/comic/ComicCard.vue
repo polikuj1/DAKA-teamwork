@@ -13,8 +13,8 @@
     <main class="wrap">
       <div class="card" v-for="item in comicData" :key="item.title"
       v-show="comicData.length">
-        <div class="pic"  @click="this.$router.push({ path: `/comic_detail`})">
-          <img :src="item.img">
+        <div class="pic"  @click="this.$router.push(`/comic_detail/${item.id}`)">
+          <img :src="item.img" alt="漫畫封面">
         </div>
         <div class="txt">
           <div class="title">
@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import comicData from '@/assets/js/comicInfo.js';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';
 export default {
@@ -43,7 +42,7 @@ export default {
   name: 'ComicCard',
   data() {
     return {
-      comicData,
+      comicData: [],
       search: '',
       reservation: [],
     }
@@ -63,7 +62,13 @@ export default {
 
   },
   created() {
-    
+    this.axios.get('/data/comic.json')
+      .then((res) => {
+        this.comicData = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   },
 }
 </script>
