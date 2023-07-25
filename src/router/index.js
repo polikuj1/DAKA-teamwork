@@ -109,6 +109,11 @@ const routes = [
     name: 'about_member',
     component: () => import('../views/AboutMember.vue')
   },
+  {
+    path: '/game',
+    name: 'game',
+    component: () => import('../views/GameView.vue')
+  },
   // {
   //   path: '/login',
   //   name: 'login',
