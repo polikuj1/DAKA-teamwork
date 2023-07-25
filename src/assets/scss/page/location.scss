@@ -13,7 +13,8 @@
         display: block;
         font-size: 1.4rem;
         position: relative;
-        padding-bottom: 10px;
+        box-sizing: border-box;
+        padding: 20px 0;
         .fa-location-dot{
             color: #ED6F68;
         }
@@ -24,12 +25,11 @@
             &:nth-of-type(3) {
                 position: absolute;
                 right: 30px;
-                top: 5%;
+                top: 25%;
             }
         }
         .down {
             transform: rotate(180deg);
-            // background-color: #ED6F68 !important;
         }
     }
 }
@@ -63,7 +63,6 @@
 
 .ivu-collapse>.ivu-collapse-item>.ivu-collapse-header {
     height: auto;
-    // padding: 20px 0 30px
 }
 
 .ivu-icon-ios-arrow-forward:before {
@@ -79,6 +78,7 @@
             font-size: 1.5rem;
         }
         .panel_content{
+            
             .location{
                 margin-right: 20%;
             }
@@ -93,12 +93,14 @@
     .location_content{
         display: flex;
         justify-content:space-between;
+        box-sizing: border-box;
+        padding-top: 20px;
         .location_serve{
             display: flex;
             flex-direction: column;
             gap: 20px;
             box-sizing: border-box;
-            padding: 20px 30px;
+            padding: 50px 30px;
         }
         .location_map{
             width: 70%;
@@ -106,7 +108,7 @@
     }
     .for_price{
         display: block;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 }
 @include md{
@@ -122,7 +124,7 @@
     }
     .location_content{
         .location_serve{
-            padding: 20px 40px;
+            padding: 50px 40px;
         }
     }
     .price_content, .price_list{
@@ -140,13 +142,12 @@
         font-size: 1.25rem;
         .panel_content{
             width: 100%;
-            // display: block;
             font-size: 1.5rem;
         }
     }
     .location_content{
         .location_serve{
-            padding: 20px 40px;
+            padding: 60px 40px;
         }
     }
     .price_container{

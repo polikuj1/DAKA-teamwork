@@ -24,35 +24,6 @@
               </div>
             </div>
           </div>
-
-          <!-- 最新消息 -->
-          <!-- <div v-show="currentTab === 'latest'">
-            <div v-for="(message) in paginatedlatestMessages" :key="message.id" class="message">
-              <div class="news_pic">
-                <img :src="message.img" alt="Message Image">
-              </div>
-              <div class="news_message_content">
-                <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
-                <p class="news_date">{{ message.date }}</p>
-                <p class="news_title">{{ message.content }}</p>
-                <a href="#"><p class="news_more">view more</p></a>
-              </div>
-            </div>
-          </div> -->
-          <!-- 活動消息 -->
-          <!-- <div v-show="currentTab === 'activity'">
-            <div v-for="(message) in paginatedActivityMessages" :key="message.id" class="message">
-                <div class="news_pic">
-                  <img :src="message.img" alt="Message Image">
-                </div>
-                <div class="news_message_content">
-                  <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
-                  <p class="news_date">{{ message.date }}</p>
-                  <p class="news_title">{{ message.content }}</p>
-                  <a href="#"><p class="news_more">view more</p></a>
-                </div>
-            </div>
-          </div> -->
         </div>
     </section>
   </div>

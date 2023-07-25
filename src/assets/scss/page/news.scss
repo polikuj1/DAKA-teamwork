@@ -59,20 +59,21 @@
         }
         .news_more a {
             position: relative;
+            color: #fff;
         }
         .news_more a::before {
             content: "";
             position: absolute;
-            width: 200%;
+            width: 150%;
             height: 1px;
             background-color: #fff;
             bottom: 10px;
-            left: -200%;
+            left: -160%;
         }
         .left_text {
             text-align: left;
             a::before {
-                left: 100%;
+                left: 110%;
             }
         }
     }

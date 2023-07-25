@@ -1,3 +1,16 @@
-.credit{
-    background-color: burlywood;
+.member_coupon{
+    display: flex;
+    width: 80%;
+    background-color: $secondary_blue;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 40px 20px;
+    justify-content: space-around;
+    .coupon_title{
+        display: flex;
+    }
+    img{
+        height: 30px;
+        width: 30px;
+    }
 }

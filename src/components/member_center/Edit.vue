@@ -12,7 +12,7 @@
             </div>
             <div class="edit_item">
               <label for="birthday">生日</label>
-              <input type="date" v-model="birthday" :readonly="true" />
+              <input type="date" v-bind:value="birthday" :readonly="true" />
             </div>
             <div class="edit_item">
               <label for="address">地址</label>
@@ -54,7 +54,7 @@
       return {
         title: '會員資料編輯',
         name: '',
-        birthday: '',
+        birthday: '1990-09-10',
         address: '',
         phone: '',
         email: '',
