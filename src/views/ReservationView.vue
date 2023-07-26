@@ -195,12 +195,12 @@
         <div class="seat_color_comment">
           <div class="color_seSports_single_seat_group">
             <div class="color_seSports_single_seat"></div>
-            <p class="p_seSports_seat">A_電競區<br />C_單人房</p>
+            <p class="p_seSports_seat">A_大廳電競區<br />C_包廂單人房</p>
           </div>
 
           <div class="color_general_double_seat_group">
             <div class="color_general_double_seat"></div>
-            <p class="p_general_seat">B_一般區<br />D_雙人房</p>
+            <p class="p_general_seat">B_大廳一般區<br />D_包廂雙人房</p>
           </div>
           <div class="color_state_seat_group">
             <div class="color_vacancy_seat_group">
