@@ -72,7 +72,7 @@
         }
       }
       .about_card_text {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.7);
         padding: 20px 40px;
         border-radius: 0 0 50px 0;
         font-weight: 400;
@@ -119,7 +119,6 @@
     .about_circle_top {
       width: 700px;
       height: 500px;
-
       right: -150px;
       top: 0;
     }
@@ -168,30 +167,31 @@
 
 //1024以上
 @media screen and (min-width:1024px) {
+  
   .about_container {
     .about_circle_top {
       width: 1000px;
       height: 864px;
-      right: -150px;
-      top: 0;
+      right: -600px;
+      top: 100px;
     }
     .about_circle_middle {
       width: 1000px;
       height: 864px;
-      right: 100px;
-      top: 420px;
+      right: 00px;
+      top: 620px;
     }
     .about_circle_under {
       width: 1000px;
       height: 864px;
-      right: -150px;
-      top: 1000px;
+      right: -500px;
+      top: 1850px;
     }
     .about_circle_bottom {
       width: 1000px;
       height: 864px;
       right: 200px;
-      top: 2500px;
+      top: 2800px;
     }
 
     .about_card_list {
@@ -314,6 +314,31 @@
     display: flex;
     justify-content: center;
    
+    .about_circle_top {
+      width: 1000px;
+      height: 864px;
+      right: -150px;
+      top: 0;
+    }
+    .about_circle_middle {
+      width: 1000px;
+      height: 864px;
+      right: 0;
+      top: 420px;
+    }
+    .about_circle_under {
+      width: 1000px;
+      height: 864px;
+      right: -100px;
+      top: 1800px;
+    }
+    .about_circle_bottom {
+      width: 1000px;
+      height: 864px;
+      right: 300px;
+      top: 2650px;
+    }
+    
 
     .about_card_list {
       .about_card_one {
@@ -345,7 +370,7 @@
           }
         }
         .about_slider_up {
-          margin-top: 70px;
+          margin-top: 130px;
         }
       }
 
@@ -379,6 +404,7 @@
 
         .about_slider_down {
           margin-left: 60px;
+         margin-top: 30px;
         }
       }
     }

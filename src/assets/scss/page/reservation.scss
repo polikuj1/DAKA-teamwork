@@ -529,14 +529,22 @@ img {
         }
       }
       .confirm_data_seat {
+
         p {
           font-size: 1.3rem;
           margin-bottom: 10px;
         }
-        input {
-          padding: 70px 40px;
-          border-radius: 10px;
-          outline: 1px solid transparent;
+       .data_seat {
+        width: 280px;
+        min-height: 163px;
+      border: 1px solid #111;
+       
+.data_seat_info{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+}
+       
         }
       }
     }
