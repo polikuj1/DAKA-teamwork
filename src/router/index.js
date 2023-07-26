@@ -117,7 +117,12 @@ const routes = [
   {
     path: '/game',
     name: 'game',
-    component: () => import('../views/GameView.vue')
+    component: () => import('../views/PuzzleView.vue')
+  },
+  {
+    path: '/award',
+    name: 'award',
+    component: () => import('../views/SlotMachine.vue')
   },
   // {
   //   path: '/login',
