@@ -427,7 +427,7 @@ const seat_a = [
         index: '05',
       },
       {
-        area: 'd',
+        area: 'D',
         no: '06',
         state:'2',
         index: '06',
