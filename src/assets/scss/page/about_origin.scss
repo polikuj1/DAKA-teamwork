@@ -3,7 +3,7 @@
   position: relative;
   overflow: hidden;
 
-  // 圓圈
+
   .aboutorigin_circle_one {
     width: 500px;
     width: 100%;
@@ -34,7 +34,6 @@
     gap: 80px;
     padding: 0px 20px 420px;
 
-    // 圖片
     .aboutorigin_rightpic {
       float: right;
       width: 40%;
@@ -55,7 +54,6 @@
       }
     }
 
-    // 文字
     .about_card_lefttext {
       float: left;
       width: 60%;
@@ -105,7 +103,6 @@
 
     }
 
-    // 清除浮動
     .aboutorigin_card_first {
       .clearfix::after {
         content: "";
@@ -119,7 +116,6 @@
 @media screen and (min-width: 768px) {
   .aboutorigin_container {
 
-    // 圓圈
     .aboutorigin_circle_one {
       left: 0px;
       top: 800px;
@@ -132,7 +128,6 @@
 
     .aboutorigin_card_area {
 
-      // 圖片
       .aboutorigin_rightpic {
         width: 90%;
         padding-left: 120px;
@@ -145,7 +140,7 @@
         padding-bottom: 50px;
       }
 
-      // 文字
+
       .about_card_lefttext {
         float: left;
         width: 100%;
@@ -161,12 +156,12 @@
   }
 }
 
-//1024以上
+
 @media screen and (min-width:1024px) {
   .aboutorigin_container {
     .aboutorigin_card_area {
 
-      // 圖片
+
       .aboutorigin_rightpic {
         padding-left: 200px;
       }
@@ -178,7 +173,7 @@
   }
 }
 
-//1200以上
+
 @media screen and (min-width: 1200px) {
   .aboutorigin_container {
     .aboutorigin_circle_one {
@@ -193,7 +188,7 @@
 
     .aboutorigin_card_area {
 
-      // 圖片
+ 
       .aboutorigin_rightpic {
         width: 50%;
       }
@@ -203,7 +198,7 @@
         margin-left: -200px;
       }
 
-      // 文字
+
       .about_card_lefttext {
         width: 50%;
         height: 40vh;
@@ -217,7 +212,7 @@
   }
 }
 
-//1920以上
+
 @media screen and (min-width: 1920px) {
   .aboutorigin_container {
     .aboutorigin_circle_two {
@@ -235,7 +230,7 @@
       gap: 80px;
       padding: 0px 20px 420px;
 
-      // 圖片
+  
       .aboutorigin_rightpic {
         width: 50%;
       }
@@ -244,7 +239,7 @@
         width: 50%;
       }
 
-      // 文字
+
       .about_card_lefttext {
         width: 50%;
         height: 50vh;

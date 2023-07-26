@@ -63,7 +63,7 @@ export default {
 
   },
   created() {
-    this.axios.get('/data/comic.json')
+    this.axios.get('/comic.json')
       .then((res) => {
         this.originData = res.data;
         this.comicData = res.data;
