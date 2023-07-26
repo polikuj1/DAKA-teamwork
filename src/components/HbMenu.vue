@@ -14,14 +14,20 @@
       <nav ref="nav">
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{ li.title }}</li>
+        <li @click.prevent,stop="loginOpen">登入 | 註冊</li>
         </ul>
       </nav>
     </div>
   </div>
+  <Login v-if="this.$store.state.login"></Login>
 </template>
 
 <script>
+import login from '@/components/LoginView.vue';
 export default {
+  components:{
+    login,
+  },
   data() {
     return {
       nav: [
@@ -65,11 +71,7 @@ export default {
           class: 'fa-solid fa-user',
           site: '/member_center/member_nav',
         },
-        {
-          title: '登入註冊',
-          class: '',
-          site: '',
-        },
+     
       ],
       isOpen: false,
     }
@@ -96,6 +98,10 @@ export default {
         this.$refs.nav.classList.remove('show');
       }
     },
+    loginOpen(){
+      this.$store.state.login=true;
+      this.openMenu()
+    }
   },
 }
 </script>

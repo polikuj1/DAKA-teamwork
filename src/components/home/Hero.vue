@@ -17,6 +17,7 @@
         <ul>
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
+        <button @click.prevent="loginOpen">登入 | 註冊</button>
         <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{ btn.title }}</button>
       </nav>
     </aside>
@@ -26,8 +27,10 @@
       </div>
     </div>
   </section>
+<login v-if="this.$store.state.login"> </login>
 </template>
 <script>
+  import login from '@/components/LoginView.vue';
 export default {
   data() {
     return {
@@ -55,11 +58,6 @@ export default {
       ],
       btns: [
         {
-          title: '登入 | 註冊',
-          class: '',
-          site: '',
-        },
-        {
           title: '訂位預約',
           class: 'fa-solid fa-calendar-days',
           site: '/reservation',
@@ -75,6 +73,9 @@ export default {
   methods: {
     goBottom() {
       this.$emit('emit-go');
+    },
+    loginOpen(){
+      this.$store.state.login=true;
     }
   }
 }

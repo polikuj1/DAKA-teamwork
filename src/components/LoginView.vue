@@ -220,7 +220,7 @@ export default {
 
   methods: {
     closeModal() {
-      this.$emit('emit-status');
+      this.$store.state.login=false;
     },
     checkLogin() {
       if (this.memId === 'test' && this.memPsw === 'test') {

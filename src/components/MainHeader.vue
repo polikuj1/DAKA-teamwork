@@ -12,11 +12,12 @@
           <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
         </ul>
       </a>
+      <a href="#" @click.prevent="loginOpen" >登入 | 註冊</a>
       <a href="#" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
 
     </nav>
   </div>
-  <login v-if="modalControl" @emit-status="closeModal"></login>
+  <login v-if="$store.state.login" ></login>
 </template>
 
 
@@ -90,13 +91,9 @@ export default {
             // },
           ],
         },
-        {
-          title: '登入 | 註冊',
-          site: '',
-          title_list: [],
-        },
+       
       ],
-      modalControl: false,
+      
     }
   },
   methods: {
@@ -114,6 +111,9 @@ export default {
       // console.log(e);
       this.$router.push(site);
     },
+    loginOpen(){
+      this.$store.state.login=true;
+    }
   },
   components: {
     login,
