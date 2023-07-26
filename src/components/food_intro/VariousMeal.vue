@@ -3,26 +3,25 @@
     <section>
         <div class="aboutorigin_container">
             <h3>各式餐點</h3>
-            <div id="app">
-                <div class="category-buttons">
-                    <button @click="showCategory('combo')">套餐</button>
-                    <button @click="showCategory('main_meal')">主餐</button>
-                    <button @click="showCategory('drinks')">飲料</button>
-                    <button @click="showCategory('dessert')">點心</button>
-                </div>
-                <div class="food-cards">
-                    <div v-for="food in filteredFoods" :key="food.id" class="food-card">
-                        <div class="food-cards_meal_pic">
-                            <img :src="food.img" :alt="food.description">
-                        </div>
-                        <p>{{ food.description }}</p>
+            <div class="category-buttons">
+                <button @click="showCategory('combo')"
+                    :class="{ active: selectedCategory === 'combo', comboHover: comboHover }">套餐</button>
+                <button @click="showCategory('main_meal')" :class="{ active: selectedCategory === 'main_meal' }">主餐</button>
+                <button @click="showCategory('drinks')" :class="{ active: selectedCategory === 'drinks' }">飲料</button>
+                <button @click="showCategory('dessert')" :class="{ active: selectedCategory === 'dessert' }">點心</button>
+            </div>
+            <div class="aboutorigin_card">
+                <div v-for="food in filteredFoods" :key="food.id" class="food-card">
+                    <div class="food-cards_meal_pic">
+                        <img :src="food.img" :alt="food.description">
                     </div>
+                    <p>{{ food.description }}</p>
                 </div>
             </div>
         </div>
     </section>
 </template>
-  
+
 <style >
 @import "@/assets/scss/layout/food_intro/variousmeal.scss";
 </style>
@@ -34,36 +33,144 @@ export default {
     },
     data() {
         return {
+            selectedCategory: 'combo',
+            comboHover: false,
             foods: [
-                { id: 1, img: require('@/assets/images/food/combo/combo (1).png'), category: 'combo', description: 'This is Combo 1' },
-                { id: 1, img: require('@/assets/images/food/combo/combo (2).png'), category: 'combo', description: 'This is Combo 1' },
-                { id: 1, img: require('@/assets/images/food/combo/combo (3).png'), category: 'combo', description: 'This is Combo 1' },
-                { id: 1, img: require('@/assets/images/food/combo/combo (4).png'), category: 'combo', description: 'This is Combo 1' },
-                { id: 1, img: require('@/assets/images/food/combo/combo (5).png'), category: 'combo', description: 'This is Combo 1' },
-                // 添加更多的食物...
+                {
+                    id: 1,
+                    img: require('@/assets/images/food/combo/combo (1).png'),
+                    category: 'combo',
+                    description: '乳酪派＋珍珠鮮奶茶'
+                },
+                {
+                    id: 2,
+                    img: require('@/assets/images/food/combo/combo (2).png'),
+                    category: 'combo',
+                    description: '牛肉漢堡＋薯條'
+                },
+                {
+                    id: 3,
+                    img: require('@/assets/images/food/combo/combo (3).png'),
+                    category: 'combo',
+                    description: '雙倍起司火腿帕尼尼'
+                },
+                {
+                    id: 4,
+                    img: require('@/assets/images/food/combo/combo (4).png'),
+                    category: 'combo',
+                    description: '炸醬麵＋檸檬可樂'
+                },
+                {
+                    id: 5,
+                    img: require('@/assets/images/food/combo/combo (5).png'),
+                    category: 'combo',
+                    description: '泡菜拉麵＋檸檬可樂'
+                },
 
-                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (1).png'), category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (2).png'), category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (3).png'), category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (4).png'), category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (5).png'), category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (6).png'), category: 'main_meal', description: 'This is Main Meal 1' },
-                // 添加更多的食物...
+                {
+                    id: 1,
+                    img: require('@/assets/images/food/main_meal/main_meal (1).png'),
+                    category: 'main_meal',
+                    description: '嫩煎牛排'
+                },
+                {
+                    id: 2,
+                    img: require('@/assets/images/food/main_meal/main_meal (2).png'),
+                    category: 'main_meal',
+                    description: '南瓜粥'
+                },
+                {
+                    id: 3,
+                    img: require('@/assets/images/food/main_meal/main_meal (3).png'),
+                    category: 'main_meal',
+                    description: '綠咖哩'
+                },
+                {
+                    id: 4,
+                    img: require('@/assets/images/food/main_meal/main_meal (4).png'),
+                    category: 'main_meal',
+                    description: '豬肉炒飯'
+                },
+                {
+                    id: 5,
+                    img: require('@/assets/images/food/main_meal/main_meal (5).png'),
+                    category: 'main_meal',
+                    description: '炒泡麵'
+                },
+                {
+                    id: 6,
+                    img: require('@/assets/images/food/main_meal/main_meal (6).png'),
+                    category: 'main_meal',
+                    description: '泰式鱈魚排'
+                },
 
-                { id: 1, img: require('@/assets/images/food/drinks/drinks (1).png'), category: 'drinks', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/drinks/drinks (2).png'), category: 'drinks', description: 'This is Main Meal 2' },
-                { id: 1, img: require('@/assets/images/food/drinks/drinks (3).png'), category: 'drinks', description: 'This is Main Meal 3' },
-                // 添加更多的食物...
+                {
+                    id: 1,
+                    img: require('@/assets/images/food/drinks/drinks (1).png'),
+                    category: 'drinks',
+                    description: '咖啡'
+                },
+                {
+                    id: 2,
+                    img: require('@/assets/images/food/drinks/drinks (2).png'),
+                    category: 'drinks',
+                    description: '珍珠鮮奶茶'
+                },
+                {
+                    id: 3,
+                    img: require('@/assets/images/food/drinks/drinks (3).png'),
+                    category: 'drinks',
+                    description: '檸檬可樂'
+                },
 
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (1).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (2).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (3).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (4).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (5).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (6).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (7).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                { id: 1, img: require('@/assets/images/food/dessert/dessert (8).png'), category: 'dessert', description: 'This is Main Meal 1' },
-                // 添加更多的食物...
+                {
+                    id: 1,
+                    img: require('@/assets/images/food/dessert/dessert (1).png'),
+                    category: 'dessert',
+                    description: '炸雞塊'
+                },
+                {
+                    id: 2,
+                    img: require('@/assets/images/food/dessert/dessert (2).png'),
+                    category: 'dessert',
+                    description: '紐澳良雞翅'
+                },
+                {
+                    id: 3,
+                    img: require('@/assets/images/food/dessert/dessert (3).png'),
+                    category: 'dessert',
+                    description: '草莓巧克力乳酪蛋糕'
+                },
+                {
+                    id: 4,
+                    img: require('@/assets/images/food/dessert/dessert (4).png'),
+                    category: 'dessert',
+                    description: '香菇肉醬義式披薩'
+                },
+                {
+                    id: 5,
+                    img: require('@/assets/images/food/dessert/dessert (5).png'),
+                    category: 'dessert',
+                    description: '薯條'
+                },
+                {
+                    id: 6,
+                    img: require('@/assets/images/food/dessert/dessert (6).png'),
+                    category: 'dessert',
+                    description: '義式薄餅'
+                },
+                {
+                    id: 7,
+                    img: require('@/assets/images/food/dessert/dessert (7).png'),
+                    category: 'dessert',
+                    description: '上海鮮肉一口餃'
+                },
+                {
+                    id: 8,
+                    img: require('@/assets/images/food/dessert/dessert (8).png'),
+                    category: 'dessert',
+                    description: '蔬菜沙拉'
+                },
             ],
             selectedCategory: 'combo'
         };
@@ -76,8 +183,11 @@ export default {
     methods: {
         showCategory(category) {
             this.selectedCategory = category;
-        }
-    }
+        },
+    },
+    mounted() {
+        this.comboHover = true;
+    },
 };
 
 
