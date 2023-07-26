@@ -58,6 +58,7 @@
     </section>
 
     <section class="reservation_date">
+  
       <h2><span>2</span> 選擇日期及時間</h2>
       <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
     </section>
@@ -159,7 +160,6 @@
     </section>
 
     <section class="reservation_confirm">
-
       <h2><span>4</span> 確認預約細項</h2>
       <div class="reservation_confirm_data">
         <div class="confirm_data_time">
@@ -197,7 +197,7 @@
           </div>
         </div>
       </div>
-      <button class="reservation_submit">確認預約</button>
+      <button class="reservation_submit" @click="confirmReserve">確認預約</button>
     </section>
   </main>
 
@@ -210,6 +210,7 @@
 
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
+import axios from 'axios';
 
 import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 
@@ -241,7 +242,8 @@ export default {
       selectedArea: "",
       selectedAreaWord: "",
       selectedSeat: "",
-      selected: []
+      selected: [],
+      seatData:[],
     };
   },
 
@@ -267,9 +269,6 @@ export default {
 
     seatSelected(item) {
 
-     
-
-
       if (this.reservation.seat.indexOf(item.area + item.no) === -1 && this.selected.length <= 7) {
         if (+item.state === 0) {
           if (this.tabActive === 1) {
@@ -294,18 +293,32 @@ export default {
       this.selected.push(this.selectedAreaWord + this.selectedArea + '-' + this.selectedSeat);
 
       
+    },
+    confirmReserve(){
+      alert('預約成功');
+    },
+
+    fetchSeatData(){
+      axios.get('data/seat_reservation.json')
+      .then((res) => {
+        this.seatData = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
     }
   },
   computed: {
-totalPrice(){
 
-
-  return 
-}
 
 
   },
   watch: {
+
+  },
+  created(){
+   
+this.fetchSeatData()
 
   }
 };
