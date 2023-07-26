@@ -12,10 +12,10 @@
             </div>
             <p>到期日: {{ coupon.expirationDate }}</p>
             <p>優惠序號: {{ coupon.couponCode }}</p>
-            <div class="exchange_container">
-              <img v-if="coupon.exchange" src="@/assets/images/member/exchange.png" alt="">
+            <div class="exchange_container" v-show="coupon.exchange">
+              <img src="@/assets/images/member/exchange.png" alt="">
             </div>
-            </div>
+          </div>
         </div>
       </template>
     </MbForm>
@@ -41,6 +41,7 @@
           title: "鮮嫩多汁炸雞腿一隻",
           expirationDate: "2024/12/31",
           couponCode: "ABC123",
+          exchange:false,
         },
         {
           id: 2,
@@ -48,6 +49,7 @@
           title: "外酥內嫩章魚燒三球",
           expirationDate: "2024/03/15",
           couponCode: "DEF456",
+          exchange:true,
           
         },
         {
@@ -64,6 +66,7 @@
           title: "不多不少座位一小時",
           expirationDate: "2024/06/15",
           couponCode: "ABC666",
+          exchange:false,
           
         },
         {
@@ -72,6 +75,7 @@
           title: "不多不少座位一小時",
           expirationDate: "2024/09/15",
           couponCode: "DEF777",
+          exchange:false,
         },
       ],
       }

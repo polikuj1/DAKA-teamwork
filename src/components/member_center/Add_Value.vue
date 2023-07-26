@@ -35,7 +35,7 @@
               </select>
             </div>
             <label for="verificationCode" class="charge_verification">輸入驗證碼</label>
-            <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" @input="checkVerificationCodeInput">
+            <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" @input="checkVerificationCodeInput" v-model="verificationCode">
             <p v-if="showVerificationCodeWarning" style="color:#FF5E1E;">請輸入有效的驗證碼</p>
             <br>
             <br>

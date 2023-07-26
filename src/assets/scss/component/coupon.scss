@@ -1,6 +1,4 @@
-.coupon_container{
-    position: relative;
-}
+
 .member_coupon{
     width: 90%;
     background-color: $secondary_blue;
@@ -8,6 +6,7 @@
     border-radius: 10px;
     margin: auto;
     box-sizing: border-box;
+    position: relative;
     .coupon_title{
         display: flex;
         align-items: center;
@@ -18,13 +17,28 @@
     }
     
 }
+@media screen and (max-width: 414px){
+    .coupon_container{
+        margin-top: 20px;
+        .member_coupon{
+            padding: 20px;
+            margin-bottom: 20px;
+            .coupon_title{
+                margin-bottom: 5px;
+                font-size: 1.4rem;
+            }
+        }
+    }
+    .exchange_container img{
+        position: absolute;
+        width: 50%;
+        top: 25%;
+        right: 28%;
 
+    }
+}
 
-
-
-
-
-@media screen and (max-width: 900px){
+@media (min-width: 415px) and (max-width: 900px){
     .coupon_container{
         margin-top: 20px;
         .member_coupon{
@@ -44,9 +58,6 @@
 
     }
 }
-
-
-
 @media screen and (min-width: 901px){
     .coupon_container{
         margin-top: 70px;
