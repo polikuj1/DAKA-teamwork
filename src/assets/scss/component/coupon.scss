@@ -18,15 +18,7 @@
     }
     
 }
-.exchange_container img{
-    position: absolute;
-    top: 24%; /* 距離優惠券頂部的距離（相對於父元素高度的百分比） */
-    right: 14%;
-    z-index: 1;
-    width: 20%;
-    
-    
-}
+
 
 
 
@@ -44,6 +36,13 @@
             }
         }
     }
+    .exchange_container img{
+        position: absolute;
+        width: 25%;
+        top: 24%;
+        right: 14%;
+
+    }
 }
 
 
@@ -59,6 +58,13 @@
             align-items: center;
             font-size: 1.15rem;
         }
+    }
+    .exchange_container img{
+        position: absolute;
+        top: 24%;
+        right: 14%;
+        z-index: 1;
+        width: 20%;
     }
     
 }
