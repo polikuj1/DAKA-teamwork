@@ -17,10 +17,20 @@
     color: $main_txt_color;
     font-size: 1.5rem;
     border-radius: 100px;
+    border: none;
     cursor: pointer;
     &:hover {
       color: $btn_bg_color;
       background-color: $main_txt_color;
+    }
+  }
+}
+
+@include screen_one(767) {
+  .member_bread_crumb {
+    padding: 0 20px 50px;
+    button {
+      padding: 8px 35px;
     }
   }
 }
