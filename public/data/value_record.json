@@ -1,0 +1,33 @@
+[
+    {
+      "transactionId": "111102",
+      "transactionDate": "2023/07/01 18:00",
+      "transactionMethod": "信用卡儲值",
+      "transactionAmount": "NTD$1000"
+    },
+    {
+      "transactionId": "111103",
+      "transactionDate": "2023/07/02 18:00",
+      "transactionMethod": "信用卡儲值",
+      "transactionAmount": "NTD$500"
+    },
+    {
+      "transactionId": "111103",
+      "transactionDate": "2023/07/03 13:00",
+      "transactionMethod": "信用卡儲值",
+      "transactionAmount": "NTD$300"
+    },
+    {
+      "transactionId": "111105",
+      "transactionDate": "2023/07/05 19:00",
+      "transactionMethod": "信用卡儲值",
+      "transactionAmount": "NTD$2000"
+    },
+    {
+      "transactionId": "111106",
+      "transactionDate": "2023/07/07 20:00",
+      "transactionMethod": "信用卡儲值",
+      "transactionAmount": "NTD$340"
+    }
+  ]
+  
