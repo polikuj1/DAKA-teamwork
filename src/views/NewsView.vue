@@ -27,24 +27,47 @@
         </div>
     </section>
   </div>
+  <div class="horizontal_rule">
+    <img
+      src="../assets/images/news/horizontal_rule.svg"
+      alt="horizontal_rule"
+    />
+  </div>
+  <section class="news_photo_wall">
+    <div class="news_photo_title">活動花絮</div>
+    <div class="news_photo_frame">
+      <div
+        v-for="(photo, index) in photos"
+        :key="photo.img"
+        class="news_photos"
+      >
+        <img :src="photo.img" alt="news_Photo" />
+        <div
+          class="news_text"
+          v-html="photos[index].photo_text.replace('_', '<br>')"
+        ></div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import PageTitle from '@/components/PageTitle.vue';
+import PageTitle from "@/components/PageTitle.vue";
 export default {
   components: {
-    PageTitle,
+    PageTitle
   },
   data() {
     return {
-      title: '最新消息',
-      currentTab: 'all',
+      title: "最新消息",
+      currentTab: "all",
       allMessages: [
         {
-          category:'ACTIVITY',
-          img:require('@/assets/images/news/lol.png'),
-          date:'2023-05-20',
-          content:'🔥 組隊集結，征服召喚峽谷！快加入我們的英雄聯盟主題網咖組隊活動！'
+          category: "ACTIVITY",
+          img: require("@/assets/images/news/lol.png"),
+          date: "2023-05-20",
+          content:
+            "🔥 組隊集結，征服召喚峽谷！快加入我們的英雄聯盟主題網咖組隊活動！"
         },
         {
           category:'ACTIVITY',
@@ -91,10 +114,10 @@ export default {
           // class: 'left_text'
         },
         {
-          category:'NEWS',
-          img: require('@/assets/images/news/prize_03.png'),
-          date:'2023-02-20',
-          content:'💰 每月特價日，享受超值優惠！讓你的遊戲時間更加划算！'
+          category: "activity",
+          img: require("@/assets/images/news/game_01.png"),
+          date: "2023-01-01",
+          content: "🎮加入我們的主題派對，探索遊戲的無限樂趣！"
         },
         {
           category:'ACTIVITY',
@@ -104,10 +127,11 @@ export default {
           // class: 'left_text'
         },
         {
-          category:'NEWS',
-          img: require('@/assets/images/news/juice.png'),
-          date:'2022-07-18',
-          content:'☕️ 新品特色飲品上架！品味遊戲之餘，享受美味餐飲折扣！'
+          category: "ACTIVITY",
+          img: require("@/assets/images/news/game_02.png"),
+          date: "2022-05-02",
+          content:
+            "💥 電競巔峰對決，共襄觀賽盛宴！在打咖一同見證頂尖選手的戰鬥與榮耀！"
         },
         {
           category:'ACTIVITY',
@@ -126,8 +150,7 @@ export default {
       page:1,
       data: [],
       // isLastPage: false,
-
-    }
+    };
   },
   methods: {
     changeTab(tabName) {

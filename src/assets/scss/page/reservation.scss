@@ -103,12 +103,14 @@ img {
           }
         }
       }
+      /*大廳區*/
       .reservation_hall_seat {
         padding: 0 10px 0 10px;
         margin: auto;
         border-radius: 10px;
         display: flex;
         justify-content: space-between;
+        /*電競區*/
         .reservation_eSports_seat {
           display: flex;
           flex-wrap: wrap;
@@ -135,11 +137,9 @@ img {
               text-align: center;
               justify-content: center;
               h4 {
-                font-size: 15px;
-                line-height: 15px;
                 display: none;
               }
-              /* TODO 希望做到RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號*/
+              /* NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號*/
               .chair {
                 width: 50%;
                 height: 50%;
@@ -154,7 +154,7 @@ img {
             background-color: #54c1ba; /* 深綠色背景代表空位 */
             cursor: pointer;
           }
-          /*NOTE 座位需要可以複選*/
+          /*TODO 座位需要可以複選*/
           .state-0:focus,
           .state-0:hover {
             outline: 0.3rem solid #263238;
@@ -172,6 +172,7 @@ img {
             cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
           }
         }
+        /*一般區*/
         .reservation_general_seat {
           display: flex;
           flex-wrap: wrap;
@@ -249,12 +250,14 @@ img {
           }
         }
       }
+      /*包廂區*/
       .reservation_booth_seat {
         padding: 5% 5% 0 5%;
         margin: auto;
         border-radius: 10px;
         display: flex;
         justify-content: center;
+        /*單人房*/
         .reservation_single_seat {
           display: flex;
           flex-wrap: wrap;
@@ -327,6 +330,7 @@ img {
             cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
           }
         }
+        /*雙人房*/
         .reservation_double_seat {
           display: flex;
           flex-wrap: wrap;
@@ -525,14 +529,22 @@ img {
         }
       }
       .confirm_data_seat {
+
         p {
           font-size: 1.3rem;
           margin-bottom: 10px;
         }
-        input {
-          padding: 70px 40px;
-          border-radius: 10px;
-          outline: 1px solid transparent;
+       .data_seat {
+        width: 280px;
+        min-height: 163px;
+      border: 1px solid #111;
+       
+.data_seat_info{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
+}
+       
         }
       }
     }
@@ -619,7 +631,7 @@ img {
                   font-size: 20px;
                   line-height: 1.2;
                 }
-                /* TODO 希望做到RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號*/
+                /* NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號*/
                 .chair {
                   display: none;
                 }
@@ -647,7 +659,7 @@ img {
                   font-size: 20px;
                   line-height: 1.2;
                 }
-                /* TODO 希望做到RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號*/
+                /* NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號*/
                 .chair {
                   display: none;
                 }
@@ -667,8 +679,8 @@ img {
           justify-content: space-around;
           .reservation_single_seat {
             max-width: 380px;
-              width: 100%;
-              padding: 10px;
+            width: 100%;
+            padding: 10px;
             .seat_btn {
               border-radius: 5px;
               .content {
@@ -683,8 +695,8 @@ img {
           }
           .reservation_double_seat {
             max-width: 380px;
-              width: 100%;
-              padding: 10px;
+            width: 100%;
+            padding: 10px;
             .seat_btn {
               border-radius: 5px;
               .content {

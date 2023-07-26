@@ -5,7 +5,7 @@
 
   h3 {
     font-size: 3.75rem;
-    text-align:center;
+    text-align: center;
     color: $main_txt_color;
     padding: 100px 0px;
   }
@@ -32,6 +32,7 @@
       border: none;
       cursor: pointer;
     }
+
     .category-buttons button:hover {
       color: #4C3818;
       background-color: #FBDFB7;
@@ -52,7 +53,23 @@
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 20px;
+
+      .food-cards_meal_pic {
+        width: 300px;
+        height: 300px;
+        padding: 1px;
+        flex-shrink: 0;
+        
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+      }
     }
-    
+
+
   }
 }

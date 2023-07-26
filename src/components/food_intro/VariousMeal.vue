@@ -12,7 +12,9 @@
                 </div>
                 <div class="food-cards">
                     <div v-for="food in filteredFoods" :key="food.id" class="food-card">
-                        <p>{{ food.name }}</p>
+                        <div class="food-cards_meal_pic">
+                            <img :src="food.img" :alt="food.description">
+                        </div>
                         <p>{{ food.description }}</p>
                     </div>
                 </div>
@@ -33,34 +35,34 @@ export default {
     data() {
         return {
             foods: [
-                { id: 1, name: 'Combo 1', category: 'combo', description: 'This is Combo 1' },
-                { id: 2, name: 'Combo 2', category: 'combo', description: 'This is Combo 2' },
-                { id: 2, name: 'Combo 2', category: 'combo', description: 'This is Combo 2' },
-                { id: 2, name: 'Combo 2', category: 'combo', description: 'This is Combo 2' },
-                { id: 2, name: 'Combo 2', category: 'combo', description: 'This is Combo 2' },
+                { id: 1, img: require('@/assets/images/food/combo/combo (1).png'), category: 'combo', description: 'This is Combo 1' },
+                { id: 1, img: require('@/assets/images/food/combo/combo (2).png'), category: 'combo', description: 'This is Combo 1' },
+                { id: 1, img: require('@/assets/images/food/combo/combo (3).png'), category: 'combo', description: 'This is Combo 1' },
+                { id: 1, img: require('@/assets/images/food/combo/combo (4).png'), category: 'combo', description: 'This is Combo 1' },
+                { id: 1, img: require('@/assets/images/food/combo/combo (5).png'), category: 'combo', description: 'This is Combo 1' },
                 // 添加更多的食物...
 
-                { id: 30, name: 'Main Meal 1', category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 31, name: 'Main Meal 2', category: 'main_meal', description: 'This is Main Meal 2' },
-                { id: 30, name: 'Main Meal 1', category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 31, name: 'Main Meal 2', category: 'main_meal', description: 'This is Main Meal 2' },
-                { id: 30, name: 'Main Meal 1', category: 'main_meal', description: 'This is Main Meal 1' },
-                { id: 31, name: 'Main Meal 2', category: 'main_meal', description: 'This is Main Meal 2' },
+                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (1).png'), category: 'main_meal', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (2).png'), category: 'main_meal', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (3).png'), category: 'main_meal', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (4).png'), category: 'main_meal', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (5).png'), category: 'main_meal', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/main_meal/main_meal (6).png'), category: 'main_meal', description: 'This is Main Meal 1' },
                 // 添加更多的食物...
 
-                { id: 22, name: 'Drinks 1', category: 'drinks', description: 'This is Drinks 1' },
-                { id: 23, name: 'Drinks 2', category: 'drinks', description: 'This is Drinks 2' },
-                { id: 23, name: 'Drinks 2', category: 'drinks', description: 'This is Drinks 2' },
+                { id: 1, img: require('@/assets/images/food/drinks/drinks (1).png'), category: 'drinks', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/drinks/drinks (2).png'), category: 'drinks', description: 'This is Main Meal 2' },
+                { id: 1, img: require('@/assets/images/food/drinks/drinks (3).png'), category: 'drinks', description: 'This is Main Meal 3' },
                 // 添加更多的食物...
 
-                { id: 13, name: 'Dessert 6', category: 'dessert', description: 'This is Dessert 6' },
-                { id: 14, name: 'Dessert 7', category: 'dessert', description: 'This is Dessert 7' },
-                { id: 13, name: 'Dessert 6', category: 'dessert', description: 'This is Dessert 6' },
-                { id: 14, name: 'Dessert 7', category: 'dessert', description: 'This is Dessert 7' },
-                { id: 13, name: 'Dessert 6', category: 'dessert', description: 'This is Dessert 6' },
-                { id: 14, name: 'Dessert 7', category: 'dessert', description: 'This is Dessert 7' },
-                { id: 13, name: 'Dessert 6', category: 'dessert', description: 'This is Dessert 6' },
-                { id: 14, name: 'Dessert 7', category: 'dessert', description: 'This is Dessert 7' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (1).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (2).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (3).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (4).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (5).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (6).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (7).png'), category: 'dessert', description: 'This is Main Meal 1' },
+                { id: 1, img: require('@/assets/images/food/dessert/dessert (8).png'), category: 'dessert', description: 'This is Main Meal 1' },
                 // 添加更多的食物...
             ],
             selectedCategory: 'combo'

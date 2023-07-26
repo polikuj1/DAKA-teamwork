@@ -8,75 +8,50 @@
       <div class="reservation_read_rules">
         <ul>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />
+            <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
             為利於其餘客戶權益，每次預約僅保留30分鐘，逾時未到視同放棄，
             如需取消預約，請於1日前取消。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />目前線上付款僅提供扣除儲值金。
+            <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
             恕不另行通知。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />座位區預約上限5位，包廂區預約上限2間。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
           </li>
           <li>如需取消預約，請於1日前取消。</li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />目前線上付款僅提供扣除儲值金。
+            <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
             恕不另行通知。
           </li>
           <li>
-            <img
-              :src="require('@/assets/images/reservation/Vector.svg')"
-              class="reservation_rules_img"
-            />座位區預約上限5位，包廂區預約上限2間。
+            <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
           </li>
         </ul>
       </div>
@@ -92,100 +67,61 @@
       <div class="reservation_all_seat">
         <main class="tabs">
           <div class="tabs_list">
-            <div
-              class="seat_tabs_item"
-              v-for="(item, key) in tabItems"
-              :class="{ active: key == tabActive }"
-              @click="updateTab(key)"
-              :key="item.key"
-            >
+            <div class="seat_tabs_item" v-for="(item, key) in tabItems" :class="{ active: key == tabActive }"
+              @click="updateTab(key)" :key="item.key">
               {{ item }}
             </div>
           </div>
           <div v-if="tabActive == 1" class="reservation_hall_seat">
             <div class="reservation_eSports_seat">
-              <button
-                class="seat_btn eSports_seat"
-                v-for="item in seats_a"
-                :key="item.no"
-                :class="`state-${item.state}`"
-              >
+              <button class="seat_btn eSports_seat" v-for="item in seats_a" :key="item.no" :class="`state-${item.state}`">
                 <div class="content">
-                  <h4 class="text">
+                  <h4 class="text" @click.prevent="seatSelected(item)">
                     {{ item.area }} <br />
                     {{ item.no }}
                   </h4>
-                  <img
-                    class="chair"
-                    src="../assets/images/reservation/chair.svg"
-                    alt=""
-                  />
+                  <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                   <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                 </div>
               </button>
             </div>
             <div class="reservation_general_seat">
-              <button
-                class="seat_btn general_seat"
-                v-for="item in seats_b"
-                :key="item.no"
-                :class="`state-${item.state}`"
-              >
+              <button class="seat_btn general_seat" v-for="item in seats_b" :key="item.no" :class="`state-${item.state}`">
                 <div class="content">
-                  <h4>
+                  <h4 @click.prevent="seatSelected(item)">
                     {{ item.area }} <br />
                     {{ item.no }}
                   </h4>
-                  <img
-                    class="chair"
-                    src="../assets/images/reservation/chair.svg"
-                    alt=""
-                  />
+                  <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                   <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                 </div>
               </button>
-              <div class="counter"><p>櫃台</p></div>
+              <div class="counter">
+                <p>櫃台</p>
+              </div>
             </div>
           </div>
           <div v-if="tabActive == 2" class="reservation_booth_seat">
             <div class="reservation_single_seat">
-              <button
-                class="seat_btn single_seat"
-                v-for="item in seats_c"
-                :key="item.no"
-                :class="`state-${item.state}`"
-              >
+              <button class="seat_btn single_seat" v-for="item in seats_c" :key="item.no" :class="`state-${item.state}`">
                 <div class="content">
-                  <h4 class="text">
+                  <h4 class="text" @click.prevent="seatSelected(item)">
                     {{ item.area }} <br />
                     {{ item.no }}
                   </h4>
-                  <img
-                    class="chair" 
-                    src="../assets/images/reservation/chair.svg"
-                    alt=""
-                  />
+                  <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                   <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                 </div>
               </button>
             </div>
             <div class="reservation_double_seat">
-              <button
-                class="seat_btn double_seat"
-                v-for="item in seats_d"
-                :key="item.no"
-                :class="`state-${item.state}`"
-              >
+              <button class="seat_btn double_seat" v-for="item in seats_d" :key="item.no" :class="`state-${item.state}`">
                 <div class="content">
-                  <h4>
+                  <h4 @click.prevent="seatSelected(item)">
                     {{ item.area }} <br />
                     {{ item.no }}
                   </h4>
-                  <img
-                    class="chair"
-                    src="../assets/images/reservation/double_chair.svg"
-                    alt=""
-                  />
+                  <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
                   <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                 </div>
               </button>
@@ -195,12 +131,12 @@
         <div class="seat_color_comment">
           <div class="color_seSports_single_seat_group">
             <div class="color_seSports_single_seat"></div>
-            <p class="p_seSports_seat">A_電競區<br />C_單人房</p>
+            <p class="p_seSports_seat">A_大廳電競區<br />C_包廂單人房</p>
           </div>
 
           <div class="color_general_double_seat_group">
             <div class="color_general_double_seat"></div>
-            <p class="p_general_seat">B_一般區<br />D_雙人房</p>
+            <p class="p_general_seat">B_大廳一般區<br />D_包廂雙人房</p>
           </div>
           <div class="color_state_seat_group">
             <div class="color_vacancy_seat_group">
@@ -223,24 +159,19 @@
     </section>
 
     <section class="reservation_confirm">
+
       <h2><span>4</span> 確認預約細項</h2>
       <div class="reservation_confirm_data">
         <div class="confirm_data_time">
           <div class="data_time_start">
-            <p>預約開始時間</p>
-            <input
-              type="text"
-              readonly
-              :value="`${reservation.startDate}  ${reservation.startTime}`"
-            />
+            <p>預約開始時間
+
+            </p>
+            <input type="text" readonly :value="`${reservation.startDate}  ${reservation.startTime}`" />
           </div>
           <div class="data_time_end">
             <p>預約結束時間</p>
-            <input
-              type="text"
-              readonly
-              :value="`${reservation.startDate}  ${reservation.endTime}`"
-            />
+            <input type="text" readonly :value="`${reservation.startDate}  ${reservation.endTime}`" />
           </div>
           <div class="data_time_sum">
             <p>金額總計</p>
@@ -257,7 +188,13 @@
 
         <div class="confirm_data_seat">
           <p>選定座位</p>
-          <input type="text" readonly :value="reservation.seat" />
+          <div class="data_seat">
+            <div class="data_seat_info" v-for="item in selected" :key="item">
+
+              {{ item }}
+            </div>
+
+          </div>
         </div>
       </div>
       <button class="reservation_submit">確認預約</button>
@@ -274,7 +211,7 @@
 import PageTitle from '@/components/PageTitle.vue';
 import Date from '@/components/reservation/Date.vue';
 
-import { seat_a, seat_b,seat_c,seat_d } from "@/assets/js/seatinfo.js";
+import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
   components: {
@@ -302,9 +239,9 @@ export default {
         2: "包廂區"
       },
       selectedArea: "",
-      selectedState: 0,
+      selectedAreaWord: "",
       selectedSeat: "",
-      selected: ""
+      selected: []
     };
   },
 
@@ -325,24 +262,51 @@ export default {
       let a = +time.toString().substr(0, 2);
       let b = +time.toString().substr(9, 2);
 
-      this.reservation.price = (b - a) * 20;
-    },
-    seatSelected(i, area, state) {
-      if (state !== 0) {
-        return;
-      } else {
-        this.selectedArea = this.selectedArea === "A" ? "大廳電競A" : "大廳一般B";
-        this.selectedSeat = i;
-      }
-      this.selected = "";
-      console.log(i, area, state);
 
-      this.reservation.seat.push();
+    },
+
+    seatSelected(item) {
+
+     
+
+
+      if (this.reservation.seat.indexOf(item.area + item.no) === -1 && this.selected.length <= 7) {
+        if (+item.state === 0) {
+          if (this.tabActive === 1) {
+            this.selectedArea = item.area === "A" ? "A" : "B";
+            this.selectedSeat = item.no;
+          } else {
+            this.selectedArea = item.area === "C" ? "C" : "D";
+            this.selectedSeat = item.no;
+          }
+
+        } else {
+          return
+        }
+      } else {
+        return
+      }
+
+      this.reservation.seat.push(this.selectedArea + this.selectedSeat)
+
+      this.selectedAreaWord = this.selectedArea === 'A' ? '大廳電競' : this.selectedArea === 'B' ? '大廳一般' : this.selectedArea === 'C' ? '包廂單人' : '包廂雙人';
+
+      this.selected.push(this.selectedAreaWord + this.selectedArea + '-' + this.selectedSeat);
+
+      
     }
   },
-  computed: {}
+  computed: {
+totalPrice(){
+
+
+  return 
+}
+
+
+  },
+  watch: {
+
+  }
 };
 </script>
-<style>
-@import "@/assets/scss/page/reservation.scss";
-</style>
