@@ -29,7 +29,7 @@
       </div>
     </main>
   </div>
-  <CartIcon :book-data="reservation"/>
+  <CartIcon/>
 </template>
 
 <script>
@@ -55,18 +55,24 @@ export default {
       this.comicData = this.originData.filter(item => item.title.includes(this.search));
     },
     reserve(item) {
-      if(this.reservation.length === 5) return;
-      this.reservation.push(item);
+      if(this.$store.state.cart.length === 5) return;
+      if(this.$store.state.cart.indexOf(item) === -1) {
+        // this.reservation.push(item);
+        console.log(123);
+        this.$store.commit('getBook',item);
+        // console.log(this.$store.state.cart);
+      }
     },
   },
   computed: {
 
   },
   created() {
-    this.axios.get('/comic.json')
+    this.axios.get('/data/comic.json')
       .then((res) => {
         this.originData = res.data;
         this.comicData = res.data;
+        // this.reservation = this.$store.state.cart;
       })
       .catch((err) => {
         console.log(err);

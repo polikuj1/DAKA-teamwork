@@ -7,7 +7,7 @@
   <div class="comiclist_cart">
     <div class="comiclist_content">
       <div class="cart_l_reserve_title">
-        <p class="cart_l_text">目前的預約（{{ shoppingCartItemsCount }} 件）</p>
+        <p class="cart_l_text">目前的預約（{{ shoppingCartData.length }} 件）</p>
       </div>
       <div class="cart_m_reserve_title">
         <p class="cart_m_text">書名</p>
@@ -17,15 +17,15 @@
 
       <!-- 書本照片 -->
       <div class="cart_book_content">
-        <div v-for="item in shoppingCartData" :key="item.id" class="cart_book">
+        <div v-for="(item, index) in shoppingCartData" :key="item.id" class="cart_book">
           <div class="cart_book_pic">
-            <img :src="item.imgSrc" :alt="item.name" />
+            <img :src="item.img" :alt="item.name" />
           </div>
 
           <!-- 書本名稱 -->
           <div class="cart_book_name">
-            <p class="cart_m_text">{{ item.category }}</p>
-            <p class="cart_s_text">{{ item.name }}</p>
+            <p class="cart_m_text">{{ item.title }} {{ item.index }}</p>
+            <p class="cart_s_text">作者 : {{ item.author }}</p>
           </div>
 
           <!-- 數量 -->
@@ -36,7 +36,7 @@
           <!-- 錢 -->
           <div class="cart_book_cash">
             <div class="cart_m_text">$ {{ item.price }}</div>
-            <div class="cart_book_delete" @click="deleteProduct(item.id)"><i class="fa-solid fa-trash"
+            <div class="cart_book_delete" @click="deleteProduct(index)"><i class="fa-solid fa-trash"
                 style="color: #263238;"></i>
             </div>
           </div>
@@ -54,7 +54,7 @@
       <div class="cart_m_count_title">
         <p class="cart_m_text">{{ borrowDate }}</p>
         <p class="cart_m_text">{{ returnDate }}</p>
-        <p class="cart_m_text">{{ shoppingCartItemsCount }}</p>
+        <p class="cart_m_text">{{ shoppingCartData.length }}</p>
         <p class="cart_m_text">${{ shoppingCartProductsSum }}</p>
       </div>
     </div>
@@ -91,6 +91,14 @@ export default {
   data() {
     return {
       title: "我的預約清單",
+      // {
+      //     id: "first",
+      //     imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+      //     category: "咒術迴戰 01",
+      //     name: "作者：芥見下々",
+      //     price: 10,
+      //     quantity: 1,
+      //   },
       shoppingCartData: [
         {
           id: "first",
@@ -199,10 +207,11 @@ export default {
 
     // 刪除
     deleteProduct(id) {
-      const itemIndex = this.shoppingCartData.findIndex(
-        (item) => item.id === id
-      );
-      this.shoppingCartData.splice(itemIndex, 1);
+      // const itemIndex = this.shoppingCartData.findIndex(
+      //   (item) => item.id === id
+      // );
+      this.$store.commit('deleteBook',id);
+      // this.shoppingCartData.splice(id, 1);
     },
 
     // 總計
@@ -226,7 +235,11 @@ export default {
   },
   // 掛載完成時
   mounted() {
-    this.nowTimes();
+    this.axios.get('/data/comic.json')
+      .then((res) => {
+        this.shoppingCartData = this.$store.state.cart;
+        this.nowTimes();
+      })
   },
 
 }
