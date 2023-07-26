@@ -7,28 +7,28 @@
     background-color: $main_txt_color;
     border-radius: 0.625rem;
     padding: 1rem;
-    // 上中下的白色區域
+    
 
     .cart_l_text {
       font-size: 1.875rem;
       font-weight: 700;
     }
 
-    // 30
+
     .cart_m_text {
       font-size: 1.5rem;
       font-weight: 400;
       margin-bottom: 1rem;
     }
 
-    // 24
+
     .cart_s_text {
       font-size: 1.25rem;
       font-weight: 400;
       line-height: 150%;
     }
 
-    //20
+
 
     .cart_l_reserve_title {
       display: flex;
@@ -110,7 +110,7 @@
       }
     }
 
-    // 計算
+
     .cart_l_count_title {
       display: flex;
       align-items: center;
@@ -159,7 +159,7 @@
       }
     }
 
-    // 預約須知
+
     .cart_l_rule_title {
       display: flex;
       align-items: center;
@@ -184,7 +184,7 @@
     }
   }
 
-  // 按鈕
+
   .comiclist_cartbtn {
     padding: 10px 40px;
     background-color: $btn_bg_color;
@@ -202,10 +202,10 @@
   }
 }
 
-// Media Queries
+
 @include sm() {}
 
-// 1024
+
 @include md() {
   .comiclist_cart {
     .comiclist_content {
@@ -221,7 +221,7 @@
         }
       }
 
-      // 計算
+      
       .cart_l_count_title {
         .cart_m_text:nth-child(1) {
           margin-left: 0px;
@@ -253,7 +253,7 @@
       }
     }
 
-    // 按鈕
+   
     .comiclist_cartbtn {
       width: 190px;
       margin-left: 640px;
@@ -261,10 +261,10 @@
   }
 }
 
-// 1200
+
 @include lg() {
   .comiclist_cart {
-    // 按鈕
+    
     .comiclist_cartbtn {
       margin-left: 740px;
     }
@@ -286,7 +286,7 @@
         }
       }
   
-      // 計算
+      
       .cart_l_count_title {
         .cart_m_text:nth-child(1) {
           margin-left: 0px;
@@ -317,7 +317,7 @@
         }
       }
     }
-    // 按鈕
+   
     .comiclist_cartbtn {
       width: 200px;
       margin-left: 725px;
