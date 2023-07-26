@@ -227,10 +227,9 @@
 
 //手機版
 @include screen_one(767) {
-    .news_page{
+  .news_page{
         padding-top: 40px;
     }
-  }
   .message {
     padding-top: 40px;
     .news_category {
