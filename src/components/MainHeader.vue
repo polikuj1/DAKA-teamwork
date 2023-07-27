@@ -6,14 +6,14 @@
       <span>咖</span>
     </h1>
     <nav>
-      <a href="#" v-for="nav in header" :key="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
+      <a href="" v-for="nav in header" :key="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
         {{ nav.title }}
         <ul>
           <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
         </ul>
       </a>
-      <a href="#" @click.prevent="loginOpen" >登入 | 註冊</a>
-      <a href="#" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
+      <a href="" @click.prevent="loginOpen" >登入 | 註冊</a>
+      <a href="" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
 
     </nav>
   </div>
