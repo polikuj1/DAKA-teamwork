@@ -12,77 +12,7 @@
 
 </template>
 <style scoped>
-        body {
-            background: #060e1b;
-            overflow: hidden;
-          
-        }
-
-.platform_img{
-position: absolute;
-top: 15%;
-left: 40%;
-animation: logo 1.5s ;
-}
-        .platform_container {
-           height: 100vh;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-       
-        }
-
-        .back {
-          font-size: 4rem;
-          margin-top: 250px;
-          background-color: #fff;
-border-radius: 50%;
-        }
-
-        .front {
-            font-size: 4rem;
-            margin-top: 250px;
-            background-color: #fff;
-            border-radius: 50%;
-        }
-
-        .front:hover{
-            background-color: #111;
-            color: #fff;
-        }
-
-        .back:hover{
-            background-color: #111;
-            color: #fff;
-        }
-
-        a {
-            text-decoration: none;
-            color: #111;
-            padding: 100px;
-        }
-
-        p {
-            color: #fff;
-            font-size: 5rem;
-            margin: auto;
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
-
-        @keyframes logo {
-          0%{filter: blur(70px);}  
-          20%{filter: blur(40px)}  
-          50%{filter: blur(20px)}  
-          100%{filter: blur(0px)}  
-        }
+      @import '@/assets/scss/page/welcome.scss';
     </style>
    
 <script>
