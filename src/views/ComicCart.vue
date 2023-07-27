@@ -147,7 +147,7 @@ export default {
   },
 
   computed: {
-    // 書籍數量
+    /*書籍數量*/
     shoppingCartProducts() {
       return [...this.shoppingCartData];
     },
@@ -156,7 +156,7 @@ export default {
       return this.shoppingCartProducts.length;
     },
 
-    // 總計
+    /*總計*/
     shoppingCartProductsSum() {
       return (
         Math.floor(

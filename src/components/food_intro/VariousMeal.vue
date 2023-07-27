@@ -4,8 +4,8 @@
         <div class="variousmeal_container">
             <h3>各式餐點</h3>
             <div class="category_buttons">
-                <button @click="showCategory('combo')"
-                    :class="{ active: selectedCategory === 'combo', comboHover: comboHover }">套餐</button>
+                <button @click="showCategory('ALL')"
+                    :class="{ active: selectedCategory === 'ALL', ALLHover: ALLHover }">套餐</button>
                 <button @click="showCategory('main_meal')" :class="{ active: selectedCategory === 'main_meal' }">主餐</button>
                 <button @click="showCategory('drinks')" :class="{ active: selectedCategory === 'drinks' }">飲料</button>
                 <button @click="showCategory('dessert')" :class="{ active: selectedCategory === 'dessert' }">點心</button>
@@ -33,8 +33,8 @@ export default {
     },
     data() {
         return {
-            selectedCategory: 'combo',
-            comboHover: false,
+            selectedCategory: 'ALL',
+            ALLHover: false,
             foods: [
                 {
                     id: 1,
@@ -172,7 +172,7 @@ export default {
                     description: '蔬菜沙拉'
                 },
             ],
-            selectedCategory: 'combo'
+            selectedCategory: 'ALL'
         };
     },
     computed: {
@@ -186,7 +186,7 @@ export default {
         },
     },
     mounted() {
-        this.comboHover = true;
+        this.ALLHover = true;
     },
 };
 
