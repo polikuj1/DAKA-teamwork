@@ -10,12 +10,12 @@ const routes = [
   {
     path: '/front',
     name: 'front',
-    redirect:'/home',
+    redirect:'/index',
     component: () => import('../views/FrontView.vue'),
     children:[
       {
-        path: '/home',
-        name: 'home',
+        path: '/index',
+        name: 'index',
         component: () => import('../views/HomeView.vue'),
       },
       {

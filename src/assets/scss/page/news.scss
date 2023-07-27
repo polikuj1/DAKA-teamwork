@@ -1,10 +1,8 @@
 .news_page {
   width: 100%;
   box-sizing: border-box;
-  // padding: $section_pd;
   @include container;
   margin: auto;
-  margin-bottom: 160px;
   .news_page a {
     text-decoration: none;
   }
@@ -176,7 +174,7 @@
     }
   }
 }
-//手機版
+/*手機版*/
 @include screen_one(767) {
   .news_page {
     padding-top: 40px;
@@ -219,7 +217,7 @@
   }
 }
 
-//電腦版
+/*電腦版*/
 @include sm {
   .news_page {
     padding-top: 80px;
@@ -260,7 +258,7 @@
       bottom: 10px;
     }
   }
-  //圖片位置交換
+  /*圖片位置交換*/
   .message:nth-child(odd) {
     flex-direction: row;
     .news_title {

@@ -15,7 +15,7 @@
         body {
             background: #060e1b;
             overflow: hidden;
-
+          
         }
 
 .platform_img{
@@ -25,23 +25,23 @@ left: 40%;
 animation: logo 1.5s ;
 }
         .platform_container {
-            width: 1200px;
-            height: 100vh;
+           height: 100vh;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
-            margin:200px  auto;
+       
         }
 
         .back {
-            font-size: 4rem;
+          font-size: 4rem;
+          margin-top: 250px;
           background-color: #fff;
 border-radius: 50%;
         }
 
         .front {
             font-size: 4rem;
-
+            margin-top: 250px;
             background-color: #fff;
             border-radius: 50%;
         }

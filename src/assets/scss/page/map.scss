@@ -12,6 +12,8 @@
         color: #4C3818;
         font-size: 3.75rem;
         margin-bottom: 12%;
+        color: white;
+
     }
 
     .map {
@@ -31,11 +33,28 @@
 
         }
 
+        .tp_back {
+            position: absolute;
+            width: 100%;
+            right: -144%;
+            top: -8%;
+            z-index: -1;
+        }
+
         .zl_shop {
             position: absolute;
             left: -108%;
             top: -14%;
             width: 88%;
+        }
+
+        .zl_back {
+            position: absolute;
+            left: -114%;
+            top: -16%;
+            width: 100%;
+            z-index: -1;
+
         }
 
         .tn_shop {
@@ -44,6 +63,16 @@
             bottom: -12%;
             left: -130%;
 
+
+
+        }
+
+        .tn_back {
+            position: absolute;
+            width: 100%;
+            bottom: -14%;
+            left: -136%;
+            z-index: -1;
 
         }
 
@@ -59,8 +88,9 @@
             color: #4C3818;
             position: absolute;
             right: -124%;
-            top: 31%;
+            top: 29%;
             font-weight: 600;
+            color: white;
 
         }
 
@@ -69,8 +99,10 @@
             color: #4C3818;
             position: absolute;
             left: -88%;
-            top: 19%;
+            top: 20%;
             font-weight: 600;
+            color: white;
+
 
 
         }
@@ -79,9 +111,11 @@
             font-size: 1.875rem;
             color: #4C3818;
             position: absolute;
-            bottom: -21%;
+            bottom: -24%;
             left: -110%;
             font-weight: 600;
+            color: white;
+
         }
 
         .taipei {
@@ -91,29 +125,35 @@
             width: 57%;
             transition: transform 0.5s;
         }
-        .taipei:hover{
+
+        .taipei:hover {
             transform: scale(1.4);
         }
+
         .tp_shop:hover~.taipei {
             transform: scale(1.4);
         }
+
         .tp_text:hover~.taipei {
             transform: scale(1.4);
         }
 
         .taoyuan {
             position: absolute;
-            left:33%;
+            left: 33%;
             top: 5.7%;
             width: 39%;
             transition: transform 0.5s;
         }
-        .taoyuan:hover{
+
+        .taoyuan:hover {
             transform: scale(1.4);
         }
+
         .zl_shop:hover~.taoyuan {
             transform: scale(1.4);
         }
+
         .zl_text:hover~.taoyuan {
             transform: scale(1.4);
         }
@@ -125,15 +165,336 @@
             left: -34%;
             transition: transform 0.5s;
         }
-        .tainan:hover{
-            transform: scale(1.4) ;
+
+        .tainan:hover {
+            transform: scale(1.4);
         }
+
         .tn_shop:hover~.tainan {
             transform: scale(1.4);
         }
+
         .tn_text:hover~.tainan {
             transform: scale(1.4);
         }
+    }
+
+}
+
+
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .store {
+        max-width: 1200px;
+        width: 100%;
+        margin-bottom: 400px;
+
+
+        .title {
+            font-size: 3.75rem;
+            margin-bottom: 12%;
+            color: white;
+
+        }
+
+        .map {
+            position: relative;
+
+
+            .taiwan {
+                width: 137%;
+                transform: translateX(-23%);
+            }
+
+            .tp_shop {
+                position: absolute;
+                width: 81%;
+                right: -125%;
+                top: -6%;
+
+            }
+
+            .tp_back {
+                position: absolute;
+                width: 90%;
+                right: -129%;
+                top: -8%;
+                z-index: -1;
+            }
+
+            .zl_shop {
+                position: absolute;
+                left: -93%;
+                top: -14%;
+                width: 78%;
+            }
+
+            .zl_back {
+                position: absolute;
+                left: -99%;
+                top: -16%;
+                width: 90%;
+                z-index: -1;
+
+            }
+
+            .tn_shop {
+                position: absolute;
+                width: 78%;
+                bottom: -12%;
+                left: -115%;
+
+
+
+            }
+
+            .tn_back {
+                position: absolute;
+                width: 90%;
+                bottom: -14%;
+                left: -121%;
+                z-index: -1;
+
+            }
+
+            .man {
+                position: absolute;
+                top: 63%;
+                width: 115%;
+                right: -120%;
+            }
+
+            .tp_text {
+                font-size: 1.875rem;
+                color: #4C3818;
+                position: absolute;
+                right: -106%;
+                top: 28%;
+                font-weight: 600;
+                color: white;
+
+            }
+
+            .zl_text {
+                font-size: 1.875rem;
+                color: #4C3818;
+                position: absolute;
+                left: -74%;
+                top: 20%;
+                font-weight: 600;
+                color: white;
+
+
+            }
+
+            .tn_text {
+                font-size: 1.875rem;
+                color: #4C3818;
+                position: absolute;
+                bottom: -23%;
+                left: -95%;
+                font-weight: 600;
+                color: white;
+
+            }
+
+            .taipei {
+                position: absolute;
+                right: -1%;
+                top: 1%;
+                width: 48%;
+                transition: transform 0.5s;
+            }
+
+            .taipei:hover {
+                transform: scale(1.4);
+            }
+
+            .tp_shop:hover~.taipei {
+                transform: scale(1.4);
+            }
+
+            .tp_text:hover~.taipei {
+                transform: scale(1.4);
+            }
+
+            .taoyuan {
+                position: absolute;
+                left: 33%;
+                top: 6.5%;
+                width: 32%;
+                transition: transform 0.5s;
+            }
+
+            .taoyuan:hover {
+                transform: scale(1.4);
+            }
+
+            .zl_shop:hover~.taoyuan {
+                transform: scale(1.4);
+            }
+
+            .zl_text:hover~.taoyuan {
+                transform: scale(1.4);
+            }
+
+            .tainan {
+                position: absolute;
+                width: 42%;
+                bottom: 29%;
+                left: -30%;
+                transition: transform 0.5s;
+            }
+
+            .tainan:hover {
+                transform: scale(1.4);
+            }
+
+            .tn_shop:hover~.tainan {
+                transform: scale(1.4);
+            }
+
+            .tn_text:hover~.tainan {
+                transform: scale(1.4);
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .store {
+
+
+
+
+        .title {
+            color: white;
+        }
+
+        .map {
+
+            .taiwan {
+                display: none;
+            }
+
+            .tp_shop {
+                position: relative;
+                right: 0;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                margin-bottom: 50px;
+            }
+
+            .tp_back {
+                position: absolute;
+                width: 115%;
+                right: -8%;
+                top: -2%;
+            }
+
+            .zl_shop {
+                position: relative;
+                right: 0;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                margin-bottom: 50px;
+
+            }
+
+            .zl_back {
+                position: absolute;
+                width: 115%;
+                left: -8%;
+                top: 32%;
+            }
+
+            .tn_shop {
+                position: relative;
+                right: 0;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                margin-bottom: 50px;
+
+            }
+
+            .tn_back {
+                position: absolute;
+                width: 115%;
+                left: -8%;
+                top: 65%;
+            }
+
+            .man {
+                display: none;
+            }
+
+            .tp_text {
+                position: relative;
+                right: 0;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                padding-left: 60px;
+                margin-bottom: 50px;
+                color: white;
+
+
+            }
+
+            .zl_text {
+                position: relative;
+                right: 0;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                padding-left: 60px;
+                margin-bottom: 50px;
+                color: white;
+
+            }
+
+            .tn_text {
+                position: relative;
+                right: 0;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                padding-left: 60px;
+                margin-bottom: 50px;
+                color: white;
+
+            }
+
+            .taipei {
+                display: none;
+            }
+
+
+            .taoyuan {
+                display: none;
+            }
+
+
+            .tainan {
+                display: none;
+            }
+        }
+
     }
 
 }
