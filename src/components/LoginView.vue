@@ -31,7 +31,7 @@
           <span>OR</span>
           
 
-            <button class="login_connect">
+            <button class="login_connect" @click.prevent="">
               <i class="fa-brands fa-square-facebook"></i>
               以FACEBOOK帳號登入
             </button>
