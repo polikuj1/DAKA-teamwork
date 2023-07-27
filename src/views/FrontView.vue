@@ -54,14 +54,9 @@ export default {
   mounted() {
     this.path = this.$route.path;
     this.windowWidth = window.innerWidth;
-    this.path = this.$route.path;
-    if(this.path === '/index') {
-        this.show = true;
-    }
   },
   created() {
     window.addEventListener('resize', () => {
-      // console.log(window.innerWidth);
       this.windowWidth = window.innerWidth;
       this.reviseStatus();
     })
@@ -69,11 +64,6 @@ export default {
       this.reviseStatus();
     })
     this.windowWidth = window.innerWidth;
-    this.path = this.$route.path;
-    console.log(this.path);
-    if(this.path === '/index') {
-        this.show = true;
-    }
   }
 }
 </script>
