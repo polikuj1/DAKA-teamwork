@@ -44,6 +44,7 @@
 @import 'page/reservation.scss';
 @import 'page/about_origin.scss';
 
+
 *{
   margin: 0;
   padding: 0;
@@ -51,15 +52,19 @@
   box-sizing: border-box;
   text-decoration: none;
   scroll-behavior: smooth;
+  font-family: jf;
 }
-
+// @font-face {
+//   font-family: jf;
+//   src: url(@/assets/fonts/jf-openhuninn.ttf);
+// }
 body{
-  background-color:$main_bg;
+  background-color: $main_bg;
 }
 
 
 h2 {
-  font-size: 5rem;
+  font-size: 6rem;
 }
 @include screen_one(767) {
   h2 {

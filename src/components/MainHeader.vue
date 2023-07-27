@@ -1,7 +1,7 @@
 <template>
   <div class="header" ref="header" :class="style">
     <h1 class="logo">
-      <router-link to="/Home"><img :src="logoImg" alt="DAKA網咖"></router-link>
+      <router-link to="/index"><img :src="logoImg" alt="DAKA網咖"></router-link>
       <span>打</span>
       <span>咖</span>
     </h1>
@@ -29,7 +29,7 @@ export default {
   watch: {
     // 處理header只有在首頁時需要先消失
     path() {
-      if(this.path === '/') {
+      if(this.path === '/index') {
         this.style = 'disappear';
       } else {
         this.style = '';
@@ -50,7 +50,7 @@ export default {
       header: [
         {
           title: '關於我們',
-          site: '/about',
+          site: '/about_origin',
           title_list: [
             {
               li: '服務項目',
