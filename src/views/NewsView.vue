@@ -5,59 +5,29 @@
   <div id="news_container">
     <section class="news_page">
       <div class="news_tabs">
-        <button
-          class="news_tab"
-          :class="{ active: currentTab === 'all' }"
-          @click="changeTab('all')"
-        >
-          全部消息
-        </button>
-        <button
-          class="news_tab"
-          :class="{ active: currentTab === 'latest' }"
-          @click="changeTab('latest')"
-        >
-          最新消息
-        </button>
-        <button
-          class="news_tab"
-          :class="{ active: currentTab === 'activity' }"
-          @click="changeTab('activity')"
-        >
-          活動消息
-        </button>
+        <button class="news_tab" :class="{ active: currentTab === 'all' }" @click="changeTab('all')">全部消息</button>
+        <button class="news_tab" :class="{ active: currentTab === 'latest' }" @click="changeTab('latest')">最新消息</button>
+        <button class="news_tab" :class="{ active: currentTab === 'activity' }" @click="changeTab('activity')">活動消息</button>
       </div>
       <div class="news_tab_content">
         <!-- 全部消息 -->
         <div>
-          <div
-            v-for="(message, index) in data"
-            :key="message.id"
-            class="message"
-          >
+          <a v-for="(message, index) in data" :key="message.id" class="message">
             <div class="news_pic">
               <img :src="message.img" alt="Message Image" />
             </div>
             <div class="news_message_content">
-              <p
-                class="news_category"
-                :style="{
-                  backgroundColor:
-                    message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E'
-                }"
-              >
-                {{ message.category }}
-              </p>
+              <p class="news_category" :style="{ backgroundColor : message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">{{ message.category }}</p>
               <p class="news_date">{{ message.date }}</p>
               <p class="news_title">{{ message.content }}</p>
-              <div
-                class="news_more"
-                :class="index % 2 !== 0 ? 'left_text' : ''"
-              >
-                <a href="#">view more</a>
+              <div class="news_more" :class="index % 2 !== 0 ? 'left_text' : ''">
+                <p>view more</p>
+              </div>
+              <div class="news_more_forphone">
+                <p>view more</p>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
