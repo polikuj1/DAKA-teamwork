@@ -578,7 +578,7 @@ img {
         .data_seat {
           width: 280px;
           min-height: 163px;
-          border: 1px solid #111;
+          border: 2px solid #111;
 
           .data_seat_info {
             display: flex;
@@ -593,6 +593,7 @@ img {
       border-radius: 100px;
       cursor: pointer;
       font-size: 1.5rem;
+      color: #fff;
     }
   }
 }
@@ -1132,6 +1133,7 @@ img {
             min-height: 163px;
             border-radius: 10px;
             border: 2px solid #111;
+            padding: 10px;
 
             .data_seat_info {
               display: flex;
