@@ -410,4 +410,28 @@
       }
     }
   }
+
+
+  .fade-enter {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: all 1s; 
+  }
+  .fade-leave-to {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+
+@keyframes fadeIn {
+
+
+  
+  
+}
+
+
 }

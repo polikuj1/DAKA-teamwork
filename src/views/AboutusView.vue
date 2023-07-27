@@ -24,26 +24,27 @@
           <div class="about_card_pic">
             <img :src="require('@/assets/images/about/about_lobby.svg')" alt="DAKA_LOBBY">
           </div>
-          <transition>
+        
             <div class="about_card_text">
-            <h3>大廳環境</h3>
-            <p>電競區都是頂級配備，讓你毫不卡頓的盡情挑戰遊戲極限！而一般區也是相對高規配備，讓你輕鬆上網、聊天和放鬆身心。別忘了我們的精緻點餐區，這裡有各式美味的熱食、飲料和小甜點等你品嚐！</p>
-          </div>
-          </transition>
-         
+              <h3>大廳環境</h3>
+              <p>電競區都是頂級配備，讓你毫不卡頓的盡情挑戰遊戲極限！而一般區也是相對高規配備，讓你輕鬆上網、聊天和放鬆身心。別忘了我們的精緻點餐區，這裡有各式美味的熱食、飲料和小甜點等你品嚐！</p>
+            </div>
+        
+
         </div>
 
         <div class="about_card_two about_card">
           <div class="about_card_pic">
             <img :src="require('@/assets/images/about/about_chairs.svg')" alt="DAKA_CHAIR">
           </div>
-          <transition>
+         
             <div class="about_card_text">
-            <h3>包廂環境</h3>
-            <p>我們有單人房和雙人房可供選擇，擁有高規格電腦、舒適床鋪和迷你餐桌。讓你感受到奢華與便利的完美結合！無論是過夜狂歡還是欣賞電影，這裡都是你最佳的選擇。</p>
-          </div>
-          </transition>
-          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"  class="about_slider_up">
+              <h3>包廂環境</h3>
+              <p>我們有單人房和雙人房可供選擇，擁有高規格電腦、舒適床鋪和迷你餐桌。讓你感受到奢華與便利的完美結合！無論是過夜狂歡還是欣賞電影，這裡都是你最佳的選擇。</p>
+            </div>
+          
+          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
+            class="about_slider_up">
             <Slide v-for="item in sliderTop" :key="item.index">
 
 
@@ -61,25 +62,26 @@
           <div class="about_card_pic">
             <img :src="require('@/assets/images/about/about_comic.svg')" alt="DAKA_COMIC">
           </div>
-          <transition>
+       
             <div class="about_card_text">
-            <h3>漫畫區域</h3>
-            <p>館藏豐富，明亮舒適的漫畫區！這個區域包含了各種精彩的漫畫作品為你帶來無限樂趣。溫馨的氛圍、舒適的沙發、書桌和絢麗的燈光，讓你能夠盡情沉浸在角色的冒險世界中。</p>
-          </div>
-          </transition>
+              <h3>漫畫區域</h3>
+              <p>館藏豐富，明亮舒適的漫畫區！這個區域包含了各種精彩的漫畫作品為你帶來無限樂趣。溫馨的氛圍、舒適的沙發、書桌和絢麗的燈光，讓你能夠盡情沉浸在角色的冒險世界中。</p>
+            </div>
+          
         </div>
 
         <div class="about_card_four about_card">
           <div class="about_card_pic">
             <img :src="require('@/assets/images/about/about_bathroom.svg')" alt="DAKA_BATHROOM">
           </div>
-          <transition>
+        
             <div class="about_card_text">
-            <h3>衛浴設施</h3>
-            <p>我們還提供設施齊全的廁所和清爽的淋浴間，給你完美的休憩體驗。而且，別擔心停車問題，我們還提供免費停車場，讓你輕鬆享受遊戲時光。快來這個完美的環境，感受舒適和便利的雙重享受！</p>
-          </div>
-          </transition>  
-          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true" class="about_slider_down">
+              <h3>衛浴設施</h3>
+              <p>我們還提供設施齊全的廁所和清爽的淋浴間，給你完美的休憩體驗。而且，別擔心停車問題，我們還提供免費停車場，讓你輕鬆享受遊戲時光。快來這個完美的環境，感受舒適和便利的雙重享受！</p>
+            </div>
+         
+          <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
+            class="about_slider_down">
             <Slide v-for="slide in sliderDown" :key="slide.index">
 
 
@@ -119,6 +121,9 @@ export default defineComponent({
   },
   data: () => ({
     title: '服務項目',
+    isShow: false,
+    windowWidth: 0,
+    elTop: 0, 
     sliderTop: [
       {
         name: '鍵盤',
@@ -178,11 +183,39 @@ export default defineComponent({
       },
     },
   }),
-  methods:{
+  created() {
+    window.addEventListener("scroll", this.fadeIn);
+  },
+  methods: {
+    fadeIn() {
+      // 捲軸距離視窗頂部的距離
+      const scrolltoTop = window.screenY
+
+      // 捲軸滾動的距離
+      const scrollLength = scrolltoTop - this.elTop
+
+      // 更新: 滾動前,捲軸距離視窗頂部的距離
+      this.elTop = scrolltoTop
+
+      // 判斷想要什麼高度讓按鈕出現
+      if (scrollLength < 0 && this.elTop < 200) {
+        this.isShow = true
+      } else if (scrollLength < 201 && this.elTop < 400){
+        this.isShow = true
+      }else if (scrollLength < 401 && this.elTop < 600){
+        this.isShow = true
+      }else if (scrollLength < 601 && this.elTop < 800){
+        this.isShow = true
+      }else{
+        this.isShow =false;
+      }
+
+
+    }
 
 
 
+  },
 
-  }
 })
 </script>
