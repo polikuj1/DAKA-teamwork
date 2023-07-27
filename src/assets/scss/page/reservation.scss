@@ -18,12 +18,17 @@ img {
   &_read {
     margin-bottom: 120px;
     padding: 20px;
-    h2 {
-      font-size: 3.2rem;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 400;
+    .reservation_text {
+      span {
+        font-size: 5rem;
+      }
+      h2 {
+        font-size: 2.5rem;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
     }
     &_rules {
       background-color: #fff;
@@ -49,25 +54,30 @@ img {
     display: flex;
     flex-direction: column;
     margin-bottom: 120px;
-    h2 {
-      font-size: 3.2rem;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 400;
-    }
-  }
 
-  &_seat {
-    span {
-      font-size: 5rem;
-    }
-    h2 {
+    .reservation_text {
       font-size: 2.5rem;
       color: #fff;
       text-align: center;
       margin-bottom: 40px;
       font-weight: 400;
+      span {
+        font-size: 5rem;
+      }
+    }
+  }
+
+  &_seat {
+    margin-bottom: 100px;
+    .reservation_text {
+      font-size: 2.5rem;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 400;
+      span {
+        font-size: 5rem;
+      }
     }
     .reservation_all_seat {
       background-color: #fff;
@@ -479,13 +489,15 @@ img {
     flex-direction: column;
     align-items: center;
     margin-bottom: 100px;
-
-    h2 {
-      font-size: 3.2rem;
-      text-align: center;
-      font-weight: 400;
-      margin-bottom: 60px;
+    .reservation_text {
+      font-size: 2.5rem;
       color: #fff;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 400;
+      span {
+        font-size: 5rem;
+      }
     }
     &_data {
       padding: 50px;
@@ -529,22 +541,20 @@ img {
         }
       }
       .confirm_data_seat {
-
         p {
           font-size: 1.3rem;
           margin-bottom: 10px;
         }
-       .data_seat {
-        width: 280px;
-        min-height: 163px;
-      border: 1px solid #111;
-       
-.data_seat_info{
-  display: flex;
-  flex-direction: column;
-  font-size: 1.3rem;
-}
-       
+        .data_seat {
+          width: 280px;
+          min-height: 163px;
+          border: 1px solid #111;
+
+          .data_seat_info {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.3rem;
+          }
         }
       }
     }
