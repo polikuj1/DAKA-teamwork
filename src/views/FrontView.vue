@@ -25,7 +25,7 @@ export default {
   watch: {
     '$route.path': function(newPath, oldPath) {
       this.path = newPath;
-      if(this.path === '/' && this.windowWidth < 1200) {
+      if(this.path === '/home' && this.windowWidth < 1200) {
         this.show = true;
       }
       window.scrollTo(0, 0);
@@ -33,22 +33,23 @@ export default {
   },
   methods: {
     reviseStatus() {
-      if(this.windowWidth > 1200 && window.scrollY < 999 && this.path === '/') {
+      if(this.windowWidth > 1200 && window.scrollY < 999 && this.path === '/home') {
         this.show = false;
       }
-      if(this.windowWidth > 1200 && window.scrollY > 999 && this.path === '/') {
+      if(this.windowWidth > 1200 && window.scrollY > 999 && this.path === '/home') {
         this.show = true;
       }
       if(this.windowWidth < 1200 && window.scrollY < 999) {
         this.show = true;
       }
-      if(this.windowWidth < 1200 && this.path === '/') {
+      if(this.windowWidth < 1200 && this.path === '/home') {
         this.show = true;
       }
     },
   },
   mounted() {
     this.path = this.$route.path;
+    // console.log(this.path);
   },
   created() {
     this.windowWidth = window.innerWidth;
