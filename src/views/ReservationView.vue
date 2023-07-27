@@ -19,8 +19,7 @@
 
     
     <section class="reservation_read">
-      
-      <h2><span>1</span> 閱讀預約需知</h2>
+      <h2 class="reservation_text"><span>1</span> 閱讀預約需知</h2>
       <div class="reservation_read_rules">
         <ul>
           <li>
@@ -78,12 +77,12 @@
 
     <section class="reservation_date">
   
-      <h2><span>2</span> 選擇日期及時間</h2>
+      <h2  class="reservation_text"><span>2</span> 選擇日期及時間</h2>
       <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
     </section>
 
     <section class="reservation_seat">
-      <h2><span>3</span> 選擇座位</h2>
+      <h2  class="reservation_text"><span>3</span> 選擇座位</h2>
       <div class="reservation_all_seat">
         <main class="tabs">
           <div class="tabs_list">
@@ -179,7 +178,7 @@
     </section>
 
     <section class="reservation_confirm">
-      <h2><span>4</span> 確認預約細項</h2>
+      <h2  class="reservation_text"><span>4</span> 確認預約細項</h2>
       <div class="reservation_confirm_data">
         <div class="confirm_data_time">
           <div class="data_time_start">
@@ -221,7 +220,7 @@
   
   </div>
 </main>
-  <div></div>
+  
 </template>
 
 
