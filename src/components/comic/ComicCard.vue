@@ -14,7 +14,8 @@
       <div class="card" v-for="item in comicData" :key="item.title"
       v-show="comicData.length">
         <div class="pic"  @click="this.$router.push(`/comic_detail/${item.id}`)">
-          <img :src="item.img" alt="漫畫封面">
+          <!-- <img :src="item.img" alt="漫畫封面"> -->
+          <Images :imgURL="`${item.img}`" :alt="`${item.title}`" />
         </div>
         <div class="txt">
           <div class="title">
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import {GET} from '@/plugin/axios';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';
 export default {
@@ -69,11 +71,10 @@ export default {
 
   },
   created() {
-    this.axios.get('/data/comic.json')
+    GET('/data/comic.json')
       .then((res) => {
-        this.originData = res.data;
-        this.comicData = res.data;
-        // this.reservation = this.$store.state.cart;
+        this.originData = res;
+        this.comicData = res;
       })
       .catch((err) => {
         console.log(err);
