@@ -1,7 +1,7 @@
 <template>
   <div class="header" ref="header" :class="style">
     <h1 class="logo">
-      <router-link to="/home"><img :src="logoImg" alt="DAKA網咖"></router-link>
+      <router-link to="/index"><img :src="logoImg" alt="DAKA網咖"></router-link>
       <span>打</span>
       <span>咖</span>
     </h1>
@@ -29,7 +29,7 @@ export default {
   watch: {
     // 處理header只有在首頁時需要先消失
     path() {
-      if(this.path === '/home') {
+      if(this.path === '/index') {
         this.style = 'disappear';
       } else {
         this.style = '';

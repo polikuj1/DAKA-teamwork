@@ -7,7 +7,7 @@
       </svg>
     </div> -->
     <div class="logo">
-      <router-link to="/home">
+      <router-link to="/index">
         <img src="@/assets/images/footerLogo.svg" alt="">
       </router-link>
     </div>
