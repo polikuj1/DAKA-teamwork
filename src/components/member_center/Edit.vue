@@ -71,7 +71,6 @@
       this.$emit('emit-title',this.title);
     },
     submitForm() {
-      // 在這裡寫提交表單的程式碼，可以將資料送至後台或執行其他操作
       console.log('表單提交成功！');
     },
   }

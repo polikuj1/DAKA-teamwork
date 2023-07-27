@@ -64,7 +64,7 @@
                 return reservation;
             });
         },
-        //狀態不同背景顏色不同
+        /*狀態不同背景顏色不同*/
         statusStyle(status){
             if(status==='已完成'|| status === '已取消'){
                 return{

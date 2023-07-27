@@ -56,7 +56,7 @@
     cursor: pointer;
     border: none;
 }
-//手機版
+/*手機版*/
 @include screen_one(767){
     .submit_btn{
         width: 120px;
@@ -64,7 +64,7 @@
         font-size: 1rem;
     }
 }
-//電腦版
+/*電腦版*/
 @include sm{
     .charge_content{
         font-size: 1.875rem;

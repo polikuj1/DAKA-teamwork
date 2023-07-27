@@ -67,23 +67,23 @@ export default {
       title: '線上儲值',
       selectedAmount: '請選擇',
       amounts: ['100', '500', '1000', '5000'], 
-      selectedCreditCard: '請選擇', // 初始化選擇的信用卡為空
+      selectedCreditCard: '請選擇', 
       boundCreditCards: ['中國信託LINE聯名卡', '富邦J卡', 'Richart'],
-      cardNumber: '', // 輸入的卡號
+      cardNumber: '', 
       selectedYear: '請選擇',
       years: ['2030','2029','2028','2027','2026','2025','2024','2023'],
       selectedMonth: '請選擇',
       months: ['01','02','03','04','05','06','07','08','09','10','11','12'],
-      verificationCode: '', // 輸入的驗證碼
-      isBound: false, // 是否綁定此信用卡
-      isDefault: false, // 是否將此信用卡設為預設卡片
+      verificationCode: '', 
+      isBound: false, 
+      isDefault: false,
       showCardNumberWarning: false,
       showVerificationCodeWarning: false,
     }
   },
   methods: {
     submit() {
-      // 獲取填寫的假資料和選擇的信用卡資訊
+      /*獲取填寫的假資料和選擇的信用卡資訊*/
       const amount = this.selectedAmount;
       const selectedCreditCard = this.selectedCreditCard;
       const cardNumber = this.cardNumber;
@@ -92,18 +92,17 @@ export default {
       const isBound = this.isBound;
       const isDefault = this.isDefault;
 
-      // 將填寫的假資料和選擇的信用卡資訊一起處理
-      // 可以透過 AJAX 或 Fetch 將資料傳送到後端 API 進行處理
+      /*將填寫的假資料和選擇的信用卡資訊一起處理*/
+      /*可以透過 AJAX 或 Fetch 將資料傳送到後端 API 進行處理*/
 
-      // 模擬儲值成功的彈窗
       alert('儲值成功！');
     },
     checkCardNumberInput() {
-      const regex = /^[0-9]*$/; // 正則表達式，只允許數字字符
+      const regex = /^[0-9]*$/; 
       this.showCardNumberWarning = !regex.test(this.cardNumber);
     },
     checkVerificationCodeInput() {
-      const regex = /^[0-9]*$/; // 正則表達式，只允許數字字符
+      const regex = /^[0-9]*$/; 
       this.showVerificationCodeWarning = !regex.test(this.verificationCode);
     },
     triggerParent() {

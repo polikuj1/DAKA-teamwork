@@ -125,13 +125,12 @@ export default {
       ],
       page: 1,
       data: []
-      // isLastPage: false,
     };
   },
   methods: {
     changeTab(tabName) {
       this.currentTab = tabName;
-      //分類消息類別
+      /*分類消息類別*/
       if (tabName === "latest") {
         this.data = this.allMessages.filter(
           (message) => message.category === "NEWS"
@@ -149,7 +148,7 @@ export default {
     paginatedAllMessages() {
       const startIndex = (this.page - 1) * 5;
       const endIndex = this.allMessages.length;
-      // const endIndex = startIndex + 5;
+      /*const endIndex = startIndex + 5;*/
       return this.allMessages.slice(startIndex, endIndex);
     }
   },
