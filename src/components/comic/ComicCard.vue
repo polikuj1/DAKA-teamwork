@@ -55,12 +55,13 @@ export default {
       this.comicData = this.originData.filter(item => item.title.includes(this.search));
     },
     reserve(item) {
+      console.log(this.$store.state.cart);
       if(this.$store.state.cart.length === 5) return;
       if(this.$store.state.cart.indexOf(item) === -1) {
-        // this.reservation.push(item);
         console.log(123);
         this.$store.commit('getBook',item);
-        // console.log(this.$store.state.cart);
+      } else {
+        console.log('可惡');
       }
     },
   },

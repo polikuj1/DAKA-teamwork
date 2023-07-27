@@ -20,7 +20,9 @@
       }
     }
     span {
-      font-size: 3.5rem;
+      font-size: 4rem;
+      font-family: 'Dela Gothic One', cursive;
+      font-weight: 100;
       &:nth-child(2) {
         padding-left: 20px;
         color: $btn_bg_color;

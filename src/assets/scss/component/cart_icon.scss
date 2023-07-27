@@ -1,7 +1,8 @@
 .cart_icon {
   position: fixed;
   right: 30px;
-  bottom: 100px;
+  bottom: 50px;
+  z-index: 1001;
   // pointer-events: none;
   .wrap {
     .icon {
