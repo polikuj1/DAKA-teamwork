@@ -54,6 +54,7 @@
     width: 70%;
     display: flex;
     align-items: center;
+    justify-content: center;
     
     .pic {
       width: 960.86px;
@@ -63,6 +64,7 @@
       background-repeat: no-repeat;
       overflow: hidden;
       animation: hero_animation 3.5s steps(6, end) infinite;
+      transform: scale(1.2);
 
       img {
         opacity: 0;
@@ -111,6 +113,10 @@
 
     .banner {
       width: 100%;
+
+      .pic {
+        transform: scale(1);
+      }
     }
   }
 }
@@ -124,6 +130,14 @@
 
       &:nth-child(2) {
         top: -100px;
+      }
+    }
+
+    .banner {
+
+      .pic {
+        overflow: inherit;
+        transform: scale(0.8);
       }
     }
   }
@@ -140,11 +154,20 @@
         top: -50px;
       }
     }
+
+    .banner {
+
+      .pic {
+        overflow: inherit;
+        transform: scale(0.7);
+      }
+    }
   }
 }
 
 @include screen_one(415) {
   .hero_section {
+
     .circle {
       &:nth-child(1) {
         bottom: -150px;
@@ -153,6 +176,14 @@
       &:nth-child(2) {
         top: 100px;
         right: -10px;
+      }
+    }
+
+    .banner {
+
+      .pic {
+        overflow: inherit;
+        transform: scale(0.4);
       }
     }
   }
