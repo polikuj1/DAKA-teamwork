@@ -13,13 +13,13 @@
     .news_tab {
       box-sizing: border-box;
       border-radius: $btn_br;
+      border: none;
       cursor: pointer;
       background-color: #f9bb8a;
       color: $main_txt_color;
     }
     .news_tab.active {
       background-color: $btn_bg_color;
-      border: 1px solid $btn_bg_color;
     }
   }
 }
