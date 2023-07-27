@@ -23,7 +23,7 @@
     </aside>
     <div class="banner">
       <div class="pic">
-        <img src="https://picsum.photos/id/684/600/400" alt="">
+        <img src="@/assets/images/home/sprite.svg" alt="gif">
       </div>
     </div>
   </section>
