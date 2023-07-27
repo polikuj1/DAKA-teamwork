@@ -1,5 +1,5 @@
 
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 2200px) {
     .index_news {
         .title{
 
@@ -15,8 +15,8 @@
         }
         .news {
             max-width: 1036px;
-            background-color: white;
             border-radius: 50px;
+            margin: auto;
 
 
             .news_all {
@@ -25,11 +25,14 @@
                 width: 100%;
                 justify-content: space-between;
                 padding-left: 20px;
+                background-color: white;
+                margin-bottom: 25px;
+                border-radius: 50px;
             
 
                 .infor_top {
                     display: flex;
-                    /* width:37%; */
+                    width:37%; 
                     justify-content: space-between;
                     /* padding-top: 2.2%; */
                     /* padding-bottom: 2.2%; */
@@ -55,7 +58,7 @@
                         color: #78684D;
                         font-size: 1.5rem;
                         padding-right: 15%;
-                        padding-left:105px;
+                        /* padding-left:105px; */
                         /* position: absolute; */
                         /* left: 60%; */
 
@@ -76,7 +79,7 @@
                         color: #78684D;
                         font-size: 1.5rem;
                         /* padding-right: 50px; */
-                        padding-left: 40px;
+                        /* padding-left: 40px; */
 
                     }
 
@@ -97,17 +100,25 @@
         .title{
 
             color: #ffffff;
-            font-size: 1.5rem;
+            /* font-size: 1.5rem; */
         }
         .news {
             padding-top: 0;
+            margin: auto;
+            max-width: 1200px;
+
+
             .news_all {
                 background-color: white;   
                 display: flex;
                 text-decoration: none;
                 width: 54%;
-                padding: 30px 20px;
+                padding: 15px 20px;
                 flex-direction: column;
+                border-radius: 10px;
+                margin: auto;
+                margin-bottom: 15px;
+
                 .infor_top {
                     display: flex;
                     width: 37%;
@@ -124,7 +135,9 @@
                         margin-right: 5%;
 
                     } 
-
+                    .category.active {
+                        background-color: orange;
+                  }
 
                     .date {
                         font-size: 1rem;
