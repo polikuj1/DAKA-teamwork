@@ -25,7 +25,7 @@ export default {
   watch: {
     '$route.path': function(newPath, oldPath) {
       this.path = newPath;
-      if(this.path === '/home' && this.windowWidth < 1200) {
+      if(this.path === '/index' && this.windowWidth < 1200) {
         this.show = true;
       }
       window.scrollTo(0, 0);
@@ -33,16 +33,16 @@ export default {
   },
   methods: {
     reviseStatus() {
-      if(this.windowWidth > 1200 && window.scrollY < 999 && this.path === '/home') {
+      if(this.windowWidth > 1200 && window.scrollY < 999 && this.path === '/index') {
         this.show = false;
       }
-      if(this.windowWidth > 1200 && window.scrollY > 999 && this.path === '/home') {
+      if(this.windowWidth > 1200 && window.scrollY > 999 && this.path === '/index') {
         this.show = true;
       }
       if(this.windowWidth < 1200 && window.scrollY < 999) {
         this.show = true;
       }
-      if(this.windowWidth < 1200 && this.path === '/home') {
+      if(this.windowWidth < 1200 && this.path === '/index') {
         this.show = true;
       }
     },
