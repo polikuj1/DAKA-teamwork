@@ -4,6 +4,7 @@
 </script>
 
 <template>
+    {{ publicPath }}
     <img 
         :class="className" 
         :src="`${publicPath}${imgURL}`"
