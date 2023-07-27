@@ -1,5 +1,5 @@
 <template>
-  <div class="header" ref="header" :class="style">
+  <div class="header" :class="style">
     <h1 class="logo">
       <router-link to="/index"><img :src="logoImg" alt="DAKA網咖"></router-link>
       <span>打</span>
@@ -118,6 +118,13 @@ export default {
   components: {
     login,
   },
+  mounted() {
+    if(this.show) {
+      this.style = '';
+    } else {
+      this.style = 'disappear';
+    }
+  }
 }
 </script>
 
