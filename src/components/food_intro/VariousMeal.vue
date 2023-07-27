@@ -2,7 +2,7 @@
 <template>
     <section>
         <div class="variousmeal_container">
-            <h3>各式餐點</h3>
+            <h3>\ 各式餐點 /</h3>
             <div class="category_buttons">
                 <button @click="showCategory('all')"
                     :class="{ active: selectedCategory === 'all', allHover: allHover }">全部</button>

@@ -41,7 +41,7 @@
             </div>
           </div>
         </div>
-        <div v-show="shoppingCartData.length === 0">OH~快點去 <a href="/comic_search">預約</a> 你喜歡的漫畫吧</div>
+        <div v-show="shoppingCartData.length === 0">您還沒有預約任何一本書，請開始 <a href="/comic_search">預約</a> 你喜歡的漫畫吧！</div>
       </div>
     </div>
 
@@ -75,9 +75,10 @@
         </div>
       </div>
     </div>
-
-    <button class="comiclist_cartbtn">送出預約<i class="fa-sharp fa-solid fa-book-open-reader" style="color: #ffffff;"></i>
-    </button>
+    <div class="btn_content">
+      <button class="comiclist_cartbtn">送出預約<i class="fa-solid fa-book-open-reader bookgap"></i>
+      </button>
+    </div>
   </div>
 </template>
 <style>
@@ -95,7 +96,7 @@ export default {
       shoppingCartData: [
         {
           id: "first",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 01",
           name: "作者：芥見下々",
           price: 10,
@@ -103,7 +104,7 @@ export default {
         },
         {
           id: "second",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 02",
           name: "作者：芥見下々",
           price: 10,
@@ -111,7 +112,7 @@ export default {
         },
         {
           id: "third",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 03",
           name: "作者：芥見下々",
           price: 10,
@@ -119,7 +120,7 @@ export default {
         },
         {
           id: "fourth",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 04",
           name: "作者：芥見下々",
           price: 10,
@@ -127,7 +128,7 @@ export default {
         },
         {
           id: "fifth",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 05",
           name: "作者：芥見下々",
           price: 10,
@@ -203,7 +204,7 @@ export default {
       // const itemIndex = this.shoppingCartData.findIndex(
       //   (item) => item.id === id
       // );
-      this.$store.commit('deleteBook',id);
+      this.$store.commit('deleteBook', id);
       // this.shoppingCartData.splice(id, 1);
     },
 
