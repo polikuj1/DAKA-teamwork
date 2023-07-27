@@ -1,5 +1,5 @@
 import axios from 'axios'
-const publicPath = process.env.NODE_ENV === "production" ? "/chd102/g1/" : "/"
+const publicPath = process.env.NODE_ENV === "production" ? "/chd102/g6/" : "/"
 
 const axiosInstance = axios.create({
     baseURL: publicPath

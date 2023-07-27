@@ -1,7 +1,6 @@
 .news_page {
   width: 100%;
   box-sizing: border-box;
-  /*padding: $section_pd;*/
   @include container;
   margin: auto;
   .news_page a {
@@ -13,13 +12,13 @@
     .news_tab {
       box-sizing: border-box;
       border-radius: $btn_br;
+      border: none;
       cursor: pointer;
       background-color: #f9bb8a;
       color: $main_txt_color;
     }
     .news_tab.active {
       background-color: $btn_bg_color;
-      border: 1px solid $btn_bg_color;
     }
   }
 }
@@ -180,7 +179,7 @@
   .news_tab_content {
     margin-top: 40px;
     .message {
-      margin-top:100px;
+      margin-bottom:100px;
       .news_category {
         margin-top: 10px;
         font-size: 0.875rem;
@@ -248,8 +247,13 @@
       font-size: 2rem;
       padding: 16px 40px;
     }
+    .news_tab:hover{
+      background-color: $btn_bg_color;
+      color: $main_txt_color;
+    }
   }
   .news_tab_content {
+    margin-bottom: 160px;
     .message {
       margin-top: 160px;
       display: flex;

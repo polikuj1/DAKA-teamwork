@@ -15,9 +15,20 @@
     font-size: 1.5rem;
     text-align: center;
     color: $login_brown;
-    padding: 10px 0px 0px;
+    padding: 10px -10px 0px;
     font-weight: 700;
-    margin-top: 10px;
+    padding-top: 15px;
+    margin-top: 20px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 114%; /* 與卡片相同寬度 */
+      border-top: 4px solid black;
+    }
   }
 
   .category_buttons {
@@ -43,7 +54,7 @@
     color: $btn_bg_color;
     background-color: $main_txt_color;
   }
-  
+
   .category_buttons button.active {
     color: $btn_bg_color;
     background-color: $main_txt_color;
@@ -51,19 +62,20 @@
 
   .variousmeal_card_area {
     @include container;
+
     .food_card {
       width: 80%;
       margin: 0 auto 50px;
       display: flex;
       flex-direction: column;
       background-color: $main_txt_color;
-      padding-bottom: 20px;
+      padding: 20px;
       border-radius: 5px;
       margin-bottom: 40px;
-      
+
       .food_cards_meal_pic {
-        border-bottom: 3px solid black;
-        padding: 15px;
+        overflow: hidden;
+
         img {
           @include img;
         }
@@ -74,21 +86,29 @@
 
 @include sm() {
   .variousmeal_container {
-
     .category_buttons button {
       padding: 20px 40px;
     }
+
     .variousmeal_card_area {
       display: flex;
       flex-wrap: wrap;
+
       .food_card {
         width: 42%;
+        &:hover {
+          > div img {
+            transform: scale(1.1);
+          }
+        }
         .food_cards_meal_pic {
+          width: 90%;
+          margin: auto;
           height: 300px;
         }
       }
     }
-  }  
+  }
 }
 
 @include md() {
@@ -96,10 +116,12 @@
     .variousmeal_card_area {
       padding-left: 30px;
       gap: 50px;
+
       .food_card {
         width: 29%;
         margin: 0;
-        }
+        
       }
-  }  
+    }
+  }
 }
