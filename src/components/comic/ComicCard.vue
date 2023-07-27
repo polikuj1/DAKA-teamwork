@@ -73,6 +73,7 @@ export default {
   created() {
     GET('/data/comic.json')
       .then((res) => {
+        console.log(res);
         this.originData = res;
         this.comicData = res;
       })

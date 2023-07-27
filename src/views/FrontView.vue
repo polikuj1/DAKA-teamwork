@@ -25,8 +25,12 @@ export default {
   watch: {
     '$route.path': function(newPath, oldPath) {
       this.path = newPath;
+      console.log(this.path);
       if(this.path === '/index' && this.windowWidth < 1200) {
-        this.show = true;
+        this.show = false;
+        setTimeout(() => {
+          this.show = true;
+        },100);
       }
       window.scrollTo(0, 0);
     }
@@ -49,13 +53,13 @@ export default {
   },
   mounted() {
     this.path = this.$route.path;
-    // console.log(this.path);
+    this.windowWidth = window.innerWidth;
+    this.path = this.$route.path;
+    if(this.path === '/index') {
+        this.show = true;
+    }
   },
   created() {
-    this.windowWidth = window.innerWidth;
-    // if(this.windowWidth < 1200) {
-    //   this.show = true;
-    // }
     window.addEventListener('resize', () => {
       // console.log(window.innerWidth);
       this.windowWidth = window.innerWidth;
@@ -64,6 +68,12 @@ export default {
     document.addEventListener('scroll', () => {
       this.reviseStatus();
     })
+    this.windowWidth = window.innerWidth;
+    this.path = this.$route.path;
+    console.log(this.path);
+    if(this.path === '/index') {
+        this.show = true;
+    }
   }
 }
 </script>
