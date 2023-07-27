@@ -54,8 +54,8 @@
 
         <div class="about_card_four about_card">
           <div class="about_card_centertext">
-            <p class="about_s_text">在<span class="about_orange_text">打</span><span class="about_green_text">咖</span>，我們用激情和活力為客人燃點遊戲的火花， 讓每一次光臨都成為一段難忘的體驗。</p>
-            <p class="about_s_text">我們期待著與您共同分享這份歡樂和熱情！</p>
+            <p class="about_s_text textanimatio">在<span class="about_orange_text">打</span><span class="about_green_text ">咖</span>，我們用激情和活力為客人燃點遊戲的火花， 讓每一次光臨都成為一段難忘的體驗。</p>
+            <p class="about_s_text textanimatio">我們期待著與您共同分享這份歡樂和熱情！</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-.aboutorigin_container {
+.variousmeal_container {
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -18,14 +18,14 @@
     font-weight: 700;
   }
 
-  .category-buttons {
+  .category_buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
     margin-bottom: 100px;
   }
 
-  .category-buttons button {
+  .category_buttons button {
     margin: 0 10px;
     padding: 10px 15px;
     font-size: 1.25rem;
@@ -37,24 +37,21 @@
     cursor: pointer;
   }
 
-  .category-buttons button.comboHover:hover {
-    /* Your hover style (style b) for combo button */
+  .category_buttons button.comboHover:hover {
     color: #4C3818;
     background-color: $secondary_yellow;
   }
   
-  /* Add the active style for combo button */
-  .category-buttons button.active {
-    /* Your active style (style a) for combo button */
+  .category_buttons button.active {
     color: #4C3818;
     background-color: $secondary_yellow;
   }
 
-  .aboutorigin_card {
+  .variousmeal_card_area {
     @include container;
     padding: 0px 0px 100px 0px;
 
-    .food-card {
+    .food_card {
       width: 80%;
       margin: 0 auto 50px;
       display: flex;
@@ -63,7 +60,7 @@
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 20px;
-      .food-cards_meal_pic {
+      .food_cards_meal_pic {
         padding: 10px 0px;
         img {
           @include img;
@@ -74,20 +71,20 @@
 }
 
 @include sm() {
-  .aboutorigin_container {
-    .category-buttons button {
+  .variousmeal_container {
+    .category_buttons button {
       padding: 20px 40px;
     }
-    .aboutorigin_card {
+    .variousmeal_card_area {
       padding: 0px 0px 100px 10px;
       display: flex;
       gap: 50px;
       flex-wrap: wrap;
       justify-content: center;
-      .food-card {
+      .food_card {
         width: 42%;
         margin: 0;
-        .food-cards_meal_pic {
+        .food_cards_meal_pic {
           height: 300px;
         }
       }
@@ -96,11 +93,11 @@
 }
 
 @include md() {
-  .aboutorigin_container {
-    .aboutorigin_card {
+  .variousmeal_container {
+    .variousmeal_card_area {
       padding-left: 30px;
       justify-content: flex-start;
-      .food-card {
+      .food_card {
         width: 29%;
         }
       }

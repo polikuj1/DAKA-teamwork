@@ -1,18 +1,18 @@
 
 <template>
     <section>
-        <div class="aboutorigin_container">
+        <div class="variousmeal_container">
             <h3>各式餐點</h3>
-            <div class="category-buttons">
+            <div class="category_buttons">
                 <button @click="showCategory('combo')"
                     :class="{ active: selectedCategory === 'combo', comboHover: comboHover }">套餐</button>
                 <button @click="showCategory('main_meal')" :class="{ active: selectedCategory === 'main_meal' }">主餐</button>
                 <button @click="showCategory('drinks')" :class="{ active: selectedCategory === 'drinks' }">飲料</button>
                 <button @click="showCategory('dessert')" :class="{ active: selectedCategory === 'dessert' }">點心</button>
             </div>
-            <div class="aboutorigin_card">
-                <div v-for="food in filteredFoods" :key="food.id" class="food-card">
-                    <div class="food-cards_meal_pic">
+            <div class="variousmeal_card_area">
+                <div v-for="food in filteredFoods" :key="food.id" class="food_card">
+                    <div class="food_cards_meal_pic">
                         <img :src="food.img" :alt="food.description">
                     </div>
                     <p>{{ food.description }}</p>
