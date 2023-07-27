@@ -5,12 +5,18 @@
             <div class="map">
                 <img src="@/assets/images/index/taiwan.svg" alt="台灣" class="taiwan">
                 <img :src="item.tp_shop" alt="台北分店" class="tp_shop">
-                <img :src="item.zl_shop" alt="中壢分店" class="zl_shop">
-                <img :src="item.tn_shop" alt="台南分店" class="tn_shop">
-                <img src="@/assets/images/index/man.png" alt="man" class="man">
+                <img src="@/assets/images/index/Vector.png" alt="圈圈" class="tp_back">
                 <div class="tp_text">台北分館</div>
+
+                <img :src="item.zl_shop" alt="中壢分店" class="zl_shop">
+                <img src="@/assets/images/index/Vector.png" alt="圈圈" class="zl_back">
                 <div class="zl_text">中壢總館</div>
+
+                <img :src="item.tn_shop" alt="台南分店" class="tn_shop">
+                <img src="@/assets/images/index/Vector.png" alt="圈圈" class="tn_back">
                 <div class="tn_text">台南分館</div>
+
+                <img src="@/assets/images/index/man.png" alt="man" class="man">
                 <img src="@/assets/images/index/taipei.svg" alt="taipei" class="taipei">
                 <img src="@/assets/images/index/taoyuan.svg" alt="taoyuan" class="taoyuan">
                 <img src="@/assets/images/index/tainan.svg" alt="tainan" class="tainan">
