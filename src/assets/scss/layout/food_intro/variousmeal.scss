@@ -1,4 +1,4 @@
-.aboutorigin_container {
+.variousmeal_container {
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -10,66 +10,96 @@
     padding: 100px 0px;
   }
 
-  #app {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 0px 20px 420px;
+  p {
+    font-size: 1.5rem;
+    text-align: center;
+    color: $login_brown;
+    padding: 10px 0px 0px;
+    font-weight: 700;
+  }
 
+  .category_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 100px;
+  }
 
-    .category-buttons {
+  .category_buttons button {
+    margin: 0 10px;
+    padding: 10px 15px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $main_txt_color;
+    background-color: $btn_bg_color;
+    border-radius: $btn_br;
+    border: none;
+    cursor: pointer;
+  }
+
+  .category_buttons button.comboHover:hover {
+    color: #4C3818;
+    background-color: $secondary_yellow;
+  }
+  
+  .category_buttons button.active {
+    color: #4C3818;
+    background-color: $secondary_yellow;
+  }
+
+  .variousmeal_card_area {
+    @include container;
+    padding: 0px 0px 100px 0px;
+
+    .food_card {
+      width: 80%;
+      margin: 0 auto 50px;
       display: flex;
-      justify-content: center;
-      margin-bottom: 100px;
-    }
-
-    .category-buttons button {
-      margin: 0 10px;
-      padding: 20px 40px;
-      font-size: 1.25rem;
-      color: $main_txt_color;
-      background-color: $btn_bg_color;
-      border-radius: $btn_br;
-      border: none;
-      cursor: pointer;
-    }
-
-    .category-buttons button:hover {
-      color: #4C3818;
-      background-color: #FBDFB7;
-    }
-
-    .food-cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 5%;
-      flex-direction: row;
-      align-content: space-around;
-    }
-
-    .food-card {
-      width: calc(30% - 20px);
+      flex-direction: column;
       background-color: $main_txt_color;
       padding: 15px;
       border-radius: 5px;
       margin-bottom: 20px;
-
-      .food-cards_meal_pic {
-        width: 300px;
-        height: 300px;
-        padding: 1px;
-        flex-shrink: 0;
-        
-
+      .food_cards_meal_pic {
+        padding: 10px 0px;
         img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          @include img;
         }
-
       }
     }
-
-
   }
+}
+
+@include sm() {
+  .variousmeal_container {
+    .category_buttons button {
+      padding: 20px 40px;
+    }
+    .variousmeal_card_area {
+      padding: 0px 0px 100px 10px;
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      justify-content: center;
+      .food_card {
+        width: 42%;
+        margin: 0;
+        .food_cards_meal_pic {
+          height: 300px;
+        }
+      }
+    }
+  }  
+}
+
+@include md() {
+  .variousmeal_container {
+    .variousmeal_card_area {
+      padding-left: 30px;
+      justify-content: flex-start;
+      .food_card {
+        width: 29%;
+        }
+      }
+  }  
 }

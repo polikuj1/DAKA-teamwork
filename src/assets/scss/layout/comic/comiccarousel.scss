@@ -1,0 +1,89 @@
+.comics_newin {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: $section_pd 0;
+
+    h3 {
+        color: $main_txt_color;
+        padding-bottom: ($section_pd);
+    }
+
+    .comics_slides {
+
+        .carousel__slide {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            width: 80%;
+            margin: 0 auto 50px;
+            display: flex;
+            flex-direction: column;
+            background-color: $main_txt_color;
+            border-radius: 10px;
+            flex-grow: 1;
+
+            .pic {
+                padding: 30px 20px;
+                border-bottom: 5px solid $main_bg;
+                cursor: pointer;
+                /* flex-grow: 1; */
+            }
+
+            img {
+                @include img;
+            }
+
+            .txt {
+                padding: 40px;
+                text-align: center;
+                color: $main_bg;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex-grow: 1;
+            }
+
+            .title {
+                padding-bottom: 20px;
+                line-height: $line_height;
+
+                span {
+                    display: block;
+
+                    &:nth-child(1) {
+                        font-size: 1.8rem;
+                    }
+
+                    &:nth-child(2) {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .carousel__prev,
+    .carousel__next {
+        color: #fff;
+        transform: scale(1.5);
+    }
+
+    .carousel__prev {
+        color: $main_bg;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 1px solid $main_bg;
+    }
+
+    .carousel__next {
+        color: $main_bg;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 1px solid $main_bg;
+    }
+}

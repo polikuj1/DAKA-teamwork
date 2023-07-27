@@ -28,17 +28,22 @@
 
 <script>
 export default {
-  props: ['bookData'],
+  // props: ['bookData'],
   data() {
     return {
       infoOpen: false,
       bookList: [],
+      bookData: [],
     }
   },
   methods: {
     deleteBook(index) {
-      this.bookData.splice(index,1);
+      // this.bookData.splice(index,1);
+      this.$store.commit('deleteBook',index);
     },
   },
+  created() {
+    this.bookData = this.$store.state.cart;
+  }
 }
 </script>
