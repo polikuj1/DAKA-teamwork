@@ -29,9 +29,22 @@
           <button class="login_form_submit" @click.prevent="checkLogin">登入</button>
           <button @click.prevent="changeRegister" class="login_form_register">註冊會員</button>
           <span>OR</span>
-          <button v-for="btn in btns" class="login_connect" @click.prevent="">
-            <img :src="btn.pic" alt="">
-            {{ btn.text }}</button>
+          
+
+            <button class="login_connect">
+              <i class="fa-brands fa-square-facebook"></i>
+              以FACEBOOK帳號登入
+            </button>
+            
+            <button class="login_connect">
+              <i class="fa-brands fa-google"></i>
+              以GOOGLE帳號登入
+            </button>
+            
+            <button class="login_connect">
+              <i class="fa-brands fa-apple"></i>
+              以APPLE帳號登入
+            </button>
         </form>
       </div>
     </section>
@@ -156,7 +169,7 @@
 
     <section class="enter_modify_success" v-if="step === 5">
       <img :src="require('@/assets/images/login/cross.png')" class="modify_close_success_modal" @click="closeModal">
-      <img :src="require('@/assets/images/footerLogo.png')" alt="" class="enter_modify_success_logo">
+      <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo" class="enter_modify_success_logo">
       <p>註冊完成！</p>
       <p>請重新登入</p>
       <button @click="registerSuccess">返回會員登入</button>
@@ -200,25 +213,13 @@ export default {
         psw: '',
         newPsw: '',
       },
-      btns: [
-        {
-          text: '以FACEBOOK帳號登入',
-          pic: require('@/assets/images/login/facebook.svg'),
-        },
-        {
-          text: '以GOOGLE帳號登入',
-          pic: require('@/assets/images/login/google.svg')
-        },
-        {
-          text: '以APPLE帳號登入',
-          pic: require('@/assets/images/login/apple.svg')
-        },
-      ]
+     
 
 
 
     }
   },
+
 
   methods: {
     closeModal() {
@@ -244,10 +245,13 @@ export default {
     },
     columnCheck() {
 
-      if (this.register.pswReg === this.register.pswConfirmReg) {
+      if (this.register.pswReg === this.register.pswConfirmReg&&!this.register.pswReg) {
 
         this.isRegistered = false;
         this.step = 5;
+
+      }else{
+        return
       }
 
     },
@@ -257,7 +261,6 @@ export default {
     },
 
     checkEmail() {
-
       if (!this.memEmail) {
         return alert("輸入錯誤或無輸入");
       } else {
@@ -297,6 +300,7 @@ export default {
       this.step = 0;
     },
     registerSuccess() {
+
       this.step = 0;
 
     }

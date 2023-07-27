@@ -169,5 +169,15 @@ export default defineComponent({
       },
     },
   }),
+  methods:{
+fade(){
+if(screenY<200){
+  this.$refs
+}
+},
+
+
+
+  }
 })
 </script>
