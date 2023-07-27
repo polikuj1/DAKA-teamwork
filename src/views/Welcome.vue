@@ -33,15 +33,15 @@ animation: logo 1.5s ;
         }
 
         .back {
-          margin-top: 150px;
-            font-size: 4rem;
+          font-size: 4rem;
+          margin-top: 250px;
           background-color: #fff;
 border-radius: 50%;
         }
 
         .front {
             font-size: 4rem;
-            margin-top: 150px;
+            margin-top: 250px;
             background-color: #fff;
             border-radius: 50%;
         }

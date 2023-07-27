@@ -2,8 +2,24 @@
   <PageTitle>
     {{ title }}
   </PageTitle>
-  <main class="reservation">
+  <main class="reservation_wrap">
+    <div class="about_circle_top">
+        <div></div>
+      </div>
+      <div class="about_circle_middle">
+        <div></div>
+      </div>
+      <div class="about_circle_bottom">
+        <div></div>
+      </div>
+  
+  <div class="reservation">
+   
+   
+
+    
     <section class="reservation_read">
+      
       <h2><span>1</span> 閱讀預約需知</h2>
       <div class="reservation_read_rules">
         <ul>
@@ -32,7 +48,10 @@
             <img :src="require('@/assets/images/reservation/Vector.svg')"
               class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
           </li>
-          <li>如需取消預約，請於1日前取消。</li>
+          <li>
+          <img :src="require('@/assets/images/reservation/Vector.svg')"
+              class="reservation_rules_img" />
+         如需取消預約，請於1日前取消。</li>
           <li>
             <img :src="require('@/assets/images/reservation/Vector.svg')"
               class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
@@ -181,7 +200,7 @@
             <p>目前儲值金</p>
             <input type="text" readonly value="元" />
             <div class="stored_error">
-              儲值金不足，請先至 <a href="">會員中心</a> 儲值。
+              儲值金不足，請先至 <a @click="this.$router.push('/member_center/member_nav')">會員中心</a> 儲值。
             </div>
           </div>
         </div>
@@ -199,8 +218,9 @@
       </div>
       <button class="reservation_submit" @click="confirmReserve">確認預約</button>
     </section>
-  </main>
-
+  
+  </div>
+</main>
   <div></div>
 </template>
 
