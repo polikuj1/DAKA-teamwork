@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="cart_info" v-show="infoOpen">
         <button @click="infoOpen = false"><i class="fa-solid fa-xmark"></i></button>
-        <span v-if="bookData.length === 0">您還沒有預約任何一本書， 請開始 <a href="">預約</a> 吧！</span>
+        <span v-if="bookData.length === 0">您還沒有預約任何一本書， 請開始 <a @click="this.$router.push('/comic_search')">預約</a> 吧！</span>
         <div class="reservation_list" v-else>
           <ul>
             <li v-for="(book,index) in bookData" :key="book.title">
@@ -14,6 +14,7 @@
               <span @click="deleteBook(index)"><i class="fa-solid fa-trash-can"></i></span>
             </li>
           </ul>
+          <p v-show="this.$store.state.cart.length === 5" style="color: red; margin-top: 10px;">已達預約書籍上限</p>
           <button @click="this.$router.push('/comic_cart')">前往預約</button>
         </div>
       </div>

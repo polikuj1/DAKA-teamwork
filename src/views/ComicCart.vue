@@ -18,7 +18,7 @@
       <!-- 書本照片 -->
       <div class="cart_book_content">
         <div v-for="(item, index) in shoppingCartData" :key="item.id" class="cart_book">
-          <div class="cart_book_pic">
+          <div class="cart_book_pic" @click="this.$router.push(`/comic_detail/${item.id}`)">
             <img :src="item.img" :alt="item.name" />
           </div>
 
@@ -41,6 +41,7 @@
             </div>
           </div>
         </div>
+        <div v-show="shoppingCartData.length === 0">OH~快點去 <a href="/comic_search">預約</a> 你喜歡的漫畫吧</div>
       </div>
     </div>
 
@@ -91,14 +92,6 @@ export default {
   data() {
     return {
       title: "我的預約清單",
-      // {
-      //     id: "first",
-      //     imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 01",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
       shoppingCartData: [
         {
           id: "first",

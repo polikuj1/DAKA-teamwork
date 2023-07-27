@@ -14,7 +14,7 @@
       <nav ref="nav">
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{ li.title }}</li>
-        <li @click.prevent,stop="loginOpen">登入 | 註冊</li>
+        <li @click.prevent.stop="loginOpen">登入 | 註冊</li>
         </ul>
       </nav>
     </div>
@@ -34,7 +34,7 @@ export default {
         {
           title: '關於我們',
           class: '',
-          site: '/about',
+          site: '/about_origin',
         },
         {
           title: '服務項目',

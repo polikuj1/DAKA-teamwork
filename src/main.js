@@ -12,7 +12,7 @@ import '@fortawesome/fontawesome-free/js/all.js'
 import ViewUIPlus from 'view-ui-plus';
 import 'view-ui-plus/dist/styles/viewuiplus.css';
 // 字體引入
-import "@/assets/fonts/font.css";
+// import "@/assets/fonts/font.css";
 // 全域樣式
 import "@/assets/scss/_style.scss";
 
