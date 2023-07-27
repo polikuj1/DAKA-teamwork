@@ -32,12 +32,13 @@
     display: flex;
     flex-direction: column;
     gap: 80px;
-    padding: 0px 20px 420px;
+    padding: 0px 20px 0px;
 
     .aboutorigin_rightpic {
       float: right;
       width: 100%;
       img {
+        margin: 0 auto;
         max-width: 100%;
       }
     }
@@ -46,6 +47,7 @@
       float: left;
       width: 100%;
       img {
+        margin: 0 auto;
         max-width: 100%;
       }
     }
@@ -88,6 +90,21 @@
       margin-top: 30px;
     }
 
+
+/*    .about_m_text::after {
+      content: "";
+      width: 0%;
+      height: 15px;
+      background-color: #F6CE6E;
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      margin: 0 auto;
+      z-index: -1;
+      transition: width 0.5s;
+  }
+*/
+
     @keyframes yellowBackgroundAnimation {
       0% { background-color: rgba(255, 255, 0, 0.521); }
       50% { background-color: rgba(255, 166, 0, 0.58); }
@@ -116,6 +133,7 @@
         content: "";
         display: table;
         clear: both;
+        margin: 0 auto;
       }
     }
   }
@@ -129,15 +147,14 @@
     }
   
     .aboutorigin_circle_two {
-      right: -1500px;
-      top: 1000px;
+      right: -1200px;
+      top: 400px;
     }
   
     .aboutorigin_card_area {
       .aboutorigin_rightpic {
         float: right;
         width: 40%;
-  
         img {
           max-width: 100%;
         }

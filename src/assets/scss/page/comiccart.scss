@@ -1,12 +1,16 @@
 .comiclist_cart {
-  @include container;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+
 
   .comiclist_content {
+    @include container;
     width: 650px;
     margin: 0 auto 50px;
     background-color: $main_txt_color;
     border-radius: 0.625rem;
-    padding: 1rem;
     
 
     .cart_l_text {
@@ -212,125 +216,3 @@
   }
 }
 
-
-@include sm() {}
-
-
-@include md() {
-  .comiclist_cart {
-    .comiclist_content {
-      .cart_m_reserve_title {
-        .cart_m_text:nth-child(1) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(2) {
-          margin-left: 325px;
-        }
-        .cart_m_text:nth-child(3) {
-          margin-right: 95px;
-        }
-      }
-
-      
-      .cart_l_count_title {
-        .cart_m_text:nth-child(1) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(2) {
-          margin-left: -10px;
-        }
-        .cart_m_text:nth-child(3) {
-          margin-left: -20px;
-        }
-        .cart_m_text:nth-child(4) {
-          margin-right: 0px;
-        }
-      }
-
-      .cart_m_count_title {
-        .cart_m_text:nth-child(1) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(2) {
-          margin-left: -50px;
-        }
-        .cart_m_text:nth-child(3) {
-          margin-left: -45px;
-        }
-        .cart_m_text:nth-child(4) {
-          margin-right: 5px;
-        }
-      }
-    }
-
-   
-    .comiclist_cartbtn {
-      width: 190px;
-      margin-left: 640px;
-    }
-  }
-}
-
-
-@include lg() {
-  .comiclist_cart {
-    
-    .comiclist_cartbtn {
-      margin-left: 740px;
-    }
-  }
-}
-
-@include screen(1920) {
-  .comiclist_cart {
-    .comiclist_content {
-      .cart_m_reserve_title {
-        .cart_m_text:nth-child(1) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(2) {
-          margin-left: 300px;
-        }
-        .cart_m_text:nth-child(3) {
-          margin-right: 90px;
-        }
-      }
-  
-      
-      .cart_l_count_title {
-        .cart_m_text:nth-child(1) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(2) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(3) {
-          margin-left: -40px;
-        }
-        .cart_m_text:nth-child(4) {
-          margin-right: 0px;
-        }
-      }
-  
-      .cart_m_count_title {
-        .cart_m_text:nth-child(1) {
-          margin-left: 0px;
-        }
-        .cart_m_text:nth-child(2) {
-          margin-left: -45px;
-        }
-        .cart_m_text:nth-child(3) {
-          margin-left: -60px;
-        }
-        .cart_m_text:nth-child(4) {
-          margin-right: 5px;
-        }
-      }
-    }
-   
-    .comiclist_cartbtn {
-      width: 200px;
-      margin-left: 725px;
-    }
-  }
-}
