@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      title: '漫畫租借',
+      title: '漫畫預約',
     }
   },
 }
