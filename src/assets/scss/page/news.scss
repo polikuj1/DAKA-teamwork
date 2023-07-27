@@ -1,9 +1,9 @@
 .news_page {
   width: 100%;
   box-sizing: border-box;
+  /*padding: $section_pd;*/
   @include container;
   margin: auto;
-
   .news_page a {
     text-decoration: none;
   }
@@ -35,11 +35,6 @@
     .news_pic img {
       border-radius: 5px;
       @include img;
-      transform-origin: center;
-      transition: transform 0.2s ease-in;
-    }
-    .news_pic img:Hover{
-      transform: scale(1.05);
     }
     .news_category {
       color: $main_txt_color;
