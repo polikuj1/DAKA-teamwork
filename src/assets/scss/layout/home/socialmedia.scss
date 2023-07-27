@@ -1,7 +1,7 @@
-.socialmedia{
+.socialmedia {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
     text-align: center;
     padding: $section_pd 0;
 
@@ -25,28 +25,22 @@
     .carousel__prev,
     .carousel__next {
         color: #fff;
-        transform: scale(2);
+        transform: scale(1.5);
     }
 
     .carousel__prev {
-        left: -20px;
+        color: $main_bg;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 1px solid $main_bg;
     }
-    
+
     .carousel__next {
-        right: -20px;
+        color: $main_bg;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 1px solid $main_bg;
     }
-    
+
 }
 
-@include screen_one(768) {
-
-    .socialmedia {
-        .carousel__prev {
-            left: 0px;
-        }
-        
-        .carousel__next {
-            right: 0px;
-        }
-    }
-}

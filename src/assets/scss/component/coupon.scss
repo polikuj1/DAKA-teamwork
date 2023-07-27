@@ -1,3 +1,81 @@
-.credit{
-    background-color: burlywood;
+
+.member_coupon{
+    width: 90%;
+    background-color: $secondary_blue;
+    color: #fff;
+    border-radius: 10px;
+    margin: auto;
+    box-sizing: border-box;
+    position: relative;
+    .coupon_title{
+        display: flex;
+        align-items: center;
+        img{
+            width: 30px;
+            height: 30px;
+        }
+    }
+    
+}
+@media screen and (max-width: 414px){
+    .coupon_container{
+        margin-top: 20px;
+        .member_coupon{
+            padding: 20px;
+            margin-bottom: 20px;
+            .coupon_title{
+                margin-bottom: 5px;
+                font-size: 1.4rem;
+            }
+        }
+    }
+    .exchange_container img{
+        position: absolute;
+        width: 50%;
+        top: 25%;
+        right: 28%;
+
+    }
+}
+
+@media (min-width: 415px) and (max-width: 900px){
+    .coupon_container{
+        margin-top: 20px;
+        .member_coupon{
+            padding: 20px;
+            margin-bottom: 20px;
+            .coupon_title{
+                margin-bottom: 5px;
+                font-size: 1.4rem;
+            }
+        }
+    }
+    .exchange_container img{
+        position: absolute;
+        width: 25%;
+        top: 24%;
+        right: 14%;
+
+    }
+}
+@media screen and (min-width: 901px){
+    .coupon_container{
+        margin-top: 70px;
+        .member_coupon{
+            display: flex;
+            padding: 40px 20px;
+            justify-content: space-around;
+            margin-bottom: 40px;
+            align-items: center;
+            font-size: 1.15rem;
+        }
+    }
+    .exchange_container img{
+        position: absolute;
+        top: 24%;
+        right: 14%;
+        z-index: 1;
+        width: 20%;
+    }
+    
 }

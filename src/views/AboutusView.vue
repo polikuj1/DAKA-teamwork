@@ -92,9 +92,7 @@
   </section>
 </template>
 
-<style >
-@import "@/assets/scss/page/about.scss";
-</style>
+
 
 <script>
 import { defineComponent } from 'vue'

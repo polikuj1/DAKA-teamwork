@@ -12,7 +12,7 @@
             </div>
             <div class="edit_item">
               <label for="birthday">生日</label>
-              <input type="date" v-model="birthday" :readonly="true" />
+              <input type="date" v-bind:value="birthday" :readonly="true" class="edit_birth"/>
             </div>
             <div class="edit_item">
               <label for="address">地址</label>
@@ -53,13 +53,13 @@
     data() {
       return {
         title: '會員資料編輯',
-        name: '',
-        birthday: '',
-        address: '',
-        phone: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
+        name: '張宇航',
+        birthday: '1985-03-12',
+        address:'桃園市中壢區復興路46號' ,
+        phone: '0912345678',
+        email: 'johndoe123@gmail.com',
+        password: 'P@ssw0rd1',
+        confirmPassword:'' 
       }
     },
     methods: {
@@ -71,7 +71,6 @@
       this.$emit('emit-title',this.title);
     },
     submitForm() {
-      // 在這裡寫提交表單的程式碼，可以將資料送至後台或執行其他操作
       console.log('表單提交成功！');
     },
   }

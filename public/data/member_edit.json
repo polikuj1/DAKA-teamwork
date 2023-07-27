@@ -1,0 +1,11 @@
+[
+    {
+        "name": "張宇航",
+        "birthday": "1985-03-12",
+        "address": "",
+        "phone": "0912345678",
+        "email": "johndoe123@gmail.com",
+        "password": "P@ssw0rd1",
+        "confirmPassword": ""
+    }
+]

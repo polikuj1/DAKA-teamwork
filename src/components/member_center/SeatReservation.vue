@@ -51,52 +51,7 @@
     data() {
         return {
             title: '座位預約紀錄',
-            reservations: [
-                {
-                id: 1,
-                bookingNumber: '13089999',
-                date: '2023-04-22',
-                time:'10:00:00~17:00:00',
-                seatArea:'大廳一般',
-                seatNumber: 'B-17',
-                amount: 'NTD$100',
-                paymentMethod: '儲值金扣款',
-                status: '已完成',
-                },
-                {
-                id: 2,
-                bookingNumber: '13089997',
-                date: '2023-05-30',
-                time:'11:30:00~18:30:00',
-                seatArea:'大廳一般',
-                seatNumber: 'B-05',
-                amount: 'NTD$300',
-                paymentMethod: '儲值金扣款',
-                status: '已完成',
-                },
-                {
-                id: 3,
-                bookingNumber: '13089996',
-                date: '2023-07-22',
-                time:'11:00:00~12:00:00',
-                seatArea:'大廳電競',
-                seatNumber: 'A-11',
-                amount: 'NTD$200',
-                paymentMethod: '儲值金扣款',
-                status: '預約中',
-                },
-                {
-                id: 4,
-                bookingNumber: '13089996',
-                date: '2023-07-22',
-                time:'11:00:00~21:00:00',
-                seatArea:'大廳電競',
-                seatNumber: 'A-17',
-                amount: 'NTD$500',
-                paymentMethod: '儲值金扣款',
-                status: '預約中',
-                },
-            ],
+            reservations: [],
         };
       
     },
@@ -109,7 +64,7 @@
                 return reservation;
             });
         },
-        //狀態不同背景顏色不同
+        /*狀態不同背景顏色不同*/
         statusStyle(status){
             if(status==='已完成'|| status === '已取消'){
                 return{
@@ -132,6 +87,13 @@
     },
     created() {
         this.$emit('emit-title',this.title);
+        this.axios.get('/data/seat_reservation.json')
+        .then((res) => {
+        this.reservations = res.data;
+        })
+        .catch((err) => {
+        console.log(err);
+        })
     }
   }
   </script>

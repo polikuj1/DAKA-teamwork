@@ -16,8 +16,11 @@
         margin: 0 auto;
         width: 100%;
         height: fit-content;
-        padding: 40px 20px;
-        @include bgSvg(home/text_bg);
+        box-sizing: border-box;
+        padding: 60px 10px;
+        background: url(@/assets/images/home/text_bg.svg) no-repeat center center;
+        background-size: contain;
+
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -28,22 +31,28 @@
             width: 80%;
             line-height: 1.5;
             padding: 20px 0 10px;
+            color: #FFA629;
+            margin: 15px 30px;
+            text-align: left;
         }
 
         a {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            background-color: $main_txt_color;
-            color: $btn_bg_color;
-            border-radius: 50px;
-            margin-left: 20px;
+            .btn_more {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+                background-color: $main_txt_color;
+                color: $btn_bg_color;
+                border-radius: 50px;
+                margin-left: 20px;
 
-            img {
-                width: 2rem;
-                height: auto;
+                img {
+                    width: 2rem;
+                    height: auto;
+                }
+
             }
         }
     }
@@ -53,12 +62,14 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        pointer-events: none;
 
 
         .meal_pic {
-            width: 50% !important;
+            width: 50%;
             height: fit-content;
-            @include bgSvg(home/meal_bg);
+            background: url(@/assets/images/home/meal_bg.svg) no-repeat center center;
+            background-size: contain;
             position: relative;
             display: flex;
             justify-content: center;
@@ -95,8 +106,6 @@
             height: auto;
             vertical-align: bottom;
         }
-
-        ;
     }
 
 
@@ -111,7 +120,8 @@
         .meal_intro {
 
             p {
-                width: 40%;
+                width: 60%;
+                font-size: 1.25rem;
             }
         }
 
@@ -136,14 +146,18 @@
         min-width: 768px;
 
         .meal_intro {
+            width: 80%;
 
             p {
-                width: 40%;
-                font-size: 1.25rem;
+                font-size: 1.5rem;
 
             }
-            a {
-                font-size: 1.25rem;
+
+            .btn_more {
+
+                a {
+                    font-size: 1.5rem;
+                }
             }
         }
     }
@@ -158,14 +172,12 @@
         .meal_intro {
 
             p {
-                width: 40%;
+                width: 60%;
                 font-size: 1.75rem;
-                padding: 80px 0;
+                padding: 40px 0;
             }
-            a {
-                padding: 1rem 2rem;
-                font-size: 1.75rem;
-            }
+
+
         }
 
         .meal_group {
@@ -176,31 +188,33 @@
             .meal_pic {
 
                 img {
-                    width: 30% !important;
+                    width: 40%;
                 }
             }
 
             .meal01 {
-                left: -10rem;
+                top: 100px;
+                left: -160px;
             }
 
             .meal02 {
-                top: 3rem;
-                left: 8rem;
+                top: 100px;
+                left: 120px;
             }
 
             .meal03 {
-                top: 6rem;
+                top: 100px;
+                left: 75px;
             }
 
             .meal04 {
-                top: 7rem;
+                top: 120px;
+                left: -30px;
             }
         }
     }
 }
 
-// extra large device
 @media screen and (min-width: 1200px) {
     .home_meal {
         min-width: 1200px;
@@ -208,20 +222,112 @@
         .meal_intro {
 
             p {
-                width: 30%;
-                padding: 100px 0;
+                padding: 50px;
+                font-size: 1.5rem;
+            }
+
+            a {
+
+                .btn_more {
+
+                    gap: 16px;
+                    font-size: 1.5rem;
+
+                    img {
+                        width: 2.75rem;
+                        height: auto;
+                    }
+                }
+            }
+
+        }
+
+        .meal_group {
+            top: 20%;
+
+            .meal_pic {
+
+                img {
+                    width: 30%;
+                }
+            }
+
+
+            .meal01 {
+                top: 0px;
+                left: -180px;
+            }
+
+            .meal02 {
+                top: 0px;
+                left: 180px;
+            }
+
+            .meal03 {
+                top: 120px;
+                left: -120px;
+            }
+
+            .meal04 {
+                top: 160px;
+                left: 100px;
+            }
+        }
+    }
+}
+
+
+// extra large device
+@media screen and (min-width: 1440px) {
+    .home_meal {
+        min-width: 1440px;
+
+        .meal_intro {
+
+            p {
+                padding: 60px 120px;
             }
         }
 
-        .meal_group{
+        .meal_group {
             top: 20%;
+
+            .meal_pic {
+
+                img {
+                    width: 30%;
+                }
+            }
+
+
+            .meal01 {
+                top: 0px;
+                left: -180px;
+            }
+
+            .meal02 {
+                top: 0px;
+                left: 160px;
+            }
+
+            .meal03 {
+                top: 80px;
+                left: -40px;
+            }
+
+            .meal04 {
+                top: 160px;
+                left: 0px;
+            }
         }
 
-        .meal_figure{
-            
+        .meal_figure {
+
             img {
                 width: 60%;
             }
         }
+
+
     }
 }

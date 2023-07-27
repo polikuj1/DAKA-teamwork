@@ -16,7 +16,8 @@
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
             require>
-          <input type="text" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="errorMsg = ''" require>
+          <input type="text" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="errorMsg = ''"
+            require>
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
             <div class="login_keep_status">
@@ -49,12 +50,12 @@
             </div>
             <div class="inputBox">
               <span>信箱</span>
-              <input type="email" class="payment-email-input" v-model="emailReg" required="required"/>
+              <input type="email" class="payment-email-input" v-model="emailReg" required="required" />
               <div class="payment-email"></div>
             </div>
             <div class="inputBox">
               <span>密碼</span>
-              <input type="text" class="payment-address-input" v-model="pswReg"  required="required"/>
+              <input type="text" class="payment-address-input" v-model="pswReg" required="required" />
               <div class="payment-address"></div>
             </div>
             <div class="inputBox">
@@ -76,7 +77,8 @@
             </div>
             <div class="inputBox">
               <span>生日</span>
-              <input type="date" class="payment-card-name-input" v-model="birthReg"  min="1900-01-01" max="2021-01-01" required="required">
+              <input type="date" class="payment-card-name-input" v-model="birthReg" min="1900-01-01" max="2021-01-01"
+                required="required">
             </div>
             <div class="inputBox">
               <span>連絡電話</span>
@@ -108,7 +110,7 @@
       <p>請輸入您的註冊信箱，進行密碼變更</p>
       <div class="forget_password_enter">
         <label for="">請輸入您的信箱</label>
-        <input type="email" placeholder="信箱" v-model="memEmail" required="required" >
+        <input type="email" placeholder="信箱" v-model="memEmail" required="required">
       </div>
       <input @click="checkEmail" type="submit" value="下一步" class="forget_password_submit">
     </section>
@@ -118,10 +120,10 @@
       <h2>輸入驗證碼</h2>
       <p>已發送驗證碼至sm********@gmail.com</p>
       <div class="enter_valid_input">
-        <input type="text" required="required" v-model="number1"  max-length="1">
-        <input type="text" required="required" v-model="number2"  max-length="1">
-        <input type="text" required="required" v-model="number3"  max-length="1">
-        <input type="text" required="required" v-model="number4"  max-length="1">
+        <input type="text" required="required" v-model="number1" max-length="1">
+        <input type="text" required="required" v-model="number2" max-length="1">
+        <input type="text" required="required" v-model="number3" max-length="1">
+        <input type="text" required="required" v-model="number4" max-length="1">
       </div>
       <div class="enter_valid_re">
         <p>10 分鐘內若未收到驗證碼</p>
@@ -141,7 +143,7 @@
         <label for="modifyNewPsw">再次輸入新密碼</label>
         <input type="text" required="required" v-model="modify.newPsw" maxlength="12" minlength="6" id="modifyNewPsw">
       </div>
-      <input @click="modifyCheck" type="submit" value="送出" class="enter_modify_submit"> 
+      <input @click="modifyCheck" type="submit" value="送出" class="enter_modify_submit">
     </section>
 
     <section class="enter_modify_success" v-if="forgetPsw && step === 4">
@@ -220,13 +222,13 @@ export default {
 
   methods: {
     closeModal() {
-      this.$emit('emit-status');
+      this.$store.state.login = false;
     },
     checkLogin() {
       if (this.memId === 'test' && this.memPsw === 'test') {
         window.alert('登入成功');
         loginStatus = true;
-      } 
+      }
       else {
         this.errorMsg = '帳號或密碼輸入錯誤';
       }
@@ -241,13 +243,13 @@ export default {
 
     },
     columnCheck() {
- 
-if(this.register.pswReg === this.register.pswConfirmReg ){
-  
-  this.isRegistered = false;
-  this.step = 5;
-}
-      
+
+      if (this.register.pswReg === this.register.pswConfirmReg) {
+
+        this.isRegistered = false;
+        this.step = 5;
+      }
+
     },
     forgetPassword() {
       this.forgetPsw = true;
@@ -258,17 +260,15 @@ if(this.register.pswReg === this.register.pswConfirmReg ){
 
       if (!this.memEmail) {
         return alert("輸入錯誤或無輸入");
-      } else 
-      
-      {
+      } else {
         this.step = 2;
         this.memEmail = '';
       }
 
-      
+
     },
     validCheck() {
-      if (!this.number1 || !this.number2 || !this.number3 || !this.number4 ) {
+      if (!this.number1 || !this.number2 || !this.number3 || !this.number4) {
         alert("請輸入驗證碼");
       } else {
         this.number1 = this.number2 = this.number3 = this.number4 = '';
@@ -281,7 +281,7 @@ if(this.register.pswReg === this.register.pswConfirmReg ){
         alert("請輸入密碼");
         return;
       }
-      else if ((this.modify.psw === this.modify.newPsw && this.modify.psw.length>=6 &&this.modify.psw.length<=12)) {
+      else if ((this.modify.psw === this.modify.newPsw && this.modify.psw.length >= 6 && this.modify.psw.length <= 12)) {
         this.step = 4;
         this.modify.psw = this.modify.newPsw = '';
         return;

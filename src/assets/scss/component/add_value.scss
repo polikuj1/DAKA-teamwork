@@ -32,10 +32,9 @@
         color: $main_txt_color;
     }
     .charge_goodthru select{
-        width: 40%;
+        width: 50%;
         box-sizing: border-box;
         padding: 10px;
-        margin-right: 10px;
         background-color: $main-bg;
         color: $main_txt_color;
     }
@@ -57,7 +56,7 @@
     cursor: pointer;
     border: none;
 }
-//手機版
+/*手機版*/
 @include screen_one(767){
     .submit_btn{
         width: 120px;
@@ -65,7 +64,7 @@
         font-size: 1rem;
     }
 }
-//電腦版
+/*電腦版*/
 @include sm{
     .charge_content{
         font-size: 1.875rem;

@@ -3,14 +3,14 @@
   position: relative;
   overflow: hidden;
 
-  // 圓圈
+
   .aboutorigin_circle_one {
     width: 500px;
     width: 100%;
     height: 500px;
     position: absolute;
-    left: -100px;
-    top: 500px;
+    left: 0px;
+    top: -1000px;
     z-index: -1;
   }
 
@@ -19,7 +19,7 @@
     width: 100%;
     height: 500px;
     position: absolute;
-    right: -1800px;
+    right: -1500px;
     top: 1200px;
     z-index: -1;
   }
@@ -34,38 +34,30 @@
     gap: 80px;
     padding: 0px 20px 420px;
 
-    // 圖片
     .aboutorigin_rightpic {
       float: right;
-      width: 40%;
-
+      width: 100%;
       img {
         max-width: 100%;
-        height: auto;
       }
     }
 
     .aboutorigin_leftpic {
       float: left;
-      width: 40%;
-
+      width: 100%;
       img {
         max-width: 100%;
-        height: auto;
       }
     }
 
-    // 文字
     .about_card_lefttext {
       float: left;
-      width: 60%;
-      height: 40vh;
+      width: 100%;
     }
 
     .about_card_righttext {
       float: right;
-      width: 60%;
-      height: 30vh;
+      width: 100%;
     }
 
     .about_orange_text {
@@ -74,7 +66,7 @@
     }
 
     .about_green_text {
-      color: #5AC4C4;
+      color: $secondary_blue;
       font-weight: 700;
     }
 
@@ -87,25 +79,38 @@
       font-size: 2.5rem;
       color: $main_txt_color;
       font-weight: 700;
-      height: 10vh;
     }
 
     .about_m_text {
       font-size: 2rem;
       color: $main_txt_color;
-      height: 20vh;
+      text-align: justify;
+      margin-top: 30px;
+    }
+
+    @keyframes yellowBackgroundAnimation {
+      0% { background-color: rgba(255, 255, 0, 0.521); }
+      50% { background-color: rgba(255, 166, 0, 0.58); }
+      100% { background-color: rgba(255, 255, 0, 0.386); }
+    }
+    .textanimatio {
+      animation: yellowBackgroundAnimation 5s infinite;
+      display: inline-block; 
+      width: 100%; 
+      box-sizing: border-box; 
+      padding: 0px; 
+      margin: 0px;
+      overflow: hidden;
+      z-index: -1;
     }
 
     .about_s_text {
       font-size: 2.25rem;
       color: $main_txt_color;
-      text-align: center;
-      height: 15vh;
-
-
+      text-align: justify;
     }
 
-    // 清除浮動
+
     .aboutorigin_card_first {
       .clearfix::after {
         content: "";
@@ -118,143 +123,56 @@
 
 @media screen and (min-width: 768px) {
   .aboutorigin_container {
-
-    // 圓圈
-    .aboutorigin_circle_one {
-      left: 0px;
-      top: 800px;
-    }
-
-    .aboutorigin_circle_two {
-      right: -100px;
-      top: 1800px;
-    }
-
-    .aboutorigin_card_area {
-
-      // 圖片
-      .aboutorigin_rightpic {
-        width: 90%;
-        padding-left: 120px;
-        padding-bottom: 80px;
-      }
-
-      .aboutorigin_leftpic {
-        width: 90%;
-        padding-left: 180px;
-        padding-bottom: 50px;
-      }
-
-      // 文字
-      .about_card_lefttext {
-        float: left;
-        width: 100%;
-        height: 50vh;
-      }
-
-      .about_card_righttext {
-        float: right;
-        width: 100%;
-        height: 30vh;
-      }
-    }
-  }
-}
-
-//1024以上
-@media screen and (min-width:1024px) {
-  .aboutorigin_container {
-    .aboutorigin_card_area {
-
-      // 圖片
-      .aboutorigin_rightpic {
-        padding-left: 200px;
-      }
-
-      .aboutorigin_leftpic {
-        padding-left: 280px;
-      }
-    }
-  }
-}
-
-//1200以上
-@media screen and (min-width: 1200px) {
-  .aboutorigin_container {
     .aboutorigin_circle_one {
       left: 0px;
       top: 100px;
     }
-
+  
     .aboutorigin_circle_two {
-      right: -500px;
+      right: -1500px;
       top: 1000px;
     }
-
+  
     .aboutorigin_card_area {
-
-      // 圖片
       .aboutorigin_rightpic {
-        width: 50%;
-      }
-
-      .aboutorigin_leftpic {
-        width: 60%;
-        margin-left: -200px;
-      }
-
-      // 文字
-      .about_card_lefttext {
-        width: 50%;
-        height: 40vh;
-      }
-
-      .about_card_righttext {
+        float: right;
         width: 40%;
-        height: 30vh;
+  
+        img {
+          max-width: 100%;
+        }
       }
-    }
-  }
-}
-
-//1920以上
-@media screen and (min-width: 1920px) {
-  .aboutorigin_container {
-    .aboutorigin_circle_two {
-      right: -1000px;
-      top: 1000px;
-    }
-
-    .aboutorigin_card_area {
-      box-sizing: border-box;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 80px;
-      padding: 0px 20px 420px;
-
-      // 圖片
-      .aboutorigin_rightpic {
-        width: 50%;
-      }
-
+  
       .aboutorigin_leftpic {
-        width: 50%;
+        float: left;
+        width: 40%;
       }
-
-      // 文字
+  
       .about_card_lefttext {
-        width: 50%;
-        height: 50vh;
+        float: left;
+        width: 55%;
+        margin: 30px 0px 30px 0px;
       }
-
+  
       .about_card_righttext {
-        width: 50%;
-        height: 30vh;
+        float: right;
+        width: 55%;
+        margin-top: 50px;
+      }
+      .about_xl_text {
+        margin-top: -40px;
       }
 
+      .about_l_text {
+        margin-bottom: 30px;
+      }
+  
+  
+      .about_s_text {
+        font-size: 2.25rem;
+        color: $main_txt_color;
+        text-align: center;
+      }
     }
-  }
+  }  
 }

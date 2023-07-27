@@ -11,6 +11,7 @@
       cursor: pointer;
       .reservation_num {
         position: absolute;
+        z-index: 1;
         text-align: center;
         right: 0;
         top: 0;

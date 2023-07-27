@@ -1,0 +1,98 @@
+[
+    {
+        "category":"NEWS",
+        "img": "/news/levelup.png",
+        "date":"2023-07-22",
+        "content":"網咖全新升級，快來打咖，無論你是新手還是高手，都能在這裡找到屬於你的遊戲樂園！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img": "/news/annual_03.png",
+        "date":"2023-07-15",
+        "content":"超值年度回饋～打咖獻給忠實顧客的感謝之心！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img": "/news/game_01.png",
+        "date":"2023-07-10",
+        "content":"加入我們的主題派對，探索遊戲的無限樂趣！"
+    },  
+    {
+        "category":"ACTIVITY",
+        "img": "/news/prize_02.png",
+        "date":"2023-07-01",
+        "content":"白鑽級會員活動，專屬活動邀請，尊享獨家福利！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img": "/news/annual_02.png",
+        "date":"2023-06-25",
+        "content":"萬眾期待的抽獎活動開始了！抓住這個難得的機會，贏得豐的獎品！"
+    }, 
+    {
+        "category":"NEWS",
+        "img": "/news/juice.png",      
+        "date":"2023-06-18",
+        "content":"新品特色飲品上架！品味遊戲之餘，享受美味餐飲折扣！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img": "/news/annual_04.png",
+        "date":"2023-06-01",
+        "content":"會員三日狂歡，划算享受不停歇，快來參與打咖會員專屬活動！"
+    },
+    {
+        "category":"NEWS",
+        "img": "/news/comic_01.png",
+        "date":"2023-05-25",
+        "content":"全新服務上線！漫畫租借，讓你暢遊漫畫世界！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img":"/news/lol.png",
+        "date":"2023-05-20",
+        "content":"組隊集結，征服召喚峽谷！快加入我們的英雄聯盟主題網組隊活動！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img": "/news/game_02.png",
+        "date":"2023-05-18",
+        "content":"電競巔峰對決，共襄觀賽盛宴！在打咖一同見證頂尖選手戰鬥與榮耀！"
+    },
+    {
+        "category":"ACTIVITY",
+        "img": "/news/game_06.png",
+        "date":"2023-05-12",
+        "content":"網咖聯賽，挑戰真正的電競巔峰，讓你的實力成就傳奇！"
+    },
+    {
+        "category":"NEWS",
+        "img": "/news/prize_04.png",
+        "date":"2023-05-05",
+        "content":"新福利大放送，加入我們的會員團隊，享受獨特福利、遊時光！"
+    },
+    {
+        "category":"NEWS",
+        "img": "/news/food.png", 
+        "date":"2023-05-01",
+        "content":"遊戲有我，美食更精彩！嚐盡美味佳餚，讓你的遊戲體驗更豐富多元！"
+    },
+    {
+        "category":"NEWS",
+        "img": "/news/game_03.png", 
+        "date":"2022-04-20",
+        "content":"快來打咖，遇見全新遊戲！迎接刺激挑戰，成為遊戲世界的冠軍！"
+    },
+    {
+        "category":"NEWS",
+        "img": "/news/prize_03.png",
+        "date":"2023-04-10",
+        "content":"每月特價日，享受超值優惠！讓你的遊戲時間更加划算！"
+    },
+    {
+        "category":"NEWS",
+        "img": "/news/open_01.png", 
+        "date":"2023-04-01",
+        "content":"新店開張！最新設備、最豪華環境，打造你的極致遊戲體！"
+    }
+]

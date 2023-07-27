@@ -20,38 +20,6 @@
   
   <script>
   import MbForm from '@/components/member_center/form_style.vue';
-    const valueRecord = [
-        {
-            transactionId: '111102',
-            transactionDate: '2023/07/01 18:00',
-            transactionMethod: '信用卡儲值',
-            transactionAmount: 'NTD$1000',
-        },
-        {
-            transactionId: '111103',
-            transactionDate: '2023/07/02 18:00',
-            transactionMethod: '信用卡儲值',
-            transactionAmount: 'NTD$500',
-        },
-        {
-            transactionId: '111103',
-            transactionDate: '2023/07/03 13:00',
-            transactionMethod: '信用卡儲值',
-            transactionAmount: 'NTD$300',
-        },
-        {
-            transactionId: '111105',
-            transactionDate: '2023/07/05 19:00',
-            transactionMethod: '信用卡儲值',
-            transactionAmount: 'NTD$2000',
-        },
-        {
-            transactionId: '111106',
-            transactionDate: '2023/07/07 19:00',
-            transactionMethod: '信用卡儲值',
-            transactionAmount: 'NTD$670',
-        },
-    ];
     export default {
         components: {
             MbForm,
@@ -68,9 +36,14 @@
             }
         },
         created() {
-            // 將假資料載入交易紀錄
-            this.transactionRecords = valueRecord;
             this.$emit('emit-title',this.title);
+            this.axios.get('/data/value_record.json')
+            .then((res) => {
+            this.transactionRecords = res.data;
+            })
+            .catch((err) => {
+            console.log(err);
+            })
         },
     };
   </script>

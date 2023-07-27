@@ -7,8 +7,14 @@
 @import 'component/cart_icon.scss';
 @import 'component/bread_crumb.scss';
 @import 'component/mb_form_style.scss';
+@import 'component/add_value.scss';
+@import 'component/value_record.scss';
+@import 'component/coupon.scss';
+@import 'component/member_edit.scss';
+@import 'component/seat_reservation.scss';
 @import 'layout/comic/search.scss';
 @import 'layout/comic/card.scss';
+@import 'layout/comic/comiccarousel.scss';
 @import 'layout/home/banner.scss';
 @import 'layout/home/service.scss';
 @import 'layout/home/news.scss';
@@ -20,6 +26,7 @@
 @import 'layout/member/add_credit.scss';
 @import 'layout/member/book_record.scss';
 @import 'layout/food_intro/popmeals.scss';
+@import 'layout/food_intro/variousmeal.scss';
 @import 'page/comic.scss';
 @import 'page/comicdetail.scss';
 @import 'page/login.scss';
@@ -29,14 +36,9 @@
 @import 'page/game.scss';
 @import 'page/reservation.scss';
 @import 'page/member_center.scss';
-@import 'component/add_value.scss';
 @import 'page/about.scss';
-@import 'component/value_record.scss';
-@import 'component/coupon.scss';
-@import 'component/member_edit.scss';
 @import 'page/newsdetail.scss';
 @import 'page/map.scss';
-@import 'component/seat_reservation.scss';
 @import 'page/location.scss';
 @import 'page/comiccart.scss';
 @import 'page/reservation.scss';
@@ -55,8 +57,14 @@ body{
   background-color:$main_bg;
 }
 
+
 h2 {
   font-size: 5rem;
+}
+@include screen_one(767) {
+  h2 {
+    font-size: 2.5rem;
+  }
 }
 h3 {
   font-size: 3.75rem;

@@ -29,7 +29,7 @@
       </div>
     </main>
   </div>
-  <CartIcon :book-data="reservation"/>
+  <CartIcon/>
 </template>
 
 <script>
@@ -42,6 +42,7 @@ export default {
   name: 'ComicCard',
   data() {
     return {
+      originData: [],
       comicData: [],
       search: '',
       reservation: [],
@@ -50,12 +51,17 @@ export default {
   methods: {
     getSearch(txt) {
       this.search = txt;
-      if (this.search === '') {this.comicData = comicData;}
-      this.comicData = comicData.filter(item => item.title.includes(this.search));
+      if (this.search === '') {this.comicData = this.originData;}
+      this.comicData = this.originData.filter(item => item.title.includes(this.search));
     },
     reserve(item) {
-      if(this.reservation.length === 5) return;
-      this.reservation.push(item);
+      if(this.$store.state.cart.length === 5) return;
+      if(this.$store.state.cart.indexOf(item) === -1) {
+        // this.reservation.push(item);
+        console.log(123);
+        this.$store.commit('getBook',item);
+        // console.log(this.$store.state.cart);
+      }
     },
   },
   computed: {
@@ -64,7 +70,9 @@ export default {
   created() {
     this.axios.get('/data/comic.json')
       .then((res) => {
+        this.originData = res.data;
         this.comicData = res.data;
+        // this.reservation = this.$store.state.cart;
       })
       .catch((err) => {
         console.log(err);
