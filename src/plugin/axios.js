@@ -15,4 +15,14 @@ const GET = (url, params) => {
     })
 }
 
-export { GET }
+const POST = (url, params) => {
+    return new Promise((resolve, reject) => {
+        axiosInstance.post(url, params).then(res => {
+            resolve(res.data)
+        }).catch((error)=>{
+            reject(error)
+        })
+    })
+}
+
+export { GET, publicPath, POST }
