@@ -263,7 +263,7 @@ export default defineComponent({
             },
         },
     }),
-    mounted() {
+    created() {
         const script = document.createElement('script');
         script.src = '//www.instagram.com/embed.js';
         script.async = true;
