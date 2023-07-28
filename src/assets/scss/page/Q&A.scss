@@ -80,94 +80,105 @@ padding-left: 40px;
     padding-bottom: 50px;
 }*/
 
+.qa{
+    .ivu-collapse {
+        max-width: 1200px;
+        padding: 0 10px;
+        color: white;
 
-.ivu-collapse {
-	max-width: 1200px;
-	padding: 0 10px;
-	color: white;
-	& > .ivu-collapse-item {
-		& > .ivu-collapse-header {
-			font-size: 1.4rem;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			background-color: #263238;
-			color: white;
-			padding-top: 10px;
-			padding-bottom: 10px;
-			border-radius: 20px;
-			margin-top: 5px;
-			margin-bottom: 5px;
-		}
-		&.ivu-collapse-item-active {
-			& > .ivu-collapse-header {
-				border-bottom: 2px solid #263238;
-				font-size: 2.5rem;
-				padding-top: 15px;
-				padding-bottom: 15px;
-				color: #263238;
-				font-weight: 600;
-				color: white;
-			}
-		}
-	}
-	.ivu-collapse-item {
-		.ivu-collapse-content {
-			.ivu-collapse-content-box {
-				.member {
-					.ivu-collapse {
-						.ivu-collapse-item {
-							.ivu-collapse-header {
-								background-color: #263238;
-								color: white;
-								padding-top: 10px;
-								padding-bottom: 10px;
-								border-radius: 20px;
-								margin-top: 5px;
-								margin-bottom: 5px;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-}
+        &>.ivu-collapse-item {
+            &>.ivu-collapse-header {
+                font-size: 1.4rem;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                background-color: #263238;
+                color: white;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                border-radius: 20px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            &.ivu-collapse-item-active {
+                &>.ivu-collapse-header {
+                    border-bottom: 2px solid #263238;
+                    font-size: 2.5rem;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    color: #263238;
+                    font-weight: 600;
+                    color: white;
+                }
+            }
+        }
+
+        .ivu-collapse-item {
+            .ivu-collapse-content {
+                .ivu-collapse-content-box {
+                    .member {
+                        .ivu-collapse {
+                            .ivu-collapse-item {
+                                .ivu-collapse-header {
+                                    background-color: #263238;
+                                    color: white;
+                                    padding-top: 10px;
+                                    padding-bottom: 10px;
+                                    border-radius: 20px;
+                                    margin-top: 5px;
+                                    margin-bottom: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 #qa_all {
-	max-width: 1200px;
-	width: 90%;
-	margin: auto;
-	color: white;
-	border-radius: 15px;
-}
-.member {
-	margin: auto;
-	width: 100%;
-	max-width: 1200px;
-}
-#common {
-	font-size: 1.6rem;
-}
-#qa_title {
-	font-size: 2.3rem;
-	margin: auto;
-	padding-top: 20px;
-	padding-bottom: 20px;
-	color: #263238;
-	font-weight: 550;
-}
-#qa {
-	font-weight: 400;
-}
-.member_benefits_title {
-	padding-left: 40px;
-}
-.ivu-collapse-content {
-	& > .ivu-collapse-content-box {
-		font-size: 1.4rem;
-	}
-	.ivu-collapse-content-box {
-		padding-top: 50px;
-		padding-bottom: 50px;
-	}
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    color: white;
+    border-radius: 15px;
 }
 
+.member {
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+#common {
+    font-size: 1.6rem;
+}
+
+#qa_title {
+    font-size: 2.3rem;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #263238;
+    font-weight: 550;
+}
+
+#qa {
+    font-weight: 400;
+}
+
+.member_benefits_title {
+    padding-left: 40px;
+}
+
+.ivu-collapse-content {
+    &>.ivu-collapse-content-box {
+        font-size: 1.4rem;
+    }
+
+    .ivu-collapse-content-box {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
+}

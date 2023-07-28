@@ -1,6 +1,6 @@
 <template>
     <PageTitle>{{ page_title }}</PageTitle>
-    <div class="q&a">
+    <div class="qa">
         <Collapse accordion v-model="value1" id="qa_all">
             <Panel name="1" id="common">
                 常見問題
