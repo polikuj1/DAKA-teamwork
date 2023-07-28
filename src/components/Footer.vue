@@ -1,11 +1,17 @@
 <template>
   <footer class="footer">
-    <!-- <div class="circle">
-      <svg viewBox="25 -20 50 10">
-        <path d="M 50 50 m -50 0 a 80 50 0 1 1 100 0 a 50 50 0 1 1 -100 0 z" id="circle" />
-        <text><textPath xlink:href="#circle">早知道是这样&nbsp;像梦一场&nbsp;我又何必把眼泪锁在自己的眼眶&nbsp;</textPath></text>
+    <div class="circle">
+      <svg viewBox="-80 0 40 10">
+        <g class="g_circle">
+          <path d="M 50 150 m -50 0 a 120 60 0 1 1 10 0 a 50 50 0 1 1 10 0 z" id="circle" />
+          <text fill="none" stroke="#FF5E1E" stroke-width="0.2">
+            <textPath xlink:href="#circle">
+              Welcome DAKA ! Welcome DAKA ! Welcome DAKA ! Welcome DAKA ! Welcome DAKA !
+            </textPath>
+          </text>
+        </g>
       </svg>
-    </div> -->
+    </div>
     <div class="logo">
       <router-link to="/index">
         <img src="@/assets/images/footerLogo.svg" alt="">
@@ -45,16 +51,12 @@ export default {
   },
 }
 </script>
-<style>
-/* body {
-  background: none;
-  font: bold 78% Helvetica, sans-serif;
-}
-
+<style scoped>
 .circle {
   width: 30em;
   height: 30em;
-  margin: 4em auto 0;
+  position: absolute;
+  top: -150px;
 }
 
 .circle svg {
@@ -64,6 +66,11 @@ export default {
 }
 .circle path {
   fill: none;
-} */
+}
 
+@media screen and (max-width:1500px){
+  .circle {
+    display: none;
+  }
+}
 </style>
