@@ -124,7 +124,7 @@ export default {
         if(numArr.indexOf(randNum) == -1) {
           numArr.push(randNum);
           // img.src = `https://picsum.photos/id/${randNum}/200/300`;
-          img.src = `/img/puzzle0${randNum}.png`;
+          img.src = `/chd102/g6/img/puzzle0${randNum}.png`;
           switch (randNum) {
             case 1:
               img.id = `3`;
