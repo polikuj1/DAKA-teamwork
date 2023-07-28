@@ -11,7 +11,7 @@
       <div class="have_credit">
         <div class="credit_wrap" v-for="card in credit_card" :key="card.number">
           <div class="credit_card" :class="card.publish_copy === 'VISA'? 'blue': 'red'">
-            <button><i class="fa-solid fa-x"></i></button>
+            <button @click="deleteCard(card.number)"><i class="fa-solid fa-x"></i></button>
             <span>{{ card.publish_copy }}</span>
             <span><img src="@/assets/images/member/creditcard.svg" alt=""></span>
             <span class="credit_number">{{ card.number }}</span>
@@ -48,7 +48,7 @@ export default {
         },
         {
           publish_copy: 'MasterCard',
-          number: 1234567812345678,
+          number: 1234567812345679,
           date: '06 / 27',
           cvv: 124,
         },
@@ -58,6 +58,12 @@ export default {
   methods: {
     triggerParent() {
       this.$emit('emit-title','');
+    },
+    deleteCard(num) {
+      if(this.credit_card.length === 1 ) {
+        this.credit_card = [];
+      }
+      this.credit_card = this.credit_card.filter(item => item.number === num);
     }
   },
   created() {
