@@ -143,7 +143,11 @@ const routes = [
     ]
     
   },
-  
+  {
+    path: '/member_terms',
+    name: 'member_terms',
+    component: () => import('../views/MemberTerms.vue')
+  },
   // {
   //   path: '/login',
   //   name: 'login',
