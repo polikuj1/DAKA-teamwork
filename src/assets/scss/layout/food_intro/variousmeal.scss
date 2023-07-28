@@ -50,6 +50,11 @@
     cursor: pointer;
   }
 
+  .category_buttons :hover {
+    color: $btn_bg_color;
+    background-color: $main_txt_color;
+  }
+
   .category_buttons button.comboHover:hover {
     color: $btn_bg_color;
     background-color: $main_txt_color;
