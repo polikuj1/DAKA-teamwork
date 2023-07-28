@@ -2,6 +2,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+
+//aos引入
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+
 // ajax引入
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -19,10 +25,17 @@ import Images from '@/components/Images.vue'
 import "@/assets/scss/_style.scss"
 
 
+
+AOS.init({
+    duration: 1000,
+});
+
 const app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(ViewUIPlus)
+app.use(AOS)
 app.use(VueAxios,axios)
 app.component('Images', Images)
 app.mount('#app')
+
