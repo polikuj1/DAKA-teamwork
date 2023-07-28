@@ -144,15 +144,21 @@ const routes = [
         path: '/Q&A',
         name: 'Q&A',
         component: () => import('../views/Q&A.vue')
-      }
+      },
+      {
+        path: '/member_terms',
+        name: 'member_terms',
+        component: () => import('../views/MemberTerms.vue')
+      },
+      {
+        path: '/member_privacy',
+        name: 'member_privacy',
+        component: () => import('../views/MemberPrivacy.vue')
+      },
     ]
     
   },
-  {
-    path: '/member_terms',
-    name: 'member_terms',
-    component: () => import('../views/MemberTerms.vue')
-  },
+  
   // {
   //   path: '/login',
   //   name: 'login',
