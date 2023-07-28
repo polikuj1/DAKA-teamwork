@@ -166,7 +166,6 @@
 // large device
 @media screen and (min-width: 992px) {
     .home_meal {
-        min-width: 992px;
         position: relative;
 
         .meal_intro {
@@ -193,23 +192,23 @@
             }
 
             .meal01 {
-                top: 100px;
+                top: 40px;
                 left: -160px;
             }
 
             .meal02 {
-                top: 100px;
+                top: 60px;
                 left: 120px;
             }
 
             .meal03 {
-                top: 100px;
+                top: 40px;
                 left: 75px;
             }
 
             .meal04 {
-                top: 120px;
-                left: -30px;
+                top: 60px;
+                left: -40px;
             }
         }
     }
@@ -217,7 +216,6 @@
 
 @media screen and (min-width: 1200px) {
     .home_meal {
-        min-width: 1200px;
 
         .meal_intro {
 
@@ -280,7 +278,6 @@
 // extra large device
 @media screen and (min-width: 1440px) {
     .home_meal {
-        min-width: 1440px;
 
         .meal_intro {
 
