@@ -16,15 +16,15 @@
         <div dataset-id="9"></div>
       </div>
       <div class="puzzle">
-        <img src="/game/puzzle01.png" alt="" id="3">
-        <img src="/game/puzzle02.png" alt="" id="9">
-        <img src="/game/puzzle03.png" alt="" id="7">
-        <img src="/game/puzzle04.png" alt="" id="8">
-        <img src="/game/puzzle05.png" alt="" id="4">
-        <img src="/game/puzzle06.png" alt="" id="5">
-        <img src="/game/puzzle07.png" alt="" id="1">
-        <img src="/game/puzzle08.png" alt="" id="6">
-        <img src="/game/puzzle09.png" alt="" id="2">
+        <img src="@/assets/images/game/puzzle01.png" alt="" id="3">
+        <img src="@/assets/images/game/puzzle02.png" alt="" id="9">
+        <img src="@/assets/images/game/puzzle03.png" alt="" id="7">
+        <img src="@/assets/images/game/puzzle04.png" alt="" id="8">
+        <img src="@/assets/images/game/puzzle05.png" alt="" id="4">
+        <img src="@/assets/images/game/puzzle06.png" alt="" id="5">
+        <img src="@/assets/images/game/puzzle07.png" alt="" id="1">
+        <img src="@/assets/images/game/puzzle08.png" alt="" id="6">
+        <img src="@/assets/images/game/puzzle09.png" alt="" id="2">
       </div>
     </div>
     <button class="btn" @click="check">送出答案</button>
@@ -124,7 +124,7 @@ export default {
         if(numArr.indexOf(randNum) == -1) {
           numArr.push(randNum);
           // img.src = `https://picsum.photos/id/${randNum}/200/300`;
-          img.src = `/game/puzzle0${randNum}.png`;
+          img.src = `/img/puzzle0${randNum}.png`;
           switch (randNum) {
             case 1:
               img.id = `3`;

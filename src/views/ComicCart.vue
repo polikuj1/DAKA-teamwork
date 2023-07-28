@@ -19,7 +19,8 @@
       <div class="cart_book_content">
         <div v-for="(item, index) in shoppingCartData" :key="item.id" class="cart_book">
           <div class="cart_book_pic" @click="this.$router.push(`/comic_detail/${item.id}`)">
-            <img :src="item.img" :alt="item.name" />
+            <!-- <img :src="item.img" :alt="item.name" /> -->
+            <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
           </div>
 
           <!-- 書本名稱 -->
@@ -85,6 +86,7 @@
 @import '@/assets/scss/page/comiccart.scss';
 </style>
 <script>
+import {GET} from '@/plugin/axios';
 import PageTitle from '@/components/PageTitle.vue';
 export default {
   components: {
@@ -229,11 +231,8 @@ export default {
   },
   // 掛載完成時
   mounted() {
-    this.axios.get('/data/comic.json')
-      .then((res) => {
-        this.shoppingCartData = this.$store.state.cart;
-        this.nowTimes();
-      })
+    this.shoppingCartData = this.$store.state.cart;
+    this.nowTimes();
   },
 
 }
