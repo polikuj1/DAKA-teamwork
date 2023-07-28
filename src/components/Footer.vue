@@ -28,7 +28,7 @@ export default {
       btns: [
         {
           title: '常見問題',
-          site: '/about_member',
+          site: '/Q&A',
         },
         {
           title: '預約訂位',
@@ -36,7 +36,7 @@ export default {
         },
         {
           title: '會員相關',
-          site: '/about_member',
+          site: '/Q&A',
         },
       ],
       copyright: '版權所有 © 2023 打咖 DAKA',

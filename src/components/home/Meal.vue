@@ -6,7 +6,7 @@
             <p>
                 無需離開遊戲環境，您只需輕輕一按，美味餐點就能送到您的桌前。您可以在享受遊戲的同時，隨心品味各式佳餚，為遊戲體驗增添一份風味與滿足。
             </p>
-            <a href="/">
+            <a @click="this.$router.push('/food')">
                 <div class="btn_more">
                     more <img src="@/assets/images/index/arrow_orange.png" alt="arrow">
                 </div>

@@ -40,7 +40,7 @@ export default {
           site: '/about_origin'
         },
         {
-          title: '服務項目',
+          title: '環境介紹',
           site: '/about'
         },
         {

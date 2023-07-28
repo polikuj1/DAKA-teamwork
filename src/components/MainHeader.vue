@@ -53,7 +53,7 @@ export default {
           site: '/about_origin',
           title_list: [
             {
-              li: '服務項目',
+              li: '環境介紹',
               site: '/about',
             },
             {
