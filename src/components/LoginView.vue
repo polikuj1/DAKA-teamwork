@@ -102,7 +102,7 @@
         <div class="register_form_bottom">
           <div class="">
             <input type="checkbox" name="membership" id="membership" required="required">
-            <label for="membership">我已詳閱並同意<a href="" target="_blank">會員條款</a>與<a href=""
+            <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank">會員條款</a>與<a href=""
                 target="_blank">隱私權規定</a></label>
           </div>
           <div class="">
