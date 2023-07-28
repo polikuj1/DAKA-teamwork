@@ -1,6 +1,7 @@
 .news_page {
   width: 100%;
   box-sizing: border-box;
+  overflow: hidden;
   @include container;
   margin: auto;
   .news_page a {
