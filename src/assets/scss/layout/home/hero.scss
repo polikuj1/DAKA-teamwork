@@ -106,7 +106,7 @@
 @include screen_one(1199) {
   .hero_section {
     padding: 200px 50px 100px;
-    height: 80vh;
+    height: fit-content;
 
     aside {
       display: none;
@@ -168,7 +168,7 @@
 
 @include screen_one(415) {
   .hero_section {
-    height: 60vh;
+    height: 600px;
 
     .circle {
       &:nth-child(1) {
