@@ -51,3 +51,98 @@
     }
   }
 }
+
+.slot_machine {
+  .machine {
+    width: 400px;
+    height: 600px;
+    margin: auto;
+    background: #f0a;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .machine .play_bar {
+    position: absolute;
+    right: -46px;
+    width: 70px;
+    height: 150px;
+  }
+  .machine .press {
+    transform-style: preserve-3d;
+    perspective: 100px;
+    /* transform: rotate3d(1, 0, 0, 50deg); */
+    animation: down 1s linear 1 forwards;
+    /* transform-origin: 0% 100%; */
+  }
+  .play_bar img {
+    width: 100%;
+    height: 100%;
+  }
+  .monitor {
+    width: 100%;
+    height: 195px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #aaa;
+  }
+  .fruits {
+    width: 80px;
+    height: 100%;
+    border: 1px solid red;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+  }
+  .fruits .pic {
+    width: 60px;
+    height: 50px;
+    position: relative;
+  }
+  .spin {
+    animation: scroll 3s cubic-bezier(.5,0,.5,1) forwards, blur 3s cubic-bezier(.5,0,.5,1) 1;
+  }
+  .fruits .pic img {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+    display: block;
+  }
+  .fruits .one {
+    animation-delay: 0.2s;
+  }
+  .fruits .two {
+    animation-delay: 0.5s;
+  }
+  .fruits .three {
+    animation-delay: 0.8s;
+  }
+
+}
+
+@keyframes scroll {
+  0% {transform: translate3d(0,0,0);}
+  90% {transform: translate3d(0,-1800px,0);}
+  100% {transform: translate3d(0,-1760px,0);}
+}
+@keyframes blur {
+  0% {filter: blur(0);}
+  10% {filter: blur(0);}
+  30% {filter: blur(6px);}
+  60% {filter: blur(6px);}
+  95% {filter: blur(2px);}
+  100% {filter: blur(0px);}
+}
+
+@keyframes down {
+  0% {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+  50% {
+    transform: rotate3d(1, 0, 0, 180deg);
+  }
+  100% {
+    transform: rotate3d(1, 0, 0, 0deg);
+  }
+}

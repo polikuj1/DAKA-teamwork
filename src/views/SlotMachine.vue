@@ -10,131 +10,131 @@
       <div class="monitor">
         <div class="fruits">
           <div class="pic one">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
           </div>
         </div>
         <div class="fruits">
           <div class="pic two">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
           </div>
         </div>
         <div class="fruits">
           <div class="pic three">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
-            <img src="/game/1.svg">
-            <img src="/game/2.svg">
-            <img src="/game/3.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit01.svg">
+            <img src="@/assets/images/game/fruit02.svg">
+            <img src="@/assets/images/game/fruit03.svg">
           </div>
         </div>
       </div>
@@ -177,13 +177,13 @@ export default {
         setTimeout(() => {
           console.log('變換圖片');
           pic_one.forEach(item => {
-            item.src= `/game/${rand(1,3)}.svg`;
+            item.src= `/chd102/g6/img/fruit0${rand(1,3)}.svg`;
           });
           pic_two.forEach(item => {
-            item.src= `/game/${rand(1,3)}.svg`;
+            item.src= `/chd102/g6/img/fruit0${rand(1,3)}.svg`;
           });
           pic_three.forEach(item => {
-            item.src= `/game/${rand(1,3)}.svg`;
+            item.src= `/chd102/g6/img/fruit0${rand(1,3)}.svg`;
           });
         },1500);
         setTimeout(() => {
@@ -199,110 +199,3 @@ export default {
   }
 }
 </script>
-
-
-<style scoped lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-html, body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.machine {
-  width: 400px;
-  height: 600px;
-  margin: auto;
-  background: #f0a;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.machine .play_bar {
-  position: absolute;
-  right: -46px;
-  width: 70px;
-  height: 150px;
-}
-.machine .press {
-  transform-style: preserve-3d;
-  perspective: 100px;
-  /* transform: rotate3d(1, 0, 0, 50deg); */
-  animation: down 1s linear 1 forwards;
-  /* transform-origin: 0% 100%; */
-}
-.play_bar img {
-  width: 100%;
-  height: 100%;
-}
-.monitor {
-  width: 100%;
-  height: 180px;
-  padding: 25px;
-  display: flex;
-  justify-content: space-evenly;
-  background-color: #aaa;
-}
-.fruits {
-  width: 80px;
-  height: 100%;
-  border: 1px solid red;
-  // overflow: hidden;
-  text-align: center;
-  position: relative;
-}
-.fruits .pic {
-  width: 60px;
-  height: 50px;
-  position: relative;
-}
-.spin {
-  animation: scroll 3s cubic-bezier(.5,0,.5,1) forwards, blur 3s cubic-bezier(.5,0,.5,1) 1;
-}
-.fruits .pic img {
-  width: 100%;
-  height: 100%;
-  padding-bottom: 10px;
-  display: block;
-}
-.fruits .one {
-  animation-delay: 0.2s;
-}
-.fruits .two {
-  animation-delay: 0.5s;
-}
-.fruits .three {
-  animation-delay: 0.8s;
-}
-
-@keyframes scroll {
-  0% {transform: translate3d(0,0,0);}
-  90% {transform: translate3d(0,-1800px,0);}
-  100% {transform: translate3d(0,-1760px,0);}
-}
-@keyframes blur {
-  0% {filter: blur(0);}
-  10% {filter: blur(0);}
-  30% {filter: blur(6px);}
-  60% {filter: blur(6px);}
-  95% {filter: blur(2px);}
-  100% {filter: blur(0px);}
-}
-
-@keyframes down {
-  0% {
-    transform: rotate3d(1, 0, 0, 0deg);
-  }
-  50% {
-    transform: rotate3d(1, 0, 0, 180deg);
-  }
-  100% {
-    transform: rotate3d(1, 0, 0, 0deg);
-  }
-}
-</style>
