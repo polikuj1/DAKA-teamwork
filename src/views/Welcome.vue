@@ -1,7 +1,6 @@
 <template>
 
-<canvas id="canvas">
-    </canvas>
+    <canvas id="canvas"></canvas>
     <img src="@/assets/images/welcome/welcome_logo.svg" alt="DAKA-logo" class="platform_img">
     <div class="platform_container">
 
@@ -11,79 +10,150 @@
     </div>
 
 </template>
+
 <style scoped>
-        body {
-            background: #060e1b;
-            overflow: hidden;
-          
-        }
-
-.platform_img{
-position: absolute;
-top: 15%;
-left: 40%;
-animation: logo 1.5s ;
+body {
+  background:#060e1b;
+  overflow: hidden;
 }
-        .platform_container {
-           height: 100vh;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-       
-        }
 
-        .back {
-          font-size: 4rem;
-          margin-top: 250px;
-          background-color: #fff;
-border-radius: 50%;
-        }
+.platform_img {
+  padding-top: 70px;
+  margin: auto;
+  animation: logo 1.5s;
+  margin-bottom: 10px;
+}
+.platform_container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-        .front {
-            font-size: 4rem;
-            margin-top: 250px;
-            background-color: #fff;
-            border-radius: 50%;
-        }
+.back {
+  font-size: 4rem;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+}
 
-        .front:hover{
-            background-color: #111;
-            color: #fff;
-        }
+.front {
+  font-size: 4rem;
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 50%;
+}
 
-        .back:hover{
-            background-color: #111;
-            color: #fff;
-        }
+.front:hover {
+  background-color: #111;
+  color: #fff;
+}
 
-        a {
-            text-decoration: none;
-            color: #111;
-            padding: 100px;
-        }
+.back:hover {
+  background-color: #111;
+  color: #fff;
+}
 
-        p {
-            color: #fff;
-            font-size: 5rem;
-            margin: auto;
-        }
+a {
+  text-decoration: none;
+  color: #111;
+  padding: 100px;
+}
 
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-        }
+p {
+  color: #fff;
+  font-size: 5rem;
+  margin: auto;
+}
 
-        @keyframes logo {
-          0%{filter: blur(70px);}  
-          20%{filter: blur(40px)}  
-          50%{filter: blur(20px)}  
-          100%{filter: blur(0px)}  
-        }
-    </style>
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+@media screen and (min-width: 768px) {
+  .platform_img {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    animation: logo 1.5s;
+  }
+  .platform_container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 300px;
+  }
+
+  .back {
+    font-size: 4rem;
+    margin-top: 250px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  .front {
+    font-size: 4rem;
+    margin-top: 250px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  .front:hover {
+    background-color: #111;
+    color: #fff;
+  }
+
+  .back:hover {
+    background-color: #111;
+    color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #111;
+    padding: 100px;
+  }
+
+  p {
+    color: #fff;
+    font-size: 5rem;
+    margin: auto;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+  }
+}
+
+@keyframes logo {
+  0% {
+    filter: blur(70px);
+  }
+  20% {
+    filter: blur(40px);
+  }
+  50% {
+    filter: blur(20px);
+  }
+  100% {
+    filter: blur(0px);
+  }
+}
+
+</style>
    
 <script>
 

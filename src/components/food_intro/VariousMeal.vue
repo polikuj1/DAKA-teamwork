@@ -2,10 +2,10 @@
 <template>
     <section>
         <div class="variousmeal_container">
-            <h3>各式餐點</h3>
+            <h3>\ 各式餐點 /</h3>
             <div class="category_buttons">
-                <button @click="showCategory('combo')"
-                    :class="{ active: selectedCategory === 'combo', comboHover: comboHover }">套餐</button>
+                <button @click="showCategory('all')"
+                    :class="{ active: selectedCategory === 'all', allHover: allHover }">全部</button>
                 <button @click="showCategory('main_meal')" :class="{ active: selectedCategory === 'main_meal' }">主餐</button>
                 <button @click="showCategory('drinks')" :class="{ active: selectedCategory === 'drinks' }">飲料</button>
                 <button @click="showCategory('dessert')" :class="{ active: selectedCategory === 'dessert' }">點心</button>
@@ -33,40 +33,10 @@ export default {
     },
     data() {
         return {
-            selectedCategory: 'combo',
-            comboHover: false,
+            selectedCategory: 'all',
+            allHover: false,
+            allFood: [],
             foods: [
-                {
-                    id: 1,
-                    img: require('@/assets/images/food/combo/combo (1).png'),
-                    category: 'combo',
-                    description: '乳酪派＋珍珠鮮奶茶'
-                },
-                {
-                    id: 2,
-                    img: require('@/assets/images/food/combo/combo (2).png'),
-                    category: 'combo',
-                    description: '牛肉漢堡＋薯條'
-                },
-                {
-                    id: 3,
-                    img: require('@/assets/images/food/combo/combo (3).png'),
-                    category: 'combo',
-                    description: '雙倍起司火腿帕尼尼'
-                },
-                {
-                    id: 4,
-                    img: require('@/assets/images/food/combo/combo (4).png'),
-                    category: 'combo',
-                    description: '炸醬麵＋檸檬可樂'
-                },
-                {
-                    id: 5,
-                    img: require('@/assets/images/food/combo/combo (5).png'),
-                    category: 'combo',
-                    description: '泡菜拉麵＋檸檬可樂'
-                },
-
                 {
                     id: 1,
                     img: require('@/assets/images/food/main_meal/main_meal (1).png'),
@@ -101,7 +71,37 @@ export default {
                     id: 6,
                     img: require('@/assets/images/food/main_meal/main_meal (6).png'),
                     category: 'main_meal',
-                    description: '泰式鱈魚排'
+                    description: '鱈魚排'
+                },
+                {
+                    id: 7,
+                    img: require('@/assets/images/food/main_meal/main_meal (7).png'),
+                    category: 'main_meal',
+                    description: '乳酪派＋珍珠鮮奶茶'
+                },
+                {
+                    id: 8,
+                    img: require('@/assets/images/food/main_meal/main_meal (8).png'),
+                    category: 'main_meal',
+                    description: '牛肉漢堡＋薯條'
+                },
+                {
+                    id: 9,
+                    img: require('@/assets/images/food/main_meal/main_meal (9).png'),
+                    category: 'main_meal',
+                    description: '義氏火腿起司帕尼尼'
+                },
+                {
+                    id: 10,
+                    img: require('@/assets/images/food/main_meal/main_meal (10).png'),
+                    category: 'main_meal',
+                    description: '炸醬麵＋檸檬可樂'
+                },
+                {
+                    id: 11,
+                    img: require('@/assets/images/food/main_meal/main_meal (11).png'),
+                    category: 'main_meal',
+                    description: '泡菜拉麵＋檸檬可樂'
                 },
 
                 {
@@ -172,13 +172,17 @@ export default {
                     description: '蔬菜沙拉'
                 },
             ],
-            selectedCategory: 'combo'
+            selectedCategory: 'all'
         };
     },
     computed: {
         filteredFoods() {
-            return this.foods.filter(food => food.category === this.selectedCategory);
-        }
+            return this.foods.filter((food) =>
+                this.selectedCategory === 'all'
+                    ? true // If "all" category selected, return all foods
+                    : food.category === this.selectedCategory
+            );
+        },
     },
     methods: {
         showCategory(category) {
@@ -186,7 +190,7 @@ export default {
         },
     },
     mounted() {
-        this.comboHover = true;
+        this.allHover = true;
     },
 };
 

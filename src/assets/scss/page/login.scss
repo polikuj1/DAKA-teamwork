@@ -288,7 +288,7 @@
 
   .enter_valid {
     width: 100%;
-   
+
     padding: 100px;
     position: fixed;
     z-index: 999;
@@ -336,11 +336,11 @@
 
     .forget_close_modal {
       width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        cursor: pointer;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
     }
     .enter_valid_submit {
       font-size: 1.3rem;
@@ -355,13 +355,13 @@
 
   .enter_modify {
     width: 100%;
-   
+
     padding: 60px;
     position: fixed;
-      z-index: 999;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin: auto;
     display: flex;
     background-color: #fff;
@@ -399,11 +399,11 @@
 
     .modify_close_modal {
       width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        cursor: pointer;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
     }
     .enter_modify_submit {
       font-size: 1.3rem;
@@ -418,13 +418,13 @@
 
   .enter_modify_success {
     width: 100%;
-    
+
     padding: 100px;
     position: fixed;
-      z-index: 999;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin: auto;
     display: flex;
     background-color: #fff;
@@ -485,7 +485,6 @@
   }
 }
 
-
 @include sm {
   .container {
     max-width: 1920px;
@@ -497,7 +496,7 @@
 
     .login {
       width: 70%;
-      height: 90%;
+      height: 75%;
       flex-direction: row;
       .login_pic {
         width: 50%;
@@ -520,15 +519,519 @@
         max-width: 550px;
         width: 50%;
         position: relative;
-        
-        margin-bottom: 30px;
+
         form {
           width: 100%;
-          
+          gap: 5px;
           margin: 0 70px;
         }
         button {
-          
+          padding: 15px 75px;
+          border-radius: 10px;
+          color: #fff;
+
+          border: 1px solid transparent;
+          cursor: pointer;
+        }
+        .close_modal {
+          display: block;
+          font-size: 1.3rem;
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          font-weight: 300;
+          color: #ccc6c6;
+          cursor: pointer;
+        }
+
+        form {
+          .error_message {
+            color: red;
+            font-size: 1.1rem;
+          }
+          label {
+            align-self: flex-end;
+          }
+
+          span {
+            font-size: 2rem;
+            align-self: center;
+            margin: 5px 0;
+            font-weight: 300;
+          }
+          .login_form_submit {
+            margin-bottom: 10px;
+            &:hover {
+              background-color: #fff;
+              color: $btn_bg_color;
+              border: 1px solid $btn_bg_color;
+            }
+          }
+
+          .login_form_submit,
+          .login_form_register {
+            font-size: 1.2rem;
+            background-color: $btn_bg_color;
+          }
+
+          .login_form_register:hover {
+            background-color: #fff;
+            color: $btn_bg_color;
+            border: 2px solid $btn_bg_color;
+          }
+
+          .login_keep {
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            .login_keep_status {
+              font-size: 1.2rem;
+              display: flex;
+              gap: 5px;
+              align-items: center;
+            }
+            .forget_psw {
+              font-size: 1.2rem;
+              border-bottom: 1px solid $secondary_blue;
+              color: $secondary_blue;
+            }
+          }
+          .login_connect {
+            padding: 10px 10px;
+            text-align: center;
+            margin: 10px 0;
+            &:hover {
+              background-color: #fff;
+              color: $secondary_blue;
+              border: 1px solid $secondary_blue;
+            }
+
+            &:hover img {
+              background-color: $secondary_blue;
+            }
+          }
+        }
+      }
+    }
+    .register {
+      width: 60%;
+      height: 88%;
+      position: fixed;
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      h2 {
+        text-align: center;
+      }
+      form {
+        width: 100%;
+        max-width: 1000px;
+        height: 100%;
+
+        background-color: #fff;
+        font-size: 1.1rem;
+        border-radius: 10px;
+        background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+          cover;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        h2 {
+          margin-bottom: 0;
+        }
+
+        .register_close_modal {
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          cursor: pointer;
+        }
+        .row {
+          display: flex;
+
+          .col {
+            flex: 1 1 250px;
+            margin: 0 16px;
+            .inputBox {
+              display: block;
+              margin: 16px 0;
+              input {
+                width: 100%;
+                border: 1px solid #ccc;
+
+                font-size: 1rem;
+                text-transform: none;
+                border-radius: 10px;
+                outline: 1px solid #ccc;
+              }
+              span {
+                width: 100%;
+                margin-bottom: 10px;
+                display: block;
+              }
+              select {
+                width: 100%;
+                border: 1px solid #ccc;
+                padding: 9px;
+                font-size: 1rem;
+                text-transform: none;
+                border-radius: 10px;
+              }
+            }
+
+            .payment-title {
+              font-size: 1.5rem;
+              color: #333;
+              padding-bottom: 5px;
+            }
+          }
+        }
+
+        .register_form_bottom {
+          align-self: center;
+          display: flex;
+          flex-direction: column;
+
+          input {
+            transform: scale(1.5);
+            margin: 20px 10px;
+          }
+          a {
+            font-size: 1.3rem;
+            color: $secondary_blue;
+            border-bottom: 1px solid $secondary_blue;
+            margin: 0 5px;
+            cursor: pointer;
+          }
+
+          .register_submit {
+            align-self: center;
+            font-size: 1rem;
+            padding: 10px 50px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            background-color: $btn_bg_color;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 46px;
+            &:hover {
+              background-color: #fff;
+              color: $btn_bg_color;
+              border: 1px solid $btn_bg_color;
+            }
+          }
+        }
+      }
+    }
+
+    .forget_password {
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 40px;
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .forget_close_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+
+      .forget_password_enter {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        input {
+          width: 100%;
+          padding: 15px;
+          border-radius: 10px;
+        }
+        label {
+          font-size: 1.3rem;
+        }
+      }
+
+      .forget_password_submit {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: $btn_bg_color;
+          border: 1px solid $btn_bg_color;
+        }
+      }
+    }
+
+    .enter_valid {
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 60px;
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .enter_valid_input {
+        display: flex;
+        gap: 20px;
+        input {
+          font-size: 2rem;
+          text-align: center;
+          width: 3.5rem;
+          height: 3.5rem;
+          border-radius: 10px;
+        }
+      }
+      .enter_valid_re {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        a {
+          color: $secondary_blue;
+          border-bottom: 1px solid $secondary_blue;
+        }
+      }
+
+      .forget_close_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      .enter_valid_submit {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: $btn_bg_color;
+          border: 1px solid $btn_bg_color;
+        }
+      }
+    }
+
+    .enter_modify {
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 50px;
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .enter_modify_input {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        label {
+          font-size: 1.3rem;
+        }
+        input {
+          font-size: 2rem;
+          padding: 10px;
+          margin-bottom: 40px;
+          width: 100%;
+
+          border-radius: 10px;
+        }
+      }
+
+      .modify_close_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      .enter_modify_submit {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: $btn_bg_color;
+          border: 1px solid $btn_bg_color;
+        }
+      }
+    }
+
+    .enter_modify_success {
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 50px;
+      .enter_modify_success_logo {
+        width: 30%;
+        margin-top: 35px;
+      }
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .modify_close_success_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      button {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: $btn_bg_color;
+          border: 1px solid $btn_bg_color;
+        }
+      }
+    }
+  }
+}
+
+@include lg {
+  .container {
+    max-width: 1920px;
+    height: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(68, 68, 68, 0.5);
+
+    .login {
+      width: 70%;
+      height: 95%;
+      flex-direction: row;
+      .login_pic {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $main_bg;
+        gap: 20px;
+        img {
+          width: 60%;
+        }
+        p {
+          font-size: 2rem;
+          color: aliceblue;
+        }
+      }
+
+      .login_form {
+        max-width: 550px;
+        width: 50%;
+        position: relative;
+
+        margin-bottom: 30px;
+        form {
+          width: 100%;
+
+          margin: 0 70px;
+        }
+        button {
           padding: 15px 75px;
           border-radius: 10px;
           color: #fff;
@@ -548,7 +1051,6 @@
         }
         .login_form_submit {
           margin-top: 60px;
-          
         }
 
         form {
@@ -589,16 +1091,18 @@
             }
           }
           .login_connect {
-            
+            font-size: 1.2rem;
             gap: 20px;
             padding: 20px 40px;
             text-align: center;
+            white-space: nowrap;
           }
         }
       }
     }
     .register {
       width: 60%;
+      height: 100%;
       position: fixed;
       left: 50%;
       top: 50%;

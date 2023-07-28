@@ -5,82 +5,46 @@
   <div id="news_container">
     <section class="news_page">
       <div class="news_tabs">
-        <button
-          class="news_tab"
-          :class="{ active: currentTab === 'all' }"
-          @click="changeTab('all')"
-        >
-          全部消息
-        </button>
-        <button
-          class="news_tab"
-          :class="{ active: currentTab === 'latest' }"
-          @click="changeTab('latest')"
-        >
-          最新消息
-        </button>
-        <button
-          class="news_tab"
-          :class="{ active: currentTab === 'activity' }"
-          @click="changeTab('activity')"
-        >
-          活動消息
-        </button>
+        <button class="news_tab" :class="{ active: currentTab === 'all' }" @click="changeTab('all')">全部消息</button>
+        <button class="news_tab" :class="{ active: currentTab === 'latest' }" @click="changeTab('latest')">最新消息</button>
+        <button class="news_tab" :class="{ active: currentTab === 'activity' }"
+          @click="changeTab('activity')">活動消息</button>
       </div>
       <div class="news_tab_content">
         <!-- 全部消息 -->
         <div>
-          <div
-            v-for="(message, index) in data"
-            :key="message.id"
-            class="message"
-          >
-            <div class="news_pic">
+          <a v-for="(message, index) in data" :key="message.id" class="message">
+            <div class="news_pic" data-aos="fade-left" data-aos-offset="0" data-aos-delay="1000"
+              data-aos-easing="ease-in-out">
               <img :src="message.img" alt="Message Image" />
             </div>
-            <div class="news_message_content">
-              <p
-                class="news_category"
-                :style="{
-                  backgroundColor:
-                    message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E'
-                }"
-              >
-                {{ message.category }}
-              </p>
+            <div class="news_message_content" data-aos="fade-right" data-aos-offset="100" data-aos-delay="300"
+              data-aos-easing="ease-in-out">
+              <p class="news_category" :style="{ backgroundColor: message.category === 'NEWS' ? '#5AC4C4' : '#FF5E1E' }">
+                {{ message.category }}</p>
               <p class="news_date">{{ message.date }}</p>
               <p class="news_title">{{ message.content }}</p>
-              <div
-                class="news_more"
-                :class="index % 2 !== 0 ? 'left_text' : ''"
-              >
-                <a href="#">view more</a>
+              <div class="news_more" :class="index % 2 !== 0 ? 'left_text' : ''">
+                <p>view more</p>
+              </div>
+              <div class="news_more_forphone">
+                <p>view more</p>
               </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
   </div>
   <div class="horizontal_rule">
-    <img
-      src="../assets/images/news/horizontal_rule.svg"
-      alt="horizontal_rule"
-    />
+    <img src="../assets/images/news/horizontal_rule.svg" alt="horizontal_rule" />
   </div>
   <section class="news_photo_wall">
     <div class="news_photo_title">活動花絮</div>
     <div class="news_photo_frame">
-      <div
-        v-for="(photo, index) in photos"
-        :key="photo.img"
-        class="news_photos"
-      >
+      <div v-for="(photo, index) in photos" :key="photo.img" class="news_photos">
         <img :src="photo.img" alt="news_Photo" />
-        <div
-          class="news_text"
-          v-html="photos[index].photo_text.replace('_', '<br>')"
-        ></div>
+        <div class="news_text" v-html="photos[index].photo_text.replace('_', '<br>')"></div>
       </div>
     </div>
   </section>

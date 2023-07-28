@@ -1,19 +1,19 @@
 <template>
-  <div class="header" ref="header" :class="style">
+  <div class="header" :class="style">
     <h1 class="logo">
-      <router-link to="/Home"><img :src="logoImg" alt="DAKA網咖"></router-link>
+      <router-link to="/index"><img :src="logoImg" alt="DAKA網咖"></router-link>
       <span>打</span>
       <span>咖</span>
     </h1>
     <nav>
-      <a href="#" v-for="nav in header" :key="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
+      <a href="" v-for="nav in header" :key="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
         {{ nav.title }}
         <ul>
           <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
         </ul>
       </a>
-      <a href="#" @click.prevent="loginOpen" >登入 | 註冊</a>
-      <a href="#" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
+      <a href="" @click.prevent="loginOpen" >登入 | 註冊</a>
+      <a href="" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
 
     </nav>
   </div>
@@ -29,7 +29,7 @@ export default {
   watch: {
     // 處理header只有在首頁時需要先消失
     path() {
-      if(this.path === '/') {
+      if(this.path === '/index') {
         this.style = 'disappear';
       } else {
         this.style = '';
@@ -50,7 +50,7 @@ export default {
       header: [
         {
           title: '關於我們',
-          site: '/about',
+          site: '/about_origin',
           title_list: [
             {
               li: '服務項目',
@@ -118,6 +118,13 @@ export default {
   components: {
     login,
   },
+  mounted() {
+    if(this.show) {
+      this.style = '';
+    } else {
+      this.style = 'disappear';
+    }
+  }
 }
 </script>
 

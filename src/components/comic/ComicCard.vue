@@ -14,7 +14,8 @@
       <div class="card" v-for="item in comicData" :key="item.title"
       v-show="comicData.length">
         <div class="pic"  @click="this.$router.push(`/comic_detail/${item.id}`)">
-          <img :src="item.img" alt="漫畫封面">
+          <!-- <img :src="item.img" alt="漫畫封面"> -->
+          <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
         </div>
         <div class="txt">
           <div class="title">
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import {GET} from '@/plugin/axios';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';
 export default {
@@ -55,12 +57,13 @@ export default {
       this.comicData = this.originData.filter(item => item.title.includes(this.search));
     },
     reserve(item) {
+      console.log(this.$store.state.cart);
       if(this.$store.state.cart.length === 5) return;
       if(this.$store.state.cart.indexOf(item) === -1) {
-        // this.reservation.push(item);
         console.log(123);
         this.$store.commit('getBook',item);
-        // console.log(this.$store.state.cart);
+      } else {
+        console.log('可惡');
       }
     },
   },
@@ -68,11 +71,11 @@ export default {
 
   },
   created() {
-    this.axios.get('/data/comic.json')
+    GET('/data/comic.json')
       .then((res) => {
-        this.originData = res.data;
-        this.comicData = res.data;
-        // this.reservation = this.$store.state.cart;
+        console.log(res);
+        this.originData = res;
+        this.comicData = res;
       })
       .catch((err) => {
         console.log(err);

@@ -8,7 +8,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/1.webp",
+    "img": "comic/1.webp",
     "index": "01",
     "price": 10,
     "quantity": 1
@@ -22,7 +22,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/2.webp",
+    "img": "comic/2.webp",
     "index": "01",
     "price": 10,
     "quantity": 1
@@ -36,7 +36,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/3.webp",
+    "img": "comic/3.webp",
     "index": "01",
     "price": 10,
     "quantity": 1
@@ -50,7 +50,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu01.webp",
+    "img": "comic/jyujyutsu01.webp",
     "index": "01",
     "price": 10,
     "quantity": 1
@@ -64,7 +64,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu02.png",
+    "img": "comic/jyujyutsu02.png",
     "index": "02",
     "price": 10,
     "quantity": 1
@@ -78,7 +78,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu03.png",
+    "img": "comic/jyujyutsu03.png",
     "index": "03",
     "price": 10,
     "quantity": 1
@@ -92,7 +92,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu04.png",
+    "img": "comic/jyujyutsu04.png",
     "index": "04",
     "price": 10,
     "quantity": 1
@@ -106,7 +106,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu01.webp",
+    "img": "comic/jyujyutsu01.webp",
     "index": "05",
     "price": 10,
     "quantity": 1
@@ -120,7 +120,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu02.png",
+    "img": "comic/jyujyutsu02.png",
     "index": "06",
     "price": 10,
     "quantity": 1
@@ -134,7 +134,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu03.png",
+    "img": "comic/jyujyutsu03.png",
     "index": "07",
     "price": 10,
     "quantity": 1
@@ -148,7 +148,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu04.png",
+    "img": "comic/jyujyutsu04.png",
     "index": "08",
     "price": 10,
     "quantity": 1
@@ -162,7 +162,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/jyujyutsu01.webp",
+    "img": "comic/jyujyutsu01.webp",
     "index": "09",
     "price": 10,
     "quantity": 1
@@ -176,7 +176,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/5.webp",
+    "img": "comic/5.webp",
     "index": "01",
     "price": 10,
     "quantity": 1
@@ -190,7 +190,7 @@
     "publisher": "東立",
     "date": "2023/01/06",
     "language": "繁體中文",
-    "img": "/comic/6.webp",
+    "img": "comic/6.webp",
     "index": "01",
     "price": 10,
     "quantity": 1

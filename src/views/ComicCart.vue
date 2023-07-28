@@ -18,8 +18,9 @@
       <!-- 書本照片 -->
       <div class="cart_book_content">
         <div v-for="(item, index) in shoppingCartData" :key="item.id" class="cart_book">
-          <div class="cart_book_pic">
-            <img :src="item.img" :alt="item.name" />
+          <div class="cart_book_pic" @click="this.$router.push(`/comic_detail/${item.id}`)">
+            <!-- <img :src="item.img" :alt="item.name" /> -->
+            <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
           </div>
 
           <!-- 書本名稱 -->
@@ -41,6 +42,7 @@
             </div>
           </div>
         </div>
+        <div v-show="shoppingCartData.length === 0">您還沒有預約任何一本書，請開始 <a href="/comic_search">預約</a> 你喜歡的漫畫吧！</div>
       </div>
     </div>
 
@@ -74,15 +76,17 @@
         </div>
       </div>
     </div>
-
-    <button class="comiclist_cartbtn">送出預約<i class="fa-sharp fa-solid fa-book-open-reader" style="color: #ffffff;"></i>
-    </button>
+    <div class="btn_content">
+      <button class="comiclist_cartbtn">送出預約<i class="fa-solid fa-book-open-reader bookgap"></i>
+      </button>
+    </div>
   </div>
 </template>
 <style>
 @import '@/assets/scss/page/comiccart.scss';
 </style>
 <script>
+import {GET} from '@/plugin/axios';
 import PageTitle from '@/components/PageTitle.vue';
 export default {
   components: {
@@ -91,18 +95,10 @@ export default {
   data() {
     return {
       title: "我的預約清單",
-      // {
-      //     id: "first",
-      //     imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 01",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
       shoppingCartData: [
         {
           id: "first",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 01",
           name: "作者：芥見下々",
           price: 10,
@@ -110,7 +106,7 @@ export default {
         },
         {
           id: "second",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 02",
           name: "作者：芥見下々",
           price: 10,
@@ -118,7 +114,7 @@ export default {
         },
         {
           id: "third",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 03",
           name: "作者：芥見下々",
           price: 10,
@@ -126,7 +122,7 @@ export default {
         },
         {
           id: "fourth",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 04",
           name: "作者：芥見下々",
           price: 10,
@@ -134,7 +130,7 @@ export default {
         },
         {
           id: "fifth",
-          imgSrc: require ("@/assets/images/comic/jyujyutsu02.png"),
+          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
           category: "咒術迴戰 05",
           name: "作者：芥見下々",
           price: 10,
@@ -147,7 +143,7 @@ export default {
   },
 
   computed: {
-    // 書籍數量
+    /*書籍數量*/
     shoppingCartProducts() {
       return [...this.shoppingCartData];
     },
@@ -156,7 +152,7 @@ export default {
       return this.shoppingCartProducts.length;
     },
 
-    // 總計
+    /*總計*/
     shoppingCartProductsSum() {
       return (
         Math.floor(
@@ -210,7 +206,7 @@ export default {
       // const itemIndex = this.shoppingCartData.findIndex(
       //   (item) => item.id === id
       // );
-      this.$store.commit('deleteBook',id);
+      this.$store.commit('deleteBook', id);
       // this.shoppingCartData.splice(id, 1);
     },
 
@@ -235,11 +231,8 @@ export default {
   },
   // 掛載完成時
   mounted() {
-    this.axios.get('/data/comic.json')
-      .then((res) => {
-        this.shoppingCartData = this.$store.state.cart;
-        this.nowTimes();
-      })
+    this.shoppingCartData = this.$store.state.cart;
+    this.nowTimes();
   },
 
 }

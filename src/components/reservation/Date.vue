@@ -10,9 +10,13 @@
 <style>
 
 .reservation_date_time{
+  display: flex;
+  justify-content: center;
  padding:0 50px;
-  margin:auto;
+  
+
 }
+
 </style>
 <script>
 

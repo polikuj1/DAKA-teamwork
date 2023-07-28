@@ -7,10 +7,11 @@
   justify-content: space-between;
   align-items: center;
   h2 {
-    // width: 400px;
     flex-shrink: 0;
     text-align: center;
     color: $btn_bg_color;
+    font-family: 'Dela Gothic One', cursive;
+    font-weight: 100;
   }
   .graphics {
     display: flex;
@@ -29,14 +30,14 @@
     }
   }
   .circle {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background: $secondary_blue;
   }
   .square {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     background: $secondary_yellow;
   }
 }
@@ -45,12 +46,12 @@
   .pageTitle {
     padding: 150px 0 50px;
     .circle {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
     }
     .square {
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
     }
   }
 }
