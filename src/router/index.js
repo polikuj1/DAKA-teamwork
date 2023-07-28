@@ -150,8 +150,15 @@ const routes = [
         name: 'member_terms',
         component: () => import('../views/MemberTerms.vue')
       },
+      {
+        path: '/member_privacy',
+        name: 'member_privacy',
+        component: () => import('../views/MemberPrivacy.vue')
+      },
     ]
+    
   },
+  
   // {
   //   path: '/login',
   //   name: 'login',
