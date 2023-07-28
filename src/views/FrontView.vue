@@ -11,6 +11,9 @@
 import MainHeader from '@/components/MainHeader.vue';
 import Footer from '@/components/Footer.vue';
 import MainMenu from '@/components/HbMenu.vue';
+
+
+
 export default {
   components: {
     MainHeader,Footer,MainMenu,
