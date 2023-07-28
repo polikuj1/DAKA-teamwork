@@ -1,0 +1,91 @@
+.ivu-collapse>.ivu-collapse-item>.ivu-collapse-header {
+    font-size: 1.4rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.ivu-collapse>.ivu-collapse-item.ivu-collapse-item-active>.ivu-collapse-header {
+    border-bottom: 2px solid #263238;
+    font-size: 2.5rem;
+    padding-top: 15px;
+    padding-bottom:15px;
+    color: #263238;
+    font-weight: 600;
+}
+
+#qa_all{
+    max-width: 1200px;
+    width: 90%;
+    margin: auto;
+    color: white;
+    border-radius: 15px 
+}
+.member{
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+#common{
+    font-size: 1.6rem;
+    
+}
+#qa_title{
+    font-size: 2.3rem;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #263238;
+    font-weight: 550;
+}
+#qa{
+    font-weight: 400;
+}
+.member_benefits_title{
+padding-left: 40px;
+}
+.ivu-collapse{
+    max-width: 1200px;
+    padding: 0 10px;
+    color: white;
+}
+.ivu-collapse .ivu-collapse-item .ivu-collapse-content .ivu-collapse-content-box .member .ivu-collapse .ivu-collapse-item .ivu-collapse-header{
+    background-color: #263238;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.ivu-collapse > .ivu-collapse-item > .ivu-collapse-header {
+    background-color: #263238;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.ivu-collapse > .ivu-collapse-item.ivu-collapse-item-active > .ivu-collapse-header {
+    color: white;
+}
+.ivu-collapse-content>.ivu-collapse-content-box {
+    font-size: 1.4rem;
+}
+
+.ivu-collapse-content .ivu-collapse-content-box {
+    // padding-left: 30px;
+    // padding-right: 30px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+// @media screen and (min-width: 1024px) {
+// .member{
+//     display: flex;
+// }
+// #qa_title{
+//     margin-top: 0px;
+// }
+// }

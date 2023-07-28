@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <div class="store" v-for="item in store" :key="item.tp_shop">
             <div class="title"> 分店資訊</div>
             <div class="map">
