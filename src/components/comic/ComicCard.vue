@@ -15,7 +15,7 @@
       v-show="comicData.length">
         <div class="pic"  @click="this.$router.push(`/comic_detail/${item.id}`)">
           <!-- <img :src="item.img" alt="漫畫封面"> -->
-          <Images :imgURL="`${item.img}`" :alt="`${item.title}`" />
+          <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
         </div>
         <div class="txt">
           <div class="title">

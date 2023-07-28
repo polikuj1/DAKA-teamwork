@@ -4,10 +4,9 @@
 </script>
 
 <template>
-    {{ publicPath }}
     <img 
-        :class="className" 
-        :src="`${publicPath}${imgURL}`"
-        :alt="alt"
-    />
+    :class="className"
+    :src="`${publicPath}${imgURL}`"
+    :alt="alt"/>
 </template>
+
