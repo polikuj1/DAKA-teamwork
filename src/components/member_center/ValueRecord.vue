@@ -19,6 +19,7 @@
   </template>
   
   <script>
+  import {GET} from '@/plugin/axios';
   import MbForm from '@/components/member_center/form_style.vue';
     export default {
         components: {
@@ -37,13 +38,14 @@
         },
         created() {
             this.$emit('emit-title',this.title);
-            this.axios.get('/data/value_record.json')
-            .then((res) => {
-            this.transactionRecords = res.data;
-            })
-            .catch((err) => {
-            console.log(err);
-            })
+            GET('/data/value_record.json')
+                .then((res) => {
+                console.log(res);
+                this.transactionRecords = res;
+                })
+                .catch((err) => {
+                console.log(err);
+                })
         },
     };
   </script>
