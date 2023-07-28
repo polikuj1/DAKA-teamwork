@@ -82,6 +82,7 @@
   </MbForm>
 </template>
 <script>
+import {GET} from '@/plugin/axios';
 import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
@@ -100,9 +101,9 @@ export default {
   },
   created() {
     this.$emit('emit-title',this.title);
-    this.axios.get('/data/book_reservation.json')
+    GET('/data/book_reservation.json')
     .then((res) => {
-      this.reservation = res.data;
+      this.reservation = res;
     })
     .catch((err) => {
       console.log(err);
