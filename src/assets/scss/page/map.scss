@@ -190,7 +190,7 @@
     .store {
         max-width: 1200px;
         width: 100%;
-        margin-bottom: 400px;
+        margin-bottom: 0;
 
 
         .title {
@@ -212,7 +212,7 @@
             .tp_shop {
                 position: absolute;
                 width: 81%;
-                right: -125%;
+                right: -105%;
                 top: -6%;
 
             }
@@ -220,7 +220,7 @@
             .tp_back {
                 position: absolute;
                 width: 90%;
-                right: -129%;
+                right: -109%;
                 top: -8%;
                 z-index: -1;
             }
@@ -264,14 +264,14 @@
                 position: absolute;
                 top: 63%;
                 width: 115%;
-                right: -120%;
+                right: -102%;
             }
 
             .tp_text {
                 font-size: 1.875rem;
                 color: #4C3818;
                 position: absolute;
-                right: -106%;
+                right: -87%;
                 top: 28%;
                 font-weight: 600;
                 color: white;

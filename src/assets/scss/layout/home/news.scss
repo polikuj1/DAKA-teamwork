@@ -17,6 +17,7 @@
             max-width: 1036px;
             border-radius: 50px;
             margin: auto;
+            padding: 0 50px;
 
 
             .news_all {
@@ -106,13 +107,15 @@
             padding-top: 0;
             margin: auto;
             max-width: 1200px;
+            padding: 0 10px;
+
 
 
             .news_all {
                 background-color: white;   
                 display: flex;
                 text-decoration: none;
-                width: 54%;
+                width: 80%;
                 padding: 15px 20px;
                 flex-direction: column;
                 border-radius: 10px;

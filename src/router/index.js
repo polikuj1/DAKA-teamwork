@@ -139,6 +139,11 @@ const routes = [
         path: '/about_origin',
         name: 'about_origin',
         component: () => import('../views/AboutoriginView.vue')
+      },
+      {
+        path: '/Q&A',
+        name: 'Q&A',
+        component: () => import('../views/Q&A.vue')
       }
     ]
     
