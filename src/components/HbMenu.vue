@@ -14,7 +14,7 @@
       <nav ref="nav">
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{ li.title }}</li>
-        <li @click.prevent.stop="loginOpen">登入 | 註冊</li>
+          <li @click.prevent.stop="loginOpen">登入 | 註冊</li>
         </ul>
       </nav>
     </div>
@@ -101,6 +101,12 @@ export default {
     loginOpen(){
       this.$store.state.login=true;
       this.openMenu()
+      this.$refs.nav.classList.add('disappear');
+      this.$refs.nav.classList.remove('show');
+      this.isOpen = false;
+      setTimeout(() => {
+        this.$refs.check.checked = false;
+      },100)
     }
   },
 }
