@@ -1,8 +1,9 @@
 <template>
     <section class="home_banner">
         <Carousel :autoplay="2000" :wrap-around="true">
-            <Slide v-for="slide in 5" :key="slide">
-                <div class="carousel__item">{{ slide }}</div>
+            <Slide v-for="item in bannerSlides" :key="item.id">
+                <!-- <div class="carousel__item">{{ slide }}</div> -->
+                <img :src="item.imgSrc" alt="ad">
             </Slide>
     
             <template #addons>
@@ -25,5 +26,22 @@ export default defineComponent({
         Slide,
         Pagination,
     },
+    data: () => ({
+        title: 'BannerSlide',
+        bannerSlides: [
+            {
+                id: 'banner01',
+                imgSrc: require('@/assets/images/home/banner01.svg'),
+            },
+            {
+                id: 'banner02',
+                imgSrc: require('@/assets/images/home/banner02.svg'),
+            },
+            {
+                id: 'banner03',
+                imgSrc: require('@/assets/images/home/banner03.svg'),
+            },
+        ],
+    }),
 })
 </script>
