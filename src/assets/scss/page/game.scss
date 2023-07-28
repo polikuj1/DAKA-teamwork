@@ -53,6 +53,9 @@
 }
 
 .slot_machine {
+  .mc {
+    width: 800px;
+  }
   .machine {
     width: 400px;
     height: 600px;
@@ -61,36 +64,21 @@
     display: flex;
     align-items: center;
     position: relative;
-  }
-  .machine .play_bar {
-    position: absolute;
-    right: -46px;
-    width: 70px;
-    height: 150px;
-  }
-  .machine .press {
-    transform-style: preserve-3d;
-    perspective: 100px;
-    /* transform: rotate3d(1, 0, 0, 50deg); */
-    animation: down 1s linear 1 forwards;
-    /* transform-origin: 0% 100%; */
-  }
-  .play_bar img {
-    width: 100%;
-    height: 100%;
+    background: url('@/assets/images/game/slot_machine_all.svg') center center / cover;
   }
   .monitor {
-    width: 100%;
-    height: 195px;
-    padding: 25px;
+    width: 200px;
+    height: 50px;
+    padding: 0 10px;
     display: flex;
-    justify-content: space-evenly;
-    background-color: #aaa;
+    position: absolute;
+    left: 110px;
+    top: 170px;
+    border: 1px solid red;
   }
   .fruits {
     width: 80px;
     height: 100%;
-    border: 1px solid red;
     overflow: hidden;
     text-align: center;
     position: relative;
@@ -118,13 +106,17 @@
   .fruits .three {
     animation-delay: 0.8s;
   }
-
+  button {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+  }
 }
 
 @keyframes scroll {
   0% {transform: translate3d(0,0,0);}
-  90% {transform: translate3d(0,-1800px,0);}
-  100% {transform: translate3d(0,-1760px,0);}
+  90% {transform: translate3d(0,-1900px,0);}
+  100% {transform: translate3d(0,-1860px,0);}
 }
 @keyframes blur {
   0% {filter: blur(0);}

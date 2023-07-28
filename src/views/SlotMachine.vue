@@ -4,9 +4,6 @@
   </PageTitle>
   <section class="slot_machine">
     <div class="machine">
-      <div class="play_bar press">
-        <!-- <img src="slotmachine.svg" alt=""> -->
-      </div>
       <div class="monitor">
         <div class="fruits">
           <div class="pic one">
@@ -174,16 +171,18 @@ export default {
         //   return;
         // }
         item.classList.add('spin');
+        // 水果最後一個的序列值
+        let fruitArr= [];
         setTimeout(() => {
           console.log('變換圖片');
           pic_one.forEach(item => {
-            item.src= `/chd102/g6/img/fruit0${rand(1,3)}.svg`;
+            item.src= `/game/fruit0${rand(1,3)}.svg`;
           });
           pic_two.forEach(item => {
-            item.src= `/chd102/g6/img/fruit0${rand(1,3)}.svg`;
+            item.src= `/game/fruit0${rand(1,3)}.svg`;
           });
           pic_three.forEach(item => {
-            item.src= `/chd102/g6/img/fruit0${rand(1,3)}.svg`;
+            item.src= `/game/fruit0${rand(1,3)}.svg`;
           });
         },1500);
         setTimeout(() => {
