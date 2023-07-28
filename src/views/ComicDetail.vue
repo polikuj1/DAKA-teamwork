@@ -2,7 +2,8 @@
     <div class="comic_detail">
         <div class="card" v-for="item in comicData" :key="item.title">
                 <div class="pic">
-                    <img :src="item.img">
+                    <!-- <img :src="item.img"> -->
+                    <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
                 </div>
                 <div class="text">
                     <div class="text_title">
@@ -33,6 +34,7 @@
 </template>
 
 <script>
+import {GET} from '@/plugin/axios';
 import CartIcon from '@/components/comic/CartIcon.vue';
 export default {
     components: {
@@ -57,10 +59,10 @@ export default {
         }
     },
     mounted() {
-        this.axios.get('/data/comic.json')
+        GET('/data/comic.json')
             .then((res) => {
                 console.log(res);
-                this.comicData = res.data;
+                this.comicData = res;
                 this.id = this.$route.params.id;
                 this.filter();
             })
