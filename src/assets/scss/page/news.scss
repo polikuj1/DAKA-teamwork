@@ -1,68 +1,202 @@
-@media only screen and (max-width:1024px) {
-  .news_message_content,.news_pic {
-    opacity: 1 !important;
-    transform: translate(0) scale(1) !important;
+#news_container{
+  @media only screen and (max-width:1024px) {
+    .news_message_content,.news_pic {
+      opacity: 1 !important;
+      transform: translate(0) scale(1) !important;
+    }
   }
-}
-
-
-.news_page {
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-  @include container;
-  margin: auto;
-  .news_page a {
-    text-decoration: none;
+  .news_page {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    @include container;
+    margin: auto;
+    .news_page a {
+      text-decoration: none;
+    }
+    .news_tabs {
+      display: flex;
+      justify-content: center;
+      .news_tab {
+        box-sizing: border-box;
+        border-radius: $btn_br;
+        border: none;
+        cursor: pointer;
+        background-color: #f9bb8a;
+        color: $main_txt_color;
+      }
+      .news_tab.active {
+        background-color: $btn_bg_color;
+      }
+    }
   }
-  .news_tabs {
+  .news_tab_content {
     display: flex;
     justify-content: center;
+    .message {
+      margin: auto;
+      box-sizing: border-box;
+      justify-content: space-around;
+      width: 90%;
+      .news_pic img {
+        border-radius: 5px;
+        @include img;
+      }
+      .news_category {
+        color: $main_txt_color;
+        box-sizing: border-box;
+        padding: 5px;
+        width: fit-content;
+      }
+      .news_title {
+        background-color: #fff;
+        box-sizing: border-box;
+        color: $main_bg;
+      }
+      .news_date {
+        color: $main_txt_color;
+      }
+      .news_more ,.news_more_forphone{
+        font-weight: bold;
+        text-align: right;
+      }
+    }
+  }
+
+  /*手機版*/
+  @include screen_one(767){
+    .news_tabs {
+      gap: 20px;
+      .news_tab {
+        font-size: 0.875rem;
+        padding: 10px 20px;
+      }
+    }
+    .news_tab_content {
+      margin-top: 40px;
+      .message {
+        margin-bottom:40px;
+        display: block;
+        .news_category {
+          margin-top: 10px;
+          font-size: 0.875rem;
+        }
+        .news_title {
+          padding: 10px 20px;
+          font-size: 0.875rem;
+          border-radius: 5px;
+        }
+        .news_date {
+          margin: 10px 0 10px;
+          font-size: 0.875rem;
+        }
+        .news_more {
+          display: none;
+        }
+        .news_more_forphone{
+          font-size: 0.875rem;
+          margin-top: 10px;
+          color: #fff;
+        }
+      }
+  
+    }
+  }
+
+  /*電腦版*/
+@include sm {
+  .news_tabs {
+    gap: 60px;
     .news_tab {
-      box-sizing: border-box;
-      border-radius: $btn_br;
-      border: none;
-      cursor: pointer;
-      background-color: #f9bb8a;
-      color: $main_txt_color;
+      font-size: 2rem;
+      padding: 16px 40px;
     }
-    .news_tab.active {
+    .news_tab:hover{
       background-color: $btn_bg_color;
+      color: $main_txt_color;
     }
   }
-}
-.news_tab_content {
-  display: flex;
-  justify-content: center;
-  .message {
-    margin: auto;
-    box-sizing: border-box;
-    justify-content: space-around;
-    width: 90%;
-    .news_pic img {
-      border-radius: 5px;
-      @include img;
+  .news_tab_content {
+    margin-bottom: 160px;
+    .message {
+      margin-top: 160px;
+      display: flex;
+      gap: 30px;
+      .news_pic{
+        transition: transform 0.5s ease-in;
+        transform-origin: center;
+        overflow: hidden;
+      }
+      .news_pic img:hover {
+        transform: scale(1.05);
+      }
+      .news_message_content {
+        width: 50%;
+        z-index: 1;
+      }
+      .news_category {
+        font-size: 1.5rem;
+      }
+      .news_title {
+        width: 120%;
+        padding: 20px 40px;
+        font-size: 1.875rem;
+        border-radius: 10px;
+      }
+      .news_date {
+        margin: 10px 0 40px;
+        font-size: 1.5rem;
+      }
+      .news_more {
+        font-size: 1.125rem;
+        margin-top: 20px;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+      }
+      .news_more:hover{
+        opacity: 0.9;
+      }
+      .news_more p {
+        position: relative;
+        color: #fff;
+      }
+      .news_more p::before {
+        content: "";
+        position: absolute;
+        width: 30%;
+        height: 1px;
+        background-color: #fff;
+        left: 50%;
+        bottom: 10px;
+      }
+      .left_text {
+        text-align: left;
+        color: red;
+        p::before {
+          left: 20%;
+        }
+      }
+      .news_more_forphone{
+        display: none;
+      }
     }
-    .news_category {
-      color: $main_txt_color;
-      box-sizing: border-box;
-      padding: 5px;
-      width: fit-content;
-    }
+  }
+  /*圖片位置交換*/
+  .message:nth-child(odd) {
+    flex-direction: row;
     .news_title {
-      background-color: #fff;
-      box-sizing: border-box;
-      color: $main_bg;
-    }
-    .news_date {
-      color: $main_txt_color;
-    }
-    .news_more ,.news_more_forphone{
-      font-weight: bold;
-      text-align: right;
+      margin-left: -20%;
     }
   }
+  .message:nth-child(even) {
+    flex-direction: row-reverse;
+  }
 }
+}
+
+
+
+/*照片牆*/
 .horizontal_rule {
   margin-top: 3%;
   margin-bottom: 3%;
@@ -178,42 +312,6 @@
 }
 /*手機版*/
 @include screen_one(767) {
-  .news_tabs {
-    gap: 20px;
-    .news_tab {
-      font-size: 0.875rem;
-      padding: 10px 20px;
-    }
-  }
-  .news_tab_content {
-    margin-top: 40px;
-    .message {
-      margin-bottom:40px;
-      display: block;
-      .news_category {
-        margin-top: 10px;
-        font-size: 0.875rem;
-      }
-      .news_title {
-        padding: 10px 20px;
-        font-size: 0.875rem;
-        border-radius: 5px;
-      }
-      .news_date {
-        margin: 10px 0 10px;
-        font-size: 0.875rem;
-      }
-      .news_more {
-        display: none;
-      }
-      .news_more_forphone{
-        font-size: 0.875rem;
-        margin-top: 10px;
-        color: #fff;
-      }
-    }
-
-  }
   .news_photo_wall {
     margin: 0 1%;
     .news_photo_title {
@@ -249,92 +347,4 @@
   }
 }
 
-/*電腦版*/
-@include sm {
-  .news_tabs {
-    gap: 60px;
-    .news_tab {
-      font-size: 2rem;
-      padding: 16px 40px;
-    }
-    .news_tab:hover{
-      background-color: $btn_bg_color;
-      color: $main_txt_color;
-    }
-  }
-  .news_tab_content {
-    margin-bottom: 160px;
-    .message {
-      margin-top: 160px;
-      display: flex;
-      gap: 30px;
-      .news_pic{
-        transition: transform 0.5s ease-in;
-        transform-origin: center;
-        overflow: hidden;
-      }
-      .news_pic img:hover {
-        transform: scale(1.05);
-      }
-      .news_message_content {
-        width: 50%;
-        z-index: 1;
-      }
-      .news_category {
-        font-size: 1.5rem;
-      }
-      .news_title {
-        width: 120%;
-        padding: 20px 40px;
-        font-size: 1.875rem;
-        border-radius: 10px;
-      }
-      .news_date {
-        margin: 10px 0 40px;
-        font-size: 1.5rem;
-      }
-      .news_more {
-        font-size: 1.125rem;
-        margin-top: 20px;
-        opacity: 0.5;
-        transition: opacity 0.3s ease;
-      }
-      .news_more:hover{
-        opacity: 0.9;
-      }
-      .news_more p {
-        position: relative;
-        color: #fff;
-      }
-      .news_more p::before {
-        content: "";
-        position: absolute;
-        width: 30%;
-        height: 1px;
-        background-color: #fff;
-        left: 50%;
-        bottom: 10px;
-      }
-      .left_text {
-        text-align: left;
-        color: red;
-        p::before {
-          left: 20%;
-        }
-      }
-      .news_more_forphone{
-        display: none;
-      }
-    }
-  }
-  /*圖片位置交換*/
-  .message:nth-child(odd) {
-    flex-direction: row;
-    .news_title {
-      margin-left: -20%;
-    }
-  }
-  .message:nth-child(even) {
-    flex-direction: row-reverse;
-  }
-}
+
