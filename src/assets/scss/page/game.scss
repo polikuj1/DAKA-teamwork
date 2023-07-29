@@ -1,3 +1,4 @@
+/*拼圖的設定*/
 .game {
   padding: 0px 50px 150px;
   text-align: center;
@@ -52,19 +53,17 @@
   }
 }
 
+
+/*拉霸機的設定*/
 .slot_machine {
-  .mc {
-    width: 800px;
-  }
   .machine {
-    width: 400px;
+    width: 545px;
     height: 600px;
     margin: auto;
-    background: #f0a;
     display: flex;
     align-items: center;
     position: relative;
-    background: url('@/assets/images/game/slot_machine_all.svg') center center / cover;
+    background: url('@/assets/images/game/slot_machine_03.svg') center center / cover;
   }
   .monitor {
     width: 200px;
@@ -72,9 +71,8 @@
     padding: 0 10px;
     display: flex;
     position: absolute;
-    left: 110px;
+    left: 182px;
     top: 170px;
-    border: 1px solid red;
   }
   .fruits {
     width: 80px;
@@ -101,10 +99,10 @@
     animation-delay: 0.2s;
   }
   .fruits .two {
-    animation-delay: 0.5s;
+    animation-delay: 0.3s;
   }
   .fruits .three {
-    animation-delay: 0.8s;
+    animation-delay: 0.4s;
   }
   button {
     position: absolute;
@@ -125,16 +123,4 @@
   60% {filter: blur(6px);}
   95% {filter: blur(2px);}
   100% {filter: blur(0px);}
-}
-
-@keyframes down {
-  0% {
-    transform: rotate3d(1, 0, 0, 0deg);
-  }
-  50% {
-    transform: rotate3d(1, 0, 0, 180deg);
-  }
-  100% {
-    transform: rotate3d(1, 0, 0, 0deg);
-  }
 }

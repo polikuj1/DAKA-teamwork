@@ -10,42 +10,42 @@
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg" data-index="last">
           </div>
         </div>
         <div class="fruits">
@@ -53,42 +53,42 @@
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg" data-index="last">
           </div>
         </div>
         <div class="fruits">
@@ -96,42 +96,42 @@
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg">
+            <img src="@/assets/images/game/fruit05.svg">
             <img src="@/assets/images/game/fruit01.svg">
             <img src="@/assets/images/game/fruit02.svg">
             <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
-            <img src="@/assets/images/game/fruit01.svg">
-            <img src="@/assets/images/game/fruit02.svg">
-            <img src="@/assets/images/game/fruit03.svg">
+            <img src="@/assets/images/game/fruit04.svg" data-index="last">
           </div>
         </div>
       </div>
@@ -162,35 +162,64 @@ export default {
       const pic_three = document.querySelectorAll('.pic.three img');
       let controlValue = 0;
       btn.disabled = true;
+      let fruitArr= [];
       fruit_pic.forEach(item => {
-        // item.classList.remove('spin');
-        console.log(item);
-        // if(controlValue === 1) {
-        //   moveDOM();
-        //   item.classList.remove('spin');
-        //   return;
-        // }
         item.classList.add('spin');
-        // 水果最後一個的序列值
-        let fruitArr= [];
-        setTimeout(() => {
-          console.log('變換圖片');
-          pic_one.forEach(item => {
-            item.src= `/game/fruit0${rand(1,3)}.svg`;
-          });
-          pic_two.forEach(item => {
-            item.src= `/game/fruit0${rand(1,3)}.svg`;
-          });
-          pic_three.forEach(item => {
-            item.src= `/game/fruit0${rand(1,3)}.svg`;
-          });
-        },1500);
         setTimeout(() => {
           btn.disabled = false;
           item.classList.remove('spin');
         },3100);
       })
-      controlValue = 1;
+      setTimeout(() => {
+        console.log('變換圖片');
+        pic_one.forEach(item => {
+          item.src= `/game/fruit0${rand(1,5)}.svg`;
+          if(item.dataset.index === 'last') {
+            fruitArr.push(item.src.slice(-5,-4));
+          }
+        });
+        pic_two.forEach(item => {
+          item.src= `/game/fruit0${rand(1,5)}.svg`;
+          if(item.dataset.index === 'last') {
+            fruitArr.push(item.src.slice(-5,-4));
+          }
+        });
+        pic_three.forEach(item => {
+          item.src= `/game/fruit0${rand(1,5)}.svg`;
+          if(item.dataset.index === 'last') {
+            fruitArr.push(item.src.slice(-5,-4));
+          }
+        });
+      },1500);
+      setTimeout(() => {
+        pic_one[0].src = `/game/fruit0${fruitArr[0]}.svg`;
+        pic_two[0].src = `/game/fruit0${fruitArr[1]}.svg`;
+        pic_three[0].src = `/game/fruit0${fruitArr[2]}.svg`;
+      }, 2900)
+      setTimeout(() => {
+        if(fruitArr[0] === fruitArr[1] && fruitArr[0] === fruitArr[2]) {
+          let str = '';
+          switch (fruitArr[0]) {
+            case '1':
+              str = '蘋果';
+              break;
+            case '2':
+              str = '櫻桃';
+              break;
+            case '3':
+              str = '水蜜桃';
+              break;
+            case '4':
+              str = '芭樂';
+              break;
+            case '5':
+              str = '橘子';
+              break;
+          }
+          alert(`恭喜中${str}`);
+        }
+      },3500)
+      
     },
   },
   created() {
