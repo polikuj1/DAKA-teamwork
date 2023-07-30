@@ -109,6 +109,88 @@
     top: 50%;
     right: 10%;
   }
+  .slot_btn {
+    position: absolute;
+    right: 20px;
+    top: 168px;
+    cursor: pointer;
+    > div {
+      position: relative;
+      &:nth-child(1) {
+        width: 35px;
+        right: -6px;
+        top: 7px;
+      }
+      &:nth-child(2) {
+        width: 15px;
+        right: -15px;
+        top: 2px;
+        z-index: 1;
+      }
+      &:nth-child(3) {
+        left: -18px;
+        top: -13px;
+        width: 40px;
+      }
+    }
+  }
+  .handler {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      .ball {
+        top: -10px;
+      }
+      .stick {
+        top: -25px;
+        height: 20px;
+      }
+    }
+    &.disabled {
+      .ball {
+        animation: none;
+        cursor: not-allowed;
+      }
+    }
+    .stick {
+      position: absolute;
+      top: -86px;
+      right: -12px;
+      width: 15px;
+      height: 80px;
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 20px;
+      background-color: rgb(120 116 127);
+      transition: 350ms;
+    }
+    .stick2 {
+      position: absolute;
+      top: -20px;
+      right: -12px;
+      width: 46px;
+      height: 15px;
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 0 20px 20px 0;
+      background-color: rgb(120 116 127);
+    }
+    .ball {
+      position: absolute;
+      top: -106px;
+      right: -20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid rgb(0, 0, 0);
+      background-color: rgb(184, 43, 33);
+      cursor: pointer;
+      transition: 500ms;
+      animation: ballLight 1s infinite alternate-reverse linear;
+    }
+  }
 }
 
 @keyframes scroll {
@@ -124,3 +206,13 @@
   95% {filter: blur(2px);}
   100% {filter: blur(0px);}
 }
+
+@keyframes ballLight {
+  0% {
+    box-shadow: 0 0 3px rgb(224, 224, 107);
+  }
+  100% {
+    box-shadow: 0 0 10px 2px rgb(224, 224, 107);
+  }
+}
+

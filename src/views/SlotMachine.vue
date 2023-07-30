@@ -4,6 +4,16 @@
   </PageTitle>
   <section class="slot_machine">
     <div class="machine">
+      <!-- <div class="slot_btn" @click="spin">
+        <div><img src="@/assets/images/game/handle_01.svg" alt=""></div>
+        <div><img src="@/assets/images/game/handle_02.svg" alt=""></div>
+        <div><img src="@/assets/images/game/handle_03.svg" alt=""></div>
+      </div> -->
+      <div :class="['handler', { 'active': active }, { 'disabled': disabled }]">
+        <div class="stick2"></div>
+        <div class="stick"></div>
+        <div class="ball" @click="!disabled && turn()"></div>
+      </div>
       <div class="monitor">
         <div class="fruits">
           <div class="pic one">
@@ -136,7 +146,6 @@
         </div>
       </div>
     </div>
-    <button class="btn" @click="spin">spin</button>
   </section>
 </template>
 <script>
@@ -147,7 +156,9 @@ export default {
   },
   data() {
     return {
-      title: '會員專屬遊戲'
+      title: '會員專屬遊戲',
+      active: false,
+      disabled: false,
     }
   },
   methods: {
@@ -155,18 +166,16 @@ export default {
       function rand(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
       }
-      const btn = document.querySelector('.btn');
+      const btn = document.querySelector('.h1');
       const fruit_pic = document.querySelectorAll('.fruits .pic');
       const pic_one = document.querySelectorAll('.pic.one img');
       const pic_two = document.querySelectorAll('.pic.two img');
       const pic_three = document.querySelectorAll('.pic.three img');
       let controlValue = 0;
-      btn.disabled = true;
       let fruitArr= [];
       fruit_pic.forEach(item => {
         item.classList.add('spin');
         setTimeout(() => {
-          btn.disabled = false;
           item.classList.remove('spin');
         },3100);
       })
@@ -195,7 +204,7 @@ export default {
         pic_one[0].src = `/game/fruit0${fruitArr[0]}.svg`;
         pic_two[0].src = `/game/fruit0${fruitArr[1]}.svg`;
         pic_three[0].src = `/game/fruit0${fruitArr[2]}.svg`;
-      }, 2900)
+      }, 2700)
       setTimeout(() => {
         if(fruitArr[0] === fruitArr[1] && fruitArr[0] === fruitArr[2]) {
           let str = '';
@@ -218,8 +227,17 @@ export default {
           }
           alert(`恭喜中${str}`);
         }
+        this.disabled = false;
       },3500)
       
+    },
+    turn () {
+      this.active = true;
+      setTimeout(() => {
+        this.active = false;
+      }, 500)
+      this.disabled = true;
+      this.spin();
     },
   },
   created() {
@@ -227,3 +245,4 @@ export default {
   }
 }
 </script>
+
