@@ -36,7 +36,7 @@
               以FACEBOOK帳號登入
             </button>
             
-            <button class="login_connect">
+            <button class="login_connect"  @click="signinRedirect">
               <i class="fa-brands fa-google"></i>
               以GOOGLE帳號登入
             </button>
@@ -178,9 +178,22 @@
   </div>
 </template>
 <style>
-@import '@/assets/scss/page/login.scss';
+
 </style>
-<script>
+<script >
+import { collection } from 'firebase/firestore'
+import {
+  getRedirectResult,
+  signInWithRedirect,
+  signOut,
+} from 'firebase/auth'
+import { useCurrentUser, useFirebaseAuth } from 'vuefire'
+const auth = useFirebaseAuth();
+
+// display errors if any
+const error = ref(null);
+const user = useCurrentUser();
+
 export default {
   name: 'login',
   data() {
@@ -213,8 +226,10 @@ export default {
         psw: '',
         newPsw: '',
       },
-     
-
+      documents: [],
+      firestore: {
+    documents: collection(db, 'documents'),
+  },
 
 
     }
@@ -303,10 +318,22 @@ export default {
 
       this.step = 0;
 
-    }
-
-  }
+    },
+    signinRedirect() {
+  signInWithRedirect(auth, someAuthProvider).catch((reason) => {
+    console.error('Failed signinRedirect', reason)
+    error.value = reason
+  })
 }
+
+  },
+mounted(){
+  getRedirectResult(auth).catch((reason) => {
+    console.error('Failed redirect result', reason)
+    error.value = reason
+  })
+}
+  }
 
 </script>
 
