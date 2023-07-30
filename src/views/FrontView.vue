@@ -43,7 +43,7 @@ export default {
           this.show = true;
         },100);
       }
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     }
   },
   methods: {

@@ -7,6 +7,7 @@
     </button>
    </div>
    <slot name="mb_content">預設內容</slot>
+   <slot name="mb_modal">123</slot>
   </div>
 </template>
 
