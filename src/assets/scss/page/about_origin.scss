@@ -34,33 +34,57 @@
     gap: 80px;
     padding: 0px 20px 0px;
 
-    .aboutorigin_rightpic {
-      float: right;
+    .aboutorigin_card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .aboutorigin_pic {
       width: 100%;
-      img {
-        margin: 0 auto;
-        max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .pic {
+        width: 260px;
+        background: url(@/assets/images/about/sprite02.svg) no-repeat 0 center;
+        overflow: hidden;
+        animation: step_animation_01 3.5s steps(6, end) infinite;
+
+        img {
+          opacity: 0;
+        }
+      }
+
+      .pic01 {
+        width: 260px;
+        background: url(@/assets/images/about/sprite01.svg) no-repeat 0 center;
+        overflow: hidden;
+        animation: step_animation_01 3.5s steps(6, end) infinite;
+
+        img {
+          opacity: 0;
+        }
+      }
+
+      .pic02 {
+        width: 180px;
+        background: url(@/assets/images/about/sprite03.svg) no-repeat 0 center;
+        overflow: hidden;
+        animation: step_animation_02 3.5s steps(6, end) infinite;
+
+        img {
+          opacity: 0;
+        }
       }
     }
 
-    .aboutorigin_leftpic {
-      float: left;
-      width: 100%;
-      img {
-        margin: 0 auto;
-        max-width: 100%;
-      }
-    }
 
-    .about_card_lefttext {
-      float: left;
+    .about_card_text {
       width: 100%;
     }
 
-    .about_card_righttext {
-      float: right;
-      width: 100%;
-    }
 
     .about_orange_text {
       font-family: "Dela Gothic One", cursive;
@@ -93,51 +117,36 @@
     }
 
 
-/*    .about_m_text::after {
-      content: "";
-      width: 0%;
-      height: 15px;
-      background-color: #F6CE6E;
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      margin: 0 auto;
-      z-index: -1;
-      transition: width 0.5s;
-  }
-*/
-
-    @keyframes yellowBackgroundAnimation {
-      0% { background-color: rgba(255, 255, 0, 0.521); }
-      50% { background-color: rgba(255, 166, 0, 0.58); }
-      100% { background-color: rgba(255, 255, 0, 0.386); }
-    }
-    .textanimatio {
-      animation: yellowBackgroundAnimation 5s infinite;
-      display: inline-block; 
-      width: 100%; 
-      box-sizing: border-box; 
-      padding: 0px; 
-      margin: 0px;
-      overflow: hidden;
-      z-index: -1;
-    }
-
     .about_s_text {
       font-size: 2.25rem;
       color: $main_txt_color;
       text-align: justify;
+      text-decoration: underline;
+      text-decoration-thickness: 15px;
+      text-decoration-color: #F6CE6E;
+      text-underline-offset: -5px;
     }
+    
+  }
+}
 
+@keyframes step_animation_01 {
+  0% {
+    background-position: 0;
+  }
 
-    .aboutorigin_card_first {
-      .clearfix::after {
-        content: "";
-        display: table;
-        clear: both;
-        margin: 0 auto;
-      }
-    }
+  100% {
+    background-position: -1620px 0;
+  }
+}
+
+@keyframes step_animation_02 {
+  0% {
+    background-position: 0;
+  }
+
+  100% {
+    background-position: -1079.66px 0;
   }
 }
 
@@ -147,37 +156,46 @@
       left: 0px;
       top: 100px;
     }
-  
+
     .aboutorigin_circle_two {
       right: -1200px;
       top: 400px;
     }
-  
+
     .aboutorigin_card_area {
-      .aboutorigin_rightpic {
-        float: right;
-        width: 40%;
-        img {
-          max-width: 100%;
+
+      .aboutorigin_card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &:nth-child(2) {
+          flex-direction: row-reverse;
         }
       }
-  
-      .aboutorigin_leftpic {
-        float: left;
+
+      .aboutorigin_pic {
         width: 40%;
+
+        .pic {
+          transform: scale(1.2);
+        }
+
+        .pic01 {
+          transform: scale(1.2);
+        }
+
+        .pic02 {
+          transform: scale(1.2);
+        }
       }
-  
-      .about_card_lefttext {
-        float: left;
+
+
+      .about_card_text {
         width: 55%;
         margin: 30px 0px 30px 0px;
       }
-  
-      .about_card_righttext {
-        float: right;
-        width: 55%;
-        margin-top: 50px;
-      }
+
       .about_xl_text {
         margin-top: -40px;
       }
@@ -185,13 +203,44 @@
       .about_l_text {
         margin-bottom: 30px;
       }
-  
-  
+
+
       .about_s_text {
         font-size: 2.25rem;
         color: $main_txt_color;
         text-align: center;
       }
     }
-  }  
+  }
+}
+
+
+@media screen and (min-width: 1023px) {
+  .aboutorigin_container {
+    .aboutorigin_card_area {
+
+      .aboutorigin_pic {
+
+        .pic {
+          transform: scale(1.5);
+        }
+
+        .pic01 {
+          transform: scale(1.4);
+        }
+
+        .pic02 {
+          transform: scale(1.4);
+        }
+      }
+
+
+      .about_s_text {
+        text-decoration: underline;
+        text-decoration-thickness: 20px;
+        text-decoration-color: #F6CE6E;
+        text-underline-offset: -5px;
+      }
+    }
+  }
 }
