@@ -19,6 +19,13 @@
             position: relative;
             width: 100%;
 
+            &:hover {
+                .meal_pic {
+
+                    animation: wobble-hor-bottom 1.5s ease-in-out both;
+                }
+            }
+
             .meal_pic {
                 position: absolute;
                 bottom: 240px;
@@ -71,6 +78,10 @@
             margin: 10px;
             background: no-repeat center center;
             background-size: 110%;
+
+            &:hover {
+                transform: scale(1.2);
+            }
         }
 
         .carousel__pagination-item:first-child button {
@@ -107,6 +118,36 @@
 
     }
 }
+
+@keyframes wobble-hor-bottom {
+
+    0%,
+    100% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        transform: translateX(-30px) rotate(-6deg);
+    }
+
+    30% {
+        transform: translateX(15px) rotate(6deg);
+    }
+
+    45% {
+        transform: translateX(-15px) rotate(-3.6deg);
+    }
+
+    60% {
+        transform: translateX(9px) rotate(2.4deg);
+    }
+
+    75% {
+        transform: translateX(-6px) rotate(-1.2deg);
+    }
+}
+
 
 
 @include sm() {

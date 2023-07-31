@@ -14,7 +14,8 @@
         </div>
 
         <div class="meal_group">
-            <div v-for="meal in meals" :key="meal.id" :class="`meal_pic ${meal.id}`">
+            <div v-for="meal in meals" :key="meal.id" :class="`meal_pic ${meal.id}`" 
+            data-aos="zoom-in-up" data-aos-anchor-placement="center-bottom">
                 <img :src="meal.imgSrc" :alt="meal.alt">
             </div>
         </div>

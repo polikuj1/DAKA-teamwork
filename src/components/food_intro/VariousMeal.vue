@@ -2,15 +2,15 @@
 <template>
     <section>
         <div class="variousmeal_container">
-            <h3>\ 各式餐點 /</h3>
-            <div class="category_buttons">
+            <h3 data-aos="fade-up">\ 各式餐點 /</h3>
+            <div class="category_buttons" data-aos="fade-up">
                 <button @click="showCategory('all')"
                     :class="{ active: selectedCategory === 'all', allHover: allHover }">全部</button>
                 <button @click="showCategory('main_meal')" :class="{ active: selectedCategory === 'main_meal' }">主餐</button>
                 <button @click="showCategory('drinks')" :class="{ active: selectedCategory === 'drinks' }">飲料</button>
                 <button @click="showCategory('dessert')" :class="{ active: selectedCategory === 'dessert' }">點心</button>
             </div>
-            <div class="variousmeal_card_area">
+            <div class="variousmeal_card_area" data-aos="fade-up">
                 <div v-for="food in filteredFoods" :key="food.id" class="food_card">
                     <div class="food_cards_meal_pic">
                         <img :src="food.img" :alt="food.description">

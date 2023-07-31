@@ -1,11 +1,11 @@
 <template>
     <section class="popmeals">
         <h3>\ 熱門餐點 /</h3>
-        <div class="meals_slides">
+        <div class="meals_slides" data-aos="fade-up">
             <Carousel :items-to-show="1"  :wrap-around="true" :autoplay="5000">
 
                 <Slide v-for="item in popmeals" :key="item.title">
-                    <div class="meal_intro">
+                    <div class="meal_intro" data-aos="fade-up">
                         <div class="meal_pic">
                             <img :src="item.img" :alt="item.title">
                         </div>

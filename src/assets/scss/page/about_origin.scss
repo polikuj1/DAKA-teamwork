@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  padding-bottom: $section_pd;
 
 
   .aboutorigin_circle_one {
@@ -31,7 +32,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 160px;
     padding: 0px 20px 0px;
 
     .aboutorigin_card {
@@ -104,13 +105,13 @@
     }
 
     .about_l_text {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: $main_txt_color;
       font-weight: 700;
     }
 
     .about_m_text {
-      font-size: 2rem;
+      font-size: 1.75rem;
       color: $main_txt_color;
       text-align: justify;
       margin-top: 30px;
@@ -118,7 +119,7 @@
 
 
     .about_s_text {
-      font-size: 2.25rem;
+      font-size: 1.875rem;
       color: $main_txt_color;
       text-align: justify;
       text-decoration: underline;

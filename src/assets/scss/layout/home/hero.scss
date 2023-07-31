@@ -14,9 +14,20 @@
 
     .scroll {
       position: absolute;
-      bottom: 80px;
+      bottom: 120px;
       right: -30px;
+      animation: slide-bottom 3s ease-in-out 1s infinite both;
     }
+
+    @keyframes slide-bottom {
+      0% {
+                transform: translateY(0);
+      }
+      100% {
+                transform: translateY(100px);
+      }
+    }
+    
 
     .pic {
       margin: 0 auto 60px;
