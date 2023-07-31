@@ -27,24 +27,14 @@
         </div>
       </div>
     </template>
-    <template v-slot:mb_modal>
-      <MbModal>
-        <template v-slot:modal_txt>
-          <div>
-            1233
-          </div>
-        </template>
-      </MbModal>
-    </template>
   </MbForm>
 </template>
 
 <script>
-import MbModal from '@/components/member_center/MemberModal.vue'
 import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
-    MbForm, MbModal
+    MbForm
   },
   data() {
     return {

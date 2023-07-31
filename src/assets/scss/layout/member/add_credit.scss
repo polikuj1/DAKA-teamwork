@@ -46,6 +46,12 @@
       border: none;
       cursor: pointer;
     }
+    > p {
+      font-size: 1.5rem;
+      margin-top: 20px;
+      color: red;
+      text-align: center;
+    }
   }
 }
 
@@ -76,8 +82,25 @@
       button {
         width: 200px;
         padding: 8px 0;
-        margin: 100px auto 0;
+        margin: 30px auto 0;
       }
     }
+  }
+}
+
+.bind_success {
+  text-align: center;
+  font-size: 1.5rem;
+  span {
+    display: block;
+    margin-bottom: 20px;
+  }
+  button {
+    background-color: $btn_bg_color;
+    border: none;
+    color: $main_txt_color;
+    border-radius: 100px;
+    padding: 8px 40px;
+    cursor: pointer;
   }
 }
