@@ -16,7 +16,7 @@
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
             require>
-          <input type="text" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="errorMsg = ''"
+          <input type="password" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="errorMsg = ''"
             require>
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
@@ -36,7 +36,7 @@
               以FACEBOOK帳號登入
             </button>
             
-            <button class="login_connect"  @click="signinRedirect">
+            <button class="login_connect"  @click="">
               <i class="fa-brands fa-google"></i>
               以GOOGLE帳號登入
             </button>
@@ -68,12 +68,12 @@
             </div>
             <div class="inputBox">
               <span>密碼</span>
-              <input type="text" class="payment-address-input" v-model="pswReg" required="required" />
+              <input type="password" class="payment-address-input" v-model="pswReg" required="required" />
               <div class="payment-address"></div>
             </div>
             <div class="inputBox">
               <span>再次輸入密碼</span>
-              <input type="text" class="payment-nation-input" required="required" v-model="pswConfirmReg">
+              <input type="password" class="payment-nation-input" required="required" v-model="pswConfirmReg">
               <div class="payment-nation"></div>
             </div>
 
@@ -152,9 +152,9 @@
       <p>請輸入 6 -12 位包含英文及數字的密碼</p>
       <div class="enter_modify_input">
         <label for="modifyPsw">新密碼</label>
-        <input type="text" required="required" v-model="modify.psw" maxlength="12" minlength="6" id="modifyPsw">
+        <input type="password" required="required" v-model="modify.psw" maxlength="12" minlength="6" id="modifyPsw">
         <label for="modifyNewPsw">再次輸入新密碼</label>
-        <input type="text" required="required" v-model="modify.newPsw" maxlength="12" minlength="6" id="modifyNewPsw">
+        <input type="password" required="required" v-model="modify.newPsw" maxlength="12" minlength="6" id="modifyNewPsw">
       </div>
       <input @click="modifyCheck" type="submit" value="送出" class="enter_modify_submit">
     </section>
@@ -181,18 +181,18 @@
 
 </style>
 <script >
-import { collection } from 'firebase/firestore'
-import {
-  getRedirectResult,
-  signInWithRedirect,
-  signOut,
-} from 'firebase/auth'
-import { useCurrentUser, useFirebaseAuth } from 'vuefire'
-const auth = useFirebaseAuth();
+// import { collection } from 'firebase/firestore'
+// import {
+//   getRedirectResult,
+//   signInWithRedirect,
+//   signOut,
+// } from 'firebase/auth'
+// import { useCurrentUser, useFirebaseAuth } from 'vuefire'
+// const auth = useFirebaseAuth();
 
 // display errors if any
-const error = ref(null);
-const user = useCurrentUser();
+// const error = ref(null);
+// const user = useCurrentUser();
 
 export default {
   name: 'login',
@@ -225,18 +225,11 @@ export default {
       modify: {
         psw: '',
         newPsw: '',
-      },
-      documents: [],
-      firestore: {
-    documents: collection(db, 'documents'),
+      }
+   
+  }
   },
-
-
-    }
-  },
-
-
-  methods: {
+methods: {
     closeModal() {
       this.$store.state.login = false;
     },
@@ -319,19 +312,19 @@ export default {
       this.step = 0;
 
     },
-    signinRedirect() {
-  signInWithRedirect(auth, someAuthProvider).catch((reason) => {
-    console.error('Failed signinRedirect', reason)
-    error.value = reason
-  })
-}
+//     signinRedirect() {
+//   signInWithRedirect(auth, someAuthProvider).catch((reason) => {
+//     console.error('Failed signinRedirect', reason)
+//     error.value = reason
+//   })
+// }
 
   },
 mounted(){
-  getRedirectResult(auth).catch((reason) => {
-    console.error('Failed redirect result', reason)
-    error.value = reason
-  })
+  // getRedirectResult(auth).catch((reason) => {
+  //   console.error('Failed redirect result', reason)
+  //   error.value = reason
+  // })
 }
   }
 
