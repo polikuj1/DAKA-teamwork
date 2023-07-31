@@ -34,7 +34,7 @@
 import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
-    MbForm,
+    MbForm
   },
   data() {
     return {

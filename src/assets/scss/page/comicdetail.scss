@@ -1,57 +1,212 @@
-
-
 .comic_detail {
-	@include container;
-	.card {
-		display: flex;
-		justify-content: center;
-		width: 100%;
-		max-width: $large;
-		margin: auto;
-		padding: 250px 30px;
-		color: $main_txt_color;
-	}
-	.pic {
-		padding-right: 120px;
-	
-		img {
-			@include img;
-			height: 600px;
-		width: 400px;
-		}
-	}
-	.text {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-	.text_title {
-		h2 {
-			font-size: 3.2rem;
-			padding-bottom: 20px;
-		}
-		p {
-			font-size: 1.25rem;
-		}
-	}
-	.text_reserve {
-		a{
-			display: inline-block;
-			@include btn_lg;
-		}
-	}
-	.text_introduce {
-		font-size: 1.25rem;
-	}
-	.text_introduce_title {
-		padding-bottom: 1.25rem;
-	}
-	.text_introduce_text{
-		line-height: $line_height;
-	}
-	.text_infor {
-		font-size: 1.25rem;
-		line-height: $line_height;
+    @include container;
 
-	}
+    .circle_top {
+        width: 405px;
+        height: 350px;
+        position: absolute;
+        right: -30px;
+        top: 150px;
+        z-index: -1;
+        opacity: 50%;
+
+        .circle_yellow {
+            width: 100%;
+            height: 100%;
+            background: url(http://localhost:8080/img/circle01.svg) no-repeat center/contain;
+        }
+    }
+
+    .circle_bottom {
+        width: 405px;
+        height: 350px;
+        position: absolute;
+        left: -50px;
+        bottom: -50px;
+        z-index: -1;
+        opacity: 50%;
+
+        .circle_orange {
+            width: 100%;
+            height: 100%;
+            background: url(http://localhost:8080/img/circle02.svg) no-repeat center/contain;
+        }
+    }
+
+    .card {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: $large;
+        margin: auto;
+        padding: 0px 30px;
+        color: $main_txt_color;
+    }
+
+    .pic {
+        padding-right: 120px;
+
+        img {
+            @include img;
+            height: 600px;
+            width: 400px;
+        }
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .text_title {
+        h2 {
+            font-size: 3.2rem;
+            padding-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.25rem;
+        }
+    }
+
+    .text_reserve {
+        a {
+            display: inline-block;
+      		/*@include btn_lg;*/
+			padding: 15px 40px;
+			background-color: $btn_bg_color;
+			border-radius: $btn_br;
+			font-size: 1.25rem;
+			color: $main_txt_color;
+			font-weight: 400;
+			cursor: pointer;
+			gap: 10px;
+			border: none;
+        }
+
+		.bookgap{
+			padding-left: 15px;
+		}
+    }
+
+    .text_introduce {
+        font-size: 1.25rem;
+    }
+
+    .text_introduce_title {
+        padding-bottom: 1.25rem;
+    }
+
+    .text_introduce_text {
+        line-height: $line_height;
+    }
+
+    .text_infor {
+        font-size: 1.25rem;
+        line-height: $line_height;
+
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    .comic_detail {
+        .circle_top {
+            display: none;
+        }
+
+        .circle_bottom {
+            display: none;
+        }
+
+
+        .card {
+            flex-direction: column;
+            width: 110%;
+            max-width: 458px;
+
+        }
+
+        .pic {
+            padding-right: 0;
+            margin: auto;
+
+            img {}
+        }
+		.text_reserve {
+			padding: 30px 0;
+		}
+		.text_infor{
+			.translate{
+				margin-top: 40px;
+			}
+		}
+    }
+}
+
+
+@media screen and (max-width:470px) {
+    .comic_detail {
+        .circle_top {
+            display: none;
+        }
+
+        .circle_bottom {
+            display: none;
+        }
+
+
+        .card {
+            width: 96%;
+            max-width: 458px;
+
+        }
+
+        .pic {
+            padding-right: 0;
+            margin: auto;
+
+            img {
+                height: 480px;
+                width: 320px;
+            }
+        }
+    }
+
+}
+
+
+
+
+@media screen and (max-width:390px) {
+    .comic_detail {
+        .circle_top {
+            display: none;
+        }
+
+        .circle_bottom {
+            display: none;
+        }
+
+
+        .card {
+            width: 96%;
+            max-width: 458px;
+
+        }
+
+        .pic {
+            padding-right: 0;
+            margin: auto;
+
+            img {
+                height: 420px;
+                width: 280px;
+            }
+        }
+    }
+
 }

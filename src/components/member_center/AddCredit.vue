@@ -16,22 +16,30 @@
             <input type="checkbox" id="default_card" v-model="credit_data.default">
             <label for="default_card">是否將此信用卡設為預設卡片</label>
           </div>
-          <button type="submit" @click.prevent="this.$router.push('/member_center/member_bind_credit')">確認送出</button>
+          <p v-show="warnTxt">輸入資料格式有誤，請確認</p>
+          <button type="submit" @click.prevent="submit">確認送出</button>
         </form>
       </div>
+    </template>
+    <template v-slot:mb_modal>
+      <MbModal v-show="modalSwitch">
+        <template v-slot:modal_txt>
+          <div class="bind_success">
+            <span>綁定成功</span>
+            <button @click="back">返回</button>
+          </div>
+        </template>
+      </MbModal>
     </template>
   </MbForm>
 </template>
 
-<style>
-@import "@/assets/scss/component/coupon.scss";
-</style>
-
 <script>
+import MbModal from '@/components/member_center/MemberModal.vue'
 import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
-    MbForm,
+    MbForm, MbModal,
   },
   data() {
     return {
@@ -42,6 +50,30 @@ export default {
         security: null,
         default: false,
       },
+      modalSwitch: false,
+      warnTxt: false,
+    }
+  },
+  methods: {
+    back() {
+      this.modalSwitch = false;
+      this.$router.push('/member_center/member_bind_credit');
+    },
+    submit() {
+      if(this.credit_data.number === null) {this.warnTxt = true;return};
+      let num = this.credit_data.number.toString();
+      let regex = /^[0-9]{3}$/;
+      let result = regex.test(this.credit_data.security);
+      // 表單驗證
+      if(!this.credit_data.number || !this.credit_data.date || !this.credit_data.security || num.length !== 16 || !result) {
+        this.warnTxt = true;
+        return;
+      } else {
+        this.warnTxt = false;
+        // 送出表單到後端
+        // this.$router.push('/member_center/member_bind_credit')
+        this.modalSwitch = true;
+      }
     }
   },
 }

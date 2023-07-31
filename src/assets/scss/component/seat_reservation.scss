@@ -107,3 +107,23 @@
     }
 
 }
+
+
+.seat_modal {
+    text-align: center;
+    font-size: 1.5rem;
+    span {
+        display: block;
+        margin-bottom: 30px;
+    }
+    button {
+        display: inline-block;
+        background-color: #FF5E1E;
+        border: none;
+        color: #fff;
+        border-radius: 100px;
+        padding: 8px 30px;
+        cursor: pointer;
+        margin: 15px;
+    }
+}

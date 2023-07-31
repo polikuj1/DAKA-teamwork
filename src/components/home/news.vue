@@ -25,7 +25,12 @@
 
                 <div class="infor_bottom">
                     <div class="text">{{ item.text }}</div>
-                    <img :src="item.pic" alt="箭頭" class="arrow_green">
+                    <img :src="[item.category === 'ACTIVITY' ? require('@/assets/images/index/arrow_orange.png') : require('@/assets/images/index/arrow_green.png')]" alt="箭頭" class="arrow_green">
+                </div>
+            </a>
+            <a href="/">
+                <div class="btn_more">
+                    more <img src="@/assets/images/index/arrow_orange.png" alt="arrow">
                 </div>
             </a>
         </section>
@@ -39,33 +44,35 @@ export default {
             news: [
                 {
                     category: 'NEWS',
-                    date: '2023.05.01',
-                    text: '五月會員好康禮',
+                    date: '2023.07.22',
+                    text: '網咖全新升級',
                     pic: require('@/assets/images/index/arrow_green.png'),
                 },
                 {
                     category: 'ACTIVITY',
-                    date: '2023.05.01',
-                    text: '五月會員好康禮',
+                    date: '2023.07.15',
+                    text: '超值年度回饋!!',
                     pic: require('@/assets/images/index/arrow_orange.png'),
                 },
 
                 {
                     category: 'ACTIVITY',
-                    date: '2023.05.01',
-                    text: '五月會員好康禮',
+                    date: '2023.07.10',
+                    text: '加入我們的主題派對',
                     pic: require('@/assets/images/index/arrow_orange.png'),
                 },
 
                 {
-                    category: 'NEWS',
-                    date: '2023.05.01',
-                    text: '五月會員好康禮',
-                    pic: require('@/assets/images/index/arrow_green.png'),
+                    category: 'ACTIVITY',
+                    date: '2023.07.10',
+                    text: '白鑽級會員活動',
+                    pic: require('@/assets/images/index/arrow_orange.png'),
                 }],
         }
     },
 }
+
+
 </script>
 
 
