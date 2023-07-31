@@ -21,41 +21,51 @@
       </div>
 
       <div class="aboutorigin_card_area">
-        <div class="aboutorigin_card_first clearfix">
-          <div class="aboutorigin_rightpic">
-            <img :src="require('@/assets/images/about/about_origin (1).svg')" alt="DAKA_CHAIR">
+        <div class="aboutorigin_card">
+          <div class="aboutorigin_pic">
+            <div class="pic01">
+              <img :src="require('@/assets/images/about/sprite01.svg')" alt="DAKA_computer">
+            </div>
           </div>
-          <div class="about_card_lefttext">
+          <div class="about_card_text">
             <h3 class="about_xl_text"><span class="about_orange_text">打</span><span class="about_green_text">咖</span></h3>
             <p class="about_l_text">一家充滿歡樂和活力的網咖品牌</p>
-            <p class="about_m_text">踏進<span class="about_orange_text">打</span><span class="about_green_text">咖</span>，你將感受到充滿活力的氛圍、先進的電腦設備、富有情節的漫畫租借、舒適的單雙人包廂，以及美味多樣的餐點服務，讓您在享受遊戲的同時，感受到無與倫比的愉悅。
+            <p class="about_m_text">踏進<span class="about_orange_text">打</span><span
+                class="about_green_text">咖</span>，你將感受到充滿活力的氛圍、先進的電腦設備、富有情節的漫畫租借、舒適的單雙人包廂，以及美味多樣的餐點服務，讓您在享受遊戲的同時，感受到無與倫比的愉悅。
             </p>
           </div>
         </div>
 
-        <div class="aboutorigin_card_second about_card">
-          <div class="aboutorigin_leftpic">
-            <img :src="require('@/assets/images/about/about_origin (2).svg')" alt="DAKA_COMIC">
+        <div class="aboutorigin_card">
+          <div class="aboutorigin_pic">
+            <div class="pic">
+              <img :src="require('@/assets/images/about/sprite02.svg')" alt="DAKA_gaming">
+            </div>
           </div>
-          <div class="about_card_righttext">
-            <p class="about_m_text">踏進<span class="about_orange_text">打</span><span class="about_green_text">咖</span>，你將感受到充滿活力的氛圍、先進的電腦設備、富有情節的漫畫租借、舒適的單雙人包廂，以及美味多樣的餐點服務，讓您在享受遊戲的同時，感受到無與倫比的愉悅。</p>
+          <div class="about_card_text">
+            <p class="about_m_text">踏進<span class="about_orange_text">打</span><span
+                class="about_green_text">咖</span>，你將感受到充滿活力的氛圍、先進的電腦設備、富有情節的漫畫租借、舒適的單雙人包廂，以及美味多樣的餐點服務，讓您在享受遊戲的同時，感受到無與倫比的愉悅。
+            </p>
           </div>
         </div>
 
-        <div class="aboutorigin_card_third about_card">
-          <div class="aboutorigin_rightpic">
-            <img :src="require('@/assets/images/about/about_origin (3).svg')" alt="DAKA_BATHROOM">
+        <div class="aboutorigin_card">
+          <div class="aboutorigin_pic">
+            <div class="pic02">
+              <img :src="require('@/assets/images/about/sprite03.svg')" alt="DAKA_comic">
+            </div>
           </div>
-          <div class="about_card_lefttext">
+          <div class="about_card_text">
             <p class="about_m_text">無論您是專業選手還是初學者，我們都將以最熱情的服務，陪伴您度過每一個遊戲瞬間。</p>
             <p class="about_m_text">我們的使命是為您帶來歡樂，成就遊戲中的夢想。</p>
           </div>
         </div>
 
-        <div class="about_card_four about_card">
+        <div class="about_card">
           <div class="about_card_centertext">
-            <p class="about_s_text textanimatio">在<span class="about_orange_text">打</span><span class="about_green_text ">咖</span>，我們用激情和活力為客人燃點遊戲的火花， 讓每一次光臨都成為一段難忘的體驗。</p>
-            <p class="about_s_text textanimatio">我們期待著與您共同分享這份歡樂和熱情！</p>
+            <p class="about_s_text">在<span class="about_orange_text">打</span><span
+                class="about_green_text ">咖</span>，我們用激情和活力為客人燃點遊戲的火花， 讓每一次光臨都成為一段難忘的體驗。</p>
+            <p class="about_s_text">我們期待著與您共同分享這份歡樂和熱情！</p>
           </div>
         </div>
       </div>
