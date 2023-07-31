@@ -8,7 +8,8 @@
 
           <div class="card">
             <div class="pic" @click="this.$router.push(`/comic_detail/${item.id}`)">
-              <img :src="item.img" alt="漫畫封面">
+              <!-- <img :src="item.img" alt="漫畫封面"> -->
+              <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
             </div>
             <div class="txt">
               <div class="title">
@@ -28,6 +29,7 @@
   </section>
 </template>
 <script>
+import {GET} from '@/plugin/axios';
 import { defineComponent } from 'vue'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css';
@@ -229,6 +231,15 @@ export default defineComponent({
       },
     },
   }),
-
+  created() {
+    GET('/data/comic.json')
+      .then((res) => {
+        console.log(res);
+        this.comicData = res;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 })
 </script>

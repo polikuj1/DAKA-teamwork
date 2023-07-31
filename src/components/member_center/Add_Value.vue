@@ -53,14 +53,25 @@
         </form>
       </div>
     </template>
+    <template v-slot:mb_modal>
+      <MbModal v-show="modalSwitch">
+        <template v-slot:modal_txt>
+          <div class="bind_success">
+            <span>儲值成功</span>
+            <button @click="back">返回</button>
+          </div>
+        </template>
+      </MbModal>
+    </template>
   </MbForm>
 </template>
 
 <script>
+import MbModal from '@/components/member_center/MemberModal.vue'
 import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
-    MbForm,
+    MbForm, MbModal,
   },
   data() {
     return {
@@ -79,9 +90,14 @@ export default {
       isDefault: false,
       showCardNumberWarning: false,
       showVerificationCodeWarning: false,
+      modalSwitch: false,
     }
   },
   methods: {
+    back() {
+      this.modalSwitch = false;
+      this.$router.push('/member_center/member_add_value');
+    },
     submit() {
       /*獲取填寫的假資料和選擇的信用卡資訊*/
       const amount = this.selectedAmount;
@@ -94,6 +110,7 @@ export default {
 
       /*將填寫的假資料和選擇的信用卡資訊一起處理*/
       /*可以透過 AJAX 或 Fetch 將資料傳送到後端 API 進行處理*/
+      this.modalSwitch = true;
 
       alert('儲值成功！');
     },

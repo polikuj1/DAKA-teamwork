@@ -17,11 +17,11 @@
       <span><i class="fa-solid fa-crown"></i> 白金會員</span>
       <ul>
         <li>
-          <span>姓名</span>
+          <span><i class="fa-solid fa-user"></i></span>
           <span>張嘉哲</span>
         </li>
         <li>
-          <span>信箱</span>
+          <span><i class="fa-solid fa-envelope"></i></span>
           <span>123@yahoo.com.w</span>
         </li>
         <li>

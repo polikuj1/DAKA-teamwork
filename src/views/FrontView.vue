@@ -36,14 +36,14 @@ export default {
   watch: {
     '$route.path': function(newPath, oldPath) {
       this.path = newPath;
-      console.log(this.path);
+      // console.log(this.path);
       if(this.path === '/index' && this.windowWidth < 1200) {
         this.show = false;
         setTimeout(() => {
           this.show = true;
         },100);
       }
-      window.scrollTo(0, 0);
+      // window.scrollTo(0, 0);
     }
   },
   methods: {

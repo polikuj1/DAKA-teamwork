@@ -17,7 +17,7 @@
     <div class="index_news">
         <div class="title">最新消息</div>
         <section class="news">
-            <a href="#" class="news_all" v-for="item in news">
+            <a @click="this.$router.push('/news')" class="news_all" v-for="item in news">
                 <div class="infor_top">
                     <div :class="['category', item.category === 'ACTIVITY' ? 'active' : '']">{{ item.category }}</div>
                     <div class="date">{{ item.date }}</div>

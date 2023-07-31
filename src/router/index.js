@@ -34,7 +34,7 @@ const routes = [
         component: () => import('../views/NewsView.vue')
       },
       {
-        path: '/news_detail',
+        path: '/news_detail/:id',
         name: 'news_detail',
         component: () => import('../views/NewsDetail.vue')
       },
@@ -144,15 +144,21 @@ const routes = [
         path: '/Q&A',
         name: 'Q&A',
         component: () => import('../views/Q&A.vue')
-      }
+      },
+      {
+        path: '/member_terms',
+        name: 'member_terms',
+        component: () => import('../views/MemberTerms.vue')
+      },
+      {
+        path: '/member_privacy',
+        name: 'member_privacy',
+        component: () => import('../views/MemberPrivacy.vue')
+      },
     ]
     
   },
-  {
-    path: '/member_terms',
-    name: 'member_terms',
-    component: () => import('../views/MemberTerms.vue')
-  },
+  
   // {
   //   path: '/login',
   //   name: 'login',
@@ -166,7 +172,14 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  },
 })
 
 export default router

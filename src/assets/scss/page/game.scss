@@ -1,5 +1,6 @@
+/*拼圖的設定*/
 .game {
-  padding: 0px 50px 200px;
+  padding: 0px 50px 150px;
   text-align: center;
   .wrap {
     display: flex;
@@ -51,3 +52,167 @@
     }
   }
 }
+
+
+/*拉霸機的設定*/
+.slot_machine {
+  .machine {
+    width: 545px;
+    height: 600px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: url('@/assets/images/game/slot_machine_03.svg') center center / cover;
+  }
+  .monitor {
+    width: 200px;
+    height: 50px;
+    padding: 0 10px;
+    display: flex;
+    position: absolute;
+    left: 182px;
+    top: 170px;
+  }
+  .fruits {
+    width: 80px;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+  }
+  .fruits .pic {
+    width: 60px;
+    height: 50px;
+    position: relative;
+  }
+  .spin {
+    animation: scroll 3s cubic-bezier(.5,0,.5,1) forwards, blur 3s cubic-bezier(.5,0,.5,1) 1;
+  }
+  .fruits .pic img {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+    display: block;
+  }
+  .fruits .one {
+    animation-delay: 0.2s;
+  }
+  .fruits .two {
+    animation-delay: 0.3s;
+  }
+  .fruits .three {
+    animation-delay: 0.4s;
+  }
+  button {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+  }
+  .slot_btn {
+    position: absolute;
+    right: 20px;
+    top: 168px;
+    cursor: pointer;
+    > div {
+      position: relative;
+      &:nth-child(1) {
+        width: 35px;
+        right: -6px;
+        top: 7px;
+      }
+      &:nth-child(2) {
+        width: 15px;
+        right: -15px;
+        top: 2px;
+        z-index: 1;
+      }
+      &:nth-child(3) {
+        left: -18px;
+        top: -13px;
+        width: 40px;
+      }
+    }
+  }
+  .handler {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.active {
+      .ball {
+        top: -10px;
+      }
+      .stick {
+        top: -25px;
+        height: 20px;
+      }
+    }
+    &.disabled {
+      .ball {
+        animation: none;
+        cursor: not-allowed;
+      }
+    }
+    .stick {
+      position: absolute;
+      top: -86px;
+      right: -12px;
+      width: 15px;
+      height: 80px;
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 20px;
+      background-color: rgb(120 116 127);
+      transition: 350ms;
+    }
+    .stick2 {
+      position: absolute;
+      top: -20px;
+      right: -12px;
+      width: 46px;
+      height: 15px;
+      border: 2px solid rgb(0, 0, 0);
+      border-radius: 0 20px 20px 0;
+      background-color: rgb(120 116 127);
+    }
+    .ball {
+      position: absolute;
+      top: -106px;
+      right: -20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 2px solid rgb(0, 0, 0);
+      background-color: rgb(184, 43, 33);
+      cursor: pointer;
+      transition: 500ms;
+      animation: ballLight 1s infinite alternate-reverse linear;
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {transform: translate3d(0,0,0);}
+  90% {transform: translate3d(0,-1900px,0);}
+  100% {transform: translate3d(0,-1860px,0);}
+}
+@keyframes blur {
+  0% {filter: blur(0);}
+  10% {filter: blur(0);}
+  30% {filter: blur(6px);}
+  60% {filter: blur(6px);}
+  95% {filter: blur(2px);}
+  100% {filter: blur(0px);}
+}
+
+@keyframes ballLight {
+  0% {
+    box-shadow: 0 0 3px rgb(224, 224, 107);
+  }
+  100% {
+    box-shadow: 0 0 10px 2px rgb(224, 224, 107);
+  }
+}
+
