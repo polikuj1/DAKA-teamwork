@@ -13,7 +13,7 @@
       <div class="news_tab_content">
         <!-- 全部消息 -->
         <div>
-          <a v-for="(message, index) in data" :key="message.id" class="message" @click="this.$router.push(`/news_detail/${message.id}`)">
+          <a v-for="(message, index) in data" :key="message.id" class="message" @click="this.$router.push(`/news_detail/${message.news_id}`)">
             <div class="news_pic" data-aos="fade-left" data-aos-offset="0" data-aos-delay="1000"
               data-aos-easing="ease-in-out">
               <!-- <img :src="message.img" alt="Message Image" /> -->
@@ -120,9 +120,10 @@ export default {
   },
   created() {
     this.data = this.allMessages;
-    GET('/data/news.json')
+    GET('/data/news1.json')
     .then((res) => {
-      this.allMessages = this.data = res;
+      console.log(res);
+      this.allMessages = this.data = res[2].data;
     })
     .catch((err) => {
       console.log(err);

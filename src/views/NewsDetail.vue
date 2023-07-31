@@ -39,26 +39,26 @@ export default {
         goNews(e) {
             console.log(e.target.textContent);
             if(e.target.textContent === '下一篇＞') {
-                if(this.news.id === this.res.length) {
+                if(parseInt(this.news.news_id) === this.res.length) {
                     this.$router.push(`/news_detail/1`);
                 } else {
-                    this.$router.push(`/news_detail/${this.news.id + 1}`);
+                    this.$router.push(`/news_detail/${parseInt(this.news.news_id) + 1}`);
                 }
             } else {
-                if(this.news.id === 1) {
+                if(this.news.news_id === '1') {
                     this.$router.push(`/news_detail/${this.res.length}`);
                 } else {
-                    this.$router.push(`/news_detail/${this.news.id - 1}`);
+                    this.$router.push(`/news_detail/${parseInt(this.news.news_id) - 1}`);
                 }
             }
             this.getData();
         },
         getData() {
-            GET('/data/news.json')
+            GET('/data/news1.json')
             .then((res) => {
-                this.res = res;
-                let data = res.filter(item => item.id === parseInt(this.$route.params.id));
-                console.log(data);
+                this.res = res[2].data;
+                console.log(this.res);
+                let data = this.res.filter(item => item.news_id === this.$route.params.id);
                 this.news = data[0];
             })
             .catch((err) => {
