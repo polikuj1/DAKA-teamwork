@@ -101,9 +101,6 @@
       .card {
         width: 42%;
         margin: 0;
-        .pic {
-          height: 400px;
-        }
         button {
           @include btn_res;
           &:hover {

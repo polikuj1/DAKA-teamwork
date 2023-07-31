@@ -77,13 +77,14 @@
       </div>
     </div>
     <div class="btn_content">
-      <button class="comiclist_cartbtn">送出預約<i class="fa-solid fa-book-open-reader bookgap"></i>
-      </button>
+      <a href="/LoginView"><button class="comiclist_cartbtn">送出預約<i class="fa-solid fa-book-open-reader bookgap"></i>
+      </button></a>
     </div>
   </div>
 </template>
 <style>
 @import '@/assets/scss/page/comiccart.scss';
+
 </style>
 <script>
 import {GET} from '@/plugin/axios';
@@ -138,7 +139,6 @@ export default {
         },
       ],
       borrowDate: "",
-
     };
   },
 
@@ -220,8 +220,9 @@ export default {
       let newdate = new Date(timeStamp);
       let year = newdate.getFullYear();
       let month = newdate.getMonth() + 1 < 10 ? "0" + (newdate.getMonth() + 1) : newdate.getMonth() + 1;
-      let date = newdate.getDate() < 10 ? "0" + newdate.getDate() : newdate.getDate() + 3;
+      let date = newdate.getDate() < 10 ? "0" + newdate.getDate() : newdate.getDate();
       this.borrowDate = year + "/" + month + "/" + date;
+      console.log(this.borrowDate);
     },
     // 定時器函數
     nowTimes() {

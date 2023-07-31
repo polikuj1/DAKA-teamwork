@@ -40,9 +40,8 @@
 
   .category_buttons button {
     margin: 0 10px;
-    padding: 10px 15px;
     font-size: 1.25rem;
-    font-weight: 700;
+    line-height: 1.5;
     color: $main_txt_color;
     background-color: $btn_bg_color;
     border-radius: $btn_br;
@@ -51,18 +50,18 @@
   }
 
   .category_buttons :hover {
-    color: $btn_bg_color;
-    background-color: $main_txt_color;
+    color: $main_txt_color;
+    background-color: #f9bb8a;
   }
 
   .category_buttons button.comboHover:hover {
-    color: $btn_bg_color;
+    background-color: #f9bb8a;
     background-color: $main_txt_color;
   }
 
   .category_buttons button.active {
-    color: $btn_bg_color;
-    background-color: $main_txt_color;
+    color: $main_txt_color;
+    background-color: #f9bb8a;
   }
 
   .variousmeal_card_area {
