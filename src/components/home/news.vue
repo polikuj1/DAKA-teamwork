@@ -15,8 +15,8 @@
 
 <template>
     <div class="index_news">
-        <div class="title">最新消息</div>
-        <section class="news">
+        <div class="title" data-aos="fade-up">最新消息</div>
+        <section class="news" data-aos="fade-up">
             <a @click="this.$router.push('/news')" class="news_all" v-for="item in news">
                 <div class="infor_top">
                     <div :class="['category', item.category === 'ACTIVITY' ? 'active' : '']">{{ item.category }}</div>

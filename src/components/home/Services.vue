@@ -3,10 +3,10 @@
     <!-- <div :class="item" v-for="item in circle" :key="item">
       <span></span>
     </div> -->
-    <h3>服務項目</h3>
+    <h3 data-aos="fade-up">服務項目</h3>
     <div class="service_list">
       <div v-for="item in service" :key="item.title" :class="item.class" @click="gaComic(item.title)">
-        <div class="pic">
+        <div class="pic" data-aos="fade-up">
           <img :src="item.img">
           <h4>
             <span>{{ item.title}}</span>
@@ -17,7 +17,7 @@
             {{ item.sideTxt }}
           </div>
         </div>
-        <div class="txt">
+        <div class="txt" data-aos="fade-up">
           {{ item.content }}
         </div>
       </div>

@@ -80,7 +80,7 @@
             position: absolute;
             top: 70%;
             width: 125%;
-            right: -135%;
+            right: -250%;
         }
 
         .tp_text {
@@ -102,9 +102,6 @@
             top: 20%;
             font-weight: 600;
             color: white;
-
-
-
         }
 
         .tn_text {
@@ -133,7 +130,7 @@
         .tp_shop:hover~.taipei {
             transform: scale(1.4);
         }
-        
+
         .tp_shop:hover~.tp_back {
             transform: scale(1.1) rotate(15deg);
             transition: all .5s;
@@ -177,7 +174,7 @@
             transform: scale(1.1) rotate(15deg);
             transition: all .5s;
         }
-        
+
 
         .tainan {
             position: absolute;
@@ -194,6 +191,7 @@
         .tn_shop:hover~.tainan {
             transform: scale(1.4);
         }
+
         .tn_shop:hover~.tn_back {
             transform: scale(1.1) rotate(15deg);
             transition: all .5s;
@@ -202,9 +200,43 @@
         .tn_text:hover~.tainan {
             transform: scale(1.4);
         }
+
         .tn_text:hover~.tn_back {
             transform: scale(1.1) rotate(15deg);
             transition: all .5s;
+        }
+
+        .pic {
+            width: 621.91px;
+            background: url(@/assets/images/index/walkman.svg) no-repeat left center;
+            background-size: cover;
+            overflow: hidden;
+            animation: walkman 2.5s steps(2, end) infinite;
+
+
+            img {
+                opacity: 0;
+            }
+        }
+
+        @keyframes walkman {
+            0% {
+                background-position: 0;
+            }
+
+            100% {
+                background-position: -1263.82px 0;
+            }
+        }
+
+        @keyframes walking {
+            0% {
+                transform: translateX(200px);
+            }
+
+            100% {
+                transform: translateX(100px);
+            }
         }
 
     }
@@ -403,11 +435,9 @@
 @media screen and (max-width: 768px) {
     .store {
 
-
-
-
         .title {
             color: white;
+            padding-bottom: 40px;
         }
 
         .map {

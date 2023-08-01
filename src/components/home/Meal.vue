@@ -1,8 +1,8 @@
 <template>
-    <section class="home_meal">
-        <h3>美味餐點</h3>
+    <section class="home_meal" >
+        <h3 data-aos="fade-up">美味餐點</h3>
 
-        <div class="meal_intro">
+        <div class="meal_intro" data-aos="fade-up">
             <p>
                 無需離開遊戲環境，您只需輕輕一按，美味餐點就能送到您的桌前。您可以在享受遊戲的同時，隨心品味各式佳餚，為遊戲體驗增添一份風味與滿足。
             </p>
@@ -13,14 +13,14 @@
             </a>
         </div>
 
-        <div class="meal_group">
+        <div class="meal_group" >
             <div v-for="meal in meals" :key="meal.id" :class="`meal_pic ${meal.id}`" 
-            data-aos="zoom-in-up" data-aos-anchor-placement="center-bottom">
+            data-aos="zoom-in-up" data-aos-anchor-placement="bottom-bottom">
                 <img :src="meal.imgSrc" :alt="meal.alt">
             </div>
         </div>
 
-        <div class="meal_figure">
+        <div class="meal_figure" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
             <img src="@/assets/images/home/food_sharing.svg" alt="共享美食">
         </div>
 

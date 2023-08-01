@@ -1,7 +1,7 @@
 <template>
     <section class="socialmedia">
-        <h3>\ Instagram /</h3>
-        <div class="post_slides">
+        <h3 data-aos="fade-up">\ Instagram /</h3>
+        <div class="post_slides" data-aos="fade-up">
             <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
             :slideWidth="400">
                 <Slide v-for="code in embedCodes" :key="code.id">
