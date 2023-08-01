@@ -33,27 +33,27 @@
                 <div class="price_content">
                   <div class="normal_computer">
                     <p class="price_title">&nbsp;<i class="fa-solid fa-display"></i> 電腦使用_一般區&nbsp;</p>
-                    <p class="onehour">一小時 ---------------- {{ location.normalPrice.oneHour }}</p>
-                    <p class="fourhour">四小時 ---------------- {{ location.normalPrice.fourHour }}</p>
-                    <p class="sixhour">六小時 ---------------- {{ location.normalPrice.sixHour }}</p>
+                    <p class="onehour">一小時 -------------- {{ location.normalPrice.oneHour }}</p>
+                    <p class="fourhour">四小時 -------------- {{ location.normalPrice.fourHour }}</p>
+                    <p class="sixhour">六小時 -------------- {{ location.normalPrice.sixHour }}</p>
                   </div>
                   <div class="gaming_computer">
                     <p class="price_title">&nbsp;<i class="fa-solid fa-computer"></i> 電腦使用_電競區&nbsp;</p>
-                    <p class="onehour">一小時 ---------------- {{ location.gamingPrice.oneHour }}</p>
-                    <p class="fourhour">四小時 ---------------- {{ location.gamingPrice.fourHour }}</p>
-                    <p class="sixhour">六小時 ---------------- {{ location.gamingPrice.sixHour }}</p>
+                    <p class="onehour">一小時 -------------- {{ location.gamingPrice.oneHour }}</p>
+                    <p class="fourhour">四小時 -------------- {{ location.gamingPrice.fourHour }}</p>
+                    <p class="sixhour">六小時 -------------- {{ location.gamingPrice.sixHour }}</p>
                   </div>
                 </div>
                 <div class="price_list">
                   <div class="box_space">
                     <p class="price_title">&nbsp;<i class="fa-solid fa-couch"></i> 包廂區&nbsp;</p>
-                    <p class="onehour">一小時 ---------------- {{ location.boxPrice.oneHour }}</p>
-                    <p class="fourhour">四小時  ---------------- {{ location.boxPrice.fourHour }}</p>
-                    <p class="sixhour">六小時  ---------------- {{ location.boxPrice.sixHour }}</p>
+                    <p class="onehour">一小時 -------------- {{ location.boxPrice.oneHour }}</p>
+                    <p class="fourhour">四小時  -------------- {{ location.boxPrice.fourHour }}</p>
+                    <p class="sixhour">六小時  -------------- {{ location.boxPrice.sixHour }}</p>
                   </div>
                   <div class="comic_price">
                     <p class="price_title">&nbsp;<i class="fa-solid fa-book-open-reader"></i> 漫畫租借&nbsp;</p>
-                    <p class="onehour">一本  -------------------- {{ location.comicPrice.oneBook }}</p>
+                    <p class="onehour">一本  ------------------ {{ location.comicPrice.oneBook }}</p>
                     <p class="comic_notice"><i class="fa-solid fa-triangle-exclamation"></i>注意：<br>購買打咖時數者可於館內免費借閱漫畫雜誌。</p>
                   </div>
                 </div>
