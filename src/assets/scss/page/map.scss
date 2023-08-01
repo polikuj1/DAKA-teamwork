@@ -133,9 +133,19 @@
         .tp_shop:hover~.taipei {
             transform: scale(1.4);
         }
+        
+        .tp_shop:hover~.tp_back {
+            transform: scale(1.1) rotate(15deg);
+            transition: all .5s;
+        }
 
         .tp_text:hover~.taipei {
             transform: scale(1.4);
+        }
+
+        .tp_text:hover~.tp_back {
+            transform: scale(1.1) rotate(15deg);
+            transition: all .5s;
         }
 
         .taoyuan {
@@ -154,9 +164,20 @@
             transform: scale(1.4);
         }
 
+        .zl_shop:hover~.zl_back {
+            transform: scale(1.1) rotate(15deg);
+            transition: all .5s;
+        }
+
         .zl_text:hover~.taoyuan {
             transform: scale(1.4);
         }
+
+        .zl_text:hover~.zl_back {
+            transform: scale(1.1) rotate(15deg);
+            transition: all .5s;
+        }
+        
 
         .tainan {
             position: absolute;
@@ -173,10 +194,19 @@
         .tn_shop:hover~.tainan {
             transform: scale(1.4);
         }
+        .tn_shop:hover~.tn_back {
+            transform: scale(1.1) rotate(15deg);
+            transition: all .5s;
+        }
 
         .tn_text:hover~.tainan {
             transform: scale(1.4);
         }
+        .tn_text:hover~.tn_back {
+            transform: scale(1.1) rotate(15deg);
+            transition: all .5s;
+        }
+
     }
 
 }

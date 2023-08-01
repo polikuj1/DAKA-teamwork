@@ -1,6 +1,6 @@
 <template>
     <section class="home_banner">
-        <Carousel :autoplay="2000" :wrap-around="true">
+        <Carousel  :wrap-around="true">
             <Slide v-for="item in bannerSlides" :key="item.id">
                 <!-- <div class="carousel__item">{{ slide }}</div> -->
                 <img :src="item.imgSrc" alt="ad">

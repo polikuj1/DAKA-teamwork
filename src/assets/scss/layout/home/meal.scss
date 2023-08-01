@@ -41,7 +41,7 @@
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                padding: 0.5rem calc(1rem + 5px) 0.5rem 1rem;
+                padding: 0.5rem calc(1rem + 10px) 0.5rem 1rem;
                 font-size: 0.85rem;
                 background-color: $main_txt_color;
                 color: $btn_bg_color;
@@ -52,17 +52,16 @@
                 img {
                     width: 2rem;
                     height: auto;
+                    transition: all .2s;
                 }
 
             }
 
             &:hover {
-                // .btn_more {
-                //     padding: 0.5rem calc(1rem + 5px) 0.5rem 1rem;
-                // }
 
                 img {
-                    transform: translateX(5px);
+                    transform: translateX(10px);
+                    transition: all .5s;
                 }
             }
         }

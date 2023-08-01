@@ -39,6 +39,16 @@
                 img {
                     width: 2rem;
                     height: auto;
+                    transform: scale(1);
+                    transition: all .2s;
+                }
+            }
+
+            &:hover {
+                
+                img {
+                    transform: translateX(10px) scale(1.1);
+                    transition: all .5s;
                 }
             }
         }
@@ -109,10 +119,23 @@
                 }
 
                 .arrow_green {
-                    width: 15%;
+                    width: 10%;
                     object-fit: cover;
                     position: absolute;
-                    right: 10%;
+                    right: 15%;
+                    top: 40%;
+
+                    img {
+                        transition: all .2s;
+                    }
+                }
+            }
+
+            &:hover {
+                
+                img {
+                    transform: translateX(15px);
+                    transition: all .5s;
                 }
             }
         }
