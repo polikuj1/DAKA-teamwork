@@ -6,7 +6,7 @@
           <path d="M 50 150 m -50 0 a 120 60 0 1 1 10 0 a 50 50 0 1 1 10 0 z" id="circle" />
           <text fill="none" stroke="#FF5E1E" stroke-width="0.2">
             <textPath xlink:href="#circle">
-              Welcome DAKA ! Welcome DAKA ! Welcome DAKA ! Welcome DAKA ! Welcome DAKA !
+              Welcome to DAKA ! Welcome to DAKA ! Welcome to DAKA ! Welcome to DAKA ! Welcome DAKA 
             </textPath>
           </text>
         </g>

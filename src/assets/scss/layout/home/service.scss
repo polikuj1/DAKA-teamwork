@@ -12,9 +12,19 @@
   .service_item {
     width: 100%;
     padding-bottom: 80px;
+    &:nth-of-type(1) {
+      .pic {
+        cursor: pointer;
+      }
+    }
     .pic {
       position: relative;
       aspect-ratio: 1.16/1;
+      &:hover {
+        &::after {
+          width: 70%;
+        }
+      }
       &::before {
         content: '';
         width: 100%;
@@ -28,13 +38,14 @@
       }
       &::after {
         content: '';
-        width: 70%;
+        width: 0%;
         height: 6px;
         border-radius: 20px;
         background-color: #ED9B59;
         position: absolute;
         bottom: -30px;
         left: 0;
+        transition: .3s
       }
       img {
         @include img;
@@ -144,6 +155,12 @@
       align-items: flex-start;
       .pic {
         width: 40%;
+        &:hover {
+          .decoration {
+            width: 30px;
+            height: 30px;
+          }
+        }
         &::after {
           bottom: -50px;
         }
@@ -156,8 +173,9 @@
         right: -40px;
         font-size: 1.1rem;
         .decoration {
-          width: 30px;
-          height: 30px;
+          width: 0px;
+          height: 0px;
+          transition: .3s;
         }
       }
       .txt {

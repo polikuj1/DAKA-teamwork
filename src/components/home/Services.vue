@@ -5,7 +5,7 @@
     </div> -->
     <h3>服務項目</h3>
     <div class="service_list">
-      <div v-for="item in service" :key="item.title" :class="item.class">
+      <div v-for="item in service" :key="item.title" :class="item.class" @click="gaComic(item.title)">
         <div class="pic">
           <img :src="item.img">
           <h4>
@@ -87,7 +87,13 @@ export default {
     }
   },
   methods: {
-
+    gaComic(title) {
+      if(title === '漫畫') {
+        this.$router.push('/comic_search');
+      } else {
+        return;
+      }
+    }
   },
   computed: {
 
