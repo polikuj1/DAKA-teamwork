@@ -32,12 +32,12 @@ import "@/assets/scss/_style.scss"
 
 
 
-firebase.initializeApp(firebaseConfig);
+// firebase.initializeApp(firebaseConfig);
   
-  const db = getFirestore(firebaseApp);
-  const firebaseApp = initializeApp({
-    // your application settings
-  })
+//   const db = getFirestore(firebaseApp);
+//   const firebaseApp = initializeApp({
+//     // your application settings
+//   })
  
 
   

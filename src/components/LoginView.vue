@@ -55,18 +55,18 @@
 
 </style>
 <script >
-import { collection } from 'firebase/firestore'
-import {
-  getRedirectResult,
-  signInWithRedirect,
-  signOut,
-} from 'firebase/auth'
-import { useCurrentUser, useFirebaseAuth } from 'vuefire'
-const auth = useFirebaseAuth();
+// import { collection } from 'firebase/firestore'
+// import {
+//   getRedirectResult,
+//   signInWithRedirect,
+//   signOut,
+// } from 'firebase/auth'
+// import { useCurrentUser, useFirebaseAuth } from 'vuefire'
+// const auth = useFirebaseAuth();
 
 
-const error = ref(null);
-const user = useCurrentUser();
+// const error = ref(null);
+// const user = useCurrentUser();
 import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
 
 export default {
