@@ -212,9 +212,9 @@ img {
           // .state-0:hover {
           //   outline: 0.3rem solid #263238;
           // }
-.selected{
-  outline: 0.3rem solid #263238;
-}
+          .selected {
+            outline: 0.3rem solid #263238;
+          }
 
           /* 1=使用中樣式 */
           .state-1 {
@@ -613,14 +613,13 @@ img {
       font-size: 1.5rem;
       color: #fff;
       border: none;
-      
     }
   }
 }
 
 @media screen and (min-width: 768px) {
   .reservation {
-    max-width: 1200px;
+    
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -629,6 +628,7 @@ img {
     justify-content: center;
 
     &_read {
+      max-width: 1200px;
       margin-bottom: 120px;
       padding: 20px;
       h2 {
@@ -639,6 +639,7 @@ img {
         font-weight: 400;
       }
       &_rules {
+        max-width: 1200px;
         background-color: #fff;
         padding: 40px;
         border-radius: 10px;
@@ -1192,7 +1193,7 @@ img {
     }
 
     .reservation {
-      max-width: 1200px;
+      
       margin: 0 auto;
       width: 100%;
       display: flex;
@@ -1223,7 +1224,7 @@ img {
             }
           }
         }
-         .reservation_submit {
+        .reservation_submit {
           color: #fff;
           padding: 16px 40px;
           border-radius: 100px;

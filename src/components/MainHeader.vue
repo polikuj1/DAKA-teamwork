@@ -14,7 +14,7 @@
         </ul>
       </a>
       <a href="" @click.prevent="toggleLogin">{{ loginWord=login === true ? '登出' : loginWord }}</a>
-      <a href="" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
+      <a href="" @click.prevent="this.$router.push('/member_center/member_nav')" v-show="login"><i class="fa-solid fa-user"></i>{{ member.mname }}</a>
     </nav>
   </div>
   <login v-show="isLoginOpen"></login>
@@ -107,6 +107,7 @@ export default {
      goPage(site,e) {
     this.$router.push(site);
      },
+    
   },
   components: {
     login, forgot,register
@@ -119,7 +120,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isLoginOpen', 'forgotPsw', 'login','isRegister'])
+    ...mapState(['isLoginOpen', 'forgotPsw', 'login','isRegister','member'])
   }
 }
 </script>
