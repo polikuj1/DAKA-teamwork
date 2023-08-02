@@ -1,5 +1,5 @@
 // require('./jquery.min.js');
-require('imports-loader?wrapper=window&!./modernizr.custom.js');
+// require('imports-loader?wrapper=window&!./modernizr.custom.js');
 // require('imports-loader?wrapper=window&!./jquery.min.js');
 // require('imports-loader?imports=default|jquery|$!./jquery.min.js');
 
