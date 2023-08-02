@@ -96,14 +96,19 @@
             </li>
           </ul>
         </div>
+        <button class="reservation_submit" @click="checkLogin"  v-show="!login">
+          立即登入預約
+        </button>
       </section>
 
-      <section class="reservation_date">
+      <section class="reservation_date" v-show="login">
         <h2 class="reservation_text"><span>2</span> 選擇日期及時間</h2>
         <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
       </section>
 
-      <section class="reservation_seat">
+
+      <!-- 座位先開啟 -->
+      <section class="reservation_seat" >
         <h2 class="reservation_text"><span>3</span> 選擇座位</h2>
         <div class="reservation_all_seat">
           <main class="tabs">
@@ -142,10 +147,11 @@
               </div>
               <div class="reservation_general_seat">
                 <button
-                  class="seat_btn general_seat"
+                  :class="{seat_btn:true, general_seat:true,selected:isSelected},`state-${item.state}`"
                   v-for="item in seats_b"
                   :key="item.no"
-                  :class="`state-${item.state}`"
+                  
+                  
                 >
                   <div class="content">
                     <h4 @click.prevent="seatSelected(item)">
@@ -240,8 +246,10 @@
         </div>
       </section>
 
-      <section class="reservation_confirm">
-        <h2 class="reservation_text"><span>4</span> 確認預約細項</h2>
+
+      <!-- 確認先開啟 -->
+      <section class="reservation_confirm" >
+        <h2 class="reservation_text"><span>4</span> {{reservation.seat}}確認預約細項</h2>
         <div class="reservation_confirm_data">
           <div class="confirm_data_time">
             <div class="data_time_start">
@@ -298,7 +306,7 @@
 import PageTitle from "@/components/PageTitle.vue";
 import Date from "@/components/reservation/Date.vue";
 import axios from "axios";
-
+import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
 import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
@@ -335,6 +343,9 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["toggleLogin","toggleForgotPsw",'toggleRegister']),
+
+
     // 切換tab
     updateTab(index) {
       this.tabActive = index;
@@ -355,7 +366,7 @@ export default {
     seatSelected(item) {
       if (
         this.reservation.seat.indexOf(item.area + item.no) === -1 &&
-        this.selected.length <= 7
+        this.selected.length < 7
       ) {
         if (+item.state === 0) {
           if (this.tabActive === 1) {
@@ -368,11 +379,13 @@ export default {
         } else {
           return;
         }
+
+        this.reservation.seat.push(this.selectedArea + this.selectedSeat);
+
       } else {
         return;
       }
 
-      this.reservation.seat.push(this.selectedArea + this.selectedSeat);
 
       this.selectedAreaWord =
         this.selectedArea === "A"
@@ -400,9 +413,22 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    checkLogin() {   
+      if (!this.login) {
+        this.toggleLogin()
+      } else {
+        return;
+      }
     }
   },
-  computed: {},
+  computed: {
+    // isSelected() {
+    //   return this.seat_b.includes(this.seatNumber);
+    // },
+    
+    
+  },
   watch: {},
   created() {
     this.fetchSeatData();

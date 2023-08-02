@@ -50,6 +50,9 @@ img {
   .reservation_read {
     margin-bottom: 120px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .reservation_text {
       font-size: 2.5rem;
       color: #fff;
@@ -75,6 +78,16 @@ img {
           margin-right: 22px;
         }
       }
+    }
+    .reservation_submit {
+      background-color: $btn_bg_color;
+      padding: 16px 40px;
+      border-radius: 100px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #fff;
+      border: none;
+      margin-top: 100px;
     }
   }
 
@@ -195,10 +208,14 @@ img {
             cursor: pointer;
           }
           /*TODO 座位需要可以複選*/
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
+.selected{
+  outline: 0.3rem solid #263238;
+}
+
           /* 1=使用中樣式 */
           .state-1 {
             background-color: #daebea; /* 淡綠色背景代表使用中 */
@@ -272,10 +289,10 @@ img {
             cursor: pointer; /* 鼠標顯示為禁止標誌 */
           }
           /*TODO 座位需要可以複選*/
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
           /* 1=使用中樣式 */
           .state-1 {
             background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -352,10 +369,10 @@ img {
             background-color: #54c1ba; /* 深綠色背景代表空位 */
             cursor: pointer;
           }
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
 
           /* 1=使用中樣式 */
           .state-1 {
@@ -428,10 +445,10 @@ img {
             cursor: pointer; /* 鼠標顯示為禁止標誌 */
           }
           /*TODO 座位需要可以複選*/
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
           /* 1=使用中樣式 */
           .state-1 {
             background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -589,6 +606,7 @@ img {
       }
     }
     .reservation_submit {
+      background-color: $btn_bg_color;
       padding: 16px 40px;
       border-radius: 100px;
       cursor: pointer;
@@ -753,10 +771,10 @@ img {
               cursor: pointer;
             }
             /*TODO 座位需要可以複選*/
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
             /* 1=使用中樣式 */
             .state-1 {
               background-color: #daebea; /* 淡綠色背景代表使用中 */
@@ -830,10 +848,10 @@ img {
               cursor: pointer; /* 鼠標顯示為禁止標誌 */
             }
             /*TODO 座位需要可以複選*/
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
             /* 1=使用中樣式 */
             .state-1 {
               background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -910,10 +928,10 @@ img {
               background-color: #54c1ba; /* 深綠色背景代表空位 */
               cursor: pointer;
             }
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
 
             /* 1=使用中樣式 */
             .state-1 {
@@ -986,10 +1004,10 @@ img {
               cursor: pointer; /* 鼠標顯示為禁止標誌 */
             }
             /*TODO 座位需要可以複選*/
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
             /* 1=使用中樣式 */
             .state-1 {
               background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -1203,6 +1221,19 @@ img {
             .reservation_rules_img {
               margin-right: 22px;
             }
+          }
+        }
+         .reservation_submit {
+          color: #fff;
+          padding: 16px 40px;
+          border-radius: 100px;
+          cursor: pointer;
+          font-size: 1.5rem;
+          background-color: $btn_bg_color;
+          &:hover {
+            background-color: #fff;
+            color: $btn_bg_color;
+            border: 1px solid $btn_bg_color;
           }
         }
       }

@@ -4,7 +4,7 @@
   <Footer></Footer>
   <MainMenu />
   <div class="main_game_btn">
-    <div @click="goGame">
+    <div @click=" checkLogin">
       <img src="@/assets/images/button_gaming.png" alt="">
     </div>
   </div>
@@ -18,7 +18,7 @@ import SideButton from '@/components/SideButton.vue';
 import MainHeader from '@/components/MainHeader.vue';
 import Footer from '@/components/Footer.vue';
 import MainMenu from '@/components/HbMenu.vue';
-
+import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
 
 
 export default {
@@ -46,7 +46,11 @@ export default {
       // window.scrollTo(0, 0);
     }
   },
+  computed: {
+    ...mapState(["isLoginOpen","forgotPsw",'login']),
+  },
   methods: {
+    ...mapMutations(["toggleLogin","toggleForgotPsw",'toggleRegister']),
     reviseStatus() {
       if(this.windowWidth > 1200 && window.scrollY < 999 && this.path === '/index') {
         this.show = false;
@@ -68,10 +72,13 @@ export default {
         this.btn_show = false;
       }
     },
-    goGame() {
-      console.log(123);
-      this.$router.push('/game');
-    },
+    checkLogin() {   
+      if (!this.login) {
+        this.toggleLogin()
+      } else {
+        this.$router.push('/game');
+      }
+    }
   },
   mounted() {
     this.path = this.$route.path;

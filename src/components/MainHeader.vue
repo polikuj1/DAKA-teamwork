@@ -9,34 +9,39 @@
       <a href="" v-for="nav in header" :key="nav.title" @click.prevent.stop="goPage(nav.site, $event)">
         {{ nav.title }}
         <ul>
-          <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}</li>
+          <li v-for="item in nav.title_list" :key="item.li" @click.prevent.stop="goPage(item.site, $event)">{{ item.li }}
+          </li>
         </ul>
       </a>
-      <a href="" @click.prevent="loginOpen" >登入 | 註冊</a>
+      <a href="" @click.prevent="toggleLogin">{{ loginWord=login === true ? '登出' : loginWord }}</a>
       <a href="" @click.prevent="this.$router.push('/member_center/member_nav')"><i class="fa-solid fa-user"></i></a>
-
     </nav>
   </div>
-  <login v-if="$store.state.login" ></login>
+  <login v-show="isLoginOpen"></login>
+  <forgot v-show="forgotPsw"></forgot>
+  <register v-show="isRegister"></register>
 </template>
 
 
 <script>
+import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import login from '@/components/LoginView.vue';
+import forgot from '@/components/ForgotPassword.vue';
+import register from '@/components/Register.vue';
 export default {
-  props: ['path','show'],
+  props: ['path', 'show'],
   name: 'MainHeader',
   watch: {
     // 處理header只有在首頁時需要先消失
     path() {
-      if(this.path === '/index') {
+      if (this.path === '/index') {
         this.style = 'disappear';
       } else {
         this.style = '';
       }
     },
     show() {
-      if(this.show) {
+      if (this.show) {
         this.style = '';
       } else {
         this.style = 'disappear';
@@ -91,43 +96,32 @@ export default {
             // },
           ],
         },
-       
+
       ],
-      
+      loginWord: '登入 | 註冊'
     }
   },
   methods: {
-    openModal() {
-        this.modalControl = true;
-    },
-    closeModal() {
-      this.modalControl = false;
-    },
-    goPage(site,e) {
-      if(e.target.innerText === '登入 | 註冊') {
-        this.openModal();
-      }
-      // console.log(site);
-      // console.log(e);
-      this.$router.push(site);
-    },
-    loginOpen(){
-      this.$store.state.login=true;
-    }
+    ...mapMutations(['toggleLogin', 'toggleForgotPsw','toggleRegister'])
+    ,
+     goPage(site,e) {
+    this.$router.push(site);
+     },
   },
   components: {
-    login,
+    login, forgot,register
   },
   mounted() {
-    if(this.show) {
+    if (this.show) {
       this.style = '';
     } else {
       this.style = 'disappear';
     }
+  },
+  computed: {
+    ...mapState(['isLoginOpen', 'forgotPsw', 'login','isRegister'])
   }
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

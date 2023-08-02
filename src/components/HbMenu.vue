@@ -14,19 +14,25 @@
       <nav ref="nav">
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{ li.title }}</li>
-          <li @click.prevent.stop="loginOpen">登入 | 註冊</li>
+          <li ><span class="fa-solid fa-user"></span>{{ memberWord=login === true ? member.name : memberWord }}</li>
+          <li @click.prevent="loginOpen">{{ loginWord=login === true ? '登出' : loginWord }}</li>
         </ul>
       </nav>
     </div>
   </div>
-  <Login v-if="this.$store.state.login"></Login>
+  <login v-show="isLoginOpen" ></login>
+  <forgot v-show="forgotPsw"></forgot>
+  <register v-show="isRegister"></register>
 </template>
 
 <script>
+import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
 import login from '@/components/LoginView.vue';
+import forgot from '@/components/ForgotPassword.vue';
+import register from '@/components/Register.vue';
 export default {
   components:{
-    login,
+    login,forgot,register
   },
   data() {
     return {
@@ -66,17 +72,20 @@ export default {
           class: 'fa-solid fa-calendar-days',
           site: '/reservation',
         },
-        {
-          title: '會員中心',
-          class: 'fa-solid fa-user',
-          site: '/member_center/member_nav',
-        },
+        // {
+        //   title: '會員中心',
+        //   class: 'fa-solid fa-user',
+        //   site: '/member_center/member_nav',
+        // },
      
       ],
       isOpen: false,
+      loginWord: '登入 | 註冊',
+      memberWord:'會員中心'
     }
   },
   methods: {
+    ...mapMutations(['toggleLogin','toggleForgotPsw','toggleRegister']),
     goPage(site) {
       this.$router.push(site);
       this.$refs.nav.classList.add('disappear');
@@ -99,6 +108,7 @@ export default {
       }
     },
     loginOpen(){
+      this.toggleLogin()
       this.$store.state.login=true;
       this.openMenu()
       this.$refs.nav.classList.add('disappear');
@@ -109,5 +119,8 @@ export default {
       },100)
     }
   },
+  computed:{
+  ...mapState(['isLoginOpen","forgotPsw','member','isRegister'])
+}
 }
 </script>
