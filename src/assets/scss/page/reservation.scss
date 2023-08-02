@@ -208,10 +208,14 @@ img {
             cursor: pointer;
           }
           /*TODO 座位需要可以複選*/
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
+.selected{
+  outline: 0.3rem solid #263238;
+}
+
           /* 1=使用中樣式 */
           .state-1 {
             background-color: #daebea; /* 淡綠色背景代表使用中 */
@@ -285,10 +289,10 @@ img {
             cursor: pointer; /* 鼠標顯示為禁止標誌 */
           }
           /*TODO 座位需要可以複選*/
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
           /* 1=使用中樣式 */
           .state-1 {
             background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -365,10 +369,10 @@ img {
             background-color: #54c1ba; /* 深綠色背景代表空位 */
             cursor: pointer;
           }
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
 
           /* 1=使用中樣式 */
           .state-1 {
@@ -441,10 +445,10 @@ img {
             cursor: pointer; /* 鼠標顯示為禁止標誌 */
           }
           /*TODO 座位需要可以複選*/
-          .state-0:focus,
-          .state-0:hover {
-            outline: 0.3rem solid #263238;
-          }
+          // .state-0:focus,
+          // .state-0:hover {
+          //   outline: 0.3rem solid #263238;
+          // }
           /* 1=使用中樣式 */
           .state-1 {
             background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -767,10 +771,10 @@ img {
               cursor: pointer;
             }
             /*TODO 座位需要可以複選*/
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
             /* 1=使用中樣式 */
             .state-1 {
               background-color: #daebea; /* 淡綠色背景代表使用中 */
@@ -844,10 +848,10 @@ img {
               cursor: pointer; /* 鼠標顯示為禁止標誌 */
             }
             /*TODO 座位需要可以複選*/
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
             /* 1=使用中樣式 */
             .state-1 {
               background-color: #ceebf7; /* 淡綠色背景代表使用中 */
@@ -924,10 +928,10 @@ img {
               background-color: #54c1ba; /* 深綠色背景代表空位 */
               cursor: pointer;
             }
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
 
             /* 1=使用中樣式 */
             .state-1 {
@@ -1000,10 +1004,10 @@ img {
               cursor: pointer; /* 鼠標顯示為禁止標誌 */
             }
             /*TODO 座位需要可以複選*/
-            .state-0:focus,
-            .state-0:hover {
-              outline: 0.3rem solid #263238;
-            }
+            // .state-0:focus,
+            // .state-0:hover {
+            //   outline: 0.3rem solid #263238;
+            // }
             /* 1=使用中樣式 */
             .state-1 {
               background-color: #ceebf7; /* 淡綠色背景代表使用中 */
