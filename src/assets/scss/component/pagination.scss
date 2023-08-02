@@ -2,15 +2,23 @@
   @include container;
   text-align: center;
   color: $main_bg;
-  span {
+  span{
     font-size: 1.2rem;
-    padding: 10px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    display: inline-block;
     margin: 0px 10px;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 50%;
     cursor: pointer;
+    &:first-child, &:last-child {
+      background: none;
+      color: #fff;
+    }
   }
   .active {
-    background-color: $secondary_yellow;
+    background-color: $btn_bg_color;
+    color: #fff;
   }
 }
