@@ -231,7 +231,7 @@
     <div class="modal">
       <div class="pic"><img src="@/assets/images/member/modal.svg" alt=""></div>
       <div class="bind_success">
-            <span>預約成功</span>
+            <span>預約成功！</span>
             <button @click="goReservation">確定</button>
       </div>
     </div>
