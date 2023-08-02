@@ -30,16 +30,22 @@
       </div>
     </main>
   </div>
+  <Pagination
+  :page="totalPage"
+  @emit-page="renderComic"
+  @prev-page="prevOrNext"
+  @next-page="prevOrNext"/>
   <CartIcon/>
 </template>
 
 <script>
 import {GET} from '@/plugin/axios';
+import Pagination from '@/components/Pagination.vue';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';
 export default {
   components: {
-    comicSearch, CartIcon,
+    comicSearch, CartIcon, Pagination,
   },
   name: 'ComicCard',
   data() {
@@ -48,6 +54,9 @@ export default {
       comicData: [],
       search: '',
       reservation: [],
+      totalPage: null,
+      pageData: 9,
+      currentPage: 1,
     }
   },
   methods: {
@@ -66,6 +75,20 @@ export default {
         console.log('可惡');
       }
     },
+    renderComic(num) {
+      console.log(num);
+      this.comicData = [];
+      this.originData.forEach((item,index) => {
+        if(index < this.pageData * num && index >= (num -1) * this.pageData) {
+          this.comicData.push(item);
+        }
+      })
+      window.scrollTo(0,300);
+    },
+    prevOrNext(num) {
+      this.currentPage += num;
+      this.renderComic(this.currentPage);
+    }
   },
   computed: {
 
@@ -75,7 +98,9 @@ export default {
       .then((res) => {
         console.log(res);
         this.originData = res;
-        this.comicData = res;
+        console.log(this.originData);
+        this.totalPage = Math.ceil(res.length / 9);
+        this.renderComic(1)
       })
       .catch((err) => {
         console.log(err);

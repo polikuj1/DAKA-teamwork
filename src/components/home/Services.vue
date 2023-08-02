@@ -79,8 +79,10 @@ export default {
     gaComic(title) {
       if(title === '漫畫') {
         this.$router.push('/comic_search');
+      } else if(title === '餐飲') {
+        this.$router.push('/food');
       } else {
-        return;
+        this.$router.push('/reservation');
       }
     }
   },
