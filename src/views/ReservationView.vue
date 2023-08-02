@@ -226,6 +226,16 @@
       </section>
     </div>
   </main>
+  <!-- 預約成功彈窗 -->
+  <div class="reservation_modal" v-show="modalSwitch">
+    <div class="modal">
+      <div class="pic"><img src="@/assets/images/member/modal.svg" alt=""></div>
+      <div class="bind_success">
+            <span>預約成功</span>
+            <button @click="goReservation">確定</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -238,7 +248,7 @@ import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 export default {
   components: {
     PageTitle,
-    Date
+    Date,
   },
 
   data() {
@@ -264,7 +274,8 @@ export default {
       selectedAreaWord: "",
       selectedSeat: "",
       selected: [],
-      seatData: []
+      seatData: [],
+      modalSwitch: false,
     };
   },
 
@@ -326,8 +337,7 @@ export default {
       );
     },
     confirmReserve() {
-      window.scrollTo(0, 0);
-      alert("預約成功");
+      this.modalSwitch = true;
     },
 
     fetchSeatData() {
@@ -346,6 +356,10 @@ export default {
       } else {
         return;
       }
+    },
+    goReservation() {
+      this.$router.push('/member_center/member_seat_reservation');
+      this.modalSwitch = false;
     }
   },
   computed: {
@@ -358,6 +372,44 @@ export default {
   watch: {},
   created() {
     this.fetchSeatData();
-  }
+  },
 };
 </script>
+
+<style lang="scss" scoped>
+.reservation_modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0 0 0 0;
+  z-index: 1200;
+  background-color: rgb(255, 255, 255, 0.8);
+  .modal {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    box-shadow: 0 0 2px #aaa;
+    .pic {
+      width: 50%;
+      margin: 0 auto 20px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  .reservation_modal {
+    .modal {
+      width: 60%;
+    }
+  }
+}
+</style>
