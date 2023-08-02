@@ -14,7 +14,7 @@
       <nav ref="nav">
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{ li.title }}</li>
-          <li ><span class="fa-solid fa-user"></span>{{ memberWord=login === true ? member.name : memberWord }}</li>
+          <li ><span class="fa-solid fa-user"></span>{{ memberWord=login === true ? member.mname : memberWord }}</li>
           <li @click.prevent="loginOpen">{{ loginWord=login === true ? '登出' : loginWord }}</li>
         </ul>
       </nav>

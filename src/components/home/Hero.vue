@@ -17,7 +17,7 @@
         <ul>
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
-        <button @click.prevent="toggleLogin">登入 | 註冊</button>
+        <button @click.prevent="toggleLogin">{{ loginWord=login === true ? '登出' : loginWord }}</button>
         <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{
           btn.title }}</button>
       </nav>
@@ -77,6 +77,7 @@ export default {
           site: '/comic_search',
         },
       ],
+      loginWord: '登入 | 註冊'
     }
   },
   methods: {
