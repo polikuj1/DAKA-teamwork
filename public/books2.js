@@ -95,6 +95,4 @@ var Books = (function() {
 
 	return { init : init };
 
-});
-
-export default Books
+})();

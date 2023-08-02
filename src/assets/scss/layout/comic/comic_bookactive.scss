@@ -22,8 +22,7 @@
         .bk-list li:last-child {
             margin-right: 0;
         }
-    }
-    .bk-list li .bk-book {
+        .bk-list li .bk-book {
         cursor: pointer;
         position: absolute;
         width: 100%;
@@ -38,11 +37,14 @@
         -moz-transform: rotate3d(0,1,0,90deg);
         transform: rotate3d(0,1,0,90deg);
     }
-    .bk-list li .bk-book:hover {
+        .bk-list li .bk-book:hover {
         -webkit-transform: rotateY(90deg) rotateZ(-15deg) translate3d(-100px,0,0);
         -moz-transform: rotateY(90deg) rotateZ(-15deg) translate3d(-100px,0,0);
         transform: rotateY(90deg) rotateZ(-15deg) translate3d(-100px,0,0);
     }
+    }
+
+
     .bk-list li .bk-book > div,.bk-list li .bk-front > div {
 	display: block;
 	position: absolute;
