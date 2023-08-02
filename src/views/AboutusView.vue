@@ -107,32 +107,21 @@
     data-aos-easing="ease-in-out">
               <h3>衛浴設施</h3>
               <p>我們還提供設施齊全的廁所和清爽的淋浴間，給你完美的休憩體驗。而且，別擔心停車問題，我們還提供免費停車場，讓你輕鬆享受遊戲時光。快來這個完美的環境，感受舒適和便利的雙重享受！</p>
-            </div>
-         
+            </div>      
           <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
             class="about_slider_down">
             <Slide v-for="slide in sliderDown" :key="slide.index">
-
-
               <img class="about_carousel_item" :src="slide.src" alt="">
-
             </Slide>
-
             <template #addons>
               <Navigation />
             </template>
           </Carousel>
         </div>
-
-
       </div>
-
-
     </div>
   </section>
 </template>
-
-
 
 <script>
 import { defineComponent } from 'vue'

@@ -4,10 +4,10 @@ import router from './router'
 import store from './store'
 
 //引入viewFire
-// import { initializeApp } from 'firebase/app'
-// import { getFirestore } from 'firebase/firestore'
-// import { VueFire, VueFireAuth } from 'vuefire'
-// import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
+import { initializeApp } from 'firebase/app'
+import { getFirestore } from 'firebase/firestore'
+import { VueFire, VueFireAuth } from 'vuefire'
+import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
 
 //aos引入
 import AOS from 'aos';
@@ -32,12 +32,12 @@ import "@/assets/scss/_style.scss"
 
 
 
-
-
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
   
-//   const db = getFirestore(firebaseApp);
-  
+  const db = getFirestore(firebaseApp);
+  const firebaseApp = initializeApp({
+    // your application settings
+  })
  
 
   
@@ -55,15 +55,15 @@ const app = createApp(App)
 //     firebaseApp,
 //     modules: [
     
-//       VueFireFirestoreOptionsAPI({
-//         reset: true,
-//       wait: false,
-//       }),
-//       // to use the `firebase` option
-//       VueFireDatabaseOptionsAPI({
-//         reset: true,
-//       wait: false,
-//       }),
+//     //   VueFireFirestoreOptionsAPI({
+//     //     reset: true,
+//     //   wait: false,
+//     //   }),
+//     // to use the `firebase` option
+//     //   VueFireDatabaseOptionsAPI({
+//     //     reset: true,
+//     //   wait: false,
+//     //   }),
 //       VueFireAuth(),
 //     ]
 //   })
