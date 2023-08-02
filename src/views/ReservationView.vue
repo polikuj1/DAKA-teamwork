@@ -96,14 +96,17 @@
             </li>
           </ul>
         </div>
+        <button class="reservation_submit" @click="checkLogin"  v-show="!login">
+          立即登入預約
+        </button>
       </section>
 
-      <section class="reservation_date">
+      <section class="reservation_date" v-show="login">
         <h2 class="reservation_text"><span>2</span> 選擇日期及時間</h2>
         <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
       </section>
 
-      <section class="reservation_seat">
+      <section class="reservation_seat" v-show="login">
         <h2 class="reservation_text"><span>3</span> 選擇座位</h2>
         <div class="reservation_all_seat">
           <main class="tabs">
@@ -240,7 +243,7 @@
         </div>
       </section>
 
-      <section class="reservation_confirm">
+      <section class="reservation_confirm" v-show="login">
         <h2 class="reservation_text"><span>4</span> 確認預約細項</h2>
         <div class="reservation_confirm_data">
           <div class="confirm_data_time">
@@ -298,7 +301,7 @@
 import PageTitle from "@/components/PageTitle.vue";
 import Date from "@/components/reservation/Date.vue";
 import axios from "axios";
-
+import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
 import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
@@ -335,6 +338,9 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["toggleLogin","toggleForgotPsw",'toggleRegister']),
+
+
     // 切換tab
     updateTab(index) {
       this.tabActive = index;
@@ -400,9 +406,20 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    checkLogin() {   
+      if (!this.login) {
+        this.toggleLogin()
+      } else {
+        return;
+      }
     }
   },
-  computed: {},
+  computed: {
+    
+    
+    
+  },
   watch: {},
   created() {
     this.fetchSeatData();

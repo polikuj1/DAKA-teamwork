@@ -17,8 +17,9 @@
         <ul>
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
-        <button @click.prevent="loginOpen">登入 | 註冊</button>
-        <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{ btn.title }}</button>
+        <button @click.prevent="toggleLogin">登入 | 註冊</button>
+        <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{
+          btn.title }}</button>
       </nav>
     </aside>
     <div class="banner">
@@ -27,11 +28,19 @@
       </div>
     </div>
   </section>
-<login v-if="this.$store.state.login"> </login>
+  <login v-show="isLoginOpen"> </login>
+  <forgot v-show="forgotPsw"></forgot>
+  <register v-show="isRegister"></register>
 </template>
 <script>
-  import login from '@/components/LoginView.vue';
+import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
+import login from '@/components/LoginView.vue';
+import forgot from '@/components/ForgotPassword.vue';
+import register from '@/components/Register.vue';
 export default {
+  components: {
+    login, forgot, register
+  },
   data() {
     return {
       nav: [
@@ -71,12 +80,16 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['toggleLogin', 'toggleRegister', 'toggleRegister']),
     goBottom() {
       this.$emit('emit-go');
     },
-    loginOpen(){
-      this.$store.state.login=true;
+    loginOpen() {
+      this.$store.state.login = true;
     }
+  },
+  computed: {
+    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister'])
   }
 }
 </script>
