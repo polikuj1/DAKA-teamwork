@@ -10,4 +10,7 @@
     border-radius: 10px;
     cursor: pointer;
   }
+  .active {
+    background-color: $secondary_yellow;
+  }
 }

@@ -78,6 +78,7 @@ export default {
     renderComic(num) {
       console.log(num);
       this.comicData = [];
+      this.currentPage = num;
       this.originData.forEach((item,index) => {
         if(index < this.pageData * num && index >= (num -1) * this.pageData) {
           this.comicData.push(item);
@@ -86,6 +87,9 @@ export default {
       window.scrollTo(0,300);
     },
     prevOrNext(num) {
+      console.log(typeof num);
+      if(this.currentPage === 1 && num === -1) return;
+      if(this.currentPage === this.totalPage && num === 1) return;
       this.currentPage += num;
       this.renderComic(this.currentPage);
     }
@@ -100,7 +104,7 @@ export default {
         this.originData = res;
         console.log(this.originData);
         this.totalPage = Math.ceil(res.length / 9);
-        this.renderComic(1)
+        this.renderComic(this.currentPage)
       })
       .catch((err) => {
         console.log(err);
