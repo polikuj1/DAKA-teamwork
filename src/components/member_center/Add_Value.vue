@@ -57,7 +57,7 @@
       <MbModal v-show="modalSwitch">
         <template v-slot:modal_txt>
           <div class="bind_success">
-            <span>儲值成功</span>
+            <span>儲值成功！</span>
             <button @click="back">返回</button>
           </div>
         </template>

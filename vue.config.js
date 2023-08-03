@@ -16,4 +16,15 @@ module.exports = defineConfig({
       filename: "index.html"
     }
   },
+  devServer: {
+    proxy: {
+        "/api_server": {
+            target: "http://localhost/DAKA-teamwork/phpfile/",
+            changeOrigin: true,
+            pathRewrite: {
+                "^/api_server": "",
+            },
+        },
+    },
+},
 })

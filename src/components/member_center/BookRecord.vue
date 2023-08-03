@@ -55,7 +55,7 @@
             <input type="checkbox" name="" :id="record.reservation_no">
             <div class="top_nav">
               <label :for="record.reservation_no">書籍明細</label>
-              <span>取消預約</span>
+              <span @click="openModal(record)">取消預約</span>
             </div>
             <table>
               <thead>
@@ -79,25 +79,47 @@
         </div>
       </div>
     </template>
+    <template v-slot:mb_modal>
+      <MbModal v-show="modalSwitch">
+        <template v-slot:modal_txt>
+          <div class="seat_modal">
+            <span>確定取消嗎?</span>
+            <button @click="confirmCancel">取消預約</button>
+            <button @click="modalSwitch = false">保留預約</button>
+          </div>
+        </template>
+      </MbModal>
+      </template>
   </MbForm>
 </template>
 <script>
 import {GET} from '@/plugin/axios';
+import MbModal from '@/components/member_center/MemberModal.vue';
 import MbForm from '@/components/member_center/form_style.vue';
 export default {
   components: {
-    MbForm,
+    MbForm, MbModal,
   },
   data() {
     return {
       title: '書籍租借紀錄',
       reservation: [],
+      modalSwitch: false,
+      dataCancel: null,
     }
   },
   methods: {
     triggerParent() {
       this.$emit('emit-title','');
-    }
+    },
+    openModal(data) {
+      this.dataCancel = data;
+      this.modalSwitch = true;
+    },
+    confirmCancel() {
+      this.modalSwitch = false;
+      // dataCancel預約的那筆資料打過去資料庫處理
+    },
   },
   created() {
     this.$emit('emit-title',this.title);

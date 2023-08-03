@@ -119,15 +119,22 @@ export default {
     }
   },
   created() {
-    this.data = this.allMessages;
-    GET('/data/news1.json')
-    .then((res) => {
-      console.log(res);
-      this.allMessages = this.data = res[2].data;
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+    GET('http://localhost:8080/phpfile/getAllNews.php')
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    // this.data = this.allMessages;
+    // GET('/data/news1.json')
+    // .then((res) => {
+    //   console.log(res);
+    //   this.allMessages = this.data = res[2].data;
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // })
   }
 }
 </script>

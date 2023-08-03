@@ -51,13 +51,13 @@
           </div>
         </template>
       </MbModal>
-    </template>
+      </template>
     </MbForm>
   </template>
   
   <script>
-  import {GET} from '@/plugin/axios'
-  import MbModal from '@/components/member_center/MemberModal.vue'
+  import {GET} from '@/plugin/axios';
+  import MbModal from '@/components/member_center/MemberModal.vue';
   import MbForm from '@/components/member_center/form_style.vue';
   export default {
     components: {

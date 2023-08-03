@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     backToCenter() {
-      this.$router.go(-1);
+      this.$router.push('/member_center/member_nav');
       this.$emit('emit-back');
     }
   }
