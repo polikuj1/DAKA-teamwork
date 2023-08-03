@@ -3,7 +3,7 @@
 
     <section class="login" >
       <div class="login_pic">
-        <img :src="require('@/assets/images/footerLogo.png')" alt="">
+        <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo">
         <p>
           # 快樂就是這麼簡單
         </p>
@@ -26,7 +26,7 @@
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
           </div>
           <button class="login_form_submit" @click.prevent="checkLogin">登入</button>
-          <button @click.prevent="toggleRegister(false)" class="login_form_register">註冊會員</button>
+          <button @click.prevent="toggleRegister(false)" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
           
 

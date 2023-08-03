@@ -2,7 +2,7 @@
   <section v-show="isRegister && step === 0">
     <div class="container">
       <div class="register">
-        <form action="">
+        <form action="" @click.prevent="handleSubmit">
           <img :src="require('@/assets/images/login/cross.png')" class="register_close_modal"
             @click="closeRegister(false)">
           <h2>註冊會員</h2>
@@ -62,7 +62,7 @@
               <input type="checkbox" name="news_daka" id="news_daka" required="required">
               <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
             </div>
-            <input class="register_submit" @click.prevent="columnCheck" type="submit" value="註冊會員">
+            <input class="register_submit" type="submit" value="註冊會員">
           </div>
 
 
@@ -86,6 +86,7 @@
 </template>
 <script >
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
+import axios, { Axios } from "axios";
 
 export default {
   name: 'register',
@@ -123,12 +124,37 @@ export default {
       this.clearInput()
     },
 
-    columnCheck() {
-      if (this.register.pswReg === this.register.pswConfirmReg && this.register.pswReg != '' && this.memberPrivacy && this.memberTerms) {
-        this.step = 1;
+    handleSubmit() {
+      // if (this.register.pswReg === this.register.pswConfirmReg && this.register.pswReg != '' && this.memberPrivacy && this.memberTerms) {
+      //   this.step = 1;
+      // } else {
+      //   return
+      // }
+      if (this.validateForm && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
+        this.submitForm();
       } else {
-        return
+        return;
       }
+
+
+    },
+    validateForm() {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+      const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+      const birthRegex = /^(?:2005-(?:0[2-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])|2005-01-(?:0[2-9]|[1-2][0-9]|3[0-1])|2005-(?:0[4-9]|1[0-2])-30|2005-(?:0[6-9]|1[0-2])-31)$/;
+
+      const isEmailValid = emailRegex.test(this.emailReg);
+      const isPswValid = passwordRegex.test(this.pswReg);
+      const isPswConfirmValid = passwordConfirmRegex.test(this.pswConfirmReg);
+      const isBirthValid = birthRegex.test(this.birthReg);
+
+      return isEmailValid && isPswValid && isPswConfirmValid && isBirthValid && (this.pswReg === this.pswConfirmReg);
+
+    },
+    submitForm(){
+console.log(123);
+// axios.post()
     },
     modifySuccess() {
       this.step = 0;

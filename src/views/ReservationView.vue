@@ -185,7 +185,7 @@
 
       <!-- 確認先開啟 -->
       <section class="reservation_confirm">
-        <h2 class="reservation_text"><span>4</span> {{seatData[0]}}確認預約細項</h2>
+        <h2 class="reservation_text"><span>4</span>確認預約細項</h2>
         <div class="reservation_confirm_data">
           <div class="confirm_data_time">
             <div class="data_time_start">
@@ -203,7 +203,8 @@
             <div class="data_time_stored">
               <p>目前儲值金</p>
               <input type="text" readonly value="元" />
-              <div class="stored_error">
+              <!-- v-show="!member.remain" -->
+              <div class="stored_error" >
                 儲值金不足，請先至
                 <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
                 儲值。
@@ -249,7 +250,12 @@ export default {
         startTime: "",
         endTime: "",
         seat: [],
-        price: 0
+        price: 0,
+        selectedSeat: [],
+        seat_id:'',
+        seat_area:'',
+        seat_no:'',
+        seat_sal:''
       },
       seats_a: seat_a,
       seats_b: seat_b,
@@ -262,7 +268,7 @@ export default {
       },
       selectedArea: "",
       selectedAreaWord: "",
-      selectedSeat: "",
+
       selected: [],
       seatData: []
     };
@@ -289,41 +295,50 @@ export default {
     },
 
     seatSelected(item) {
-      if (
-        this.reservation.seat.indexOf(item.area + item.no) === -1 &&
-        this.selected.length < 7
-      ) {
-        if (+item.state === 0) {
-          if (this.tabActive === 1) {
-            this.selectedArea = item.area === "A" ? "A" : "B";
-            this.selectedSeat = item.no;
-          } else {
-            this.selectedArea = item.area === "C" ? "C" : "D";
-            this.selectedSeat = item.no;
-          }
-        } else {
-          return;
-        }
+    
 
-        this.reservation.seat.push(this.selectedArea + this.selectedSeat);
-
-      } else {
-        return;
-      }
+      //  {seat_id,seat_area,seat_no,seat_sal}=item;
+      
+      //如果選的陣列中沒有重複和數量<7
+      // if (this.reservation.selectedSeat.indexOf(index) === -1 &&
+      // this.reservation.selectedSeat.length < 7){
+      //     this.reservation.selectedSeat.push(this.seatData[index]);
+      // } else {
+      //   return;
+      // }
 
 
-      this.selectedAreaWord =
-        this.selectedArea === "A"
-          ? "大廳電競"
-          : this.selectedArea === "B"
-            ? "大廳一般"
-            : this.selectedArea === "C"
-              ? "包廂單人"
-              : "包廂雙人";
+      // if (
+      //   this.reservation.seat.indexOf(item.area + item.no) === -1 &&
+      //   this.selected.length < 7
+      // ) {
+      //   if (+item.state === 0) {
+      //     if (this.tabActive === 1) {
+      //       this.selectedArea = item.area === "A" ? "A" : "B";
+      //       this.selectedSeat = item.no;
+      //     } else {
+      //       this.selectedArea = item.area === "C" ? "C" : "D";
+      //       this.selectedSeat = item.no;
+      //     }
+      //   } else {
+      //     return;
+      //   }
+      //   this.reservation.seat.push(this.selectedArea + this.selectedSeat);
+      // } else {
+      //   return;
+      // }
+      // this.selectedAreaWord =
+      //   this.selectedArea === "A"
+      //     ? "大廳電競"
+      //     : this.selectedArea === "B"
+      //       ? "大廳一般"
+      //       : this.selectedArea === "C"
+      //         ? "包廂單人"
+      //         : "包廂雙人";
 
-      this.selected.push(
-        this.selectedAreaWord + this.selectedArea + "-" + this.selectedSeat
-      );
+      // this.selected.push(
+      //   this.selectedAreaWord + this.selectedArea + "-" + this.selectedSeat
+      // );
     },
     confirmReserve() {
       window.scrollTo(0, 0);
@@ -339,6 +354,7 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+        
     },
     checkLogin() {
       if (!this.login) {
@@ -352,7 +368,10 @@ export default {
     // isSelected() {
     //   return this.seat_b.includes(this.seatNumber);
     // },
+convertWord(){
 
+  return this.selectedSeat
+}
 
   },
   watch: {},

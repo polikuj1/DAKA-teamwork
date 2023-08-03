@@ -498,6 +498,8 @@
       width: 70%;
       height: 75%;
       flex-direction: row;
+      border-radius: 20px;
+      overflow: hidden;
       .login_pic {
         width: 50%;
         display: flex;
@@ -506,6 +508,7 @@
         align-items: center;
         background-color: $main_bg;
         gap: 20px;
+        
         img {
           width: 60%;
         }
