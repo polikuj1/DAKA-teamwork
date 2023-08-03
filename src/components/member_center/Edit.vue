@@ -11,16 +11,20 @@
               <input type="text" v-model="name" />
             </div>
             <div class="edit_item">
+              <label for="gender">性別</label>
+              <input type="text" v-model="gender" readonly />
+            </div>
+            <div class="edit_item">
               <label for="birthday">生日</label>
-              <input type="date" v-bind:value="birthday" :readonly="true" class="edit_birth"/>
+              <input type="date" v-bind:value="birthday" readonly class="edit_birth"/>
             </div>
             <div class="edit_item">
               <label for="address">地址</label>
               <input type="text" v-model="address" />
             </div>
             <div class="edit_item">
-              <label for="phone">電話</label>
-              <input type="tel" v-model="phone" maxlength="12"/>
+              <label for="mobile">手機</label>
+              <input type="tel" v-model="mobile" maxlength="12"/>
             </div>
             <div class="edit_item">
               <label for="email">信箱</label>
@@ -54,11 +58,12 @@
       return {
         title: '會員資料編輯',
         name: '張宇航',
+        gender: '男',
         birthday: '1985-03-12',
         address:'桃園市中壢區復興路46號' ,
-        phone: '0912345678',
+        mobile: '0912345678',
         email: 'johndoe123@gmail.com',
-        password: 'P@ssw0rd1',
+        password: '111222aaa',
         confirmPassword:'' 
       }
     },
