@@ -3,16 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+
 //引入viewFire
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { VueFire, VueFireAuth } from 'vuefire'
 import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
-
 //aos引入
-import AOS from 'aos';
+import AOS from 'aos'
 import 'aos/dist/aos.css'
-
 // ajax引入
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -28,6 +27,8 @@ import "@/assets/fonts/font.css"
 import Images from '@/components/Images.vue'
 // 全域樣式
 import "@/assets/scss/_style.scss"
+// 打API用的路徑變數
+import { URL } from '@/assets/js/common.js'
 
 
 
@@ -46,6 +47,7 @@ AOS.init({
     
 });
 const app = createApp(App)
+app.config.globalProperties.$URL = URL;
 
 // app.use(VueFire, {
 //     firebaseApp,

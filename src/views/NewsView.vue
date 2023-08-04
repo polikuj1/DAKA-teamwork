@@ -119,9 +119,10 @@ export default {
     }
   },
   created() {
-    GET('http://localhost:8080/phpfile/getAllNews.php')
+    GET(`${this.$URL}/getAllNews.php`)
       .then((res) => {
         console.log(res);
+        this.allMessages = this.data = res;
       })
       .catch((err) => {
         console.log(err);
