@@ -13,21 +13,22 @@
           </li>
         </ul>
       </a>
-      <a href="" @click.prevent="toggleLogin">{{ loginWord=login === true ? '登出' : loginWord }}</a>
-      <a href="" @click.prevent="this.$router.push('/member_center/member_nav')" v-show="login"><i class="fa-solid fa-user"></i>{{ member.mname }}</a>
+      <a  @click.prevent="toggleLogin" v-show="!login">登入 | 註冊</a>
+      <a  @click.prevent="this.$router.push('/member_center/member_nav')" v-show="login"><i class="fa-solid fa-user"></i>{{ member.mname }}</a>
+      <a  @click.prevent="loginOut" v-show="login">登出</a>
     </nav>
-  </div>
+  </div> 
   <login v-show="isLoginOpen"></login>
   <forgot v-show="forgotPsw"></forgot>
   <register v-show="isRegister"></register>
 </template>
-
 
 <script>
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import login from '@/components/LoginView.vue';
 import forgot from '@/components/ForgotPassword.vue';
 import register from '@/components/Register.vue';
+
 export default {
   props: ['path', 'show'],
   name: 'MainHeader',
@@ -98,16 +99,14 @@ export default {
         },
 
       ],
-      loginWord: '登入 | 註冊'
     }
   },
   methods: {
-    ...mapMutations(['toggleLogin', 'toggleForgotPsw','toggleRegister'])
+    ...mapMutations(['toggleLogin', 'toggleForgotPsw','toggleRegister','loginOut'])
     ,
      goPage(site,e) {
     this.$router.push(site);
      },
-    
   },
   components: {
     login, forgot,register

@@ -7,7 +7,7 @@ export default createStore({
     cart: [],
     isLoginOpen: false,
     forgotPsw: false,
-    isRegister:false
+    isRegister: false
   },
   getters: {
   },
@@ -25,27 +25,29 @@ export default createStore({
     setInfo(state, payload) {
       state.member = payload;
     },
-    toggleForgotPsw(state,payload) {
+    toggleForgotPsw(state, payload) {
       state.forgotPsw = !state.forgotPsw;
       state.isLoginOpen = payload;
     },
-    toggleRegister(state,payload) {
+    toggleRegister(state, payload) {
       state.isRegister = !state.isRegister;
       state.isLoginOpen = payload;
     },
+    //打開登入視窗
+    loginToggle(state, payload) {
+      state.login = payload;
+      state.isLoginOpen = false;
+    },
+    loginOut(state) {
+      state.login = false;
+      state.member = {};
+    }
 
 
 
   },
   actions: {
-    //抓會員資料
-    getInfo(context, payload) {
-      fetch('/data/member.json')
-        .then(res => res.json())
-        .then(res => {
-          context.commit('setInfo', res)
-        })
-    }
+
 
   },
   modules: {

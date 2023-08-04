@@ -1,7 +1,7 @@
 <template>
-  <div class="container" >
+  <div class="container">
 
-    <section class="login" >
+    <section class="login">
       <div class="login_pic">
         <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo">
         <p>
@@ -11,7 +11,7 @@
 
       <div class="login_form">
         <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="toggleLogin">
-        <form>
+        <form @click.prevent="checkLogin">
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
             require>
@@ -25,49 +25,39 @@
             </div>
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
           </div>
-          <button class="login_form_submit" @click.prevent="checkLogin">登入</button>
+          <button class="login_form_submit">登入</button>
           <button @click.prevent="toggleRegister(false)" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
-          
-
-            <button class="login_connect" @click.prevent="">
-              <i class="fa-brands fa-square-facebook"></i>
-              以FACEBOOK帳號登入
-            </button>
-            
-            <button class="login_connect"  @click="">
-              <i class="fa-brands fa-google"></i>
-              以GOOGLE帳號登入
-            </button>
-            
-            <button class="login_connect">
-              <i class="fa-brands fa-apple"></i>
-              以APPLE帳號登入
-            </button>
         </form>
+        <button class="login_connect">
+          <i class="fa-brands fa-square-facebook"></i>
+          以FACEBOOK帳號登入
+        </button>
+
+        <button class="login_connect" @click="signInRedirect">
+          <i class="fa-brands fa-google"></i>
+          以GOOGLE帳號登入
+        </button>
+        <button class="login_connect">
+          <i class="fa-brands fa-apple"></i>
+          以APPLE帳號登入
+        </button>
       </div>
     </section>
 
-    
+
   </div>
 </template>
-<style>
-
-</style>
+<style></style>
 <script >
-// import { collection } from 'firebase/firestore'
-// import {
-//   getRedirectResult,
-//   signInWithRedirect,
-//   signOut,
-// } from 'firebase/auth'
-// import { useCurrentUser, useFirebaseAuth } from 'vuefire'
-// const auth = useFirebaseAuth();
 
-
-// const error = ref(null);
-// const user = useCurrentUser();
-import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
+import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
+import { ref, onMounted } from 'vue';
+import { useFirestore } from 'vuefire'; //import firebase
+import { getRedirectResult, signInWithRedirect, signOut } from 'firebase/auth';
+import { useCurrentUser, useFirebaseAuth } from 'vuefire';
+import { GoogleAuthProvider } from 'firebase/auth';
+import axios from "axios";
 
 export default {
   name: 'login',
@@ -80,16 +70,6 @@ export default {
       forgetPsw: false,
       step: 0,
       errorMsg: '',
-      register: {
-        nameReg: '',
-        emailReg: '',
-        pswReg: '',
-        pswConfirmReg: '',
-        sexReg: '',
-        birthReg: '',
-        telReg: '',
-
-      },
       verification: {
         number1: '',
         number2: '',
@@ -100,36 +80,42 @@ export default {
       modify: {
         psw: '',
         newPsw: '',
-      }
-   
-  }
+      },
+      error: null,
+      memberData: {}
+    }
   },
-methods: {
-
-...mapMutations(["toggleLogin","toggleForgotPsw",'toggleRegister'])
-  ,
-  closeLogin(){
-    this.toggleLogin();
+  computed: {
+    ...mapState(["isLoginOpen", "forgotPsw", 'login'])
   },
-  closeForgot(){
-    this.toggleForgotPsw();
-  },
+  methods: {
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginToggle'])
+    ,
+    closeLogin() {
+      this.toggleLogin();
+    },
+    closeForgot() {
+      this.toggleForgotPsw();
+    },
     closeModal() {
       this.$store.state.login = false;
     },
     checkLogin() {
-      if (this.memId === 'test' && this.memPsw === 'test') {
-        window.alert('登入成功');
-        loginStatus = true;
+
+      const matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
+      
+      if (matchedUser) {
+        this.loginToggle(true);
+        this.setInfo(matchedUser);
+      } else {
+      return;
       }
-      else {
-        this.errorMsg = '帳號或密碼輸入錯誤';
-      }
-      this.register.memId = '';
-      this.register.memPsw = '';
+      
+      this.memId = this.memPsw = '';
+
     },
     reset() {
-      this.register.errorMsg = '';
+      this.errorMsg = '';
     },
     checkEmail() {
       if (!this.memEmail) {
@@ -166,25 +152,47 @@ methods: {
       this.forgetPsw = false;
       this.step = 0;
     },
-//     signinRedirect() {
-//   signInWithRedirect(auth, someAuthProvider).catch((reason) => {
-//     console.error('Failed signinRedirect', reason)
-//     error.value = reason
-//   })
-// }
+    signInRedirect() {
+      const auth = useFirebaseAuth(); // 只有在客戶端有效，這行只能存在於前端(client side)
+      const googleAuthProvider = new GoogleAuthProvider();
 
+      signInWithRedirect(auth, googleAuthProvider)
+        .catch((reason) => {
+          console.error('Failed signInRedirect', reason);
+          this.error = reason;
+        });
+    },
+    fetchMemberData() {
+      axios
+        .get("data/member.json")
+        .then((res) => {
+          this.memberData = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    },
+    onMounted() {
+      const auth = useFirebaseAuth();
+      getRedirectResult(auth)
+        .then((Response) => {
+          console.log(Response);
+        })
+        .catch((reason) => {
+          console.error('Failed redirect result', reason);
+          this.error = reason;
+        });
+    },
   },
-mounted(){
-  // getRedirectResult(auth).catch((reason) => {
-  //   console.error('Failed redirect result', reason)
-  //   error.value = reason
-  // })
-},
-computed:{
-  ...mapState(["isLoginOpen","forgotPsw"])
+
+
+  mounted() {
+    this.onMounted();
+    this.fetchMemberData();
+  },
 }
 
-  }
 
 </script>
 
