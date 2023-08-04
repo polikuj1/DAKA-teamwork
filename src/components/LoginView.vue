@@ -10,7 +10,7 @@
       </div>
 
       <div class="login_form">
-        <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="toggleLogin">
+        <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="closeLogin">
         <form @click.prevent="checkLogin">
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
@@ -93,18 +93,14 @@ export default {
     ,
     closeLogin() {
       this.toggleLogin();
+      this.reset();
     },
     closeForgot() {
       this.toggleForgotPsw();
     },
-    closeModal() {
-      this.$store.state.login = false;
-    },
     checkLogin() {
-      
-
+    
       const matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
-      
       
       if (matchedUser) {
         this.loginToggle(true);
