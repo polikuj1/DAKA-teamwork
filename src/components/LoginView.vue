@@ -101,21 +101,25 @@ export default {
       this.$store.state.login = false;
     },
     checkLogin() {
+      
 
       const matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
+      
       
       if (matchedUser) {
         this.loginToggle(true);
         this.setInfo(matchedUser);
+        this.reset();
+        return;
       } else {
-      return;
+        this.errorMsg = '請輸入帳號或密碼';
+        return;
       }
       
-      this.memId = this.memPsw = '';
-
+      
     },
     reset() {
-      this.errorMsg = '';
+      this.memId = this.memPsw = '';
     },
     checkEmail() {
       if (!this.memEmail) {
