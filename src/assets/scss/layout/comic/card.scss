@@ -68,10 +68,13 @@
       }
       button {
         margin-top: auto;
-        cursor: pointer;
         @include btn_res;
         padding: 10px 30px;
         background-color: transparent;
+        cursor: not-allowed;
+      }
+      .bt_hover {
+        cursor: pointer;
       }
     }
     .warn_txt {
@@ -103,6 +106,12 @@
         margin: 0;
         button {
           @include btn_res;
+          // &:hover {
+          //   @include btn_hover;
+          // }
+        }
+        .bt_hover {
+          cursor: pointer;
           &:hover {
             @include btn_hover;
           }

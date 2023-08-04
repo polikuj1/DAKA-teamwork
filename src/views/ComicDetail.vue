@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         filter() {
-            this.comicData = this.comicData.filter(item => item.id === parseInt(this.id));
+            this.comicData = this.comicData.filter(item => item.comics_id === this.id);
         },
         addToCart(item) {
             if (this.$store.state.cart.length === 5) return;
@@ -73,7 +73,7 @@ export default {
         }
     },
     mounted() {
-        GET('/data/comic.json')
+        GET(`${this.$URL}/getAllComic.php`)
             .then((res) => {
                 console.log(res);
                 this.comicData = res;

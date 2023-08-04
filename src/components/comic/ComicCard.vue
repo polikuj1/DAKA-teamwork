@@ -11,9 +11,9 @@
       <div></div>
     </div>
     <main class="wrap">
-      <div class="card" v-for="item in comicData" :key="item.title"
+      <div class="card" v-for="item in comicData" :key="item.comics_id"
       v-show="comicData.length">
-        <div class="pic"  @click="this.$router.push(`/comic_detail/${item.id}`)">
+        <div class="pic"  @click="this.$router.push(`/comic_detail/${item.comics_id}`)">
           <!-- <img :src="item.img" alt="漫畫封面"> -->
           <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
         </div>
@@ -22,7 +22,7 @@
             <h4>{{ item.title }} {{ item.index }}</h4>
             <span>{{ item.author }}</span>
           </div>
-          <button @click="reserve(item)">預約此書 <i class="fa-solid fa-book-open-reader"></i></button>
+          <button @click="reserve(item)" :class="{bt_hover: item.comics_id != 1 }">{{ item.comics_id==="1"? '已被預約' : '預約此書'}} <i class="fa-solid fa-book-open-reader"></i></button>
         </div>
       </div>
       <div class="warn_txt" v-if="comicData.length === 0">
@@ -34,7 +34,8 @@
   :page="totalPage"
   @emit-page="renderComic"
   @prev-page="prevOrNext"
-  @next-page="prevOrNext"/>
+  @next-page="prevOrNext"
+  v-show="paginationSwitch"/>
   <CartIcon/>
 </template>
 
@@ -57,15 +58,25 @@ export default {
       totalPage: null,
       pageData: 9,
       currentPage: 1,
+      paginationSwitch: true,
+      // hover:'bt_hover',
     }
   },
   methods: {
     getSearch(txt) {
       this.search = txt;
-      if (this.search === '') {this.comicData = this.originData;}
+      if (this.search === '') {
+        this.renderComic(this.currentPage);
+        this.currentPage = 1;
+        this.paginationSwitch = true;
+        return;
+      }
       this.comicData = this.originData.filter(item => item.title.includes(this.search));
+      // this.totalPage = Math.ceil(this.comicData.length / 9);
+      this.paginationSwitch = false;
     },
     reserve(item) {
+      if(item.comics_id === '1') return;
       console.log(this.$store.state.cart);
       if(this.$store.state.cart.length === 5) return;
       if(this.$store.state.cart.indexOf(item) === -1) {
@@ -98,11 +109,10 @@ export default {
 
   },
   created() {
-    GET('/data/comic.json')
+    GET(`${this.$URL}/getAllComic.php`)
       .then((res) => {
         console.log(res);
         this.originData = res;
-        console.log(this.originData);
         this.totalPage = Math.ceil(res.length / 9);
         this.renderComic(this.currentPage)
       })
