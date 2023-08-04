@@ -1,7 +1,4 @@
-[
-{"type":"header","version":"5.2.0","comment":"Export to JSON plugin for PHPMyAdmin"},
-{"type":"database","name":"daka"},
-{"type":"table","name":"member","database":"daka","data":
+
 [
 {"memid":"1","memno":"MB0001","mname":"張宇航","sex":"男","email":"johndoe123@gmail.com","mobile":"0912345678","password":"sE3rT7","address":"桃園市中壢區復興路46號","status":"0","member_birth":"1985-03-12","pic":"member01","remain":"5200","value":"24800","grade":"4"},
 {"memid":"2","memno":"MB0002","mname":"林雅琪","sex":"女","email":"sarahsmith456@gmail.com","mobile":"0921987654","password":"A6fGpC","address":"宜蘭縣壯圍鄉霧罕路31號","status":"1","member_birth":"1991-09-25","pic":"member02","remain":"400","value":"4600","grade":"1"},
@@ -22,12 +19,7 @@
 {"memid":"17","memno":"MB0017","mname":"陳志偉","sex":"男","email":"williammartinez321@gmail.com","mobile":"0985613942","password":"Z7fM2xV","address":"新北市樹林區東豐街32號","status":"1","member_birth":"1998-03-26","pic":null,"remain":"5800","value":"200","grade":"0"},
 {"memid":"18","memno":"MB0018","mname":"黃玉琳","sex":"女","email":"averymiller789@gmail.com","mobile":"0914927538","password":"3zD7eB9tGv","address":"新北市八里區長道坑8號","status":"0","member_birth":"1981-07-15","pic":"member18","remain":"440","value":"60","grade":"0"},
 {"memid":"19","memno":"MB0019","mname":"蔡宗翰","sex":"男","email":"oliviawilson123@gmail.com","mobile":"0941285376","password":"9XcLmB4gRqK","address":"新北市淡水區紅樹林路10號","status":"0","member_birth":"1995-04-07","pic":"member19","remain":"5210","value":"4790","grade":"1"},
-{"memid":"20","memno":"MB0020","mname":"鄭惠玲","sex":"女","email":"ethananderson456@gmail.com","mobile":"0972643819","password":"P3zTcXrJ","address":"新北市中和區建三路24號","status":"1","member_birth":"1980-11-20","pic":"member20","remain":"1540","value":"3460","grade":"1"},
-{"memid":"21","memno":"MB0001","mname":"張宇航","sex":"男","email":"johndoe123@gmail.com","mobile":"0912345678","password":"sE3rT7","address":"桃園市中壢區復興路46號","status":"0","member_birth":"1985-03-12","pic":"member01","remain":"5200","value":"24800","grade":"4"},
-{"memid":"22","memno":"MB0002","mname":"林雅琪","sex":"女","email":"sarahsmith456@gmail.com","mobile":"0921987654","password":"A6fGpC","address":"宜蘭縣壯圍鄉霧罕路31號","status":"1","member_birth":"1991-09-25","pic":"member02","remain":"400","value":"4600","grade":"1"},
-{"memid":"23","memno":"MB0003","mname":"陳俊宇","sex":"男","email":"davidmiller789@gmail.com","mobile":"0938246135","password":"yH2dV8P","address":"臺南市白河區內崎內18號","status":"0","member_birth":"1988-07-07","pic":"member03","remain":"300","value":"200","grade":"0"},
-{"memid":"24","memno":"MB0004","mname":"李芳婷","sex":"女","email":"emilyjones234@gmail.com","mobile":"0957813492","password":"9iJl5M","address":"臺中市豐原區鎌村路11號","status":"0","member_birth":"1994-04-18","pic":"member04","remain":"320","value":"680","grade":"0"},
-{"memid":"25","memno":"MB0005","mname":"王宗佑","sex":"男","email":"alexwilson321@gmail.com","mobile":"0986524137","password":"cD6GyNp","address":"桃園市龜山區員林坑路33號","status":"0","member_birth":"1986-12-09","pic":"member05","remain":"2570","value":"5430","grade":"2"}
+{"memid":"20","memno":"MB0020","mname":"鄭惠玲","sex":"女","email":"ethananderson456@gmail.com","mobile":"0972643819","password":"P3zTcXrJ","address":"新北市中和區建三路24號","status":"1","member_birth":"1980-11-20","pic":"member20","remain":"1540","value":"3460","grade":"1"}
+
 ]
-}
-]
+

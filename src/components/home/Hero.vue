@@ -17,7 +17,8 @@
         <ul>
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
-        <button @click.prevent="toggleLogin">{{ loginWord=login === true ? '登出' : loginWord }}</button>
+        <button @click.prevent="toggleLogin" v-show="!login">登入 | 註冊</button>
+        <button @click.prevent="loginOut" v-show="login">登出</button>
         <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{
           btn.title }}</button>
       </nav>
@@ -81,16 +82,14 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['toggleLogin', 'toggleRegister', 'toggleRegister']),
+    ...mapMutations(['toggleLogin', 'toggleRegister', 'toggleRegister','loginOut']),
     goBottom() {
       this.$emit('emit-go');
     },
-    loginOpen() {
-      this.$store.state.login = true;
-    }
+  
   },
   computed: {
-    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister'])
+    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister', 'login','isRegister','member'])
   }
 }
 </script>

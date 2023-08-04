@@ -5,10 +5,12 @@ import store from './store'
 
 
 //引入viewFire
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+// import { initializeApp } from 'firebase/app'
+// import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
+// import { getFirestore } from 'firebase/firestore'
 import { VueFire, VueFireAuth } from 'vuefire'
-import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
+import { firebaseApp } from './firebase'
+
 //aos引入
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -49,22 +51,22 @@ AOS.init({
 const app = createApp(App)
 app.config.globalProperties.$URL = URL;
 
-// app.use(VueFire, {
-//     firebaseApp,
-//     modules: [
+app.use(VueFire, {
+    firebaseApp,
+    modules: [
     
-//     //   VueFireFirestoreOptionsAPI({
-//     //     reset: true,
-//     //   wait: false,
-//     //   }),
-//     // to use the `firebase` option
-//     //   VueFireDatabaseOptionsAPI({
-//     //     reset: true,
-//     //   wait: false,
-//     //   }),
-//       VueFireAuth(),
-//     ]
-//   })
+    //   VueFireFirestoreOptionsAPI({
+    //     reset: true,
+    //   wait: false,
+    //   }),
+    // to use the `firebase` option
+    //   VueFireDatabaseOptionsAPI({
+    //     reset: true,
+    //   wait: false,
+    //   }),
+      VueFireAuth(),
+    ]
+  })
 
 
 
