@@ -24,7 +24,7 @@
 
           <!-- 書本名稱 -->
           <div class="cart_book_name">
-            <p class="cart_m_text">{{ item.title }} {{ item.index }}</p>
+            <p class="cart_m_text">{{ item.title }} {{ item.comics_index }}</p>
             <p class="cart_s_text">作者 : {{ item.author }}</p>
           </div>
 
@@ -35,13 +35,13 @@
 
           <!-- 錢 -->
           <div class="cart_book_cash">
-            <div class="cart_m_text">$ {{ item.price }}</div>
+            <div class="cart_m_text">$ {{ 10 }}</div>
             <div class="cart_book_delete" @click="deleteProduct(index)"><i class="fa-solid fa-trash"
                 style="color: #263238;"></i>
             </div>
           </div>
         </div>
-        <div v-show="shoppingCartData.length === 0">您還沒有預約任何一本書，請開始 <a href="/comic_search">預約</a> 你喜歡的漫畫吧！</div>
+        <div v-show="shoppingCartData.length === 0">您還沒有預約任何一本書，請開始 <a @click="this.$router.push('/comic_search')">預約</a> 你喜歡的漫畫吧！</div>
       </div>
     </div>
 
@@ -83,7 +83,7 @@
   <div class="comic_modal" v-show="modalSwitch">
     <div class="modal">
       <div class="pic"><img src="@/assets/images/member/modal.svg" alt=""></div>
-      <div class="reservation_fail" v-show="remainingEnough">
+      <div class="reservation_fail" v-show="!remainingEnough">
         <span>預約失敗</span>
         <p>親愛的 {{ member.mname}} 會員，您好！<br>您的儲值金已經不足，請盡快至會員中心儲值 。</p>
         <button @click="this.$router.push('/member_center/member_add_value')">前往儲值</button>
@@ -109,48 +109,7 @@ export default {
   data() {
     return {
       title: "我的預約清單",
-      // shoppingCartData: [
-      //   {
-      //     id: "first",
-      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 01",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
-      //   {
-      //     id: "second",
-      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 02",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
-      //   {
-      //     id: "third",
-      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 03",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
-      //   {
-      //     id: "fourth",
-      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 04",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
-      //   {
-      //     id: "fifth",
-      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-      //     category: "咒術迴戰 05",
-      //     name: "作者：芥見下々",
-      //     price: 10,
-      //     quantity: 1,
-      //   },
-      // ],
+      shoppingCartData: [],
       borrowDate: "",
       modalSwitch: false,
       member: {},
@@ -169,14 +128,15 @@ export default {
 
     /*總計*/
     shoppingCartProductsSum() {
-      return (
-        Math.floor(
-          this.shoppingCartProducts.reduce(
-            (acc, product) => acc + product.price * product.quantity,
-            0
-          ) * 10
-        ) / 10
-      );
+      return this.shoppingCartProducts.length * 10;
+      // return (
+      //   Math.floor(
+      //     this.shoppingCartProducts.reduce(
+      //       (acc, product) => acc + product.price * 1,
+      //       0
+      //     ) * 10
+      //   ) / 10
+      // );
     },
 
     // 借閱日期

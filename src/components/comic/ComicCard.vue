@@ -1,5 +1,9 @@
 <template>
-  <comicSearch @emit-txt="getSearch"/>
+  <comicSearch @emit-txt="getSearch"></comicSearch>
+  <div class="comic_type">
+    <!-- <span @click="searchType('全部')" :class="{active: type === currentType}">全部</span> -->
+    <span v-for="type in comicType" :key="type" @click="searchType(type)" :class="{active: type === currentType}">{{ type }}</span>
+  </div>
   <div class="search_result" v-show="search">
     &ldquo;{{ search }}&rdquo; 共有 {{ comicData.length }} 筆符合的漫畫
   </div>
@@ -59,10 +63,22 @@ export default {
       pageData: 9,
       currentPage: 1,
       paginationSwitch: true,
-      // hover:'bt_hover',
+      comicType: [],
+      currentType: '全部',
     }
   },
   methods: {
+    searchType(type) {
+      this.comicData = [];
+      this.currentType = type;
+      this.comicData = this.originData.filter(item => item.type === type);
+      if(type === '全部') {
+        this.paginationSwitch = true;
+        this.renderComic(this.currentPage);
+      } else {
+        this.paginationSwitch = false;
+      }
+    },
     getSearch(txt) {
       this.search = txt;
       if (this.search === '') {
@@ -113,6 +129,13 @@ export default {
       .then((res) => {
         console.log(res);
         this.originData = res;
+        // 處理漫畫的類型有哪些
+        this.comicType.push('全部');
+        this.originData.forEach(item => {
+          if(this.comicType.indexOf(item.type) === -1) {
+            this.comicType.push(item.type);
+          }
+        })
         this.totalPage = Math.ceil(res.length / 9);
         this.renderComic(this.currentPage)
       })

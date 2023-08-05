@@ -27,6 +27,7 @@
   main.wrap {
     @include container;
     padding: 75px 0;
+    text-align: center;
     .card {
       width: 80%;
       margin: 0 auto 50px;
@@ -92,7 +93,25 @@
   font-size: 1.875rem;
   color: $main_txt_color;
 }
-
+.comic_type {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 20px 0;
+  span {
+    font-size: 1.2rem;
+    display: inline-block;
+    color: $btn_bg_color;
+    background-color: #fff;
+    border-radius: 100px;
+    padding: 5px 20px;
+    margin: 0 5px 10px;
+    cursor: pointer;
+  }
+  .active {
+    color: #fff;
+    background-color: $btn_bg_color;
+  }
+}
 @include sm() {
   .comic_card_wrap {
     main.wrap {
@@ -117,6 +136,11 @@
           }
         }
       }
+    }
+  }
+  .comic_type {
+    span {
+      padding: 10px 20px;
     }
   }
 }

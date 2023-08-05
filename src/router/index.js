@@ -155,6 +155,11 @@ const routes = [
         name: 'member_privacy',
         component: () => import('../views/MemberPrivacy.vue')
       },
+      {
+        path: '/loading',
+        name: 'loading',
+        component: () => import('../views/LoadingPage.vue')
+      },
     ]
     
   },
