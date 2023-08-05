@@ -15,8 +15,7 @@
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{
             li.title }}</li>
-          <li @click.prevent="checkMember"><span class="fa-solid fa-user"></span>{{ login === true ? member.mname :
-            memberWord }}</li>
+          <li @click.prevent="goMemberCenter" v-show="login"><span class="fa-solid fa-user"></span>會員中心</li>
           <li @click.prevent="loginOpen" v-show="!login">登入 | 註冊</li>
           <li @click.prevent="loginClose" v-show="login">登出</li>
         </ul>
@@ -122,17 +121,13 @@ export default {
       }, 100)
       this.loginOut();
     },
-    checkMember() {
-      if (this.login === true) {
-        this.$refs.nav.classList.add('disappear');
-        this.$refs.nav.classList.remove('show');
-        setTimeout(() => {
-          this.$refs.check.checked = false;
-        }, 100)
-        this.$router.push('/member_center/member_nav');
-      } else {
-        this.loginOpen();
-      }
+    goMemberCenter(){
+      this.$refs.nav.classList.add('disappear');
+      this.$refs.nav.classList.remove('show');
+      setTimeout(() => {
+        this.$refs.check.checked = false;
+      }, 100)
+      this.$router.push('/member_center/member_nav')
     }
 
   },
