@@ -3,7 +3,6 @@
   <PageTitle>
     {{ title }}
   </PageTitle>
-
   <div class="comiclist_cart">
     <div class="comiclist_content">
       <div class="cart_l_reserve_title">
@@ -77,17 +76,31 @@
       </div>
     </div>
     <div class="btn_content">
-      <a href="/LoginView"><button class="comiclist_cartbtn">送出預約<i class="fa-solid fa-book-open-reader bookgap"></i>
+      <a @click="modalSwitch = true"><button class="comiclist_cartbtn">送出預約<i class="fa-solid fa-book-open-reader bookgap"></i>
       </button></a>
     </div>
   </div>
+  <div class="comic_modal" v-show="modalSwitch">
+    <div class="modal">
+      <div class="pic"><img src="@/assets/images/member/modal.svg" alt=""></div>
+      <div class="reservation_fail" v-show="remainingEnough">
+        <span>預約失敗</span>
+        <p>親愛的 {{ member.mname}} 會員，您好！<br>您的儲值金已經不足，請盡快至會員中心儲值 。</p>
+        <button @click="this.$router.push('/member_center/member_add_value')">前往儲值</button>
+      </div>
+      <div class="reservation_success" v-show="remainingEnough">
+        <span>預約成功</span>
+        <p>親愛的 {{ member.mname}} 會員，您好！<br>請於以下日期前完成取書，謝謝您！</p>
+        <span class="get_book">2023 - 07 - 16 </span>
+        <button @click="this.$router.push('/member_center/member_book_reservation')">查閱紀錄</button>
+        <button @click="modalSwitch = false">確定</button>
+      </div>
+      <button @click="modalSwitch = false"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
 </template>
-<style>
-@import '@/assets/scss/page/comiccart.scss';
-
-</style>
 <script>
-import {GET} from '@/plugin/axios';
+// import {GET} from '@/plugin/axios';
 import PageTitle from '@/components/PageTitle.vue';
 export default {
   components: {
@@ -96,49 +109,51 @@ export default {
   data() {
     return {
       title: "我的預約清單",
-      shoppingCartData: [
-        {
-          id: "first",
-          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-          category: "咒術迴戰 01",
-          name: "作者：芥見下々",
-          price: 10,
-          quantity: 1,
-        },
-        {
-          id: "second",
-          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-          category: "咒術迴戰 02",
-          name: "作者：芥見下々",
-          price: 10,
-          quantity: 1,
-        },
-        {
-          id: "third",
-          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-          category: "咒術迴戰 03",
-          name: "作者：芥見下々",
-          price: 10,
-          quantity: 1,
-        },
-        {
-          id: "fourth",
-          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-          category: "咒術迴戰 04",
-          name: "作者：芥見下々",
-          price: 10,
-          quantity: 1,
-        },
-        {
-          id: "fifth",
-          imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
-          category: "咒術迴戰 05",
-          name: "作者：芥見下々",
-          price: 10,
-          quantity: 1,
-        },
-      ],
+      // shoppingCartData: [
+      //   {
+      //     id: "first",
+      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
+      //     category: "咒術迴戰 01",
+      //     name: "作者：芥見下々",
+      //     price: 10,
+      //     quantity: 1,
+      //   },
+      //   {
+      //     id: "second",
+      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
+      //     category: "咒術迴戰 02",
+      //     name: "作者：芥見下々",
+      //     price: 10,
+      //     quantity: 1,
+      //   },
+      //   {
+      //     id: "third",
+      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
+      //     category: "咒術迴戰 03",
+      //     name: "作者：芥見下々",
+      //     price: 10,
+      //     quantity: 1,
+      //   },
+      //   {
+      //     id: "fourth",
+      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
+      //     category: "咒術迴戰 04",
+      //     name: "作者：芥見下々",
+      //     price: 10,
+      //     quantity: 1,
+      //   },
+      //   {
+      //     id: "fifth",
+      //     imgSrc: require("@/assets/images/comic/jyujyutsu02.png"),
+      //     category: "咒術迴戰 05",
+      //     name: "作者：芥見下々",
+      //     price: 10,
+      //     quantity: 1,
+      //   },
+      // ],
       borrowDate: "",
+      modalSwitch: false,
+      member: {},
     };
   },
 
@@ -191,6 +206,15 @@ export default {
 
       return returnYear + "/" + returnMonth + "/" + returnDate;
     },
+
+    // 判斷儲值金是否足夠
+    remainingEnough() {
+      if(this.member.remain > this.shoppingCartProductsSum) {
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
 
   methods: {
@@ -232,10 +256,10 @@ export default {
   },
   // 掛載完成時
   mounted() {
+    this.member = this.$store.state.member;
     this.shoppingCartData = this.$store.state.cart;
     this.nowTimes();
   },
 
 }
-
 </script>
