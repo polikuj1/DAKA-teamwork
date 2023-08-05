@@ -33,7 +33,7 @@ export default createStore({
       state.isRegister = !state.isRegister;
       state.isLoginOpen = payload;
     },
-    //打開登入視窗
+    //登入狀態
     loginToggle(state, payload) {
       state.login = payload;
       state.isLoginOpen = false;
@@ -41,7 +41,8 @@ export default createStore({
     loginOut(state) {
       state.login = false;
       state.member = {};
-    }
+    },
+   
 
 
 

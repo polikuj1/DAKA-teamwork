@@ -2,7 +2,7 @@
   <section v-show="isRegister && step === 0">
     <div class="container">
       <div class="register">
-        <form action="" @click.prevent="handleSubmit">
+        <form action="" @submit.prevent="handleSubmit">
           <img :src="require('@/assets/images/login/cross.png')" class="register_close_modal"
             @click="closeRegister(false)">
           <h2>註冊會員</h2>
@@ -43,7 +43,7 @@
               </div>
               <div class="inputBox">
                 <span>生日</span>
-                <input type="date" class="payment-card-name-input" v-model="birthReg" min="1900-01-01" max="2021-01-01"
+                <input type="date" class="payment-card-name-input" v-model="birthReg" min="1900-01-01" max="2005-08-05"
                   required="required">
               </div>
               <div class="inputBox">
@@ -53,15 +53,17 @@
             </div>
           </div>
           <div class="register_form_bottom">
-            <div class="">
-              <input type="checkbox" name="membership" id="membership" required="required">
-              <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
+            <div >
+              <input type="checkbox" name="membership" id="membership" required="required" >
+              
+              <label for="membership" >我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
                   href="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
             </div>
-            <div class="">
+            <div c>
               <input type="checkbox" name="news_daka" id="news_daka" required="required">
               <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
             </div>
+            
             <input class="register_submit" type="submit" value="註冊會員">
           </div>
 
@@ -102,7 +104,7 @@ export default {
         birthReg: '',
         telReg: '',
         memberTerms: false,
-        memberPrivacy: false
+        memberPrivacy: false,
       },
     }
   },
@@ -121,51 +123,46 @@ export default {
     backLogin() {
       this.toggleRegister(true);
       this.step = 0;
-      this.clearInput()
+      this.clearInput();
     },
 
     handleSubmit() {
-      // if (this.register.pswReg === this.register.pswConfirmReg && this.register.pswReg != '' && this.memberPrivacy && this.memberTerms) {
-      //   this.step = 1;
-      // } else {
-      //   return
-      // }
+    
       if (this.validateForm && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
         this.submitForm();
       } else {
         return;
       }
-
-
+      this.clearInput();
     },
     validateForm() {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
       const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
-      const birthRegex = /^(?:2005-(?:0[2-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])|2005-01-(?:0[2-9]|[1-2][0-9]|3[0-1])|2005-(?:0[4-9]|1[0-2])-30|2005-(?:0[6-9]|1[0-2])-31)$/;
+      // const birthRegex = /^(?:2005-(?:0[2-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])|2005-01-(?:0[2-9]|[1-2][0-9]|3[0-1])|2005-(?:0[4-9]|1[0-2])-30|2005-(?:0[6-9]|1[0-2])-31)$/;
 
       const isEmailValid = emailRegex.test(this.emailReg);
       const isPswValid = passwordRegex.test(this.pswReg);
       const isPswConfirmValid = passwordConfirmRegex.test(this.pswConfirmReg);
       const isBirthValid = birthRegex.test(this.birthReg);
 
-      return isEmailValid && isPswValid && isPswConfirmValid && isBirthValid && (this.pswReg === this.pswConfirmReg);
+      return isEmailValid && isPswValid && isPswConfirmValid && (this.pswReg === this.pswConfirmReg);
 
     },
-    submitForm(){
-console.log(123);
-// axios.post()
-    },
-    modifySuccess() {
-      this.step = 0;
-      closeLogin(false);
+    submitForm() {
+      this.step=1;
+      
+      // axios.post()
     },
     checkMemberTerms() {
       this.memberTerms = true;
+      console.log(this.memberTerms);
     },
     checkMemberPrivacy() {
       this.memberPrivacy = true;
+      console.log(this.memberPrivacy);
     },
+   
   },
   mounted() {
 

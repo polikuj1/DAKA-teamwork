@@ -29,7 +29,7 @@
           <button @click.prevent="toggleRegister(false)" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
         </form>
-        <button class="login_connect">
+        <button class="login_connect" @click="signInRedirect">
           <i class="fa-brands fa-square-facebook"></i>
           以FACEBOOK帳號登入
         </button>
@@ -38,7 +38,7 @@
           <i class="fa-brands fa-google"></i>
           以GOOGLE帳號登入
         </button>
-        <button class="login_connect">
+        <button class="login_connect" @click="signInRedirect">
           <i class="fa-brands fa-apple"></i>
           以APPLE帳號登入
         </button>
@@ -82,11 +82,13 @@ export default {
         newPsw: '',
       },
       error: null,
-      memberData: {}
+      memberData: {},
+      matchedUser: null,
+      userTokenKey: "user_token",
     }
   },
   computed: {
-    ...mapState(["isLoginOpen", "forgotPsw", 'login'])
+    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member'])
   },
   methods: {
     ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginToggle'])
@@ -99,20 +101,24 @@ export default {
       this.toggleForgotPsw();
     },
     checkLogin() {
-    
-      const matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
-      
-      if (matchedUser) {
+
+      this.matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
+
+      //找的到會員帳號&密碼
+      if (this.matchedUser) {
         this.loginToggle(true);
-        this.setInfo(matchedUser);
-        this.reset();
+        this.setInfo(this.matchedUser);
+        localStorage.setItem(this.userTokenKey, this.matchedUser.email);
+        // this.reset();
         return;
-      } else {
+      } else if (!this.matchedUser && this.errorMsg) {
+        this.errorMsg = '帳號或密碼錯誤'
+      }
+      else if (!this.errorMsg) {
+        this.matchedUser = null;
         this.errorMsg = '請輸入帳號或密碼';
         return;
       }
-      
-      
     },
     reset() {
       this.memId = this.memPsw = '';
@@ -162,17 +168,28 @@ export default {
           this.error = reason;
         });
     },
-    fetchMemberData() {
-      axios
-        .get("data/member.json")
-        .then((res) => {
-          this.memberData = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    // fetchMemberData() {
+    //   axios
+    //     .get("data/member.json")
+    //     .then((res) => {
+    //       this.memberData = res.data;
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
 
-    },
+    // },
+    async fetchMemberData() {
+  try {
+    const response = await axios.get("data/member.json");
+    this.memberData = response.data;
+
+    // 在数据获取成功后调用 tokenCheck()
+    this.tokenCheck();
+  } catch (error) {
+    console.error(error);
+  }
+},
     onMounted() {
       const auth = useFirebaseAuth();
       getRedirectResult(auth)
@@ -184,12 +201,30 @@ export default {
           this.error = reason;
         });
     },
+    tokenCheck() {
+      if (this.matchedUser===null) {
+        const checkToken = localStorage.getItem(this.userTokenKey);
+        if (checkToken) {
+          const user = this.memberData.find(user => user.email === checkToken);
+          if (user) {
+            this.loginToggle(true);
+            this.setInfo(user);
+          }
+        }
+      }else{
+        return;
+      }
+    }
+
   },
 
 
   mounted() {
     this.onMounted();
-    this.fetchMemberData();
+     this.fetchMemberData();
+     
+    
+
   },
 }
 
