@@ -1,7 +1,8 @@
 <template>
   <footer class="footer">
     <div class="circle">
-      <svg viewBox="-80 0 40 10">
+      <img src="@/assets/images/home/footer_welcome.svg" alt="">
+      <!-- <svg viewBox="-80 0 40 10">
         <g class="g_circle">
           <path d="M 50 150 m -50 0 a 120 60 0 1 1 10 0 a 50 50 0 1 1 10 0 z" id="circle" />
           <text fill="none" stroke="#FF5E1E" stroke-width="0.2">
@@ -10,7 +11,7 @@
             </textPath>
           </text>
         </g>
-      </svg>
+      </svg> -->
     </div>
     <div class="logo">
       <router-link to="/index">
@@ -52,7 +53,7 @@ export default {
 }
 </script>
 <style scoped>
-.circle {
+/* .circle {
   width: 30em;
   height: 30em;
   position: absolute;
@@ -72,5 +73,5 @@ export default {
   .circle {
     display: none;
   }
-}
+} */
 </style>

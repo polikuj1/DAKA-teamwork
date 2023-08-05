@@ -25,7 +25,7 @@
           <span>123@yahoo.com.w</span>
         </li>
         <li>
-          <span>編號</span>
+          <!-- <span>編號</span> -->
           <span>
             <img src="@/assets/images/member/qrcode.svg" alt="qrcode">
             <span class="random_num">1234567890ABC</span>
