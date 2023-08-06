@@ -5,9 +5,6 @@ import store from './store'
 
 
 //引入viewFire
-// import { initializeApp } from 'firebase/app'
-// import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
-// import { getFirestore } from 'firebase/firestore'
 import { VueFire, VueFireAuth } from 'vuefire'
 import { firebaseApp } from './firebase'
 
@@ -33,17 +30,6 @@ import "@/assets/scss/_style.scss"
 import { URL } from '@/assets/js/common.js'
 
 
-
-
-// firebase.initializeApp(firebaseConfig);
-//   const db = getFirestore(firebaseApp);
-//   const firebaseApp = initializeApp({
-//     // your application settings
-//   })
-
-
-
-
 AOS.init({
     duration: 1000,
     
@@ -55,15 +41,6 @@ app.use(VueFire, {
     firebaseApp,
     modules: [
     
-    //   VueFireFirestoreOptionsAPI({
-    //     reset: true,
-    //   wait: false,
-    //   }),
-    // to use the `firebase` option
-    //   VueFireDatabaseOptionsAPI({
-    //     reset: true,
-    //   wait: false,
-    //   }),
       VueFireAuth(),
     ]
   })
