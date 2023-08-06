@@ -81,7 +81,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['toggleLogin', 'toggleForgotPsw', 'toggleRegister', 'loginToggle', 'loginOut']),
+    ...mapMutations(['toggleLogin', 'toggleForgotPsw', 'toggleRegister', 'loginOk', 'loginOut']),
     goPage(site) {
       this.$router.push(site);
       this.$refs.nav.classList.add('disappear');
@@ -132,7 +132,7 @@ export default {
 
   },
   computed: {
-    ...mapState(['isLoginOpen","forgotPsw', 'member', 'isRegister', 'login', 'member']),
+    ...mapState(['isLoginOpen","forgotPsw', 'member', 'isRegister', 'login', 'member','keepLoginStatus']),
   },
 
 }

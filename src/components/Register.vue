@@ -131,9 +131,10 @@ export default {
       if (this.validateForm && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
         this.submitForm();
       } else {
-        return;
+        alert(console.error);
+        console.log(this.memberTerms,this.memberPrivacy);
       }
-      this.clearInput();
+      
     },
     validateForm() {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

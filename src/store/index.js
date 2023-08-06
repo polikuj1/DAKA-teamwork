@@ -7,7 +7,9 @@ export default createStore({
     cart: [],
     isLoginOpen: false,
     forgotPsw: false,
-    isRegister: false
+    isRegister: false,
+    keepLoginStatus: false,
+    userTokenKey: "user_token",
   },
   getters: {
   },
@@ -33,16 +35,24 @@ export default createStore({
       state.isRegister = !state.isRegister;
       state.isLoginOpen = payload;
     },
-    //登入狀態
-    loginToggle(state, payload) {
+    //確定登入
+    loginOk(state, payload) {
       state.login = payload;
       state.isLoginOpen = false;
     },
+    setToStorage(state){
+      localStorage.setItem(state.userTokenKey, state.member.email);
+    },
     loginOut(state) {
       state.login = false;
+      state.keepLoginStatus = false;
+      localStorage.clear(state.userTokenKey, state.member.email);
       state.member = {};
     },
-   
+    //保持登入狀態
+    toggleLoginStatus(state) {
+      state.keepLoginStatus = !state.keepLoginStatus;
+    }
 
 
 

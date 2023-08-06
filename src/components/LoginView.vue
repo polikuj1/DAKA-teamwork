@@ -11,7 +11,7 @@
 
       <div class="login_form">
         <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="closeLogin">
-        <form @click.prevent="checkLogin">
+        <form @submit.prevent="checkLogin">
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
             require>
@@ -19,8 +19,8 @@
             require>
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
-            <div class="login_keep_status">
-              <input type="checkbox" name="check" id="check">
+            <div class="login_keep_status" @click="toggleLoginStatus">
+              <input type="checkbox" id="check" >
               <label for="check">保持登入狀態</label>
             </div>
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
@@ -65,17 +65,17 @@ export default {
     return {
       memId: '',
       memPsw: '',
-      loginStatus: false,
-      isRegistered: false,
-      forgetPsw: false,
-      step: 0,
+      // loginStatus: false,
+      // isRegistered: false,
+      // forgetPsw: false,
+      // step: 0,
       errorMsg: '',
-      verification: {
-        number1: '',
-        number2: '',
-        number3: '',
-        number4: '',
-      },
+      // verification: {
+      //   number1: '',
+      //   number2: '',
+      //   number3: '',
+      //   number4: '',
+      // },
       memEmail: '',
       modify: {
         psw: '',
@@ -84,14 +84,14 @@ export default {
       error: null,
       memberData: {},
       matchedUser: null,
-      userTokenKey: "user_token",
+      // userTokenKey: "user_token",
     }
   },
   computed: {
-    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member'])
+    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus','userTokenKey'])
   },
   methods: {
-    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginToggle'])
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn','toggleLoginStatus','setToStorage'])
     ,
     closeLogin() {
       this.toggleLogin();
@@ -105,11 +105,14 @@ export default {
       this.matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
 
       //找的到會員帳號&密碼
-      if (this.matchedUser) {
-        this.loginToggle(true);
+      if (this.matchedUser ) {
         this.setInfo(this.matchedUser);
-        localStorage.setItem(this.userTokenKey, this.matchedUser.email);
+        this.loginOk(true);
+        // localStorage.setItem(this.userTokenKey, this.matchedUser.email);
         // this.reset();
+        if(this.keepLoginStatus){
+          this.setToStorage();
+        }
         return;
       } else if (!this.matchedUser && this.errorMsg) {
         this.errorMsg = '帳號或密碼錯誤'
@@ -120,6 +123,7 @@ export default {
         return;
       }
     },
+    
     reset() {
       this.memId = this.memPsw = '';
     },
@@ -180,16 +184,16 @@ export default {
 
     // },
     async fetchMemberData() {
-  try {
-    const response = await axios.get("data/member.json");
-    this.memberData = response.data;
+      try {
+        const response = await axios.get("data/member.json");
+        this.memberData = response.data;
 
-    // 在数据获取成功后调用 tokenCheck()
-    this.tokenCheck();
-  } catch (error) {
-    console.error(error);
-  }
-},
+        // 在数据获取成功后调用 tokenCheck()
+        this.tokenCheck();
+      } catch (error) {
+        console.error(error);
+      }
+    },
     onMounted() {
       const auth = useFirebaseAuth();
       getRedirectResult(auth)
@@ -202,16 +206,14 @@ export default {
         });
     },
     tokenCheck() {
-      if (this.matchedUser===null) {
-        const checkToken = localStorage.getItem(this.userTokenKey);
-        if (checkToken) {
-          const user = this.memberData.find(user => user.email === checkToken);
-          if (user) {
-            this.loginToggle(true);
-            this.setInfo(user);
-          }
+      const checkToken = localStorage.getItem(this.userTokenKey);
+      if (checkToken) {
+        const user = this.memberData.find(user => user.email === checkToken);
+        if (user) {
+          this.loginOk(true);
+          this.setInfo(user);
         }
-      }else{
+      } else {
         return;
       }
     }
@@ -221,9 +223,9 @@ export default {
 
   mounted() {
     this.onMounted();
-     this.fetchMemberData();
-     
-    
+    this.fetchMemberData();
+
+
 
   },
 }

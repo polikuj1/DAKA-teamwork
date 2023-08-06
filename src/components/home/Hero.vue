@@ -89,7 +89,7 @@ export default {
   
   },
   computed: {
-    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister', 'login','isRegister','member'])
+    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister', 'login','isRegister','member','keepLoginStatus'])
   }
 }
 </script>
