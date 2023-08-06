@@ -49,6 +49,7 @@
             </div>
           </div>
           <br>
+          <p class="check_alert" v-show="warnTxt">需填寫所有欄位，請確認</p>
           <button type="button" @click="submit" class="submit_btn">確認送出</button>
         </form>
       </div>
@@ -91,6 +92,7 @@ export default {
       showCardNumberWarning: false,
       showVerificationCodeWarning: false,
       modalSwitch: false,
+      warnTxt: false,
     }
   },
   methods: {
@@ -102,7 +104,7 @@ export default {
       if (this.isFormValid()) {
         this.modalSwitch = true;
       } else {
-        alert('請填寫所有欄位');
+        this.warnTxt = true;
       }
     },
     isFormValid() {
