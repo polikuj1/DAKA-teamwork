@@ -96,24 +96,39 @@ export default {
   methods: {
     back() {
       this.modalSwitch = false;
-      this.$router.push('/member_center/member_add_value');
+      this.$router.push('/member_center/member_nav');
     },
     submit() {
-      /*獲取填寫的假資料和選擇的信用卡資訊*/
-      const amount = this.selectedAmount;
-      const selectedCreditCard = this.selectedCreditCard;
-      const cardNumber = this.cardNumber;
-      const expiryDate = this.selectedYear + this.selectedMonth;
-      const verificationCode = this.verificationCode;
-      const isBound = this.isBound;
-      const isDefault = this.isDefault;
-
-      /*將填寫的假資料和選擇的信用卡資訊一起處理*/
-      /*可以透過 AJAX 或 Fetch 將資料傳送到後端 API 進行處理*/
-      this.modalSwitch = true;
-
-      alert('儲值成功！');
+      if (this.isFormValid()) {
+        this.modalSwitch = true;
+      } else {
+        alert('請填寫所有欄位');
+      }
     },
+    isFormValid() {
+      if (this.selectedAmount === '請選擇' || this.selectedCreditCard === '請選擇') {
+        return false;
+      }
+      if (this.selectedCreditCard === '其他') {
+        if (this.cardNumber === '' || this.selectedYear === '請選擇' || this.selectedMonth === '請選擇' || this.verificationCode === '') {
+          return false;
+        }
+      }
+
+      return true;
+    },
+    // submit() {
+    //   /*獲取填寫的假資料和選擇的信用卡資訊*/
+    //   const amount = this.selectedAmount;
+    //   const selectedCreditCard = this.selectedCreditCard;
+    //   const cardNumber = this.cardNumber;
+    //   const expiryDate = this.selectedYear + this.selectedMonth;
+    //   const verificationCode = this.verificationCode;
+    //   const isBound = this.isBound;
+    //   const isDefault = this.isDefault;
+
+    //   this.modalSwitch = true;
+    // },
     checkCardNumberInput() {
       const regex = /^[0-9]*$/; 
       this.showCardNumberWarning = !regex.test(this.cardNumber);
