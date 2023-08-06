@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="container">
+    <div class="bookcontainer">
       <!-- Codrops top bar -->
       <div class="main">
         <ul id="bk-list" class="bk-list clearfix">
@@ -8,23 +8,22 @@
             <div class="bk-book book-1">
               <div class="bk-front">
                 <div class="bk-cover">
-                  <h2>
+                  <!-- <h2>
                     <span>Anthony Burghiss</span>
                     <span>A Catwork Orange</span>
-                  </h2>
+                  </h2> -->
                 </div>
                 <div class="bk-cover-back"></div>
               </div>
               <div class="bk-page">
                 <div class="bk-content bk-content-current">
                   <p>
-                    Red snapper Kafue pike fangtooth humums slipmouth, salmon
-                    cutlassfish; swallower European perch mola mola sunfish,
-                    threadfin bream. Billfish hog sucker trout-perch lenok
-                    orbicular velvetfish. Delta smelt striped bass, medusafish
-                    dragon goby starry flounder cuchia round whitefish northern
-                    anchovy spadefish merluccid hake cat shark Black pickerel.
-                    Pacific cod.
+                    　　在新卡牌的引領下， 　　尋找謎底的小櫻飛向天際！
+                    　　小櫻追蹤讓秋穗睡著的「輕飄飄」， 　　再次得到新的卡牌。
+                    　　她似乎從這些透明的卡牌上察覺到什麼…？
+                    　　某天，小櫻來到桃矢打工的地方。
+                    　　她和一起在這裡打工的雪兔聊天時，
+                    　　2人竟然不慎誤入突然出現的迷宮－－？
                   </p>
                 </div>
                 <div class="bk-content">
@@ -61,8 +60,8 @@
               <div class="bk-right"></div>
               <div class="bk-left">
                 <h2>
-                  <span>Anthony Burghiss</span>
-                  <span>A Catwork Orange</span>
+                  <span>庫洛魔法使 透明牌篇 4</span>
+                  <span>作者： CLAMP</span>
                 </h2>
               </div>
               <div class="bk-top"></div>
@@ -101,7 +100,7 @@ import PageTitle from "@/components/PageTitle.vue";
 // import '@/assets/js/modernizr.custom.js';
 
 // import Modernizr from 'modernizr';
-import Books from '@/assets/js/books2.js';
+import Books from "@/assets/js/books2.js";
 
 export default {
   components: {

@@ -1,3 +1,8 @@
+.bookcontainer {
+	width: 100%;
+	position: relative;
+    padding-bottom: 500px;
+
 .bk-list {
 	list-style: none;
 	position: relative;
@@ -303,11 +308,11 @@
 .book-1 .bk-back,
 .book-1 .bk-left,
 .book-1 .bk-front:after {
-	background-color: #ff924a;
+	background-color: #DF5D0C;
 }
 
 .book-1 .bk-cover {
-	background-image: url(../images/1.png);	
+	background-image: url(../images/017.webp);	
 	background-repeat: no-repeat;
 	background-position: 10px 40px;
 }
@@ -594,4 +599,5 @@
 	width: 300px;
 	margin: 10px;
 	float: left;
+}
 }
