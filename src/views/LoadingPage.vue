@@ -56,10 +56,13 @@ class Ball {
    }
 
    draw() {
-      ctx.beginPath();
-      ctx.fillStyle = this.color;
-      ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-      ctx.fill();
+         const img = new Image();
+         img.src = `https://picsum.photos/id/1/200/300`;
+         ctx.drawImage(img, this.x, this.y, 50, 50);
+      // ctx.beginPath();
+      // ctx.fillStyle = this.color;
+      // ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+      // ctx.fill();
    }
 
    update() {
@@ -101,7 +104,7 @@ class Ball {
 
 const balls = [];
 
-while (balls.length < 25) {
+while (balls.length < 10) {
    const size = random(10,20);
    const ball = new Ball(
       // ball position always drawn at least one ball width
