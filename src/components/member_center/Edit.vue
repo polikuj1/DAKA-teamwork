@@ -8,34 +8,34 @@
           <form class="edit_content">
             <div class="edit_item">
               <label for="name">姓名</label>
-              <input type="text" v-model="name" />
+              <input type="text" v-model="memberData.mname" />
             </div>
             <div class="edit_item">
               <label for="gender">性別</label>
-              <input type="text" v-model="gender" readonly />
+              <input type="text" v-model="memberData.sex" readonly />
             </div>
             <div class="edit_item">
               <label for="birthday">生日</label>
-              <input type="date" v-bind:value="birthday" readonly class="edit_birth"/>
+              <input type="date" v-model="memberData.member_birth" readonly class="edit_birth"/>
             </div>
             <div class="edit_item">
               <label for="address">地址</label>
-              <input type="text" v-model="address" />
+              <input type="text" v-model="memberData.address" />
             </div>
             <div class="edit_item">
               <label for="mobile">手機</label>
-              <input type="tel" v-model="mobile" maxlength="12"/>
+              <input type="tel" v-model="memberData.mobile" maxlength="12"/>
             </div>
             <div class="edit_item">
               <label for="email">信箱</label>
-              <input type="email" v-model="email" />
+              <input type="email" v-model="memberData.email" />
             </div>
             <div class="edit_item">
               <label for="password">修改密碼</label>
-              <input type="password" v-model="password" pattern="[A-Za-z0-9]{6,12}" placeholder="請輸入新密碼" />
+              <input type="password" v-model="memberData.new_password" pattern="[A-Za-z0-9]{6,12}" placeholder="請輸入新密碼" />
             </div>
             <div class="confirm_password">
-              <input type="password" v-model="confirmPassword" pattern="[A-Za-z0-9]{6,12}" placeholder="請再次輸入新密碼" />
+              <input type="password" pattern="[A-Za-z0-9]{6,12}" placeholder="請再次輸入新密碼" />
             </div>
             <button type="submit" @click="submitForm" class="sumbit_edit">確認修改</button>
           </form>
@@ -64,7 +64,8 @@
         mobile: '0912345678',
         email: 'johndoe123@gmail.com',
         password: '111222aaa',
-        confirmPassword:'' 
+        confirmPassword:'' ,
+        memberData: {},
       }
     },
     methods: {
@@ -78,5 +79,8 @@
     submitForm() {
       console.log('表單提交成功！');
     },
+    created() {
+      this.memberData = this.$store.state.member;
+    }
   }
   </script>

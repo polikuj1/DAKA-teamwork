@@ -12,7 +12,7 @@
         <div class="card" v-for="item in comicData" :key="item.title">
             <div class="pic">
                 <!-- <img :src="item.img"> -->
-                <Images :imgURL="`${item.img}`" :alt="`${item.title}`" />
+                <Images :imgURL="`comic/${item.img}`" :alt="`${item.title}`" />
             </div>
             <div class="text">
                 <div class="text_title">

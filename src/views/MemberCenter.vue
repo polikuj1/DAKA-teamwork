@@ -18,11 +18,11 @@
       <ul>
         <li>
           <span><i class="fa-solid fa-user"></i></span>
-          <span>張嘉哲</span>
+          <span>{{ this.$store.state.member.mname}}</span>
         </li>
         <li>
           <span><i class="fa-solid fa-envelope"></i></span>
-          <span>123@yahoo.com.w</span>
+          <span>{{ this.$store.state.member.email }}</span>
         </li>
         <li>
           <!-- <span>編號</span> -->
@@ -33,10 +33,10 @@
         </li>
         <li>
           <span><i class="fa-solid fa-piggy-bank"></i> 儲值金金額</span>
-          <span>NTD$ 1,000</span>
+          <span>NTD$ {{ this.$store.state.member.remain }}</span>
         </li>
         <li>
-          目前消費金額 NTD$ 5,000
+          目前消費金額 NTD$ {{ this.$store.state.member.value }}
         </li>
       </ul>
       <button type="button">線上儲值</button>
