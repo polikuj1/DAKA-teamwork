@@ -20,7 +20,7 @@
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
             <div class="login_keep_status" @click="toggleLoginStatus">
-              <input type="checkbox" id="check" >
+              <input type="checkbox" id="check">
               <label for="check">保持登入狀態</label>
             </div>
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
@@ -65,17 +65,7 @@ export default {
     return {
       memId: '',
       memPsw: '',
-      // loginStatus: false,
-      // isRegistered: false,
-      // forgetPsw: false,
-      // step: 0,
       errorMsg: '',
-      // verification: {
-      //   number1: '',
-      //   number2: '',
-      //   number3: '',
-      //   number4: '',
-      // },
       memEmail: '',
       modify: {
         psw: '',
@@ -84,14 +74,14 @@ export default {
       error: null,
       memberData: {},
       matchedUser: null,
-      // userTokenKey: "user_token",
     }
   },
   computed: {
-    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus','userTokenKey'])
+    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey'])
+
   },
   methods: {
-    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn','toggleLoginStatus','setToStorage'])
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn', 'toggleLoginStatus', 'setToStorage'])
     ,
     closeLogin() {
       this.toggleLogin();
@@ -105,27 +95,27 @@ export default {
       this.matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
 
       //找的到會員帳號&密碼
-      if (this.matchedUser ) {
+      if (this.matchedUser) {
         this.setInfo(this.matchedUser);
         this.loginOk(true);
-        // localStorage.setItem(this.userTokenKey, this.matchedUser.email);
-        // this.reset();
-        if(this.keepLoginStatus){
+        if (this.keepLoginStatus) {
           this.setToStorage();
         }
         return;
-      } else if (!this.matchedUser && this.errorMsg) {
-        this.errorMsg = '帳號或密碼錯誤'
       }
-      else if (!this.errorMsg) {
+      //如果帳號密碼空值
+      if (!this.memId && !this.memPsw) {
         this.matchedUser = null;
         this.errorMsg = '請輸入帳號或密碼';
         return;
+      }else{
+        this.errorMsg = '帳號或密碼錯誤'
+        return;
       }
     },
-    
+
     reset() {
-      this.memId = this.memPsw = '';
+      this.memId = this.memPsw = this.errorMsg = '';
     },
     checkEmail() {
       if (!this.memEmail) {
@@ -172,23 +162,12 @@ export default {
           this.error = reason;
         });
     },
-    // fetchMemberData() {
-    //   axios
-    //     .get("data/member.json")
-    //     .then((res) => {
-    //       this.memberData = res.data;
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-
-    // },
     async fetchMemberData() {
       try {
         const response = await axios.get("data/member.json");
         this.memberData = response.data;
 
-        // 在数据获取成功后调用 tokenCheck()
+        // 抓到資料後執行tokenCheck()比對localstorage裡的資料
         this.tokenCheck();
       } catch (error) {
         console.error(error);
@@ -224,9 +203,6 @@ export default {
   mounted() {
     this.onMounted();
     this.fetchMemberData();
-
-
-
   },
 }
 

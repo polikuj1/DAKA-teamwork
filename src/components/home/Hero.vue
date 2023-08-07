@@ -31,7 +31,7 @@
   </section>
   <login v-show="isLoginOpen"> </login>
   <forgot v-show="forgotPsw"></forgot>
-  <register v-show="isRegister"></register>
+  <register ></register>
 </template>
 <script>
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
