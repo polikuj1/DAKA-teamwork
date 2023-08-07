@@ -10,6 +10,7 @@ export default createStore({
     isRegister: false,
     keepLoginStatus: false,
     userTokenKey: "user_token",
+   
   },
   getters: {
   },

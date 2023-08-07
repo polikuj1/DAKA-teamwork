@@ -1,8 +1,8 @@
 <template>
-  <section v-show="isRegister && step === 0">
+  <section v-show="isRegister && step == 0">
     <div class="container">
       <div class="register">
-        <form action="" @submit.prevent="handleSubmit">
+        <form @submit="handleSubmit">
           <img :src="require('@/assets/images/login/cross.png')" class="register_close_modal"
             @click="closeRegister(false)">
           <h2>註冊會員</h2>
@@ -53,17 +53,17 @@
             </div>
           </div>
           <div class="register_form_bottom">
-            <div >
-              <input type="checkbox" name="membership" id="membership" required="required" >
-              
-              <label for="membership" >我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
+            <div>
+              <input type="checkbox" name="membership" id="membership" required="required">
+
+              <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
                   href="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
             </div>
             <div c>
               <input type="checkbox" name="news_daka" id="news_daka" required="required">
               <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
             </div>
-            
+
             <input class="register_submit" type="submit" value="註冊會員">
           </div>
 
@@ -71,24 +71,28 @@
         </form>
       </div>
     </div>
+
   </section>
 
-  <section v-show="isRegister && step === 1">
+  <section v-show="isRegister && step == 1">
     <div class="container">
-      <div class="enter_modify_success">
-        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_success_modal"
+      <div class="register_success">
+        <img :src="require('@/assets/images/login/cross.png')" class="register_close_success_modal"
           @click="closeRegister(false)">
-        <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo" class="enter_modify_success_logo">
+        <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo" class="register_success_logo">
         <p>註冊完成！</p>
         <p>請重新登入</p>
         <button @click="backLogin">返回會員登入</button>
       </div>
+
     </div>
-  </section>
+  </section> 
+   
 </template>
 <script >
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import axios, { Axios } from "axios";
+
 
 export default {
   name: 'register',
@@ -127,32 +131,31 @@ export default {
     },
 
     handleSubmit() {
-    
-      if (this.validateForm && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
+
+      if (this.validateForm() && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
+
         this.submitForm();
       } else {
-        alert(console.error);
-        console.log(this.memberTerms,this.memberPrivacy);
+        alert('輸入不完整!');
       }
-      
+
     },
     validateForm() {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
       const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
-      // const birthRegex = /^(?:2005-(?:0[2-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])|2005-01-(?:0[2-9]|[1-2][0-9]|3[0-1])|2005-(?:0[4-9]|1[0-2])-30|2005-(?:0[6-9]|1[0-2])-31)$/;
 
       const isEmailValid = emailRegex.test(this.emailReg);
       const isPswValid = passwordRegex.test(this.pswReg);
       const isPswConfirmValid = passwordConfirmRegex.test(this.pswConfirmReg);
-      const isBirthValid = birthRegex.test(this.birthReg);
 
       return isEmailValid && isPswValid && isPswConfirmValid && (this.pswReg === this.pswConfirmReg);
 
     },
     submitForm() {
-      this.step=1;
-      
+      this.step = 1;
+
+      console.log(this.step);
       // axios.post()
     },
     checkMemberTerms() {
@@ -163,7 +166,7 @@ export default {
       this.memberPrivacy = true;
       console.log(this.memberPrivacy);
     },
-   
+
   },
   mounted() {
 

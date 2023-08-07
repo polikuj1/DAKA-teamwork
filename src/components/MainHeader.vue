@@ -15,12 +15,12 @@
       </a>
       <a  @click.prevent="toggleLogin" v-show="!login">登入 | 註冊</a>
       <a  @click.prevent="this.$router.push('/member_center/member_nav')" v-show="login"><i class="fa-solid fa-user"></i>{{ member.mname }}</a>
-      <a  @click.prevent="loginOut" v-show="login">登出</a>
+      <a  @click.prevent="loggingOut" v-show="login">登出</a>
     </nav>
   </div> 
   <login v-show="isLoginOpen"></login>
   <forgot v-show="forgotPsw"></forgot>
-  <register v-show="isRegister"></register>
+  <register ></register>
 </template>
 
 <script>
@@ -107,6 +107,14 @@ export default {
      goPage(site,e) {
     this.$router.push(site);
      },
+loggingOut(){
+
+  this.loginOut();
+if(this.$route.path=='/member_center'){
+  this.$router.push('/index')
+}
+
+}
   },
   components: {
     login, forgot,register

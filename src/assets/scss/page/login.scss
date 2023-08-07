@@ -1,10 +1,12 @@
+
+
 .container {
   width: 100%;
   max-width: 1920px;
   height: 100%;
   top: 0;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   background-color: rgba(68, 68, 68, 0.5);
 
   .login {
@@ -421,7 +423,6 @@
 
   .enter_modify_success {
     width: 100%;
-
     padding: 100px;
     position: fixed;
     z-index: 999;
@@ -469,6 +470,72 @@
     }
 
     .modify_close_success_modal {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+    button {
+      font-size: 1.4rem;
+      background-color: $btn_bg_color;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+  .register_success {
+    width: 100%;
+    padding: 100px;
+    position: fixed;
+    z-index: 99999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+      cover;
+    justify-content: center;
+    gap: 30px;
+    .register_success_logo {
+      width: 70%;
+      margin-top: 35px;
+    }
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.8rem;
+    }
+
+    .enter_modify_input {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      label {
+        font-size: 1.3rem;
+      }
+      input {
+        font-size: 2rem;
+        padding: 10px;
+        margin-bottom: 40px;
+        width: 100%;
+
+        border-radius: 10px;
+      }
+    }
+
+    .register_close_success_modal {
       width: 40px;
       height: 40px;
       position: absolute;
@@ -639,7 +706,6 @@
         width: 100%;
         max-width: 1000px;
         height: 100%;
-
         background-color: #fff;
         font-size: 1.1rem;
         border-radius: 10px;
@@ -973,6 +1039,60 @@
       }
 
       .modify_close_success_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      button {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: $btn_bg_color;
+          border: 1px solid $btn_bg_color;
+        }
+      }
+    }
+    .register_success{
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 50px;
+      .register_success_logo {
+        width: 30%;
+        margin-top: 35px;
+      }
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .register_close_success_modal {
         width: 40px;
         height: 40px;
         position: absolute;
@@ -1437,6 +1557,55 @@
       }
 
       .modify_close_success_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      button {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    .register_success {
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 50px;
+      .register_success_logo {
+        width: 30%;
+        margin-top: 35px;
+      }
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 2rem;
+      }
+  
+      .register_close_success_modal {
         width: 40px;
         height: 40px;
         position: absolute;

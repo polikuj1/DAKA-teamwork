@@ -18,81 +18,55 @@
         <div class="reservation_read_rules">
           <ul>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />
+              <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
               為利於其餘客戶權益，每次預約僅保留30分鐘，逾時未到視同放棄，
               如需取消預約，請於1日前取消。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />目前線上付款僅提供扣除儲值金。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
               恕不另行通知。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />座位區預約上限5位，包廂區預約上限2間。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />
+              <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
               如需取消預約，請於1日前取消。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />目前線上付款僅提供扣除儲值金。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
               恕不另行通知。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />座位區預約上限5位，包廂區預約上限2間。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
             </li>
           </ul>
         </div>
@@ -109,57 +83,41 @@
             <h2 class="reservation_text">
               <span>2</span> 選擇日期、時間及座位
             </h2>
-            <Date
-              @convert-date="dateConvert"
-              @convert-time="timeConvert"
-            ></Date>
+            <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
           </section>
           <section class="reservation_seat">
             <!-- <h2 class="reservation_text"><span>3</span> 選擇座位</h2> -->
             <div class="reservation_all_seat">
               <main class="tabs">
                 <div class="tabs_list">
-                  <div
-                    class="seat_tabs_item"
-                    v-for="(item, key) in tabItems"
-                    :class="{ active: key == tabActive }"
-                    @click="updateTab(key)"
-                    :key="item.key"
-                  >
+                  <div class="seat_tabs_item" v-for="(item, key) in tabItems" :class="{ active: key == tabActive }"
+                    @click="updateTab(key)" :key="item.key">
                     {{ item }}
                   </div>
                 </div>
-                  <div class="color_state_seat_group">
-                    <div class="color_vacancy_seat_group">
-                      <div class="color_G_vacancy_seat"></div>
-                      <p class="p_vacancy_seat">可預約</p>
-                    </div>
-                    <div class="color_use_seat_group">
-                      <div class="color_G_use_seat"></div>
-                      <p class="p_use_seat">不可預約</p>
-                    </div>
+                <div class="color_state_seat_group">
+                  <div class="color_vacancy_seat_group">
+                    <div class="color_G_vacancy_seat"></div>
+                    <p class="p_vacancy_seat">可預約</p>
                   </div>
+                  <div class="color_use_seat_group">
+                    <div class="color_G_use_seat"></div>
+                    <p class="p_use_seat">不可預約</p>
+                  </div>
+                </div>
                 <div v-if="tabActive == 1" class="reservation_hall_seat">
                   <div class="reservation_eSports_seat">
                     <div class="eSports_seat_title">
                       <p>電競區</p>
                     </div>
-                    <button
-                      class="seat_btn eSports_seat"
-                      v-for="item in seats_a"
-                      :key="item.no"
-                      :class="`state-${item.state}`"
-                    >
+                    <button class="seat_btn eSports_seat" v-for="item in seats_a" :key="item.no"
+                      :class="`state-${item.state}`">
                       <div class="content">
                         <h4 class="text" @click.prevent="seatSelected(item)">
-                          {{ item.area }} <br />
-                          {{ item.no }}
+                          {{ item.seat_area }} <br />
+                          {{ item.seat_no }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -168,22 +126,14 @@
                     <div class="general_seat_title">
                       <p>一般區</p>
                     </div>
-                    <button
-                      class="seat_btn general_seat"
-                      v-for="item in seats_b"
-                      :key="item.no"
-                      :class="`state-${item.state}`"
-                    >
-                      <div class="content">
-                        <h4 @click.prevent="seatSelected(item)">
-                          {{ item.area }} <br />
-                          {{ item.no }}
+                    <button class="seat_btn general_seat" v-for="item in seats_b" :key="item.no"
+                      :class="`state-${item.state}`">
+                      <div class="content" @click.prevent="seatSelected(item)">
+                        <h4>
+                          {{ item.seat_area }} <br />
+                          {{ item.seat_no }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -220,48 +170,32 @@
                 <div v-if="tabActive == 2" class="reservation_booth_seat">
                   <div class="booth_seat_title">
                     <div class="single_seat_title">
-                        <p>單人包廂</p>
-                      </div>
-                      <div class="double_seat_title">
-                        <p>雙人包廂</p>
-                      </div>
+                      <p>單人包廂</p>
+                    </div>
+                    <div class="double_seat_title">
+                      <p>雙人包廂</p>
+                    </div>
                   </div>
                   <div class="reservation_single_seat">
-                    <button
-                      class="seat_btn single_seat"
-                      v-for="item in seats_c"
-                      :key="item.no"
-                      :class="`state-${item.state}`"
-                    >
+                    <button class="seat_btn single_seat" v-for="item in seats_c" :key="item.no"
+                      :class="`state-${item.state}`">
                       <div class="content">
                         <h4 class="text" @click.prevent="seatSelected(item)">
-                          {{ item.area }}{{ item.no }}
+                          {{ item.area }}{{ item.seat_no }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
                   </div>
                   <div class="reservation_double_seat">
-                    <button
-                      class="seat_btn double_seat"
-                      v-for="item in seats_d"
-                      :key="item.no"
-                      :class="`state-${item.state}`"
-                    >
+                    <button class="seat_btn double_seat" v-for="item in seats_d" :key="item.no"
+                      :class="`state-${item.state}`">
                       <div class="content">
                         <h4 @click.prevent="seatSelected(item)">
-                          {{ item.area }}{{ item.no }}
+                          {{ item.seat_area }}{{ item.no }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/double_chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -281,29 +215,17 @@
             <div class="confirm_data_time">
               <div class="data_time_start">
                 <p>預約開始時間</p>
-                <input
-                  type="text"
-                  readonly
-                  :value="`${reservation.startDate}  ${reservation.startTime}`"
-                />
+                <input type="text" readonly :value="`${reservation.startDate}  ${reservation.startTime}`" />
               </div>
               <div class="data_time_end">
                 <p>預約結束時間</p>
-                <input
-                  type="text"
-                  readonly
-                  :value="`${reservation.startDate}  ${reservation.endTime}`"
-                />
+                <input type="text" readonly :value="`${reservation.startDate}  ${reservation.endTime}`" />
               </div>
             </div>
             <div class="confirm_data_seat">
               <p>選定座位</p>
               <div class="data_seat">
-                <div
-                  class="data_seat_info"
-                  v-for="item in selected"
-                  :key="item"
-                >
+                <div class="data_seat_info" v-for="item in selected" :key="item">
                   {{ item }}
                 </div>
               </div>
@@ -317,9 +239,7 @@
               <input type="text" readonly value="元" />
               <div class="stored_error">
                 儲值金不足，請先至
-                <a @click="this.$router.push('/member_center/member_nav')"
-                  >會員中心</a
-                >
+                <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
                 儲值。
               </div>
             </div>
@@ -368,15 +288,19 @@ export default {
         seat: [],
         price: 0,
         selectedSeat: [],
-        seat_id:'',
-        seat_area:'',
-        seat_no:'',
-        seat_sal:''
+        id: '',
+        area: '',
+        no: '',
+        sal: ''
       },
-      seats_a: seat_a,
-      seats_b: seat_b,
-      seats_c: seat_c,
-      seats_d: seat_d,
+      seats_a: [],
+      seats_b: [],
+      seats_c: [],
+      seats_d: [],
+      // seats_a: seat_a,
+      // seats_b: seat_b,
+      // seats_c: seat_c,
+      // seats_d: seat_d,
       tabActive: 1,
       tabItems: {
         1: "大廳區",
@@ -411,10 +335,14 @@ export default {
     },
 
     seatSelected(item) {
-    
 
-      //  {seat_id,seat_area,seat_no,seat_sal}=item;
+      console.log(item);
+      let { seat_id, seat_area, seat_no, seat_sal } = item;
+      console.log(seat_id, seat_area, seat_no, seat_sal);
+
+
       
+
       //如果選的陣列中沒有重複和數量<7
       // if (this.reservation.selectedSeat.indexOf(index) === -1 &&
       // this.reservation.selectedSeat.length < 7){
@@ -465,11 +393,15 @@ export default {
         .get("data/seat.json")
         .then((res) => {
           this.seatData = res.data;
+          this.seats_a = this.seatData.filter(item => item.seat_id <= 30);
+          this.seats_b = this.seatData.filter(item => 31 <= item.seat_id && item.seat_id <= 55);
+          this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
+          this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
         })
         .catch((err) => {
           console.log(err);
         });
-        
+
     },
     checkLogin() {
       if (!this.login) {
@@ -487,10 +419,10 @@ export default {
     // isSelected() {
     //   return this.seat_b.includes(this.seatNumber);
     // },
-convertWord(){
+    convertWord() {
 
-  return this.selectedSeat
-}
+      return this.selectedSeat
+    }
 
   },
   watch: {},
@@ -508,6 +440,7 @@ convertWord(){
   inset: 0 0 0 0;
   z-index: 1200;
   background-color: rgb(255, 255, 255, 0.8);
+
   .modal {
     width: 30%;
     background-color: #fff;
@@ -518,9 +451,11 @@ convertWord(){
     transform: translate(-50%, -50%);
     padding: 30px;
     box-shadow: 0 0 2px #aaa;
+
     .pic {
       width: 50%;
       margin: 0 auto 20px;
+
       img {
         width: 100%;
         height: 100%;
