@@ -225,18 +225,24 @@
             <div class="confirm_data_seat">
               <p>選定座位</p>
               <div class="data_seat">
-                <div class="data_seat_info" v-for="item in selected" :key="item">
-                  {{ item }}
+                <div class="data_seat_info" v-for=" item in selectedSeat " :key="item.seat_no">
+                  {{ item.seat_area === "A"
+                    ? "大廳電競"
+                    : item.seat_area === "B"
+                      ? "大廳一般"
+                      : item.seat_area === "C"
+                        ? "包廂單人"
+                        : "包廂雙人" }} {{ item.seat_area }}-{{ item.seat_no }}
                 </div>
               </div>
             </div>
             <div class="data_time_sum">
               <p>金額總計</p>
-              <input type="text" readonly :value="`${reservation.price}元`" />
+              <input type="text" readonly :value="`${totalSal}元`" />
             </div>
             <div class="data_time_stored">
               <p>目前儲值金</p>
-              <input type="text" readonly value="元" />
+              <input type="text" readonly :value="member.remain元" v-show="member.remain = 0" />
               <div class="stored_error">
                 儲值金不足，請先至
                 <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
@@ -285,22 +291,13 @@ export default {
         startDate: "",
         startTime: "",
         endTime: "",
-        seat: [],
-        price: 0,
-        selectedSeat: [],
-        id: '',
-        area: '',
-        no: '',
-        sal: ''
+        startTimeNum: "",
+        endTimeNum: "",
       },
       seats_a: [],
       seats_b: [],
       seats_c: [],
       seats_d: [],
-      // seats_a: seat_a,
-      // seats_b: seat_b,
-      // seats_c: seat_c,
-      // seats_d: seat_d,
       tabActive: 1,
       tabItems: {
         1: "大廳區",
@@ -308,9 +305,18 @@ export default {
       },
       selectedArea: "",
       selectedAreaWord: "",
-      selected: [],
+      selectedSeat: [],
       seatData: [],
       modalSwitch: false,
+      id: '',
+      area: '',
+      no: '',
+      sal: '',
+      totalSal: [],
+      totalTime: 0,
+      seatLobby: [],
+      seatRoom: [],
+
     };
   },
 
@@ -329,60 +335,49 @@ export default {
     timeConvert(time) {
       this.reservation.startTime = time.toString().substr(0, 5);
       this.reservation.endTime = time.toString().substr(9, 5);
-
-      let a = +time.toString().substr(0, 2);
-      let b = +time.toString().substr(9, 2);
+      this.reservation.startTimeNum = time.toString().substr(0, 2);
+      this.reservation.endTimeNum = time.toString().substr(9, 2);
     },
 
     seatSelected(item) {
-
-      console.log(item);
+     
       let { seat_id, seat_area, seat_no, seat_sal } = item;
-      console.log(seat_id, seat_area, seat_no, seat_sal);
 
+      this.totalTime = (+this.reservation.endTimeNum) - (this.reservation.startTimeNum);
+      this.seatLobby = this.selectedSeat.filter((i) => i.seat_area === 'A' || i.seat_area === 'B');
+      this.seatRoom = this.selectedSeat.filter((i) => i.seat_area === 'C' || i.seat_area === 'D');
+      this.id = seat_id;
+      this.area = seat_area;
+      this.no = seat_no;
+      this.sal = seat_sal;
 
-      
-
-      //如果選的陣列中沒有重複和數量<7
-      // if (this.reservation.selectedSeat.indexOf(index) === -1 &&
-      // this.reservation.selectedSeat.length < 7){
-      //     this.reservation.selectedSeat.push(this.seatData[index]);
-      // } else {
-      //   return;
+      if (this.selectedSeat.length < 7 && !this.selectedSeat.includes(item)) {
+        if (seat_area === 'A' || seat_area === 'B') {
+          if (this.seatLobby.length < 5) {
+            this.selectedSeat.push(item);
+          }
+        } else if (seat_area === 'C' || seat_area === 'D') {
+          if (this.seatRoom.length < 2) {
+            this.selectedSeat.push(item);
+          }
+        }
+      }else{
+        this.selectedSeat.length = 7;
+        this.selectedSeat.splice(0, 1);
+        this.selectedSeat.push(item);
+      }
+      // else if (this.selectedSeat.length >= 7 && !this.selectedSeat.includes(item)) {
+      //   this.selectedSeat.length = 7;
+      //   this.selectedSeat.splice(this.selectedSeat[0], 1);
+      //   this.selectedSeat.push(item);
       // }
 
+      console.log(this.seatLobby, this.seatRoom);
+      console.log(this.selectedSeat);
+      this.totalSal = this.selectedSeat.map(i => i.seat_sal * this.totalTime).reduce((accumulator, currentValue) => accumulator + (+currentValue), 0);
+      console.log(this.totalSal);
 
-      // if (
-      //   this.reservation.seat.indexOf(item.area + item.no) === -1 &&
-      //   this.selected.length < 7
-      // ) {
-      //   if (+item.state === 0) {
-      //     if (this.tabActive === 1) {
-      //       this.selectedArea = item.area === "A" ? "A" : "B";
-      //       this.selectedSeat = item.no;
-      //     } else {
-      //       this.selectedArea = item.area === "C" ? "C" : "D";
-      //       this.selectedSeat = item.no;
-      //     }
-      //   } else {
-      //     return;
-      //   }
-      //   this.reservation.seat.push(this.selectedArea + this.selectedSeat);
-      // } else {
-      //   return;
-      // }
-      // this.selectedAreaWord =
-      //   this.selectedArea === "A"
-      //     ? "大廳電競"
-      //     : this.selectedArea === "B"
-      //       ? "大廳一般"
-      //       : this.selectedArea === "C"
-      //         ? "包廂單人"
-      //         : "包廂雙人";
 
-      // this.selected.push(
-      //   this.selectedAreaWord + this.selectedArea + "-" + this.selectedSeat
-      // );
     },
     confirmReserve() {
       this.modalSwitch = true;
@@ -416,11 +411,11 @@ export default {
     }
   },
   computed: {
+    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey']),
     // isSelected() {
     //   return this.seat_b.includes(this.seatNumber);
     // },
     convertWord() {
-
       return this.selectedSeat
     }
 

@@ -2,7 +2,7 @@
   <section v-show="isRegister && step == 0">
     <div class="container">
       <div class="register">
-        <form @submit="handleSubmit">
+        <form @submit.prevent="handleSubmit">
           <img :src="require('@/assets/images/login/cross.png')" class="register_close_modal"
             @click="closeRegister(false)">
           <h2>註冊會員</h2>

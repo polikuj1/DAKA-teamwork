@@ -1,7 +1,4 @@
-[
-{"type":"header","version":"5.2.0","comment":"Export to JSON plugin for PHPMyAdmin"},
-{"type":"database","name":"daka"},
-{"type":"table","name":"seat_state","database":"daka","data":
+
 [
 {"seat_state_id":"1","seat_id":"1","seat_state_date":"2023-07-24","seat_status":"000000111111001111111111"},
 {"seat_state_id":"2","seat_id":"2","seat_state_date":"2023-07-24","seat_status":"111110000000111111111111"},
@@ -146,5 +143,4 @@
 {"seat_state_id":"141","seat_id":"70","seat_state_date":"2023-07-25","seat_status":"111110000000111111111111"},
 {"seat_state_id":"142","seat_id":"71","seat_state_date":"2023-07-25","seat_status":"111110000000111111111111"}
 ]
-}
-]
+
