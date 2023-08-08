@@ -110,10 +110,11 @@
                     <div class="eSports_seat_title">
                       <p>電競區</p>
                     </div>
-                    <button class="seat_btn eSports_seat" v-for="item in seats_a" :key="item.no"
-                      :class="`state-${item.state}`">
+                    <!-- `state-${item.state}`判定座位狀態 -->
+                    <button  v-for="item in seats_a" :key="item.no"
+                      :class="{ seat_btn:true,eSports_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }" @click.prevent="seatSelected(item)">
                       <div class="content">
-                        <h4 class="text" @click.prevent="seatSelected(item)">
+                        <h4 class="text">
                           {{ item.seat_area }} <br />
                           {{ item.seat_no }}
                         </h4>
@@ -126,9 +127,10 @@
                     <div class="general_seat_title">
                       <p>一般區</p>
                     </div>
-                    <button class="seat_btn general_seat" v-for="item in seats_b" :key="item.no"
-                      :class="`state-${item.state}`">
-                      <div class="content" @click.prevent="seatSelected(item)">
+                    <!--狀態管理 class="`state-${item.state}`" -->
+                    <button :class="{seat_btn:true,general_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)}" v-for="item in seats_b" :key="item.no"
+                       @click.prevent="seatSelected(item)">
+                      <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
                           {{ item.seat_no }}
@@ -176,11 +178,12 @@
                       <p>雙人包廂</p>
                     </div>
                   </div>
+                  <!--狀態管理 :class="`state-${item.state}`" -->
                   <div class="reservation_single_seat">
-                    <button class="seat_btn single_seat" v-for="item in seats_c" :key="item.no"
-                      :class="`state-${item.state}`">
+                    <button :class="{seat_btn:true,single_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)}" v-for="item in seats_c" :key="item.no"
+                       @click.prevent="seatSelected(item)">
                       <div class="content">
-                        <h4 class="text" @click.prevent="seatSelected(item)">
+                        <h4 class="text">
                           {{ item.area }}{{ item.seat_no }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
@@ -188,11 +191,12 @@
                       </div>
                     </button>
                   </div>
+                  <!-- 狀態管理:class="`state-${item.state}`" -->
                   <div class="reservation_double_seat">
-                    <button class="seat_btn double_seat" v-for="item in seats_d" :key="item.no"
-                      :class="`state-${item.state}`">
+                    <button :class="{seat_btn:true,double_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)}" v-for="item in seats_d" :key="item.no"
+                       @click.prevent="seatSelected(item)">
                       <div class="content">
-                        <h4 @click.prevent="seatSelected(item)">
+                        <h4>
                           {{ item.seat_area }}{{ item.no }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
@@ -225,7 +229,7 @@
             <div class="confirm_data_seat">
               <p>選定座位</p>
               <div class="data_seat">
-                <div class="data_seat_info" v-for=" item in selectedSeat " :key="item.seat_no">
+                <div class="data_seat_info" v-for=" item in selectedSeats " :key="item.seat_no">
                   {{ item.seat_area === "A"
                     ? "大廳電競"
                     : item.seat_area === "B"
@@ -238,12 +242,12 @@
             </div>
             <div class="data_time_sum">
               <p>金額總計</p>
-              <input type="text" readonly :value="`${totalSal}元`" />
+              <input type="text" readonly :value="`${totalSal !== 0 ? 0 : totalSal}元`" />
             </div>
             <div class="data_time_stored">
               <p>目前儲值金</p>
-              <input type="text" readonly :value="member.remain元" v-show="member.remain = 0" />
-              <div class="stored_error">
+              <input type="text" readonly :value="`${member.remain == undefined ? 0 : member.remain}元`" />
+              <div class="stored_error" v-show="member.remain == 0">
                 儲值金不足，請先至
                 <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
                 儲值。
@@ -305,7 +309,7 @@ export default {
       },
       selectedArea: "",
       selectedAreaWord: "",
-      selectedSeat: [],
+      selectedSeats: [],
       seatData: [],
       modalSwitch: false,
       id: '',
@@ -316,7 +320,9 @@ export default {
       totalTime: 0,
       seatLobby: [],
       seatRoom: [],
-
+      isSelected: false,
+      maxAandB: 5,
+      maxCandD: 2,
     };
   },
 
@@ -340,44 +346,88 @@ export default {
     },
 
     seatSelected(item) {
-     
-      let { seat_id, seat_area, seat_no, seat_sal } = item;
+
+      // let { seat_id, seat_area, seat_no, seat_sal } = item;
 
       this.totalTime = (+this.reservation.endTimeNum) - (this.reservation.startTimeNum);
-      this.seatLobby = this.selectedSeat.filter((i) => i.seat_area === 'A' || i.seat_area === 'B');
-      this.seatRoom = this.selectedSeat.filter((i) => i.seat_area === 'C' || i.seat_area === 'D');
-      this.id = seat_id;
-      this.area = seat_area;
-      this.no = seat_no;
-      this.sal = seat_sal;
+      // this.id = seat_id;
+      // this.area = seat_area;
+      // this.no = seat_no;
+      // this.sal = seat_sal;
 
-      if (this.selectedSeat.length < 7 && !this.selectedSeat.includes(item)) {
-        if (seat_area === 'A' || seat_area === 'B') {
-          if (this.seatLobby.length < 5) {
-            this.selectedSeat.push(item);
-          }
-        } else if (seat_area === 'C' || seat_area === 'D') {
-          if (this.seatRoom.length < 2) {
-            this.selectedSeat.push(item);
-          }
+      const selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
+      const selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
+      const indexA = selectedAandB[0];
+      const indexC = selectedCandD[0];
+      //點一下選，再點一下取消
+
+      if (this.selectedSeats.length < 7) {
+        if (this.selectedSeats.includes(item)) {
+          this.deselectSeat(item);
+        } else {
+          if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB.length >= this.maxAandB) {
+          this.selectedSeats.splice(indexA, 1);
         }
-      }else{
-        this.selectedSeat.length = 7;
-        this.selectedSeat.splice(0, 1);
-        this.selectedSeat.push(item);
+        else if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD.length >= this.maxCandD) {
+          this.selectedSeats.splice(indexC, 1);
+        }
+          this.selectSeat(item);
+        }
+        
+
+        this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
       }
-      // else if (this.selectedSeat.length >= 7 && !this.selectedSeat.includes(item)) {
-      //   this.selectedSeat.length = 7;
-      //   this.selectedSeat.splice(this.selectedSeat[0], 1);
-      //   this.selectedSeat.push(item);
+
+
+
+
+      // this.totalSal = this.selectedSeats.map(i => i.seat_sal * this.totalTime).reduce((accumulator, currentValue) => accumulator + (+currentValue), 0);
+      // console.log(this.totalSal);
+
+      // const selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B').length;
+      // const selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D').length;
+
+      // // 如果已选座位数量达到上限，删除同类型的第一个座位
+
+      // if (this.selectedSeats.length < 7) {
+      //   if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB >= this.maxAandB) {
+      //     const firstAorB = this.selectedSeats.find(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
+      //     if (firstAorB) {
+      //       const index = this.selectedSeats.indexOf(firstAorB);
+      //       this.selectedSeats.splice(index, 1);
+      //     }
+      //   }
+
+      //   if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD >= this.maxCandD) {
+      //     const firstCorD = this.selectedSeats.find(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
+      //     if (firstCorD) {
+      //       const index = this.selectedSeats.indexOf(firstCorD);
+      //       this.selectedSeats.splice(index, 1);
+      //     }
+      //   }
+
+      //   // 执行新增座位操作
+      //   if (!this.selectedSeats.includes(item)) {
+      //     this.selectedSeats.push(item);
+      //   } else {
+      //     this.deselectSeat(item);
+      //   }
       // }
 
-      console.log(this.seatLobby, this.seatRoom);
-      console.log(this.selectedSeat);
-      this.totalSal = this.selectedSeat.map(i => i.seat_sal * this.totalTime).reduce((accumulator, currentValue) => accumulator + (+currentValue), 0);
-      console.log(this.totalSal);
+      // // 選擇時間後計算金額
+      // this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
 
+    },
+    selectSeat(item) {
+      this.selectedSeats.push(item);
+    },
 
+    deselectSeat(item) {
+      //原本選到的座位刪除
+      const index = this.selectedSeats.findIndex(seat => seat.seat_id === item.seat_id);
+      if (index !== -1) {
+        this.selectedSeats.splice(index, 1);
+      }
     },
     confirmReserve() {
       this.modalSwitch = true;
