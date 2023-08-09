@@ -82,9 +82,14 @@
           })
       },
       getMemberData() {
-        GET(`${this.$URL}/getMember.php`)
+        const params = {
+          id: this.$store.state.member.memid
+        }
+        GET(`${this.$URL}/getMember.php`,{params: params})
           .then(res => {
             console.log(res);
+            this.memberData = res[0];
+            this.$store.commit('setInfo',res[0]);
           })
           .catch(err => {
             console.log(err);
@@ -92,7 +97,9 @@
       }
     },
     created() {
-      this.memberData = this.$store.state.member;
+      this.memberData = {...this.$store.state.member};
+      // this.getMemberData();
+      // console.log(this.memberData === this.$store.state.member);
       this.$emit('emit-title',this.title);
     }
   }
