@@ -83,7 +83,7 @@
             <h2 class="reservation_text">
               <span>2</span> 選擇日期、時間及座位
             </h2>
-            <Date @convert-date="dateConvert" @convert-time="timeConvert"></Date>
+            <DateComponent @convert-date="dateConvert" @convert-time="timeConvert"></DateComponent>
           </section>
           <section class="reservation_seat">
             <!-- <h2 class="reservation_text"><span>3</span> 選擇座位</h2> -->
@@ -111,8 +111,9 @@
                       <p>電競區</p>
                     </div>
                     <!-- `state-${item.state}`判定座位狀態 -->
-                    <button  v-for="item in seats_a" :key="item.no"
-                      :class="{ seat_btn:true,eSports_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }" @click.prevent="seatSelected(item)">
+                    <button v-for="item in seats_a" :key="item.no"
+                      :class="{ seat_btn: true, eSports_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }, getClass(item), seatStatus"
+                      @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
@@ -127,9 +128,13 @@
                     <div class="general_seat_title">
                       <p>一般區</p>
                     </div>
-                    <!--狀態管理 class="`state-${item.state}`" -->
-                    <button :class="{seat_btn:true,general_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)}" v-for="item in seats_b" :key="item.no"
-                       @click.prevent="seatSelected(item)">
+                    <!--狀態管理 :class="`state-${item.state}`" -->
+                    <button :class="{
+                      seat_btn: true,
+                      eSports_seat: true,
+                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
+                      [getClass(item)]: true // 使用 getClass(item) 來設置座位狀態類名
+                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
@@ -180,8 +185,9 @@
                   </div>
                   <!--狀態管理 :class="`state-${item.state}`" -->
                   <div class="reservation_single_seat">
-                    <button :class="{seat_btn:true,single_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)}" v-for="item in seats_c" :key="item.no"
-                       @click.prevent="seatSelected(item)">
+                    <button
+                      :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }"
+                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
                           {{ item.area }}{{ item.seat_no }}
@@ -193,8 +199,9 @@
                   </div>
                   <!-- 狀態管理:class="`state-${item.state}`" -->
                   <div class="reservation_double_seat">
-                    <button :class="{seat_btn:true,double_seat:true,selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)}" v-for="item in seats_d" :key="item.no"
-                       @click.prevent="seatSelected(item)">
+                    <button
+                      :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }"
+                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }}{{ item.no }}
@@ -277,7 +284,7 @@
 
 <script>
 import PageTitle from "@/components/PageTitle.vue";
-import Date from "@/components/reservation/Date.vue";
+import DateComponent from "@/components/reservation/Date.vue";
 import axios from "axios";
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
@@ -285,7 +292,7 @@ import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 export default {
   components: {
     PageTitle,
-    Date,
+    DateComponent,
   },
 
   data() {
@@ -323,6 +330,10 @@ export default {
       isSelected: false,
       maxAandB: 5,
       maxCandD: 2,
+      seatState: [],
+      formattedDate: "",
+      singleSeatState: 0,
+      seatStatus: 0
     };
   },
 
@@ -336,6 +347,8 @@ export default {
     //轉換日期
     dateConvert(date) {
       this.reservation.startDate = date.toString().substr(4, 11);
+      console.log(this.reservation.startDate);
+      this.formatDateString();
     },
     //轉換時間
     timeConvert(time) {
@@ -343,8 +356,47 @@ export default {
       this.reservation.endTime = time.toString().substr(9, 5);
       this.reservation.startTimeNum = time.toString().substr(0, 2);
       this.reservation.endTimeNum = time.toString().substr(9, 2);
-    },
 
+      //選出相同日期的座位陣列
+      const allSeatState = this.seatState.filter((i) => i.seat_state_date === this.formattedDate);
+
+
+      const aaa = allSeatState[0].seat_status.slice(+this.reservation.startTimeNum, +this.reservation.endTimeNum);
+      allSeatState[0].seat_status=aaa;
+      console.log(allSeatState[0].seat_status);
+      // allSeatState[0].seat_status=aaa;
+      // console.log(allSeatState[0].seat_status);
+
+      // allSeatState.forEach((item,i)=>{
+      //   allSeatState[i].seat_status.split();
+      // })
+      // this.singleSeatState = allSeatState.seat_status.split(this.reservation.startTimeNum, this.reservation.endTimeNum);
+
+      // console.log(this.singleSeatState);
+    },
+    getMonthNumber(monthName) {
+      const months = {
+        Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6,
+        Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12
+      };
+      return months[monthName];
+    },
+    formatDateString() {
+      const dateParts = this.reservation.startDate.split(' ');
+      const month = this.getMonthNumber(dateParts[0]);
+      const day = parseInt(dateParts[1], 10);
+      const year = parseInt(dateParts[2], 10);
+      const dateObject = new Date(year, month - 1, day);
+
+      this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
+      console.log(this.formattedDate);
+    },
+    getClass(seat) {
+      const timeSlot = this.reservation.startTimeNum;
+      this.seatStatus = this.seatState?.[timeSlot]?.[seat.seat_id];
+
+      return this.seatStatus === 0 ? 'state-0' : this.seatStatus === 1 ? 'state-1' : '';
+    },
     seatSelected(item) {
 
       // let { seat_id, seat_area, seat_no, seat_sal } = item;
@@ -366,18 +418,38 @@ export default {
           this.deselectSeat(item);
         } else {
           if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB.length >= this.maxAandB) {
-          this.selectedSeats.splice(indexA, 1);
-        }
-        else if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD.length >= this.maxCandD) {
-          this.selectedSeats.splice(indexC, 1);
-        }
+            this.selectedSeats.splice(indexA, 1);
+          }
+          else if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD.length >= this.maxCandD) {
+            this.selectedSeats.splice(indexC, 1);
+          }
           this.selectSeat(item);
         }
-        
 
-        this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
+
       }
+      // else if(this.selectedSeats.length>=7){
 
+      //   this.selectedSeats.splice(0,1);
+
+      //   if (this.selectedSeats.includes(item)){
+
+      //     this.deselectSeat(item);
+      //   }
+
+
+      //     if((item.seat_area === 'A' || item.seat_area === 'B')&&selectedAandB.length >= this.maxAandB){
+      //       this.selectedSeats.splice(indexA, 1);
+      //       this.selectSeat(item);
+      //     }else if((item.seat_area === 'C' || item.seat_area === 'D')&& selectedCandD.length >= this.maxCandD){
+      //     this.selectedSeats.splice(indexA, 1);
+      //     this.selectSeat(item);
+      //   }
+
+
+      // }
+
+      this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
 
 
 
@@ -448,6 +520,19 @@ export default {
         });
 
     },
+    fetchSeatStateData() {
+      axios
+        .get("data/seat_state.json")
+        .then((res) => {
+          this.seatState = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    },
+
+    //檢查登入狀態，沒登入就跳登入彈窗
     checkLogin() {
       if (!this.login) {
         this.toggleLogin()
@@ -462,18 +547,18 @@ export default {
   },
   computed: {
     ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey']),
-    // isSelected() {
-    //   return this.seat_b.includes(this.seatNumber);
-    // },
-    convertWord() {
-      return this.selectedSeat
-    }
+
 
   },
   watch: {},
   created() {
     this.fetchSeatData();
+    this.fetchSeatStateData();
+    this.formatDateString();
   },
+  mounted() {
+
+  }
 };
 </script>
 
