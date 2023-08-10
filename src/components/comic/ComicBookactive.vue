@@ -8,32 +8,22 @@
             <div class="bk-book book-1">
               <div class="bk-front">
                 <div class="bk-cover">
-                  <!-- <h2>
-                    <span>Anthony Burghiss</span>
-                    <span>A Catwork Orange</span>
-                  </h2> -->
+                  <img class="imgsize" src="../../assets/images/comic/01.png">
                 </div>
                 <div class="bk-cover-back"></div>
               </div>
               <div class="bk-page">
                 <div class="bk-content bk-content-current">
-                  <p>
+                  <img class="imgsize" src="../../assets/images/comic/RD017.webp">
+                </div>
+                <div class="bk-content">
+                    <p>
                     　　在新卡牌的引領下， 　　尋找謎底的小櫻飛向天際！
                     　　小櫻追蹤讓秋穗睡著的「輕飄飄」， 　　再次得到新的卡牌。
                     　　她似乎從這些透明的卡牌上察覺到什麼…？
                     　　某天，小櫻來到桃矢打工的地方。
                     　　她和一起在這裡打工的雪兔聊天時，
                     　　2人竟然不慎誤入突然出現的迷宮－－？
-                  </p>
-                </div>
-                <div class="bk-content">
-                  <p>
-                    Whale catfish leatherjacket deep sea anglerfish grenadier
-                    sawfish pompano dolphinfish carp large-eye bream, squeaker
-                    amago. Sandroller; rough scad, tiger shovelnose catfish
-                    snubnose parasitic eel? Black bass soldierfish
-                    duckbill--Rattail Atlantic saury Blind shark California
-                    halibut; false trevally warty angler!
                   </p>
                 </div>
                 <div class="bk-content">
