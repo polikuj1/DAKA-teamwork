@@ -316,10 +316,13 @@
 }
 
 .book-1 .bk-cover {
-	background-image: url(../images/022.png);	
+	/* background-image: url(../images/017.webp);	 */
 	background-repeat: no-repeat;
-	background-position: 10px 40px;
-	margin: 0px 2000px 1000px 0px;
+	/* background-position: 10px 40px; */
+	.imgsize {
+		width: 100%;
+		height: 100%;
+	}
 }
 
 

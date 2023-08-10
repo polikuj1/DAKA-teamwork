@@ -8,16 +8,13 @@
             <div class="bk-book book-1">
               <div class="bk-front">
                 <div class="bk-cover">
-                  <!-- <h2>
-                    <span>Anthony Burghiss</span>
-                    <span>A Catwork Orange</span>
-                  </h2> -->
+                  <img class="imgsize" src="../../assets/images/comic/01.png">
                 </div>
                 <div class="bk-cover-back"></div>
               </div>
               <div class="bk-page">
                 <div class="bk-content bk-content-current">
-                  <img class="imgsize" src="../../assets/images/comic/017.webp">
+                  <img class="imgsize" src="../../assets/images/comic/RD017.webp">
                 </div>
                 <div class="bk-content">
                     <p>
