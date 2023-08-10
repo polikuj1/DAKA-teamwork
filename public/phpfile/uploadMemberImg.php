@@ -30,8 +30,8 @@ try {
             $products->bindValue(":mem_id", $_POST["mem_id"]);
             $products->bindValue(":pic", $fileName);
             $products->execute();
-            $msg = ["error" => false, "message" => "新增商品成功", "psn" => $pdo->lastInsertId(), "image" => $fileName];
-            echo "新增成功~<br>";
+            // $msg = ["error" => false, "message" => "新增商品成功", "psn" => $pdo->lastInsertId(), "image" => $fileName];
+            echo "新增成功";
         } catch (PDOException $e) {
             echo "錯誤行號 : ", $e->getLine(), "<br>";
             echo "錯誤原因 : ", $e->getMessage(), "<br>"; 

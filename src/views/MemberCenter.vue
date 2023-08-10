@@ -63,6 +63,7 @@ export default {
   },
   methods: {
     getImage(e) {
+      // 預覽圖片
       const file = e.target.files.item(0);
       if(file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg') {alert('只能上傳圖檔');return;};
       const reader = new FileReader();

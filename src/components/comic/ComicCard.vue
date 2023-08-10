@@ -48,6 +48,7 @@
 import Pagination from '@/components/Pagination.vue';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';
+import { initCustomFormatter } from 'vue';
 export default {
   components: {
     comicSearch, CartIcon, Pagination,
@@ -94,8 +95,8 @@ export default {
     reserve(item) {
       if(item.comics_id === '1') return;
       console.log(this.$store.state.cart);
-      if(this.$store.state.cart.length === 5) return;
-      if(this.$store.state.cart.indexOf(item) === -1) {
+      if(this.$store.state.cart.length >= 5) return;
+      if(this.$store.state.cart.findIndex((v)=> v.comics_id === item.comics_id) === -1) {
         console.log(123);
         this.$store.commit('getBook',item);
       } else {

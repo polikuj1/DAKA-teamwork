@@ -9,24 +9,24 @@
                 <div class="reservation_card">
                     <div class="reservation_number">
                         <p>訂位序號</p>
-                        <p>{{ reservation.bookingNumber }}</p>
+                        <p>{{ reservation.seat_order_no }}</p>
                     </div>
                     <div class="reservation_list">
                         <div class="reservation_usetime">
                             <p class="seat_usetime">開台時間</p> 
-                            <p>{{ reservation.date }}<br>{{ reservation.time }}</p>
+                            <p>{{ reservation.seat_order_dates }}<br>{{ reservation.time }}</p>
                         </div>
                         <div class="member_reservation_seat">
                             <p class="seat_number">座位編號</p> 
-                            <p>{{ reservation.seatArea }}<br>{{ reservation.seatNumber }}</p>
+                            <p>{{ reservation.seat_areas }}<br>{{ reservation.seat_numbers }}</p>
                         </div>
                         <div class="reservation_amount">
                             <p class="seat_cost">金額</p> 
-                            <p>{{ reservation.amount }}</p>
+                            <p>{{ reservation.seat_order_sums }}</p>
                         </div>
                         <div class="reservation_payment">
                             <p class="seat_pay">付款方式</p> 
-                            <p>{{ reservation.paymentMethod }}</p>
+                            <p>儲值金</p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
   </template>
   
   <script>
-  import {GET} from '@/plugin/axios';
+//   import {GET} from '@/plugin/axios';
   import MbModal from '@/components/member_center/MemberModal.vue';
   import MbForm from '@/components/member_center/form_style.vue';
   export default {
@@ -109,14 +109,36 @@
         },
   },
     computed: {
-  
+        
     },
     created() {
         this.$emit('emit-title',this.title);
-        GET('/data/seat_reservation.json')
+        const params = {
+            id: this.$store.state.member.mem_id
+        }
+        console.log(params);
+        this.axios.get(`${this.$URL}/getSeatRecord.php`, {params: params})
                 .then((res) => {
-                console.log(res);
-                this.reservations = res;
+                    console.log(res);
+                    this.reservations = res.data;
+                    // 將座位的代碼轉換成對應的名稱
+                    this.reservations.forEach(item => {
+                        switch (item.seat_areas) {
+                            case 'A':
+                                item.seat_areas = '大廳一般區';
+                                break;
+                            case 'B':
+                                item.seat_areas = '大廳電競區';
+                                break;
+                            case 'C':
+                                item.seat_areas = '包廂單人房';
+                                break;
+                            case 'D':
+                                item.seat_areas = '包廂雙人房';
+                                break;
+                        }
+
+                    })
                 })
                 .catch((err) => {
                 console.log(err);
