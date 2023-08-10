@@ -9,11 +9,13 @@
   </BreadCrumb>
   <div class="member_center">
     <div class="user_profile">
-      <div class="pic">
+      <form class="pic" id="pic">
+        <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
+        <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
         <img :src="member_img" alt="會員照片">
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
-        <input type="file" id="user" @change="getImage">
-      </div>
+        <input type="file" id="user" @change="getImage" name="image">
+      </form>
       <span><i class="fa-solid fa-crown"></i> 白金會員</span>
       <ul>
         <li>
@@ -61,16 +63,26 @@ export default {
   },
   methods: {
     getImage(e) {
-      // console.log(e);
       const file = e.target.files.item(0);
       if(file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg') {alert('只能上傳圖檔');return;};
-      // console.log(file);
       const reader = new FileReader();
       reader.addEventListener('load', this.imageLoaded);
       reader.readAsDataURL(file);
+      this.uploadImg();
     },
     imageLoaded(e) {
       this.member_img = e.target.result;
+    },
+    uploadImg() {
+      console.log('觸發上傳');
+      const formData = new FormData(document.getElementById('pic'));
+      this.axios.post(`${this.$URL}/uploadMemberImg.php`, formData)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     },
     getContent(title) {
       this.content = title;

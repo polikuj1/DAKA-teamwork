@@ -6,7 +6,7 @@
       <template v-slot:mb_content>
         <div id="member_edit">
           <form class="edit_content" enctype="multipart/form-data" method= "post">
-            <input type="text" name="memid" v-model="memberData.memid" style="display: none;">
+            <!-- <input type="text" name="memid" v-model="memberData.memid" style="display: none;"> -->
             <div class="edit_item">
               <label for="name">姓名</label>
               <input type="text" v-model="memberData.mname" name="mname"/>
@@ -75,7 +75,13 @@
         })
           .then(res => {
             console.log(res);
-            this.getMemberData();
+            if(res === 'success') {
+              alert('修改成功');
+            } else {
+              alert('異動失敗');
+            }
+            // this.memberData = res;
+            // this.getMemberData();
           })
           .catch(err => {
             console.log(err);
@@ -85,6 +91,7 @@
         const params = {
           id: this.$store.state.member.memid
         }
+        console.log('ID',params.id);
         GET(`${this.$URL}/getMember.php`,{params: params})
           .then(res => {
             console.log(res);

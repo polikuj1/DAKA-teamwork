@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import {GET} from '@/plugin/axios';
+// import {GET} from '@/plugin/axios';
 import Pagination from '@/components/Pagination.vue';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';
@@ -125,10 +125,10 @@ export default {
 
   },
   created() {
-    GET(`${this.$URL}/getAllComic.php`)
+    this.axios.get(`${this.$URL}/getAllComic.php`)
       .then((res) => {
         console.log(res);
-        this.originData = res;
+        this.originData = res.data;
         // 處理漫畫的類型有哪些
         this.comicType.push('全部');
         this.originData.forEach(item => {
@@ -136,7 +136,7 @@ export default {
             this.comicType.push(item.type);
           }
         })
-        this.totalPage = Math.ceil(res.length / 9);
+        this.totalPage = Math.ceil(res.data.length / 9);
         this.renderComic(this.currentPage)
       })
       .catch((err) => {
