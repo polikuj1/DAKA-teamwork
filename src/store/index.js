@@ -10,7 +10,7 @@ export default createStore({
     isRegister: false,
     keepLoginStatus: false,
     userTokenKey: "user_token",
-   
+    googleInfo:{},
   },
   getters: {
   },
@@ -28,6 +28,9 @@ export default createStore({
     setInfo(state, payload) {
       state.member = payload;
     },
+    setRegisterInfo(state, payload) {
+      state.googleInfo = payload;
+    },
     toggleForgotPsw(state, payload) {
       state.forgotPsw = !state.forgotPsw;
       state.isLoginOpen = payload;
@@ -41,7 +44,7 @@ export default createStore({
       state.login = payload;
       state.isLoginOpen = false;
     },
-    setToStorage(state){
+    setToStorage(state) {
       localStorage.setItem(state.userTokenKey, state.member.email);
     },
     loginOut(state) {
