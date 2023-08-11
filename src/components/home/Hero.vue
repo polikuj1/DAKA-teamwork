@@ -29,9 +29,7 @@
       </div>
     </div>
   </section>
-  <login v-show="isLoginOpen"> </login>
-  <forgot v-show="forgotPsw"></forgot>
-  <register v-show="isRegister"></register>
+
 </template>
 <script>
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
