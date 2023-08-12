@@ -17,7 +17,7 @@
             <div class="news_pic" data-aos="fade-left" data-aos-offset="0" data-aos-delay="1000"
               data-aos-easing="ease-in-out">
               <!-- <img :src="message.img" alt="Message Image" /> -->
-              <Images :imgURL="`${message.news_pic}`" :alt="`${message.content}`" />
+              <Images :imgURL="`news/${message.news_pic}`" :alt="`${message.content}`" />
             </div>
             <div class="news_message_content" data-aos="fade-right" data-aos-offset="100" data-aos-delay="300"
               data-aos-easing="ease-in-out">
