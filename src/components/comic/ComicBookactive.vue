@@ -444,8 +444,9 @@
           </li>
         </ul>
 
-        <div class="bookshelf"></div>
+        
       </div>
+      <div class="bookshelf"></div>
     </div>
   </section>
 </template>
