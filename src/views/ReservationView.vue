@@ -93,6 +93,7 @@
                   <div class="seat_tabs_item" v-for="(item, key) in tabItems" :class="{ active: key == tabActive }"
                     @click="updateTab(key)" :key="item.key">
                     {{ item }}
+                    <!-- split再slice去判斷，寫在div裡面 -->
                   </div>
                 </div>
                 <div class="color_state_seat_group">
@@ -358,21 +359,26 @@ export default {
       this.reservation.endTimeNum = time.toString().substr(9, 2);
 
       //選出相同日期的座位陣列
-      const allSeatState = this.seatState.filter((i) => i.seat_state_date === this.formattedDate);
+      // const allSeatState = this.seatState.filter((i) => i.seat_state_date === this.formattedDate);
 
 
-      const aaa = allSeatState[0].seat_status.slice(+this.reservation.startTimeNum, +this.reservation.endTimeNum);
-      allSeatState[0].seat_status=aaa;
-      console.log(allSeatState[0].seat_status);
+      // const aaa = allSeatState[0].seat_status.slice(+this.reservation.startTimeNum, +this.reservation.endTimeNum);
       // allSeatState[0].seat_status=aaa;
-      // console.log(allSeatState[0].seat_status);
+      // console.log(allSeatState[0].seat_status,aaa);
+   // 選出相同日期的座位狀態數據
+   const seatStatusForSelectedDate = this.seatState.find(item => item.seat_state_date === this.formattedDate);
 
-      // allSeatState.forEach((item,i)=>{
-      //   allSeatState[i].seat_status.split();
-      // })
-      // this.singleSeatState = allSeatState.seat_status.split(this.reservation.startTimeNum, this.reservation.endTimeNum);
+// if (seatStatusForSelectedDate) {
+//   // 根據選擇的時間段更新座位狀態
+//   const startTimeIndex = +this.reservation.startTimeNum;
+//   const endTimeIndex = +this.reservation.endTimeNum;
 
-      // console.log(this.singleSeatState);
+//   for (let i = startTimeIndex; i < endTimeIndex; i++) {
+//     this.seatStatus[i] = seatStatusForSelectedDate.seat_status[i];
+//   }
+// }
+
+
     },
     getMonthNumber(monthName) {
       const months = {

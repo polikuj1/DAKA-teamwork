@@ -3,7 +3,7 @@
   <PageTitle>
     {{ title }}
   </PageTitle>
-   <section>
+  <section>
     <div class="about_container">
       <div class="about_circle_top">
         <div></div>
@@ -17,97 +17,59 @@
       <div class="about_circle_bottom">
         <div></div>
       </div>
-
-
       <div class="about_card_list">
         <div class="about_card_one  about_card">
-          <div class="about_card_pic" data-aos="fade-left"
-            data-aos-offset="0"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-            <img :src="require('@/assets/images/about/about_lobby.svg')" alt="DAKA_LOBBY">
+          <div class="about_card_pic" data-aos="fade-left" data-aos-offset="0" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <img :src="require('@/assets/images/about/about_lobby.jpg')" alt="DAKA_LOBBY">
           </div>
-        
-            <div class="about_card_text" 
-            data-aos="fade-left"
-            data-aos-offset="50"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-              <h3>大廳環境</h3>
-              <p>電競區都是頂級配備，讓你毫不卡頓的盡情挑戰遊戲極限！而一般區也是相對高規配備，讓你輕鬆上網、聊天和放鬆身心。別忘了我們的精緻點餐區，這裡有各式美味的熱食、飲料和小甜點等你品嚐！</p>
-            </div>
-        
-
+          <div class="about_card_text" data-aos="fade-left" data-aos-offset="50" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <h3>大廳環境</h3>
+            <p>電競區都是頂級配備，讓你毫不卡頓的盡情挑戰遊戲極限！而一般區也是相對高規配備，讓你輕鬆上網、聊天和放鬆身心。別忘了我們的精緻點餐區，這裡有各式美味的熱食、飲料和小甜點等你品嚐！</p>
+          </div>
         </div>
-
         <div class="about_card_two about_card">
-          <div class="about_card_pic" data-aos="fade-left"
-            data-aos-offset="150"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-            <img :src="require('@/assets/images/about/about_chairs.svg')" alt="DAKA_CHAIR">
+          <div class="about_card_pic" data-aos="fade-left" data-aos-offset="150" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <img :src="require('@/assets/images/about/about_chairs.jpg')" alt="DAKA_CHAIR">
           </div>
-         
-            <div class="about_card_text" 
-            data-aos="fade-right"
-            data-aos-offset="200"
-    data-aos-delay="100"
-    
-    data-aos-easing="ease-in-out">
-              <h3>包廂環境</h3>
-              <p>我們有單人房和雙人房可供選擇，擁有高規格電腦、舒適床鋪和迷你餐桌。讓你感受到奢華與便利的完美結合！無論是過夜狂歡還是欣賞電影，這裡都是你最佳的選擇。</p>
-            </div>
-          
+          <div class="about_card_text" data-aos="fade-right" data-aos-offset="200" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <h3>包廂環境</h3>
+            <p>我們有單人房和雙人房可供選擇，擁有高規格電腦、舒適床鋪和迷你餐桌。讓你感受到奢華與便利的完美結合！無論是過夜狂歡還是欣賞電影，這裡都是你最佳的選擇。</p>
+          </div>
           <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
             class="about_slider_up">
             <Slide v-for="item in sliderTop" :key="item.index">
-
-
               <img class="about_carousel_item" :src="item.src" alt="">
-
             </Slide>
-
             <template #addons>
               <Navigation />
             </template>
           </Carousel>
         </div>
-
         <div class="about_card_three about_card">
-          <div class="about_card_pic" data-aos="fade-right"
-            data-aos-offset="200"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-            <img :src="require('@/assets/images/about/about_comic.svg')" alt="DAKA_COMIC">
+          <div class="about_card_pic" data-aos="fade-right" data-aos-offset="200" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <img :src="require('@/assets/images/about/about_comic.jpg')" alt="DAKA_COMIC">
           </div>
-       
-            <div class="about_card_text" 
-            data-aos="fade-left"
-            data-aos-offset="300"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-              <h3>漫畫區域</h3>
-              <p>館藏豐富，明亮舒適的漫畫區！這個區域包含了各種精彩的漫畫作品為你帶來無限樂趣。溫馨的氛圍、舒適的沙發、書桌和絢麗的燈光，讓你能夠盡情沉浸在角色的冒險世界中。</p>
-            </div>
-          
+          <div class="about_card_text" data-aos="fade-left" data-aos-offset="300" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <h3>漫畫區域</h3>
+            <p>館藏豐富，明亮舒適的漫畫區！這個區域包含了各種精彩的漫畫作品為你帶來無限樂趣。溫馨的氛圍、舒適的沙發、書桌和絢麗的燈光，讓你能夠盡情沉浸在角色的冒險世界中。</p>
+          </div>
         </div>
-
         <div class="about_card_four about_card">
-          <div class="about_card_pic" data-aos="fade-left"
-            data-aos-offset="200"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-            <img :src="require('@/assets/images/about/about_bathroom.svg')" alt="DAKA_BATHROOM">
+          <div class="about_card_pic" data-aos="fade-left" data-aos-offset="200" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <img :src="require('@/assets/images/about/about_bathroom.jpg')" alt="DAKA_BATHROOM">
           </div>
-        
-            <div class="about_card_text" 
-            data-aos="fade-right"
-            data-aos-offset="400"
-    data-aos-delay="100"
-    data-aos-easing="ease-in-out">
-              <h3>衛浴設施</h3>
-              <p>我們還提供設施齊全的廁所和清爽的淋浴間，給你完美的休憩體驗。而且，別擔心停車問題，我們還提供免費停車場，讓你輕鬆享受遊戲時光。快來這個完美的環境，感受舒適和便利的雙重享受！</p>
-            </div>      
+          <div class="about_card_text" data-aos="fade-right" data-aos-offset="400" data-aos-delay="100"
+            data-aos-easing="ease-in-out">
+            <h3>衛浴設施</h3>
+            <p>我們還提供設施齊全的廁所和清爽的淋浴間，給你完美的休憩體驗。而且，別擔心停車問題，我們還提供免費停車場，讓你輕鬆享受遊戲時光。快來這個完美的環境，感受舒適和便利的雙重享受！</p>
+          </div>
           <Carousel v-bind="settings" :breakpoints="breakpoints" :autoplay="5000" :wrap-around="true"
             class="about_slider_down">
             <Slide v-for="slide in sliderDown" :key="slide.index">
@@ -142,7 +104,7 @@ export default defineComponent({
     title: '環境介紹',
     isShow: false,
     windowWidth: 0,
-    elTop: 0, 
+    elTop: 0,
     sliderTop: [
       {
         name: '鍵盤',
@@ -201,12 +163,12 @@ export default defineComponent({
 
       },
     },
-  })  ,
+  }),
   mounted() {
-    
+
   },
   methods: {
-    
+
 
   },
 

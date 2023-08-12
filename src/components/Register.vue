@@ -1,5 +1,5 @@
 <template>
-  <section v-show="isRegister && step == 0">
+  <section v-show="isRegister && step == 0" key="section-0">
     <div class="container">
       <div class="register">
         <form @submit.prevent="handleSubmit">
@@ -74,7 +74,7 @@
 
   </section>
 
-  <section v-show="isRegister && step == 1">
+  <section v-show="isRegister && step == 1" key="section-1">
     <div class="container">
       <div class="register_success">
         <img :src="require('@/assets/images/login/cross.png')" class="register_close_success_modal"

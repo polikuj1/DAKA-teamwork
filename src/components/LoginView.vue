@@ -14,9 +14,9 @@
         <form @submit.prevent="checkLogin">
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
-            require>
+            required>
           <input type="password" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="errorMsg = ''"
-            require>
+            required>
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
             <div class="login_keep_status" @click="toggleLoginStatus">
@@ -45,7 +45,18 @@
       </div>
     </section>
 
-
+    <!-- 預約成功彈窗 -->
+    <div class="reservation_modal" v-show="modalSwitch">
+      <div class="modal">
+        <div class="pic">
+          <img src="@/assets/images/member/modal.svg" alt="" />
+        </div>
+        <div class="bind_success">
+          <span>登入成功！</span>
+          <button @click="loginSuccessPop">確定</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <style></style>
@@ -67,13 +78,10 @@ export default {
       memPsw: '',
       errorMsg: '',
       memEmail: '',
-      modify: {
-        psw: '',
-        newPsw: '',
-      },
       error: null,
       memberData: {},
       matchedUser: null,
+      modalSwitch: false,
     }
   },
   computed: {
@@ -81,7 +89,7 @@ export default {
 
   },
   methods: {
-    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn', 'toggleLoginStatus', 'setToStorage'])
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn', 'toggleLoginStatus', 'setToStorage', 'setRegisterInfo'])
     ,
     closeLogin() {
       this.toggleLogin();
@@ -91,66 +99,61 @@ export default {
       this.toggleForgotPsw();
     },
     checkLogin() {
+      const loginData = {
+        memId: this.memId,
+        memPsw: this.memPsw,
+        remember_me: this.keepLoginStatus
+      };
+      
+      axios.post(`${this.$URL}/login.php`,  JSON.stringify(loginData), {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+        .then(response => {
+          const responseData = response.data;
+          if (responseData.mem_no) {
+            // 登录成功逻辑
+            console.log(123);
+            this.setInfo(responseData);
+            this.loginSuccessPop();
+            this.loginOk(true);
+            if (responseData.remember_me) {
+              this.setToStorage();
+            }
+          } else {
+            this.errorMsg = responseData.errorMsg;
+          }
+        })
+        .catch(error => {
+          console.log(err);
+        });
 
-      this.matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
 
-      //找的到會員帳號&密碼
-      if (this.matchedUser) {
-        this.setInfo(this.matchedUser);
-        this.loginOk(true);
-        if (this.keepLoginStatus) {
-          this.setToStorage();
-        }
-        return;
-      }
-      //如果帳號密碼空值
-      if (!this.memId && !this.memPsw) {
-        this.matchedUser = null;
-        this.errorMsg = '請輸入帳號或密碼';
-        return;
-      }else{
-        this.errorMsg = '帳號或密碼錯誤'
-        return;
-      }
+      // this.matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
+
+      // //找的到會員帳號&密碼
+      // if (this.matchedUser) {
+      //   this.setInfo(this.matchedUser);
+      //   this.loginOk(true);
+      //   if (this.keepLoginStatus) {
+      //     this.setToStorage();
+      //   }
+      //   return;
+      // }
+      // //如果帳號密碼空值
+      // if (!this.memId && !this.memPsw) {
+      //   this.matchedUser = null;
+      //   this.errorMsg = '請輸入帳號或密碼';
+      //   return;
+      // } else {
+      //   this.errorMsg = '帳號或密碼錯誤'
+      //   return;
+      // }
     },
 
     reset() {
       this.memId = this.memPsw = this.errorMsg = '';
-    },
-    checkEmail() {
-      if (!this.memEmail) {
-        return alert("輸入錯誤或無輸入");
-      } else {
-        this.step = 2;
-        this.memEmail = '';
-      }
-    },
-    validCheck() {
-      if (!this.number1 || !this.number2 || !this.number3 || !this.number4) {
-        alert("請輸入驗證碼");
-      } else {
-        this.number1 = this.number2 = this.number3 = this.number4 = '';
-        this.step = 3;
-      }
-    },
-    modifyCheck() {
-      if (!this.modify.psw || !this.modify.newPsw) {
-        alert("請輸入密碼");
-        return;
-      }
-      else if ((this.modify.psw === this.modify.newPsw && this.modify.psw.length >= 6 && this.modify.psw.length <= 12)) {
-        this.step = 4;
-        this.modify.psw = this.modify.newPsw = '';
-        return;
-      } else {
-        alert("請輸入密碼");
-      }
-      this.modify.psw = '';
-      this.modify.newPsw = '';
-    },
-    modifySuccess() {
-      this.forgetPsw = false;
-      this.step = 0;
     },
     signInRedirect() {
       const auth = useFirebaseAuth(); // 只有在客戶端有效，這行只能存在於前端(client side)
@@ -162,22 +165,30 @@ export default {
           this.error = reason;
         });
     },
-    async fetchMemberData() {
-      try {
-        const response = await axios.get("data/member.json");
-        this.memberData = response.data;
+    fetchMemberData() {
+      axios.get(`${this.$URL}/getMember.php`)
+        .then((res) => {
+          console.log(res);
+          this.memberData = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
 
-        // 抓到資料後執行tokenCheck()比對localstorage裡的資料
-        this.tokenCheck();
-      } catch (error) {
-        console.error(error);
-      }
+      // 抓到資料後執行tokenCheck()比對localstorage裡的資料
+      this.tokenCheck();
+    },
+    loginSuccessPop() {
+      this.modalSwitch = !this.modalSwitch;
     },
     onMounted() {
       const auth = useFirebaseAuth();
       getRedirectResult(auth)
         .then((Response) => {
+
           console.log(Response);
+          this.setRegisterInfo(Response);
+
         })
         .catch((reason) => {
           console.error('Failed redirect result', reason);
