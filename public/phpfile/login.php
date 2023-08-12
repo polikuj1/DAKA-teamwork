@@ -30,10 +30,19 @@ try {
       $_SESSION["mem_no"] = $memRow["mem_no"];
       $_SESSION["mem_id"] = $memRow["mem_id"];
       $_SESSION["mname"] = $memRow["mname"];
+      $_SESSION["sex"] = $memRow["sex"];
       $_SESSION["email"] = $memRow["email"];
+      $_SESSION["mobile"] = $memRow["mobile"];
+      $_SESSION["address"] = $memRow["address"];
+      $_SESSION["member_birth"] = $memRow["member_birth"];
+      $_SESSION["pic"] = $memRow["pic"];
+      $_SESSION["remain"] = $memRow["remain"];
+      $_SESSION["value"] = $memRow["value"];
+      $_SESSION["grade"] = $memRow["grade"];
+      
 
       //送出登入者的資料
-      $result = ["mem_no" => $_SESSION["mem_no"], "mem_id" => $_SESSION["mem_id"], "mname" => $_SESSION["mname"], "email" => $_SESSION["email"]];
+      $result = ["mem_no" => $_SESSION["mem_no"], "mem_id" => $_SESSION["mem_id"], "mname" => $_SESSION["mname"], "sex" => $_SESSION["sex"],"email" => $_SESSION["email"],"mobile" => $_SESSION["mobile"],"address" => $_SESSION["address"],"member_birth" => $_SESSION["member_birth"],"pic" => $_SESSION["pic"],"remain" => $_SESSION["remain"],"value" => $_SESSION["value"],"grade" => $_SESSION["grade"]];
 
       echo json_encode($result); //{"memNo":1, "memId": "Sara",...}  
     }
@@ -42,4 +51,3 @@ try {
   echo "錯誤行號 : ", $e->getLine(), "<br>";
   echo "錯誤原因 : ", $e->getMessage(), "<br>";
 }
-?>

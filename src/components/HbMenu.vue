@@ -31,6 +31,7 @@ import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import login from '@/components/LoginView.vue';
 import forgot from '@/components/ForgotPassword.vue';
 import register from '@/components/Register.vue';
+
 export default {
   components: {
     login, forgot, register
@@ -103,8 +104,8 @@ export default {
       }
     },
     loginOpen() {
-      this.toggleLogin()
-      this.openMenu()
+      this.toggleLogin(true);
+      this.openMenu();
       this.$refs.nav.classList.add('disappear');
       this.$refs.nav.classList.remove('show');
       this.isOpen = false;
@@ -118,6 +119,7 @@ export default {
       setTimeout(() => {
         this.$refs.check.checked = false;
       }, 100)
+     
       this.loginOut();
     },
     goMemberCenter(){
