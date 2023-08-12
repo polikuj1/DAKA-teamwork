@@ -14,9 +14,9 @@ try {
   if (!isset($loginData["memId"]) || !isset($loginData["memPsw"])) {
     echo "缺少必要的参数";
   } else {
-    $sql = "select * from member where mem_id=:mem_id and password=:password";
+    $sql = "select * from member where email = :email and password = :password";
     $member = $pdo->prepare($sql);
-    $member->bindValue(":mem_id", $loginData["memId"]);
+    $member->bindValue(":email", $loginData["memId"]);
     $member->bindValue(":password", $loginData["memPsw"]);
     $member->execute();
 
