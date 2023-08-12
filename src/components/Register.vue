@@ -86,8 +86,7 @@
       </div>
 
     </div>
-  </section> 
-   
+  </section>
 </template>
 <script >
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
@@ -135,6 +134,9 @@ export default {
       if (this.validateForm() && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
 
         this.submitForm();
+        setTimeout(() => {
+          this.backLogin();
+        }, 3000);
       } else {
         alert('輸入不完整!');
       }
@@ -155,8 +157,14 @@ export default {
     submitForm() {
       this.step = 1;
 
-      console.log(this.step);
-      // axios.post()
+      axios.get(`${this.$URL}/getMember.php`)
+        .then((res) => {
+          console.log(res);
+          this.memberData = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     },
     checkMemberTerms() {
       this.memberTerms = true;
