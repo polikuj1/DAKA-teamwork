@@ -288,7 +288,7 @@ import PageTitle from "@/components/PageTitle.vue";
 import DateComponent from "@/components/reservation/Date.vue";
 import axios from "axios";
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
-import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
+// import { seat_a, seat_b, seat_c, seat_d } from "@/assets/js/seatinfo.js";
 
 export default {
   components: {
@@ -541,7 +541,7 @@ export default {
     //檢查登入狀態，沒登入就跳登入彈窗
     checkLogin() {
       if (!this.login) {
-        this.toggleLogin()
+        this.toggleLogin(true);
       } else {
         return;
       }

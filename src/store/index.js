@@ -10,7 +10,8 @@ export default createStore({
     isRegister: false,
     keepLoginStatus: false,
     userTokenKey: "user_token",
-    googleInfo:{},
+    googleInfo: {},
+    loginModal: false,
   },
   getters: {
   },
@@ -21,8 +22,8 @@ export default createStore({
     deleteBook(state, index) {
       state.cart.splice(index, 1);
     },
-    toggleLogin(state) {
-      state.isLoginOpen = !state.isLoginOpen;
+    toggleLogin(state,payload) {
+      state.isLoginOpen = payload;
     },
     //給member物件
     setInfo(state, payload) {
@@ -36,13 +37,16 @@ export default createStore({
       state.isLoginOpen = payload;
     },
     toggleRegister(state, payload) {
-      state.isRegister = !state.isRegister;
-      state.isLoginOpen = payload;
+      state.isRegister = payload;
     },
     //確定登入
     loginOk(state, payload) {
       state.login = payload;
       state.isLoginOpen = false;
+    },
+    //確認登入
+    toggleLoginModal(state,payload){
+      state.loginModal = payload;
     },
     setToStorage(state) {
       localStorage.setItem(state.userTokenKey, state.member.email);

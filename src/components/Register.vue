@@ -37,8 +37,8 @@
                 <span>性別</span>
                 <select v-model="sexReg">
                   <option value="">請選擇</option>
-                  <option value="male">男</option>
-                  <option value="female">女</option>
+                  <option value="男">男</option>
+                  <option value="女">女</option>
                 </select>
               </div>
               <div class="inputBox">
@@ -49,6 +49,10 @@
               <div class="inputBox">
                 <span>連絡電話</span>
                 <input type="tel" class="payment-card-number-input" maxlength="12" required="required" v-model="telReg">
+              </div>
+              <div class="inputBox">
+                <span>地址</span>
+                <input type="text" class="payment-card-number-input" required="required" v-model="addReg">
               </div>
             </div>
           </div>
@@ -86,8 +90,7 @@
       </div>
 
     </div>
-  </section> 
-   
+  </section>
 </template>
 <script >
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
@@ -99,17 +102,17 @@ export default {
   data() {
     return {
       step: 0,
-      register: {
-        nameReg: '',
-        emailReg: '',
-        pswReg: '',
-        pswConfirmReg: '',
-        sexReg: '',
-        birthReg: '',
-        telReg: '',
-        memberTerms: false,
-        memberPrivacy: false,
-      },
+      nameReg: '',
+      emailReg: '',
+      pswReg: '',
+      pswConfirmReg: '',
+      sexReg: '',
+      birthReg: '',
+      telReg: '',
+      addReg: '',
+      memberTerms: false,
+      memberPrivacy: false,
+
     }
   },
   methods: {
@@ -117,29 +120,56 @@ export default {
     ,
     closeRegister(status) {
       this.toggleRegister(status);
+      this.toggleLogin(status);
       this.clearInput();
     },
     clearInput() {
-      this.register.nameReg = this.register.emailReg = this.register.pswReg = this.register.pswConfirmReg = this.register.sexReg = this.register.birthReg = this.register.telReg = '';
+      this.nameReg = this.emailReg = this.pswReg = this.pswConfirmReg = this.sexReg = this.birthReg = this.telReg = this.addReg='';
       this.step = 0;
       this.memberTerms = this.memberPrivacy = false;
     },
     backLogin() {
-      this.toggleRegister(true);
+      this.toggleRegister(false);
+      this.toggleLogin(true);
       this.step = 0;
       this.clearInput();
     },
 
     handleSubmit() {
+      const registerData = {
+        nameReg: this.nameReg,
+        sexReg: this.sexReg,
+        emailReg: this.emailReg,
+        telReg: this.telReg,
+        pswReg: this.pswReg,
+        addReg: this.addReg,
+        birthReg: this.birthReg,
+      };
 
-      if (this.validateForm() && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
-
-        this.submitForm();
-      } else {
-        alert('輸入不完整!');
-      }
-
+      axios
+        .post(`${this.$URL}/register.php`, JSON.stringify(registerData), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          const responseData = response.data;
+          console.log(responseData);
+          if (responseData.message === '註冊成功') { // Check the response message
+            this.step = 1; // Move to the success step
+            setTimeout(() => {
+              this.backLogin();
+            }, 3000);
+          } else {
+            alert('註冊失敗');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          alert('註冊失敗');
+        });
     },
+
     validateForm() {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
       const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
@@ -154,9 +184,6 @@ export default {
     },
     submitForm() {
       this.step = 1;
-
-      console.log(this.step);
-      // axios.post()
     },
     checkMemberTerms() {
       this.memberTerms = true;

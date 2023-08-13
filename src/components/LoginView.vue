@@ -26,7 +26,7 @@
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
           </div>
           <button class="login_form_submit">登入</button>
-          <button @click.prevent="toggleRegister(false)" class="login_form_register" type="submit">註冊會員</button>
+          <button @click.prevent="toRegister" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
         </form>
         <button class="login_connect" @click="signInRedirect">
@@ -44,19 +44,6 @@
         </button>
       </div>
     </section>
-
-    <!-- 預約成功彈窗 -->
-    <div class="reservation_modal" v-show="modalSwitch">
-      <div class="modal">
-        <div class="pic">
-          <img src="@/assets/images/member/modal.svg" alt="" />
-        </div>
-        <div class="bind_success">
-          <span>登入成功！</span>
-          <button @click="loginSuccessPop">確定</button>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <style></style>
@@ -79,81 +66,69 @@ export default {
       errorMsg: '',
       memEmail: '',
       error: null,
-      memberData: {},
+      memberData: [],
       matchedUser: null,
-      modalSwitch: false,
     }
   },
   computed: {
-    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey'])
+    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey', 'loginModal'])
 
   },
   methods: {
-    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn', 'toggleLoginStatus', 'setToStorage', 'setRegisterInfo'])
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn', 'toggleLoginStatus', 'setToStorage', 'setRegisterInfo', 'toggleLoginModal'])
     ,
     closeLogin() {
-      this.toggleLogin();
+      this.toggleLogin(false);
       this.reset();
     },
     closeForgot() {
       this.toggleForgotPsw();
     },
-    checkLogin() {
-      const loginData = {
-        memId: this.memId,
-        memPsw: this.memPsw,
-        remember_me: this.keepLoginStatus
-      };
-      
-      axios.post(`${this.$URL}/login.php`,  JSON.stringify(loginData), {
-  headers: {
-    'Content-Type': 'application/json'
-  }
-})
-        .then(response => {
-          const responseData = response.data;
-          if (responseData.mem_no) {
-            // 登录成功逻辑
-            console.log(123);
-            this.setInfo(responseData);
-            this.loginSuccessPop();
-            this.loginOk(true);
-            if (responseData.remember_me) {
-              this.setToStorage();
-            }
-          } else {
-            this.errorMsg = responseData.errorMsg;
-          }
-        })
-        .catch(error => {
-          console.log(err);
-        });
-
-
-      // this.matchedUser = this.memberData.find(user => user.email === this.memId && user.password === this.memPsw);
-
-      // //找的到會員帳號&密碼
-      // if (this.matchedUser) {
-      //   this.setInfo(this.matchedUser);
-      //   this.loginOk(true);
-      //   if (this.keepLoginStatus) {
-      //     this.setToStorage();
-      //   }
-      //   return;
-      // }
-      // //如果帳號密碼空值
-      // if (!this.memId && !this.memPsw) {
-      //   this.matchedUser = null;
-      //   this.errorMsg = '請輸入帳號或密碼';
-      //   return;
-      // } else {
-      //   this.errorMsg = '帳號或密碼錯誤'
-      //   return;
-      // }
+    toRegister(){
+      this.toggleRegister(true);
+      this.toggleLogin(false);
     },
+    checkLogin() {
+  const loginData = {
+    memId: this.memId,
+    memPsw: this.memPsw,
+  };
+
+  axios.post(`${this.$URL}/login.php`, JSON.stringify(loginData), {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => {
+    const responseData = response.data;
+    
+    //登入成功
+    if (responseData.mem_no) { 
+      this.setInfo(responseData);
+      this.loginOk(true);
+      this.toggleLoginModal(true);
+      setTimeout(() => {
+        this.toggleLoginModal(false);
+      }, 3000)
+      if (this.keepLoginStatus) {
+        this.setToStorage();
+      } else {
+        this.reset(); 
+      }
+    } else {
+      this.errorMsg = "帳號密碼錯誤"; // 登入失敗
+    }
+
+    
+  })
+  .catch(error => {
+    console.log(error);
+  });
+},
 
     reset() {
       this.memId = this.memPsw = this.errorMsg = '';
+      this.toggleLoginStatus();
     },
     signInRedirect() {
       const auth = useFirebaseAuth(); // 只有在客戶端有效，這行只能存在於前端(client side)
@@ -170,17 +145,16 @@ export default {
         .then((res) => {
           console.log(res);
           this.memberData = res.data;
+          // 抓到資料後執行tokenCheck()比對localstorage裡的資料
+          this.tokenCheck();
         })
         .catch((err) => {
           console.log(err);
         })
 
-      // 抓到資料後執行tokenCheck()比對localstorage裡的資料
-      this.tokenCheck();
+
     },
-    loginSuccessPop() {
-      this.modalSwitch = !this.modalSwitch;
-    },
+
     onMounted() {
       const auth = useFirebaseAuth();
       getRedirectResult(auth)
@@ -221,5 +195,44 @@ export default {
 </script>
 
 
+<style lang="scss" scoped>
+.login_modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0 0 0 0;
+  z-index: 1200;
+  background-color: rgb(255, 255, 255, 0.8);
 
+  .modal {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    box-shadow: 0 0 2px #aaa;
+
+    .pic {
+      width: 50%;
+      margin: 0 auto 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  .reservation_modal {
+    .modal {
+      width: 60%;
+    }
+  }
+}
+</style>
 
