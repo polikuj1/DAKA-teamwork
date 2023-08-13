@@ -50,7 +50,6 @@
   </style>
 
   <script>
-  import {POST,GET} from '@/plugin/axios';
   import MbForm from '@/components/member_center/form_style.vue';
   export default {
     components: {
@@ -60,6 +59,7 @@
       return {
         title: '會員資料編輯',
         memberData: {},
+        id: null,
       }
     },
     methods: {
@@ -67,36 +67,34 @@
         this.$emit('emit-title','');
       },
       submitForm() {
+        if(this.memberData.new_password !== this.memberData.new_password_confirm) {alert('兩次密碼不一致'); return};
         console.log('表單提交成功！');
-        POST(`${this.$URL}/editMember.php`, JSON.stringify(this.memberData), {
+        this.axios.post(`${this.$URL}/editMember.php`, JSON.stringify(this.memberData), {
           headers: {
             'Content-Type': 'application/json'
           }
         })
           .then(res => {
             console.log(res);
-            if(res === 'success') {
+            if(res.data === 'success') {
               alert('修改成功');
             } else {
               alert('異動失敗');
             }
-            // this.memberData = res;
-            // this.getMemberData();
           })
           .catch(err => {
             console.log(err);
           })
       },
-      getMemberData() {
+      getData() {
         const params = {
-          id: this.$store.state.member.memid
+          id: this.id
         }
         console.log('ID',params.id);
-        GET(`${this.$URL}/getMember.php`,{params: params})
+        this.axios.get(`${this.$URL}/getMember.php`,{params: params})
           .then(res => {
             console.log(res);
-            this.memberData = res[0];
-            this.$store.commit('setInfo',res[0]);
+            this.memberData = res.data[0];
           })
           .catch(err => {
             console.log(err);
@@ -104,9 +102,8 @@
       }
     },
     created() {
-      this.memberData = {...this.$store.state.member};
-      // this.getMemberData();
-      // console.log(this.memberData === this.$store.state.member);
+      this.id = this.$store.state.member.mem_id;
+      this.getData();
       this.$emit('emit-title',this.title);
     }
   }

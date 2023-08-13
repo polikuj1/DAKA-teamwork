@@ -12,7 +12,10 @@
       <form class="pic" id="pic">
         <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
-        <img :src="member_img" alt="會員照片">
+        <Images v-if="member.pic" :imgURL="`/images/memberPic/${member.pic}`" :alt="會員照片"/>
+        <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
+        <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/>
+        <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
         <input type="file" id="user" @change="getImage" name="image">
       </form>
@@ -20,11 +23,11 @@
       <ul>
         <li>
           <span><i class="fa-solid fa-user"></i></span>
-          <span>{{ this.$store.state.member.mname}}</span>
+          <span>{{ member.mname}}</span>
         </li>
         <li>
           <span><i class="fa-solid fa-envelope"></i></span>
-          <span>{{ this.$store.state.member.email }}</span>
+          <span>{{ member.email }}</span>
         </li>
         <li>
           <!-- <span>編號</span> -->
@@ -35,10 +38,10 @@
         </li>
         <li>
           <span><i class="fa-solid fa-piggy-bank"></i> 儲值金金額</span>
-          <span>NTD$ {{ this.$store.state.member.remain }}</span>
+          <span>NTD$ {{ member.remain }}</span>
         </li>
         <li>
-          目前消費金額 NTD$ {{ this.$store.state.member.value }}
+          目前消費金額 NTD$ {{ member.value }}
         </li>
       </ul>
       <button type="button">線上儲值</button>
@@ -57,8 +60,10 @@ export default {
   data() {
     return {
       title: '會員中心',
+      member:{},
       member_img: require('@/assets/images/member/user_pic.png'),
       content: '',
+      id: null,
     }
   },
   methods: {
@@ -87,7 +92,23 @@ export default {
     },
     getContent(title) {
       this.content = title;
+    },
+    getData() {
+      const params = { id:this.id };
+      this.axios.get(`${this.$URL}/getMember.php`,{params: params})
+        .then(res => {
+          // console.log(res);
+          this.member = res.data[0];
+          console.log(this.member);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
+  created() {
+    this.id = this.$store.state.member.mem_id;
+    this.getData();
+  }
 }
 </script>

@@ -1,38 +1,30 @@
 <?php 
 header('Access-Control-Allow-Origin:*');
-header("Content-Type:application/json;charset=utf-8");
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Requested-With');
 
 try {
   $postData = json_decode(file_get_contents('php://input'), true);
 	require_once("connectDaka.php");
 	//執行sql指令
-  $mem_id = $postData["mem_id"];
+  // $mem_id = $postData["mem_id"];
 	$sql = "update member set mname = :mname,
 								address = :address,
 								mobile = :mobile,
                 password = :password
-								where mem_id = :memid";
+								where mem_id = :mem_id";
 	$member = $pdo-> prepare($sql);
-  $member->bindValue(":memid", $mem_id);
+  $member->bindValue(":mem_id", $postData["mem_id"]);
 	$member->bindValue(":mname", $postData["mname"]);
 	// $member->bindValue(":sex", $postData["sex"]);
 	// $member->bindValue(":birthday", $postData["birthday"]);
 	$member->bindValue(":address", $postData["address"]);
 	$member->bindValue(":mobile", $postData["mobile"]);
 	// $member->bindValue(":email", $postData["email"]);
-  $member->bindValue(":password", $postData["password"]);
+  $member->bindValue(":password", $postData["new_password"]);
 	$member->execute();
 	echo 'success';
-	// echo json_encode([ "result" => "success"]);
 
-  // $sql_query = "SELECT * FROM member WHERE mem_id = :memid";
-  //   $query_member = $pdo->prepare($sql_query);
-  //   $query_member->bindValue(":memid", $mem_id);
-  //   $query_member->execute();
-  //   $updatedData = $query_member->fetch(PDO::FETCH_ASSOC);
-  //   echo json_encode($updatedData);
-  // $memRows = $member->fetchAll(PDO::FETCH_ASSOC);
-  // echo json_encode($memRows);
 
 } catch (PDOException $e) {
 	echo "錯誤行號 : ", $e->getLine(), "<br>";
