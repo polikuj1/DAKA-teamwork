@@ -88,14 +88,16 @@
                     </div>
                     <!-- a[0].seat_status.split('').slice(0,3).includes('0') -->
                     <!-- `state-${item.state}`判定座位狀態 -->
-                    <button v-for=" item in seats_a" :key="item.no"
-                      :class="{ seat_btn: true, eSports_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }, `state-${item.seat_status}`"
-                      @click.prevent="seatSelected(item)">
+                    <button v-for=" item in seats_a" :key="item.no" :class="{
+                      seat_btn: true,
+                      eSports_seat: true,
+                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum),(+reservation.endTimeNum)).includes('0') ? 0 : 1}`]: true
+                    }" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
-                          {{ item.seat_no }}
-                         
+                          {{ item.seat_id }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -115,7 +117,7 @@
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
-                          {{ item.seat_no }}
+                          {{ item.seat_id }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -167,7 +169,7 @@
                       v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
-                          {{ item.area }}{{ item.seat_no }}
+                          {{ item.area }}{{ item.seat_id }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -181,7 +183,7 @@
                       v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
-                          {{ item.seat_area }}{{ item.no }}
+                          {{ item.seat_area }}{{ item.id }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -338,8 +340,17 @@ export default {
       //選出相同日期的座位陣列
       const allSeatState = this.selectedData.filter((i) => i.seat_state_date === this.formattedDate);
       this.seatData = allSeatState;
+      this.seats_a = this.seatData.filter(item => item.seat_id <= 30);
+      this.seats_b = this.seatData.filter(item => 31 <= item.seat_id && item.seat_id <= 55);
+      this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
+      this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
+
+
+console.log(this.reservation.startTimeNum,typeof(+this.reservation.startTimeNum));
+console.log(this.reservation.endTimeNum,typeof(+this.reservation.endTimeNum));
+
       console.log(allSeatState);
-      console.log(this.seatData[0].seat_status);
+
 
       // 获取选定的时间段
       const startTimeIndex = +this.reservation.startTimeNum;
