@@ -43,31 +43,6 @@
               <img :src="require('@/assets/images/reservation/Vector.svg')"
                 class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
             </li>
-            <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
-              如需取消預約，請於1日前取消。
-            </li>
-            <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
-            </li>
-            <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
-            </li>
-            <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
-            </li>
-            <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
-              恕不另行通知。
-            </li>
-            <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />座位區預約上限5位，包廂區預約上限2間。
-            </li>
           </ul>
         </div>
         <button class="reservation_submit" @click="checkLogin" v-show="!login">
@@ -111,14 +86,16 @@
                     <div class="eSports_seat_title">
                       <p>電競區</p>
                     </div>
+                    <!-- a[0].seat_status.split('').slice(0,3).includes('0') -->
                     <!-- `state-${item.state}`判定座位狀態 -->
-                    <button v-for="item in seats_a" :key="item.no"
-                      :class="{ seat_btn: true, eSports_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }, getClass(item), seatStatus"
+                    <button v-for=" item in seats_a" :key="item.no"
+                      :class="{ seat_btn: true, eSports_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }, `state-${item.seat_status}`"
                       @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
                           {{ item.seat_no }}
+                         
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -133,8 +110,7 @@
                     <button :class="{
                       seat_btn: true,
                       eSports_seat: true,
-                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [getClass(item)]: true // 使用 getClass(item) 來設置座位狀態類名
+                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)
                     }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
@@ -319,6 +295,7 @@ export default {
       selectedAreaWord: "",
       selectedSeats: [],
       seatData: [],
+      selectedData: [],
       modalSwitch: false,
       id: '',
       area: '',
@@ -359,24 +336,21 @@ export default {
       this.reservation.endTimeNum = time.toString().substr(9, 2);
 
       //選出相同日期的座位陣列
-      // const allSeatState = this.seatState.filter((i) => i.seat_state_date === this.formattedDate);
+      const allSeatState = this.selectedData.filter((i) => i.seat_state_date === this.formattedDate);
+      this.seatData = allSeatState;
+      console.log(allSeatState);
+      console.log(this.seatData[0].seat_status);
 
+      // 获取选定的时间段
+      const startTimeIndex = +this.reservation.startTimeNum;
+      const endTimeIndex = +this.reservation.endTimeNum;
 
-      // const aaa = allSeatState[0].seat_status.slice(+this.reservation.startTimeNum, +this.reservation.endTimeNum);
-      // allSeatState[0].seat_status=aaa;
-      // console.log(allSeatState[0].seat_status,aaa);
-   // 選出相同日期的座位狀態數據
-   const seatStatusForSelectedDate = this.seatState.find(item => item.seat_state_date === this.formattedDate);
+      // 截取选定时间段的座位状态数组
+      // const selectedSeatStatus = item.seat_status.split('').slice(startTimeIndex, endTimeIndex);
 
-// if (seatStatusForSelectedDate) {
-//   // 根據選擇的時間段更新座位狀態
-//   const startTimeIndex = +this.reservation.startTimeNum;
-//   const endTimeIndex = +this.reservation.endTimeNum;
+      // 将截取的座位状态数组赋值给选定的座位对象
+      // item.selectedSeatStatus = selectedSeatStatus;
 
-//   for (let i = startTimeIndex; i < endTimeIndex; i++) {
-//     this.seatStatus[i] = seatStatusForSelectedDate.seat_status[i];
-//   }
-// }
 
 
     },
@@ -397,21 +371,9 @@ export default {
       this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
       console.log(this.formattedDate);
     },
-    getClass(seat) {
-      const timeSlot = this.reservation.startTimeNum;
-      this.seatStatus = this.seatState?.[timeSlot]?.[seat.seat_id];
-
-      return this.seatStatus === 0 ? 'state-0' : this.seatStatus === 1 ? 'state-1' : '';
-    },
     seatSelected(item) {
 
-      // let { seat_id, seat_area, seat_no, seat_sal } = item;
-
       this.totalTime = (+this.reservation.endTimeNum) - (this.reservation.startTimeNum);
-      // this.id = seat_id;
-      // this.area = seat_area;
-      // this.no = seat_no;
-      // this.sal = seat_sal;
 
       const selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
       const selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
@@ -512,6 +474,20 @@ export default {
     },
 
     fetchSeatData() {
+
+      axios.get(`${this.$URL}/getSeat.php`)
+        .then((res) => {
+          // this.seatData = res.data;
+          this.selectedData = res.data;
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+
+
+
       axios
         .get("data/seat.json")
         .then((res) => {
@@ -526,17 +502,17 @@ export default {
         });
 
     },
-    fetchSeatStateData() {
-      axios
-        .get("data/seat_state.json")
-        .then((res) => {
-          this.seatState = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    // fetchSeatStateData() {
+    //   axios
+    //     .get("data/seat_state.json")
+    //     .then((res) => {
+    //       this.seatState = res.data;
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
 
-    },
+    // },
 
     //檢查登入狀態，沒登入就跳登入彈窗
     checkLogin() {
@@ -559,7 +535,7 @@ export default {
   watch: {},
   created() {
     this.fetchSeatData();
-    this.fetchSeatStateData();
+    // this.fetchSeatStateData();
     this.formatDateString();
   },
   mounted() {
