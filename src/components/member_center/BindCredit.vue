@@ -12,13 +12,13 @@
         <div class="credit_wrap" v-for="card in credit_card" :key="card.number">
           <!-- <div class="credit_card" :class="card.publish_copy === 'VISA'? 'blue': 'red'"> -->
           <div class="credit_card blue">
-            <button @click="deleteCard(card.number)"><i class="fa-solid fa-x"></i></button>
+            <button @click="deleteCard(card.credit_id)"><i class="fa-solid fa-x"></i></button>
             <span>VISA</span>
             <span><img src="@/assets/images/member/creditcard.svg" alt=""></span>
             <span class="credit_number">{{ card.card_number }}</span>
             <div class="credit_info">
               <span>{{ card.vaild }}</span>
-              <span>cvv {{ card.cvv }}</span>
+              <span>cvv {{ card.card_cvv }}</span>
             </div>
           </div>
           <label>
@@ -41,31 +41,27 @@ export default {
   data() {
     return {
       title: '付款方式',
-      credit_card: [
-        {
-          publish_copy: 'VISA',
-          number: 1234567812345678,
-          date: '06 / 27',
-          cvv: 124,
-        },
-        {
-          publish_copy: 'MasterCard',
-          number: 1234567812345679,
-          date: '06 / 27',
-          cvv: 124,
-        },
-      ],
+      credit_card: [],
     }
   },
   methods: {
     triggerParent() {
       this.$emit('emit-title','');
     },
-    deleteCard(num) {
-      if(this.credit_card.length === 1 ) {
-        this.credit_card = [];
-      }
-      this.credit_card = this.credit_card.filter(item => item.number === num);
+    deleteCard(credit_id) {
+      const id = credit_id;
+      this.axios.post(`${this.$URL}/deleteCredit.php`, JSON.stringify({ credit_id: id }),{
+          headers: {
+              'Content-Type': 'text/plain'
+          },
+      })
+        .then(res => {
+          console.log(res);
+          this.getData();
+        })
+        .catch(err =>{
+          console.log(err);
+        })
     },
     getData() {
       const params = {
@@ -74,7 +70,7 @@ export default {
       this.axios.get(`${this.$URL}/getCredit.php`, { params: params} )
         .then(res => {
           console.log(res);
-          this.credit_card = res.data.filter(item => item.outofdate ==='0');
+          this.credit_card = res.data.filter(item => item.outofdate ==='1');
         })
         .catch(err => {
           console.log(err);

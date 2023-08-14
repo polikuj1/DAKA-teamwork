@@ -141,10 +141,23 @@ export default {
     },
     triggerParent() {
       this.$emit('emit-title','');
+    },
+    getData() {
+      const params = {
+        id: this.$store.state.member.mem_id
+      }
+      this.axios.get(`${this.$URL}/getCredit.php`, { params: params})
+        .then(res => {
+          console.log(res);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
   created() {
     this.$emit('emit-title',this.title);
+    this.getData();
   },
 }
 </script>

@@ -12,7 +12,7 @@
       <form class="pic" id="pic">
         <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
-        <Images v-if="member.pic" :imgURL="`memberPic/${member.pic}`" :alt="會員照片"/>
+        <Images v-if="member.pic" :imgURL="`memberPic/${member.pic}`" alt="會員照片"/>
         <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
         <!-- <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/> -->
         <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
@@ -44,7 +44,7 @@
           目前消費金額 NTD$ {{ member.value }}
         </li>
       </ul>
-      <button type="button">線上儲值</button>
+      <button type="button" @click="this.$router.push('/member_center/member_add_value')">線上儲值</button>
     </div>
     <router-view @emit-title="getContent"></router-view>
   </div>
@@ -79,7 +79,7 @@ export default {
     },
     imageLoaded(e) {
       console.log(e);
-      this.member.pic = e.target.result;
+      // this.member.pic = e.target.result;
     },
     uploadImg() {
       console.log('觸發上傳');
@@ -102,23 +102,24 @@ export default {
         .then(res => {
           // console.log(res);
           this.member = res.data[0];
-          switch (this.member.grade) {
-            case 0:
-              this.member.grade = '普通';
-              break;
-            case 1:
-              this.member.grade = '白銀';
-              break;
-            case 2:
-              this.member.grade = '黃金';
-              break;
-            case 3:
-              this.member.grade = '白金';
-              break;
-            case 4:
-              this.member.grade = '鑽石';
-              break;
-          }
+          this.$store.commit('setInfo', this.member);
+          // switch (this.member.grade) {
+          //   case 0:
+          //     this.member.grade = '普通';
+          //     break;
+          //   case 1:
+          //     this.member.grade = '白銀';
+          //     break;
+          //   case 2:
+          //     this.member.grade = '黃金';
+          //     break;
+          //   case 3:
+          //     this.member.grade = '白金';
+          //     break;
+          //   case 4:
+          //     this.member.grade = '鑽石';
+          //     break;
+          // }
           console.log(this.member);
         })
         .catch(err => {
@@ -127,8 +128,26 @@ export default {
     }
   },
   created() {
-    this.id = this.$store.state.member.mem_id;
-    this.getData();
+    // this.id = this.$store.state.member.mem_id;
+    // this.getData();
+    this.member = this.$store.state.member;
+    switch (this.member.grade) {
+      case '0':
+        this.member.grade = '普通';
+        break;
+      case '1':
+        this.member.grade = '白銀';
+        break;
+      case '2':
+        this.member.grade = '黃金';
+        break;
+      case '3':
+        this.member.grade = '白金';
+        break;
+      case '4':
+        this.member.grade = '鑽石';
+        break;
+    }
   }
 }
 </script>

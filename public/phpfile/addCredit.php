@@ -9,7 +9,7 @@ try {
 	//執行sql指令
   // $mem_id = $postData["mem_id"];
 	$sql = "INSERT INTO credit (mem_id, card_number, valid, outofdate, preset, card_cvv)
-          VALUES (:mem_id, :card_number, :valid, 0, :preset, :card_cvv)";
+          VALUES (:mem_id, :card_number, :valid, 1, :preset, :card_cvv)";
 	$member = $pdo-> prepare($sql);
   $member->bindValue(":mem_id", $postData["mem_id"]);
 	$member->bindValue(":card_number", $postData["card_number"]);

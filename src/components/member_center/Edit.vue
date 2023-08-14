@@ -78,6 +78,8 @@
             console.log(res);
             if(res.data === 'success') {
               alert('修改成功');
+              this.getData();
+              this.$store.commit('setInfo', this.memberData);
             } else {
               alert('異動失敗');
             }
@@ -95,6 +97,7 @@
           .then(res => {
             console.log(res);
             this.memberData = res.data[0];
+            // this.$store.commit('setInfo', this.memberData);
           })
           .catch(err => {
             console.log(err);
