@@ -295,7 +295,7 @@ img {
                 }
               }
               .general_seat {
-                background-color: #63bcde;
+                background-color: #54c1ba;
               }
               .seat_btn {
                 box-sizing: border-box;
@@ -352,7 +352,7 @@ img {
                   }*/
               /* 1=預約中樣式 */
               .state-1 {
-                background-color: #daebea; /* 淡綠色背景代表使用中 */
+                background-color: #daebea;  /* 淡綠色背景代表使用中 */
                 color: #a6a6a6;
                 cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
               }
@@ -465,7 +465,7 @@ img {
                 outline: 2px solid #000000;
               }
               .double_seat {
-                background-color: #63bcde;
+                background-color: #54c1ba;
               }
               .seat_btn {
                 box-sizing: border-box;
@@ -515,7 +515,7 @@ img {
                   }*/
               /* 1=預約中樣式 */
               .state-1 {
-                background-color: #daebea; /* 淡綠色背景代表使用中 */
+                background-color: #daebea;  /* 淡綠色背景代表使用中 */
                 color: #a6a6a6;
                 cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
               }
@@ -653,7 +653,9 @@ img {
             font-size: 1.5rem;
             list-style: none;
             margin-bottom: 22px;
-
+            span {
+              color: #ff5e1e;
+            }
             .reservation_rules_img {
               margin-right: 22px;
               margin-top: 5px;
