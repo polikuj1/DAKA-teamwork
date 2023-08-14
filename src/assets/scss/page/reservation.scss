@@ -223,7 +223,7 @@ img {
               .eSports_seat {
                 background-color: #54c1ba;
               }
-              .selected{
+              .selected {
                 outline: 2px solid #ff0055;
               }
               .seat_btn {
@@ -280,7 +280,7 @@ img {
               height: 100%;
               justify-content: center;
               padding: 1%;
-              .selected{
+              .selected {
                 outline: 2px solid #ff0055;
               }
               .general_seat_title {
@@ -295,7 +295,7 @@ img {
                 }
               }
               .general_seat {
-                background-color: #63bcde;
+                background-color: #54c1ba;
               }
               .seat_btn {
                 box-sizing: border-box;
@@ -352,7 +352,7 @@ img {
                   }*/
               /* 1=預約中樣式 */
               .state-1 {
-                background-color: #daebea; /* 淡綠色背景代表使用中 */
+                background-color: #daebea;  /* 淡綠色背景代表使用中 */
                 color: #a6a6a6;
                 cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
               }
@@ -391,7 +391,7 @@ img {
               border-top: 1rem solid #7a7d7a;
               border-left: 1rem solid #7a7d7a;
               border-right: 1rem solid #7a7d7a;
-              .selected{
+              .selected {
                 outline: 2px solid #ff0055;
               }
               .single_seat {
@@ -461,11 +461,11 @@ img {
               border-top: 1rem solid #7a7d7a;
               border-left: 1rem solid #7a7d7a;
               border-right: 1rem solid #7a7d7a;
-              .selected{
+              .selected {
                 outline: 2px solid #ff0055;
               }
               .double_seat {
-                background-color: #63bcde;
+                background-color: #54c1ba;
               }
               .seat_btn {
                 box-sizing: border-box;
@@ -515,7 +515,7 @@ img {
                   }*/
               /* 1=預約中樣式 */
               .state-1 {
-                background-color: #daebea; /* 淡綠色背景代表使用中 */
+                background-color: #daebea;  /* 淡綠色背景代表使用中 */
                 color: #a6a6a6;
                 cursor: not-allowed; /* 鼠標顯示為禁止標誌 */
               }
@@ -653,7 +653,9 @@ img {
             font-size: 1.5rem;
             list-style: none;
             margin-bottom: 22px;
-
+            span {
+              color: #ff5e1e;
+            }
             .reservation_rules_img {
               margin-right: 22px;
               margin-top: 5px;
