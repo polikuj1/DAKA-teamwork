@@ -94,10 +94,11 @@ export default {
     memPsw: this.memPsw,
   };
 
-  axios.post(`${this.$URL}/login.php`, JSON.stringify(loginData), {
-    headers: {
-      'Content-Type': 'application/json'
-    }
+  axios.post(`${this.$URL}/login.php`, JSON.stringify(loginData), {withCredentials:true
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   withCredentials:true
+    // }
   })
   .then(response => {
     const responseData = response.data;
