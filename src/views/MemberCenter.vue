@@ -14,7 +14,7 @@
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
         <Images v-if="member.pic" :imgURL="`memberPic/${member.pic}`" :alt="會員照片"/>
         <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
-        <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/>
+        <!-- <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/> -->
         <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
         <input type="file" id="user" @change="getImage" name="image">
@@ -79,7 +79,7 @@ export default {
     },
     imageLoaded(e) {
       console.log(e);
-      this.member_img = e.target.result;
+      this.member.pic = e.target.result;
     },
     uploadImg() {
       console.log('觸發上傳');
@@ -87,6 +87,7 @@ export default {
       this.axios.post(`${this.$URL}/uploadMemberImg.php`, formData)
         .then(res => {
           console.log(res);
+          this.getData();
         })
         .catch(err => {
           console.log(err);

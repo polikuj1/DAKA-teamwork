@@ -5,8 +5,7 @@ header("Content-Type:application/json;charset=utf-8");
 try {
   // $postData = json_decode(file_get_contents('php://input'), true);
 	if($_FILES["image"]["error"] === 0) {
-    $dir = "/chd102/g6/memberPic/";
-
+    $dir = "../memberPic/";
     $from = $_FILES["image"]["tmp_name"];
     
     //決定檔案名稱:原先的$_FILES["image"]["name"]副檔名可能是png,gif
@@ -20,6 +19,8 @@ try {
     $fileName = "$fileName.$fileExt";//用uniqid()去串接副檔名
 
     $to = $dir . $fileName;
+    // echo json_encode(["from"=>$from, "to"=>$to]);
+    // exit();
     if(copy($from, $to)){
         //寫入資料庫
         try {
@@ -43,7 +44,8 @@ try {
         }
 
     }else{
-        $msg = ["error" => true, "message" => "寫入失敗"]; 
+        // $msg = ["error" => true, "message" => "寫入失敗"]; 
+        $msg = ["error" => true, "message" => error_get_last()]; 
         echo json_encode($msg);
     }
 
