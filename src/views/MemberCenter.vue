@@ -100,19 +100,19 @@ export default {
           // console.log(res);
           this.member = res.data[0];
           switch (this.member.grade) {
-            case '0':
+            case 0:
               this.member.grade = '普通';
               break;
-            case '1':
+            case 1:
               this.member.grade = '白銀';
               break;
-            case '2':
+            case 2:
               this.member.grade = '黃金';
               break;
-            case '3':
+            case 3:
               this.member.grade = '白金';
               break;
-            case '4':
+            case 4:
               this.member.grade = '鑽石';
               break;
           }
