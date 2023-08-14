@@ -445,27 +445,18 @@
 
 /* Fallbacks */
 
-html { height: 100%; }
+html { display: none; }
 
 *,
 *:after,
 *:before {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+	display: none;
 }
 
 
 
 body {
-    background: #f6f6f6;
-    font-weight: 400;
-    font-size: 15px;
-    color: #333;
-    overflow: scroll;
-    overflow-x: hidden;
+	display: none;
 }
 
 .container {
@@ -476,7 +467,7 @@ body {
 
 
 .container > header {
-	padding: 30px 30px 40px 30px;
+	display: none;
 }
 
 .container > header h1 {
@@ -498,4 +489,15 @@ body {
 	margin-top: -110px;
 	background: transparent url(../../../images/comic/shelf.png) no-repeat center center;
 	position: relative;
+}
+
+@media screen and (max-width: 1200px) {
+	.bookcontainer {
+		display: none;
+	}
+	
+	/* 書架 */
+	.bookshelf {
+		display: none;
+	}
 }
