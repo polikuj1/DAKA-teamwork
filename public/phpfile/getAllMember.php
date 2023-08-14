@@ -4,9 +4,9 @@
 try {
 	//引入連線工作的檔案
 	require_once("connectDaka.php");
-	$id = $_GET['id'];
+	// $email = $_GET['email'];
 	//執行sql指令並取得pdoStatement
-	$sql = "select * from member where mem_id = $id";
+	$sql = "select * from member";
 	$products = $pdo->query($sql); 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($prodRows);

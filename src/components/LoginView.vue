@@ -141,7 +141,7 @@ export default {
         });
     },
     fetchMemberData() {
-      axios.get(`${this.$URL}/getMember.php`)
+      axios.get(`${this.$URL}/getAllMember.php`)
         .then((res) => {
           console.log(res);
           this.memberData = res.data;

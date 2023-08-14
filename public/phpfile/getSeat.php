@@ -6,7 +6,6 @@ try {
 	require_once("connectDaka.php");
 	// $id = $_GET['id'];
 	//執行sql指令並取得pdoStatement
-	// $sql = "select * from member where mem_id = $id";
 	$sql = "select * from seat_state cross join seat on seat_state.seat_id=seat.seat_id";
 	$products = $pdo->query($sql); 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
