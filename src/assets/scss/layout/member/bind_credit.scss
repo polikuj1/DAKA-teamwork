@@ -80,6 +80,9 @@
       padding: 20px 0 40px;
       font-size: 1.25rem;
       text-align: center;
+      span {
+        margin-left: 10px;
+      }
       input {
         transform: scale(1.5);
       }
@@ -113,6 +116,7 @@
 @include lg() {
   .have_credit {
     display: flex;
+    flex-wrap: wrap;
     .credit_wrap {
       width: 50%;
       .credit_card {

@@ -50,7 +50,7 @@
     width: 200%;
     position: absolute;
     left: -52%;
-    top: 0;
+    top: 80px;
     animation: rotate 80s linear infinite;
     img {
       @include img;
@@ -81,6 +81,9 @@
         width: 30%;
         margin: 0;
       }
+    }
+    .circle {
+      top: 20px;
     }
   }
 }

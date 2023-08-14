@@ -19,7 +19,7 @@
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
         <input type="file" id="user" @change="getImage" name="image">
       </form>
-      <span><i class="fa-solid fa-crown"></i> 白金會員</span>
+      <span><i class="fa-solid fa-crown"></i> {{ member.grade }}會員</span>
       <ul>
         <li>
           <span><i class="fa-solid fa-user"></i></span>
@@ -99,6 +99,23 @@ export default {
         .then(res => {
           // console.log(res);
           this.member = res.data[0];
+          switch (this.member.grade) {
+            case '0':
+              this.member.grade = '普通';
+              break;
+            case '1':
+              this.member.grade = '白銀';
+              break;
+            case '2':
+              this.member.grade = '黃金';
+              break;
+            case '3':
+              this.member.grade = '白金';
+              break;
+            case '4':
+              this.member.grade = '鑽石';
+              break;
+          }
           console.log(this.member);
         })
         .catch(err => {
