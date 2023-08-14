@@ -385,11 +385,13 @@ export default {
       }
     },
     confirmReserve() {
-      const now = new Date();
-      this.currentTime = now.toLocaleString();
+      // const now = new Date();
+      // this.currentTime = now.toLocaleString();
+      // this.currentTime=this.currentTime.substring(10);
+      
 
-      this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
-      console.log(this.formattedDate);
+      // this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
+      // console.log(this.formattedDate);
 
 console.log(this.currentTime);
 
@@ -477,11 +479,15 @@ console.log(this.currentTime);
     goReservation() {
       this.$router.push('/member_center/member_seat_reservation');
       this.modalSwitch = false;
+    },
+    updateTime() {
+      const now = new Date();
+      this.currentTime = now.toLocaleString();
     }
   },
   computed: {
     ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey']),
-
+ 
 
   },
   watch: {},
@@ -491,6 +497,8 @@ console.log(this.currentTime);
     this.formatDateString();
   },
   mounted() {
+// 每秒更新一次时间
+this.currentTime = setInterval(this.updateTime, 1000);
 
   }
 };
