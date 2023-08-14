@@ -1,7 +1,7 @@
 <template>
     <Space size="large" wrap class="reservation_date_time">
-        <DatePicker size="large" type="date" placeholder="Select date" v-model="selectedDate" @mouseleave="convertDate" />
-        <TimePicker size="large" type="timerange" :steps="[1, 60, 60]"  placement="bottom-end" placeholder="Select time" style="width: 168px" v-model="selectedTime" @mouseleave="convertTime"
+        <DatePicker size="large" type="date" placeholder="Select date" v-model="selectedDate" @on-change="convertDate" />
+        <TimePicker size="large" type="timerange" :steps="[1, 60, 60]"  placement="bottom-end" placeholder="Select time" style="width: 168px" v-model="selectedTime" @on-change="convertTime"
         />
       </Space>
 

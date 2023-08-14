@@ -92,7 +92,7 @@
                       seat_btn: true,
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum),(+reservation.endTimeNum)).includes('0') ? 0 : 1}`]: true
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum),(+reservation.endTimeNum)).includes('0')? 0 : 1}`]: true
                     }" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
@@ -169,7 +169,7 @@
                       v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
-                          {{ item.area }}{{ item.seat_id }}
+                          {{ item.seat_area }}{{ item.seat_id }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -183,7 +183,7 @@
                       v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
-                          {{ item.seat_area }}{{ item.id }}
+                          {{ item.seat_area }}{{ item.seat_id }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -222,7 +222,7 @@
                       ? "大廳一般"
                       : item.seat_area === "C"
                         ? "包廂單人"
-                        : "包廂雙人" }} {{ item.seat_area }}-{{ item.seat_no }}
+                        : "包廂雙人" }} {{ item.seat_area }}-{{ item.seat_id }}
                 </div>
               </div>
             </div>
