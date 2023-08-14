@@ -12,7 +12,7 @@
       <form class="pic" id="pic">
         <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
-        <Images v-if="member.pic" :imgURL="`/memberPic/${member.pic}`" :alt="會員照片"/>
+        <Images v-if="member.pic" :imgURL="`memberPic/${member.pic}`" :alt="會員照片"/>
         <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
         <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/>
         <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
@@ -70,6 +70,7 @@ export default {
     getImage(e) {
       // 預覽圖片
       const file = e.target.files.item(0);
+      console.log(file);
       if(file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg') {alert('只能上傳圖檔');return;};
       const reader = new FileReader();
       reader.addEventListener('load', this.imageLoaded);
@@ -77,6 +78,7 @@ export default {
       this.uploadImg();
     },
     imageLoaded(e) {
+      console.log(e);
       this.member_img = e.target.result;
     },
     uploadImg() {

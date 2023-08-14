@@ -5,7 +5,7 @@ header("Content-Type:application/json;charset=utf-8");
 try {
   // $postData = json_decode(file_get_contents('php://input'), true);
 	if($_FILES["image"]["error"] === 0) {
-    $dir = "../images/memberPic/";
+    $dir = "/chd102/g6/memberPic/";
 
     $from = $_FILES["image"]["tmp_name"];
     
