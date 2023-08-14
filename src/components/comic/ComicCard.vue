@@ -44,7 +44,6 @@
 </template>
 
 <script>
-// import {GET} from '@/plugin/axios';
 import Pagination from '@/components/Pagination.vue';
 import comicSearch from '@/components/comic/search.vue';
 import CartIcon from '@/components/comic/CartIcon.vue';

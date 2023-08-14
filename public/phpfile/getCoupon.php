@@ -5,7 +5,12 @@ try {
 	//引入連線工作的檔案
 	require_once("connectDaka.php");
 	//執行sql指令並取得pdoStatement
-	$sql = "select * from seat_state cross join seat on seat_state.seat_id=seat.seat_id";
+	$id = $_GET["id"];
+	$sql = "select mc.member_coupon_id, mc.member_coupon_no, mc.coupon_id,
+								 mc.mem_id, mc.get_date, mc.close_date, mc.exchange,
+								 c.coupon_date, c.exchange_food, c.exchange_time, c.pic
+					FROM member_coupon mc JOIN coupon c ON mc.coupon_id = c.coupon_id
+					WHERE mc.mem_id = $id";
 	$products = $pdo->query($sql); 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($prodRows);
