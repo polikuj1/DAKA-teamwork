@@ -92,7 +92,7 @@
                       seat_btn: true,
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum),(+reservation.endTimeNum)).includes('0')? 0 : 1}`]: true
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true
                     }" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
@@ -112,7 +112,8 @@
                     <button :class="{
                       seat_btn: true,
                       eSports_seat: true,
-                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id)
+                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true
                     }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
@@ -165,7 +166,7 @@
                   <!--狀態管理 :class="`state-${item.state}`" -->
                   <div class="reservation_single_seat">
                     <button
-                      :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }"
+                      :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true }"
                       v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
@@ -179,7 +180,7 @@
                   <!-- 狀態管理:class="`state-${item.state}`" -->
                   <div class="reservation_double_seat">
                     <button
-                      :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id) }"
+                      :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true }"
                       v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
@@ -228,12 +229,12 @@
             </div>
             <div class="data_time_sum">
               <p>金額總計</p>
-              <input type="text" readonly :value="`${totalSal !== 0 ? 0 : totalSal}元`" />
+              <input type="text" readonly :value="`${totalSal === 0 ? 0 : totalSal}元`" />
             </div>
             <div class="data_time_stored">
               <p>目前儲值金</p>
               <input type="text" readonly :value="`${member.remain == undefined ? 0 : member.remain}元`" />
-              <div class="stored_error" v-show="member.remain == 0">
+              <div class="stored_error" v-show="member.remain < totalSal">
                 儲值金不足，請先至
                 <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
                 儲值。
@@ -303,7 +304,7 @@ export default {
       area: '',
       no: '',
       sal: '',
-      totalSal: [],
+      totalSal: 0,
       totalTime: 0,
       seatLobby: [],
       seatRoom: [],
@@ -313,7 +314,8 @@ export default {
       seatState: [],
       formattedDate: "",
       singleSeatState: 0,
-      seatStatus: 0
+      seatStatus: 0,
+      currentTime:''
     };
   },
 
@@ -345,25 +347,6 @@ export default {
       this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
       this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
 
-
-console.log(this.reservation.startTimeNum,typeof(+this.reservation.startTimeNum));
-console.log(this.reservation.endTimeNum,typeof(+this.reservation.endTimeNum));
-
-      console.log(allSeatState);
-
-
-      // 获取选定的时间段
-      const startTimeIndex = +this.reservation.startTimeNum;
-      const endTimeIndex = +this.reservation.endTimeNum;
-
-      // 截取选定时间段的座位状态数组
-      // const selectedSeatStatus = item.seat_status.split('').slice(startTimeIndex, endTimeIndex);
-
-      // 将截取的座位状态数组赋值给选定的座位对象
-      // item.selectedSeatStatus = selectedSeatStatus;
-
-
-
     },
     getMonthNumber(monthName) {
       const months = {
@@ -383,91 +366,37 @@ console.log(this.reservation.endTimeNum,typeof(+this.reservation.endTimeNum));
       console.log(this.formattedDate);
     },
     seatSelected(item) {
-
-      this.totalTime = (+this.reservation.endTimeNum) - (this.reservation.startTimeNum);
-
-      const selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
-      const selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
+      let selectedAandB = [];
+      let selectedCandD = [];
       const indexA = selectedAandB[0];
       const indexC = selectedCandD[0];
-      //點一下選，再點一下取消
 
-      if (this.selectedSeats.length < 7) {
-        if (this.selectedSeats.includes(item)) {
-          this.deselectSeat(item);
-        } else {
-          if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB.length >= this.maxAandB) {
-            this.selectedSeats.splice(indexA, 1);
+
+
+      if (item.seat_status?.split('').slice((+this.reservation.startTimeNum), (+this.reservation.endTimeNum)).includes('1')) {
+        if (this.selectedSeats.length < 7) {
+          //點一下選，再點一下取消
+          selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
+          selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
+          if (this.selectedSeats.includes(item)) {
+            this.deselectSeat(item);
+          } else {
+            if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB.length >= this.maxAandB) {
+              this.selectedSeats.splice(indexA, 1);
+            }
+            else if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD.length >= this.maxCandD) {
+              this.selectedSeats.splice(indexC, 1);
+            }
+            this.selectSeat(item);
+
+
           }
-          else if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD.length >= this.maxCandD) {
-            this.selectedSeats.splice(indexC, 1);
-          }
-          this.selectSeat(item);
+          this.totalTime = (+this.reservation.endTimeNum) - (this.reservation.startTimeNum);
+          this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
         }
-
-
+      } else {
+        return;
       }
-      // else if(this.selectedSeats.length>=7){
-
-      //   this.selectedSeats.splice(0,1);
-
-      //   if (this.selectedSeats.includes(item)){
-
-      //     this.deselectSeat(item);
-      //   }
-
-
-      //     if((item.seat_area === 'A' || item.seat_area === 'B')&&selectedAandB.length >= this.maxAandB){
-      //       this.selectedSeats.splice(indexA, 1);
-      //       this.selectSeat(item);
-      //     }else if((item.seat_area === 'C' || item.seat_area === 'D')&& selectedCandD.length >= this.maxCandD){
-      //     this.selectedSeats.splice(indexA, 1);
-      //     this.selectSeat(item);
-      //   }
-
-
-      // }
-
-      this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
-
-
-
-      // this.totalSal = this.selectedSeats.map(i => i.seat_sal * this.totalTime).reduce((accumulator, currentValue) => accumulator + (+currentValue), 0);
-      // console.log(this.totalSal);
-
-      // const selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B').length;
-      // const selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D').length;
-
-      // // 如果已选座位数量达到上限，删除同类型的第一个座位
-
-      // if (this.selectedSeats.length < 7) {
-      //   if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB >= this.maxAandB) {
-      //     const firstAorB = this.selectedSeats.find(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
-      //     if (firstAorB) {
-      //       const index = this.selectedSeats.indexOf(firstAorB);
-      //       this.selectedSeats.splice(index, 1);
-      //     }
-      //   }
-
-      //   if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD >= this.maxCandD) {
-      //     const firstCorD = this.selectedSeats.find(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
-      //     if (firstCorD) {
-      //       const index = this.selectedSeats.indexOf(firstCorD);
-      //       this.selectedSeats.splice(index, 1);
-      //     }
-      //   }
-
-      //   // 执行新增座位操作
-      //   if (!this.selectedSeats.includes(item)) {
-      //     this.selectedSeats.push(item);
-      //   } else {
-      //     this.deselectSeat(item);
-      //   }
-      // }
-
-      // // 選擇時間後計算金額
-      // this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
-
     },
     selectSeat(item) {
       this.selectedSeats.push(item);
@@ -481,7 +410,46 @@ console.log(this.reservation.endTimeNum,typeof(+this.reservation.endTimeNum));
       }
     },
     confirmReserve() {
-      this.modalSwitch = true;
+      const now = new Date();
+      this.currentTime = now.toLocaleString();
+
+      this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
+      console.log(this.formattedDate);
+
+console.log(this.currentTime);
+
+
+      const reserveData = {
+        mem_id: this.mem_id,
+        seat_order_date: this.formattedDate,
+        seat_order_sum: this.totalSal,
+        seat_order_startdate: this.telReg,
+        seat_order_enddate: this.pswReg,
+        seat_order_time: this.addReg,
+      };
+
+      axios
+        .post(`${this.$URL}/seatReserve.php`, JSON.stringify(reserveData), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          const responseData = response.data;
+          console.log(responseData);
+          if (responseData.message === '預約成功') { // Check the response message
+            this.modalSwitch = true;
+            setTimeout(() => {
+              this.modalSwitch = false;
+            }, 3000);
+          } else {
+            alert('預約失敗');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          alert('預約失敗');
+        });
     },
 
     fetchSeatData() {
@@ -496,11 +464,7 @@ console.log(this.reservation.endTimeNum,typeof(+this.reservation.endTimeNum));
           console.log(err);
         })
 
-
-
-
-      axios
-        .get("data/seat.json")
+      axios.get(`${this.$URL}/getAllSeat.php`)
         .then((res) => {
           this.seatData = res.data;
           this.seats_a = this.seatData.filter(item => item.seat_id <= 30);
@@ -510,20 +474,22 @@ console.log(this.reservation.endTimeNum,typeof(+this.reservation.endTimeNum));
         })
         .catch((err) => {
           console.log(err);
-        });
+        })
+
+      // axios
+      //   .get("data/seat.json")
+      //   .then((res) => {
+      //     this.seatData = res.data;
+      //     this.seats_a = this.seatData.filter(item => item.seat_id <= 30);
+      //     this.seats_b = this.seatData.filter(item => 31 <= item.seat_id && item.seat_id <= 55);
+      //     this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
+      //     this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
 
     },
-    // fetchSeatStateData() {
-    //   axios
-    //     .get("data/seat_state.json")
-    //     .then((res) => {
-    //       this.seatState = res.data;
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-
-    // },
 
     //檢查登入狀態，沒登入就跳登入彈窗
     checkLogin() {
