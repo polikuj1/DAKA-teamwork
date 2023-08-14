@@ -43,7 +43,7 @@
     font-size: 1.25rem;
     line-height: 1.5;
     color: $main_txt_color;
-    background-color: $btn_bg_color;
+    background-color: #f9bb8a;
     border-radius: $btn_br;
     border: none;
     cursor: pointer;
@@ -52,17 +52,17 @@
 
   .category_buttons :hover {
     color: $main_txt_color;
-    background-color: #f9bb8a;
+    background-color: $btn_bg_color;
   }
 
   .category_buttons button.comboHover:hover {
-    background-color: #f9bb8a;
+    background-color: $btn_bg_color;
     background-color: $main_txt_color;
   }
 
   .category_buttons button.active {
     color: $main_txt_color;
-    background-color: #f9bb8a;
+    background-color: $btn_bg_color;
   }
 
   .variousmeal_card_area {
