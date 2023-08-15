@@ -22,8 +22,8 @@
             </div>
           </div>
           <label>
-            <input type="radio" name="default_card" :checked="card.preset === 0">
-            <span v-if="card.preset === 0">預設卡片</span>
+            <input type="radio" name="default_card" :checked="card.preset === 1">
+            <span v-if="card.preset === 1">預設卡片</span>
             <span v-else>選擇此卡為預設卡片</span>
           </label>
         </div>
