@@ -3,11 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-//引入viewFire
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
-import { VueFire, VueFireAuth } from 'vuefire'
-import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
+// //引入viewFire
+// import { initializeApp } from 'firebase/app'
+// import { getFirestore } from 'firebase/firestore'
+// import { VueFire, VueFireAuth } from 'vuefire'
+// import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
 
 //aos引入
 import AOS from 'aos';

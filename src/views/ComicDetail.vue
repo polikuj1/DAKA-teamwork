@@ -1,7 +1,7 @@
 <template>
     <PageTitle>
-    {{ title }}
-  </PageTitle>
+        {{ title }}
+    </PageTitle>
     <div class="comic_detail">
         <div class="circle_top">
             <div class="circle_yellow"></div>
@@ -20,7 +20,8 @@
                     <p>作者：{{ item.author }}</p>
                 </div>
                 <div class="text_reserve">
-                    <a href="#" @click.prevent="addToCart(item)">預約此書<i class="fa-solid fa-book-open-reader bookgap"></i></a>
+                    <a href="#" @click.prevent="addToCart(item)">預約此書<i
+                            class="fa-solid fa-book-open-reader bookgap"></i></a>
                 </div>
                 <div class="text_introduce">
                     <div class="text_introduce_title">
@@ -40,7 +41,7 @@
         </div>
     </div>
     <CartIcon />
-    <ComicSwiper/>
+    <ComicSwiper />
 </template>
 
 <script>
@@ -50,13 +51,13 @@ import ComicSwiper from '@/components/comic/ComicSwiper.vue'
 import PageTitle from '@/components/PageTitle.vue';
 export default {
     components: {
-        CartIcon,ComicSwiper,PageTitle,
+        CartIcon, ComicSwiper, PageTitle,
     },
     data() {
         return {
             comicData: [],
             id: 0,
-            title:'漫畫租借',
+            title: '漫畫租借',
 
         }
     },
