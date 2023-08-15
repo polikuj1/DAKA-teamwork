@@ -21,7 +21,7 @@ try {
 	$member->bindValue(":address", $postData["address"]);
 	$member->bindValue(":mobile", $postData["mobile"]);
 	// $member->bindValue(":email", $postData["email"]);
-  $member->bindValue(":password", $postData["new_password"]);
+  $member->bindValue(":password", $postData["password"]);
 	$member->execute();
 	echo 'success';
 

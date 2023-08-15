@@ -69,6 +69,9 @@
       submitForm() {
         if(this.memberData.new_password !== this.memberData.new_password_confirm) {alert('兩次密碼不一致'); return};
         console.log('表單提交成功！');
+        if(this.memberData.new_password !== undefined){
+          this.memberData.password = this.memberData.new_password;
+        }
         this.axios.post(`${this.$URL}/editMember.php`, JSON.stringify(this.memberData), {
           headers: {
             'Content-Type': 'application/json'

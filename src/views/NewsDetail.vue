@@ -11,7 +11,7 @@
         <div class="news_detail_card">
             <div class="card">
                 <!-- <img src="../assets/images/news/lol.png" alt="英雄聯盟"> -->
-                <Images :imgURL="`${news.news_pic}`" :alt="`${news.news_title}`" />
+                <Images :imgURL="`/news/${news.news_pic}`" :alt="`${news.news_title}`" />
                 <div class="text" v-html="news.news_text"></div>
                 <div class="options">
                     <a @click="goNews" class="a">＜上一篇</a>
@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import {GET} from '@/plugin/axios';
 import PageTitle from '@/components/PageTitle.vue';
 export default {
     name: '',
@@ -54,16 +53,29 @@ export default {
             this.getData();
         },
         getData() {
-            GET('/data/news1.json')
-            .then((res) => {
-                this.res = res[2].data;
-                console.log(this.res);
-                let data = this.res.filter(item => item.news_id === this.$route.params.id);
-                this.news = data[0];
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+            const params = {
+                id: this.$route.params.id
+            }
+            this.axios.get(`${this.$URL}/getAllNews.php`)
+                .then(res => {
+                    this.res = res.data;
+                    this.news = this.res.filter(item => item.news_id === this.$route.params.id)[0];
+                    console.log(this.res);
+                    console.log(this.news);
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            // GET('/data/news1.json')
+            // .then((res) => {
+            //     this.res = res[2].data;
+            //     console.log(this.res);
+            //     let data = this.res.filter(item => item.news_id === this.$route.params.id);
+            //     this.news = data[0];
+            // })
+            // .catch((err) => {
+            //     console.log(err);
+            // })
         }
     },
     components: {

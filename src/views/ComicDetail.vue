@@ -12,7 +12,7 @@
         <div class="card" v-for="item in comicData" :key="item.title">
             <div class="pic">
                 <!-- <img :src="item.img"> -->
-                <Images :imgURL="`comic/${item.img}`" :alt="`${item.title}`" />
+                <Images :imgURL="`/comic/${item.img}`" :alt="`${item.title}`" />
             </div>
             <div class="text">
                 <div class="text_title">
@@ -66,10 +66,12 @@ export default {
             this.comicData = this.comicData.filter(item => item.comics_id === this.id);
         },
         addToCart(item) {
-            if (this.$store.state.cart.length === 5) return;
-            if (this.$store.state.cart.indexOf(item) === -1) {
-                console.log(123);
-                this.$store.commit('getBook', item);
+            if(this.$store.state.cart.length >= 5) return;
+            if(this.$store.state.cart.findIndex((v)=> v.comics_id === item.comics_id) === -1) {
+            console.log(123);
+            this.$store.commit('getBook',item);
+            } else {
+            console.log('可惡');
             }
         }
     },

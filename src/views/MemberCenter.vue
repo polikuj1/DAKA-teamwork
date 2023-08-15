@@ -12,22 +12,22 @@
       <form class="pic" id="pic">
         <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
-        <Images v-if="member.pic" :imgURL="`memberPic/${member.pic}`" alt="會員照片"/>
+        <Images v-if="myMember.pic" :imgURL="`memberPic/${myMember.pic}`" alt="會員照片"/>
         <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
         <!-- <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/> -->
         <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
         <input type="file" id="user" @change="getImage" name="image">
       </form>
-      <span><i class="fa-solid fa-crown"></i> {{ member.grade }}會員</span>
+      <span><i class="fa-solid fa-crown"></i> {{ myGrade }}會員</span>
       <ul>
         <li>
           <span><i class="fa-solid fa-user"></i></span>
-          <span>{{ member.mname}}</span>
+          <span>{{ myMember.mname}}</span>
         </li>
         <li>
           <span><i class="fa-solid fa-envelope"></i></span>
-          <span>{{ member.email }}</span>
+          <span>{{ myMember.email }}</span>
         </li>
         <li>
           <!-- <span>編號</span> -->
@@ -38,10 +38,10 @@
         </li>
         <li>
           <span><i class="fa-solid fa-piggy-bank"></i> 儲值金金額</span>
-          <span>NTD$ {{ member.remain }}</span>
+          <span>NTD$ {{ myMember.remain }}</span>
         </li>
         <li>
-          目前消費金額 NTD$ {{ member.value }}
+          目前消費金額 NTD$ {{ myMember.value }}
         </li>
       </ul>
       <button type="button" @click="this.$router.push('/member_center/member_add_value')">線上儲值</button>
@@ -65,6 +65,24 @@ export default {
       content: '',
       id: null,
     }
+  },
+  computed: {
+    myMember() {return this.$store.state.member},
+    myGrade() {
+      switch (this.myMember.grade) {
+        case '0':
+          return '普通';
+        
+        case '1':
+        return '白銀';
+        case '2':
+        return '黃金';
+        case '3':
+        return '白金';
+        case '4':
+        return '鑽石';
+    }
+    },
   },
   methods: {
     getImage(e) {
@@ -103,23 +121,6 @@ export default {
           // console.log(res);
           this.member = res.data[0];
           this.$store.commit('setInfo', this.member);
-          // switch (this.member.grade) {
-          //   case 0:
-          //     this.member.grade = '普通';
-          //     break;
-          //   case 1:
-          //     this.member.grade = '白銀';
-          //     break;
-          //   case 2:
-          //     this.member.grade = '黃金';
-          //     break;
-          //   case 3:
-          //     this.member.grade = '白金';
-          //     break;
-          //   case 4:
-          //     this.member.grade = '鑽石';
-          //     break;
-          // }
           console.log(this.member);
         })
         .catch(err => {
@@ -130,24 +131,24 @@ export default {
   created() {
     // this.id = this.$store.state.member.mem_id;
     // this.getData();
-    this.member = this.$store.state.member;
-    switch (this.member.grade) {
-      case '0':
-        this.member.grade = '普通';
-        break;
-      case '1':
-        this.member.grade = '白銀';
-        break;
-      case '2':
-        this.member.grade = '黃金';
-        break;
-      case '3':
-        this.member.grade = '白金';
-        break;
-      case '4':
-        this.member.grade = '鑽石';
-        break;
-    }
+    // this.member = this.$store.state.member;
+    // switch (this.member.grade) {
+    //   case '0':
+    //     this.member.grade = '普通';
+    //     break;
+    //   case '1':
+    //     this.member.grade = '白銀';
+    //     break;
+    //   case '2':
+    //     this.member.grade = '黃金';
+    //     break;
+    //   case '3':
+    //     this.member.grade = '白金';
+    //     break;
+    //   case '4':
+    //     this.member.grade = '鑽石';
+    //     break;
+    // }
   }
 }
 </script>
