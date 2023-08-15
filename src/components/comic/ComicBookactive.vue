@@ -31,6 +31,12 @@
               <div class="bk-right"></div>
               <div class="bk-left">
                 <h2>
+                  <span class="text">
+                    <template v-for="(i, idx) in item.title" :key="idx">
+                      {{ i }}<br>
+                    </template>
+                  </span>
+                  
                   <!-- <span class="text">鬼<br />滅<br />之<br />刃</span> -->
                   <!-- <span  class="text">{{ item.title }}</span> -->
                   <span>{{ item.title }}</span>
