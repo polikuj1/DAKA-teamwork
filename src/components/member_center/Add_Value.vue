@@ -26,14 +26,15 @@
             <p v-if="showCardNumberWarning" style="color: #FF5E1E;">請輸入有效的卡號</p>
             <label for="expiryDate" class="charge_expirydate">輸入卡片有效期限</label>
             <div class="charge_goodthru">
-              <select v-model="selectedYear" required>
+              <input type="month" id="expiryDate" v-model="expiryDate">
+              <!-- <select v-model="selectedYear" required>
                 <option value="請選擇" disabled selected>請選擇年份</option>
                 <option v-for="year in years" :key="year" :value="year">{{ year }}</option>
-              </select>
-              <select v-model="selectedMonth" required>
+              </select> -->
+              <!-- <select v-model="selectedMonth" required>
                 <option value="請選擇" disabled selected>請選擇月份</option>
                 <option v-for="month in months" :key="month" :value="month">{{ month }}</option>
-              </select>
+              </select> -->
             </div>
             <label for="verificationCode" class="charge_verification">輸入驗證碼</label>
             <input type="text" id="verificationCode" name="verificationCode" required maxlength="3" @input="checkVerificationCodeInput" v-model="verificationCode">
@@ -41,11 +42,11 @@
             <br>
             <br>
             <div class="charge_bind">
-              <input type="checkbox" id="isBound" value="true" v-model="isBound">
+              <input type="checkbox" id="isBound" v-model="isBound">
               <label for="isBound">是否綁定此信用卡</label>
             </div>
             <div class="charge_default">
-              <input type="checkbox" id="isDefault" value="true" v-model="isDefault">
+              <input type="checkbox" id="isDefault" v-model="isDefault">
               <label for="isDefault">是否將此信用卡設為預設卡片</label>
             </div>
           </div>
@@ -95,6 +96,7 @@ export default {
       modalSwitch: false,
       warnTxt: false,
       creditData:[],
+      expiryDate: '',
     }
   },
   methods: {
@@ -104,25 +106,26 @@ export default {
     },
     submit() {
       if (this.isFormValid()) {
-        // 會員已經綁定的信用卡儲值
         this.modalSwitch = true;
         let form;
         let memberRemain;
+        let id;
+        this.creditData.forEach(item => {
+          if(item.card_number === this.selectedCreditCard) {
+            id = item.credit_id;
+          }
+        })
+        let time = new Date();
+        let year = time.getFullYear();
+        let month = (time.getMonth() + 1).toString().padStart(2, '0');
+        let day = time.getDate().toString().padStart(2, '0');
+        let hours = time.getHours().toString().padStart(2, '0');
+        let minutes = time.getMinutes().toString().padStart(2, '0');
+        let seconds = time.getSeconds().toString().padStart(2, '0');
+        let formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
         if(this.selectedCreditCard !== '其他') {
-          let time = new Date();
-          let year = time.getFullYear();
-          let month = (time.getMonth() + 1).toString().padStart(2, '0');
-          let day = time.getDate().toString().padStart(2, '0');
-          let hours = time.getHours().toString().padStart(2, '0');
-          let minutes = time.getMinutes().toString().padStart(2, '0');
-          let seconds = time.getSeconds().toString().padStart(2, '0');
-          let formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-          let id;
-          this.creditData.forEach(item => {
-            if(item.card_number === this.selectedCreditCard) {
-              id = item.credit_id;
-            }
-          })
+          // 會員已經綁定的信用卡儲值
           form = {
             mem_id: this.$store.state.member.mem_id,
             credit_id: id,
@@ -132,9 +135,36 @@ export default {
           };
 
         } else {
-
+          // 其他，直接填信用卡號儲值，且可以順便綁定
+          if(this.isBound) {
+            form = {
+              mem_id: this.$store.state.member.mem_id,
+              credit_id: id,
+              sdate: formattedDateTime,
+              sval: this.selectedAmount,
+              add_method: '1'
+            };
+            const year = this.expiryDate.substring(2,4);
+            const month = this.expiryDate.substring(5,this.expiryDate.length);
+            const valid = year + month;
+            this.expiryDate = valid;
+            const credit_data = {
+              mem_id: this.$store.state.member.mem_id,
+              card_number: this.cardNumber,
+              valid: this.expiryDate,
+              preset: this.isDefault,
+              card_cvv: this.verificationCode,
+            };
+            this.axios.post(`${this.$URL}/addCredit.php`, JSON.stringify(credit_data))
+            .then(res => {
+              console.log(res);
+            })
+            .catch(err => {
+              console.log(err);
+            })
+          }
         }
-        memberRemain += this.selectedAmount;
+        memberRemain = parseInt(this.selectedAmount) + parseInt(this.$store.state.member.remain);
         // 增加一筆儲值紀錄
         this.axios.post(`${this.$URL}/addValue.php`, JSON.stringify(form))
           .then(res => {
@@ -146,10 +176,11 @@ export default {
         // 更新會員的餘額狀態
         this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
           mem_id: this.$store.state.member.mem_id,
-          remain: memberRemain
+          remain: memberRemain.toString()
         }))
           .then(res => {
             console.log(res);
+            this.$store.commit('setMemberRemain', memberRemain);
           })
           .catch(err => {
             console.log(err);
@@ -163,11 +194,10 @@ export default {
         return false;
       }
       if (this.selectedCreditCard === '其他') {
-        if (this.cardNumber === '' || this.selectedYear === '請選擇' || this.selectedMonth === '請選擇' || this.verificationCode === '') {
+        if (this.cardNumber.length !== 16 || this.cardNumber === '' || this.expiryDate === '' || this.verificationCode === '') {
           return false;
         }
       }
-
       return true;
     },
     checkCardNumberInput() {

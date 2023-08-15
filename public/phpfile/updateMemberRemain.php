@@ -6,7 +6,7 @@ try {
   $postData = json_decode(file_get_contents('php://input'), true);
 	require_once("connectDaka.php");
 
-	if (isset($postData["comics_order_id"])) {
+	if (isset($postData["remain"])) {
 		$sql = "UPDATE member SET remain = :remain WHERE mem_id = :mem_id";
 		$member = $pdo->prepare($sql);
 		$member->bindValue(":remain", $postData["remain"]);
