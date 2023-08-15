@@ -1,7 +1,3 @@
-// require('./jquery.min.js');
-// require('imports-loader?wrapper=window&!./modernizr.custom.js');
-// require('imports-loader?wrapper=window&!./jquery.min.js');
-// require('imports-loader?imports=default|jquery|$!./jquery.min.js');
 
 var Books = (function() {
 
@@ -18,6 +14,7 @@ var Books = (function() {
 	function init() {
 
 		$books.each( function( i ) {
+			
 			var $book = $( this ),
 				$other = $books.not( $book ),
 				$parent = $book.parent(),
@@ -53,6 +50,7 @@ var Books = (function() {
 					current = 0;
 					$content.removeClass( 'bk-content-current' ).eq( current ).addClass( 'bk-content-current' );
 				}
+
 			} );
 
 			if( $content.length > 1 ) {
@@ -77,7 +75,9 @@ var Books = (function() {
 					}
 					return false;
 				} );
+
 			}
+			
 		} );
 
 	}
@@ -86,7 +86,7 @@ var Books = (function() {
 
 		var $book = $books.eq( currentbook ),
 			$parent = $book.parent();
-
+		
 		$book.data( 'opened', false ).removeClass( 'bk-viewinside' ).on( transEndEventName, function(e) {
 			$( this ).off( transEndEventName ).removeClass( 'bk-outside' );
 			$parent.css( 'z-index', $parent.data( 'stackval' ) );
@@ -96,4 +96,6 @@ var Books = (function() {
 
 	return { init : init };
 
-})();
+});
+
+export default Books

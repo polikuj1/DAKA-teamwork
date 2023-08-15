@@ -1,11 +1,12 @@
 .store {
     max-width: 1200px;
     width: 100%;
-    margin: auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 400px;
+    padding-bottom: 160px;
+    position: relative;
 
 
     .title {
@@ -76,12 +77,6 @@
 
         }
 
-        .man {
-            position: absolute;
-            top: 70%;
-            width: 125%;
-            right: -250%;
-        }
 
         .tp_text {
             font-size: 1.875rem;
@@ -206,39 +201,46 @@
             transition: all .5s;
         }
 
-        .pic {
-            width: 621.91px;
-            background: url(@/assets/images/index/walkman.svg) no-repeat left center;
-            background-size: cover;
-            overflow: hidden;
-            animation: walkman 2.5s steps(2, end) infinite;
+    }
+
+    .man {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+
+    .pic {
+        width: 621.91px;
+        background: url(@/assets/images/index/walkman.svg) no-repeat left center;
+        background-size: cover;
+        overflow: hidden;
+        animation: walkman 2.5s steps(2, end) infinite;
+        transform: scale(0.8);
 
 
-            img {
-                opacity: 0;
-            }
+        img {
+            opacity: 0;
+        }
+    }
+
+    @keyframes walkman {
+        0% {
+            background-position: 0;
         }
 
-        @keyframes walkman {
-            0% {
-                background-position: 0;
-            }
+        100% {
+            background-position: -1263.82px 0;
+        }
+    }
 
-            100% {
-                background-position: -1263.82px 0;
-            }
+    @keyframes walking {
+        0% {
+            transform: translateX(200px);
         }
 
-        @keyframes walking {
-            0% {
-                transform: translateX(200px);
-            }
-
-            100% {
-                transform: translateX(100px);
-            }
+        100% {
+            transform: translateX(100px);
         }
-
     }
 
 }
@@ -247,10 +249,10 @@
 
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
 
     .store {
-        max-width: 1200px;
+        max-width: 1024px;
         width: 100%;
         margin-bottom: 0;
 
@@ -259,7 +261,10 @@
             font-size: 3.75rem;
             margin-bottom: 12%;
             color: white;
+        }
 
+        .pic {
+            transform: scale(0.6);
         }
 
         .map {
@@ -322,13 +327,6 @@
 
             }
 
-            .man {
-                position: absolute;
-                top: 63%;
-                width: 115%;
-                right: -102%;
-            }
-
             .tp_text {
                 font-size: 1.875rem;
                 color: #4C3818;
@@ -348,8 +346,6 @@
                 top: 20%;
                 font-weight: 600;
                 color: white;
-
-
             }
 
             .tn_text {
@@ -434,10 +430,15 @@
 
 @media screen and (max-width: 768px) {
     .store {
+        padding-bottom: 360px;
 
         .title {
             color: white;
             padding-bottom: 40px;
+        }
+
+        .pic {
+            right: 50px;
         }
 
         .map {
@@ -499,10 +500,6 @@
                 top: 65%;
             }
 
-            .man {
-                display: none;
-            }
-
             .tp_text {
                 position: relative;
                 right: 0;
@@ -512,8 +509,6 @@
                 padding-left: 60px;
                 margin-bottom: 50px;
                 color: white;
-
-
             }
 
             .zl_text {
@@ -537,7 +532,6 @@
                 padding-left: 60px;
                 margin-bottom: 50px;
                 color: white;
-
             }
 
             .taipei {
@@ -548,7 +542,6 @@
             .taoyuan {
                 display: none;
             }
-
 
             .tainan {
                 display: none;

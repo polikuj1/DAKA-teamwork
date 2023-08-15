@@ -1,73 +1,61 @@
 <template>
-  <div class="container" >
+  <div class="container">
 
-    <section class="login" >
+    <section class="login">
       <div class="login_pic">
-        <img :src="require('@/assets/images/footerLogo.png')" alt="">
+        <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo">
         <p>
           # 快樂就是這麼簡單
         </p>
       </div>
 
       <div class="login_form">
-        <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="toggleLogin">
-        <form>
+        <img :src="require('@/assets/images/login/cross.png')" class="close_modal" @click="closeLogin">
+        <form @submit.prevent="checkLogin">
 
           <input class="login_memid" type="text" name="memId" placeholder="信箱" v-model="memId" @input="errorMsg = ''"
-            require>
+            required>
           <input type="password" name="memPsw" maxlength="12" placeholder="密碼" v-model="memPsw" @input="errorMsg = ''"
-            require>
+            required>
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
-            <div class="login_keep_status">
-              <input type="checkbox" name="check" id="check">
+            <div class="login_keep_status" @click="toggleLoginStatus">
+              <input type="checkbox" id="check">
               <label for="check">保持登入狀態</label>
             </div>
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
           </div>
-          <button class="login_form_submit" @click.prevent="checkLogin">登入</button>
-          <button @click.prevent="toggleRegister(false)" class="login_form_register">註冊會員</button>
+          <button class="login_form_submit">登入</button>
+          <button @click.prevent="toRegister" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
-          
-
-            <button class="login_connect" @click.prevent="">
-              <i class="fa-brands fa-square-facebook"></i>
-              以FACEBOOK帳號登入
-            </button>
-            
-            <button class="login_connect"  @click="">
-              <i class="fa-brands fa-google"></i>
-              以GOOGLE帳號登入
-            </button>
-            
-            <button class="login_connect">
-              <i class="fa-brands fa-apple"></i>
-              以APPLE帳號登入
-            </button>
         </form>
+        <button class="login_connect" @click="signInRedirect">
+          <i class="fa-brands fa-square-facebook"></i>
+          以FACEBOOK帳號登入
+        </button>
+
+        <button class="login_connect" @click="signInRedirect">
+          <i class="fa-brands fa-google"></i>
+          以GOOGLE帳號登入
+        </button>
+        <button class="login_connect" @click="signInRedirect">
+          <i class="fa-brands fa-apple"></i>
+          以APPLE帳號登入
+        </button>
       </div>
     </section>
-
-    
   </div>
 </template>
-<style>
-
-</style>
+<style></style>
 <script >
-// import { collection } from 'firebase/firestore'
-// import {
-//   getRedirectResult,
-//   signInWithRedirect,
-//   signOut,
-// } from 'firebase/auth'
-// import { useCurrentUser, useFirebaseAuth } from 'vuefire'
-// const auth = useFirebaseAuth();
 
-
-// const error = ref(null);
-// const user = useCurrentUser();
-import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
+import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
+import { ref, onMounted } from 'vue';
+import { useFirestore } from 'vuefire'; //import firebase
+import { getRedirectResult, signInWithRedirect, signOut } from 'firebase/auth';
+import { useCurrentUser, useFirebaseAuth } from 'vuefire';
+import { GoogleAuthProvider } from 'firebase/auth';
+import axios from "axios";
 
 export default {
   name: 'login',
@@ -75,119 +63,177 @@ export default {
     return {
       memId: '',
       memPsw: '',
-      loginStatus: false,
-      isRegistered: false,
-      forgetPsw: false,
-      step: 0,
       errorMsg: '',
-      register: {
-        nameReg: '',
-        emailReg: '',
-        pswReg: '',
-        pswConfirmReg: '',
-        sexReg: '',
-        birthReg: '',
-        telReg: '',
-
-      },
-      verification: {
-        number1: '',
-        number2: '',
-        number3: '',
-        number4: '',
-      },
       memEmail: '',
-      modify: {
-        psw: '',
-        newPsw: '',
-      }
-   
-  }
+      error: null,
+      memberData: [],
+      matchedUser: null,
+    }
   },
-methods: {
+  computed: {
+    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey', 'loginModal'])
 
-...mapMutations(["toggleLogin","toggleForgotPsw",'toggleRegister'])
-  ,
-  closeLogin(){
-    this.toggleLogin();
   },
-  closeForgot(){
-    this.toggleForgotPsw();
-  },
-    closeModal() {
-      this.$store.state.login = false;
+  methods: {
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister', 'setInfo', 'loginOk', 'keepLoginOn', 'toggleLoginStatus', 'setToStorage', 'setRegisterInfo', 'toggleLoginModal'])
+    ,
+    closeLogin() {
+      this.toggleLogin(false);
+      this.reset();
+    },
+    closeForgot() {
+      this.toggleForgotPsw();
+    },
+    toRegister(){
+      this.toggleRegister(true);
+      this.toggleLogin(false);
     },
     checkLogin() {
-      if (this.memId === 'test' && this.memPsw === 'test') {
-        window.alert('登入成功');
-        loginStatus = true;
+  const loginData = {
+    memId: this.memId,
+    memPsw: this.memPsw,
+  };
+
+  axios.post(`${this.$URL}/login.php`, JSON.stringify(loginData), {
+    // headers: {
+    //   'Content-Type': 'application/json',
+    //   withCredentials:true
+    // }
+  })
+  .then(response => {
+    const responseData = response.data;
+    
+    //登入成功
+    if (responseData.mem_no) { 
+      this.setInfo(responseData);
+      this.loginOk(true);
+      this.toggleLoginModal(true);
+      setTimeout(() => {
+        this.toggleLoginModal(false);
+      }, 3000)
+      if (this.keepLoginStatus) {
+        this.setToStorage();
+      } else {
+        this.reset(); 
       }
-      else {
-        this.errorMsg = '帳號或密碼輸入錯誤';
-      }
-      this.register.memId = '';
-      this.register.memPsw = '';
-    },
+    } else {
+      this.errorMsg = "帳號密碼錯誤"; // 登入失敗
+    }
+
+    
+  })
+  .catch(error => {
+    console.log(error);
+  });
+},
+
     reset() {
-      this.register.errorMsg = '';
+      this.memId = this.memPsw = this.errorMsg = '';
+      this.toggleLoginStatus();
     },
-    checkEmail() {
-      if (!this.memEmail) {
-        return alert("輸入錯誤或無輸入");
+    signInRedirect() {
+      const auth = useFirebaseAuth(); // 只有在客戶端有效，這行只能存在於前端(client side)
+      const googleAuthProvider = new GoogleAuthProvider();
+
+      signInWithRedirect(auth, googleAuthProvider)
+        .catch((reason) => {
+          console.error('Failed signInRedirect', reason);
+          this.error = reason;
+        });
+    },
+    fetchMemberData() {
+      axios.get(`${this.$URL}/getAllMember.php`)
+        .then((res) => {
+          console.log(res);
+          this.memberData = res.data;
+          // 抓到資料後執行tokenCheck()比對localstorage裡的資料
+          this.tokenCheck();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+
+
+    },
+
+    onMounted() {
+      const auth = useFirebaseAuth();
+      getRedirectResult(auth)
+        .then((Response) => {
+
+          console.log(Response);
+          this.setRegisterInfo(Response);
+
+        })
+        .catch((reason) => {
+          console.error('Failed redirect result', reason);
+          this.error = reason;
+        });
+    },
+    tokenCheck() {
+      const checkToken = localStorage.getItem(this.userTokenKey);
+      if (checkToken) {
+        const user = this.memberData.find(user => user.email === checkToken);
+        if (user) {
+          this.loginOk(true);
+          this.setInfo(user);
+        }
       } else {
-        this.step = 2;
-        this.memEmail = '';
-      }
-    },
-    validCheck() {
-      if (!this.number1 || !this.number2 || !this.number3 || !this.number4) {
-        alert("請輸入驗證碼");
-      } else {
-        this.number1 = this.number2 = this.number3 = this.number4 = '';
-        this.step = 3;
-      }
-    },
-    modifyCheck() {
-      if (!this.modify.psw || !this.modify.newPsw) {
-        alert("請輸入密碼");
         return;
       }
-      else if ((this.modify.psw === this.modify.newPsw && this.modify.psw.length >= 6 && this.modify.psw.length <= 12)) {
-        this.step = 4;
-        this.modify.psw = this.modify.newPsw = '';
-        return;
-      } else {
-        alert("請輸入密碼");
-      }
-      this.modify.psw = '';
-      this.modify.newPsw = '';
-    },
-    modifySuccess() {
-      this.forgetPsw = false;
-      this.step = 0;
-    },
-//     signinRedirect() {
-//   signInWithRedirect(auth, someAuthProvider).catch((reason) => {
-//     console.error('Failed signinRedirect', reason)
-//     error.value = reason
-//   })
-// }
+    }
 
   },
-mounted(){
-  // getRedirectResult(auth).catch((reason) => {
-  //   console.error('Failed redirect result', reason)
-  //   error.value = reason
-  // })
-},
-computed:{
-  ...mapState(["isLoginOpen","forgotPsw"])
+
+
+  mounted() {
+    this.onMounted();
+    this.fetchMemberData();
+  },
 }
 
-  }
 
 </script>
 
 
+<style lang="scss" scoped>
+.login_modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  inset: 0 0 0 0;
+  z-index: 1200;
+  background-color: rgb(255, 255, 255, 0.8);
 
+  .modal {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    box-shadow: 0 0 2px #aaa;
+
+    .pic {
+      width: 50%;
+      margin: 0 auto 20px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:767px) {
+  .reservation_modal {
+    .modal {
+      width: 60%;
+    }
+  }
+}
+</style>
 

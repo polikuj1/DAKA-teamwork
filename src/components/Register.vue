@@ -1,8 +1,8 @@
 <template>
-  <section v-show="isRegister && step === 0">
+  <section v-show="isRegister && step == 0" key="section-0">
     <div class="container">
       <div class="register">
-        <form action="">
+        <form @submit.prevent="handleSubmit">
           <img :src="require('@/assets/images/login/cross.png')" class="register_close_modal"
             @click="closeRegister(false)">
           <h2>註冊會員</h2>
@@ -37,72 +37,82 @@
                 <span>性別</span>
                 <select v-model="sexReg">
                   <option value="">請選擇</option>
-                  <option value="male">男</option>
-                  <option value="female">女</option>
+                  <option value="男">男</option>
+                  <option value="女">女</option>
                 </select>
               </div>
               <div class="inputBox">
                 <span>生日</span>
-                <input type="date" class="payment-card-name-input" v-model="birthReg" min="1900-01-01" max="2021-01-01"
+                <input type="date" class="payment-card-name-input" v-model="birthReg" min="1900-01-01" max="2005-08-05"
                   required="required">
               </div>
               <div class="inputBox">
                 <span>連絡電話</span>
                 <input type="tel" class="payment-card-number-input" maxlength="12" required="required" v-model="telReg">
               </div>
+              <div class="inputBox">
+                <span>地址</span>
+                <input type="text" class="payment-card-number-input" required="required" v-model="addReg">
+              </div>
             </div>
           </div>
           <div class="register_form_bottom">
-            <div class="">
+            <div>
               <input type="checkbox" name="membership" id="membership" required="required">
+
               <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
                   href="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
             </div>
-            <div class="">
+            <div c>
               <input type="checkbox" name="news_daka" id="news_daka" required="required">
               <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
             </div>
-            <input class="register_submit" @click.prevent="columnCheck" type="submit" value="註冊會員">
+
+            <input class="register_submit" type="submit" value="註冊會員">
           </div>
 
 
         </form>
       </div>
     </div>
+
   </section>
 
-  <section v-show="isRegister && step === 1">
+  <section v-show="isRegister && step == 1" key="section-1">
     <div class="container">
-      <div class="enter_modify_success">
-        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_success_modal"
+      <div class="register_success">
+        <img :src="require('@/assets/images/login/cross.png')" class="register_close_success_modal"
           @click="closeRegister(false)">
-        <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo" class="enter_modify_success_logo">
+        <img :src="require('@/assets/images/footerLogo.png')" alt="DAKA-logo" class="register_success_logo">
         <p>註冊完成！</p>
         <p>請重新登入</p>
         <button @click="backLogin">返回會員登入</button>
       </div>
+
     </div>
   </section>
 </template>
 <script >
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
+import axios, { Axios } from "axios";
+
 
 export default {
   name: 'register',
   data() {
     return {
       step: 0,
-      register: {
-        nameReg: '',
-        emailReg: '',
-        pswReg: '',
-        pswConfirmReg: '',
-        sexReg: '',
-        birthReg: '',
-        telReg: '',
-        memberTerms: false,
-        memberPrivacy: false
-      },
+      nameReg: '',
+      emailReg: '',
+      pswReg: '',
+      pswConfirmReg: '',
+      sexReg: '',
+      birthReg: '',
+      telReg: '',
+      addReg: '',
+      memberTerms: false,
+      memberPrivacy: false,
+
     }
   },
   methods: {
@@ -110,36 +120,80 @@ export default {
     ,
     closeRegister(status) {
       this.toggleRegister(status);
+      this.toggleLogin(status);
       this.clearInput();
     },
     clearInput() {
-      this.register.nameReg = this.register.emailReg = this.register.pswReg = this.register.pswConfirmReg = this.register.sexReg = this.register.birthReg = this.register.telReg = '';
+      this.nameReg = this.emailReg = this.pswReg = this.pswConfirmReg = this.sexReg = this.birthReg = this.telReg = this.addReg='';
       this.step = 0;
       this.memberTerms = this.memberPrivacy = false;
     },
     backLogin() {
-      this.toggleRegister(true);
+      this.toggleRegister(false);
+      this.toggleLogin(true);
       this.step = 0;
-      this.clearInput()
+      this.clearInput();
     },
 
-    columnCheck() {
-      if (this.register.pswReg === this.register.pswConfirmReg && this.register.pswReg != '' && this.memberPrivacy && this.memberTerms) {
-        this.step = 1;
-      } else {
-        return
-      }
+    handleSubmit() {
+      const registerData = {
+        nameReg: this.nameReg,
+        sexReg: this.sexReg,
+        emailReg: this.emailReg,
+        telReg: this.telReg,
+        pswReg: this.pswReg,
+        addReg: this.addReg,
+        birthReg: this.birthReg,
+      };
+
+      axios
+        .post(`${this.$URL}/register.php`, JSON.stringify(registerData), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => {
+          const responseData = response.data;
+          console.log(responseData);
+          if (responseData.message === '註冊成功') { // Check the response message
+            this.step = 1; // Move to the success step
+            setTimeout(() => {
+              this.backLogin();
+            }, 3000);
+          } else {
+            alert('註冊失敗');
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          alert('註冊失敗');
+        });
     },
-    modifySuccess() {
-      this.step = 0;
-      closeLogin(false);
+
+    validateForm() {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+      const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+
+      const isEmailValid = emailRegex.test(this.emailReg);
+      const isPswValid = passwordRegex.test(this.pswReg);
+      const isPswConfirmValid = passwordConfirmRegex.test(this.pswConfirmReg);
+
+      return isEmailValid && isPswValid && isPswConfirmValid && (this.pswReg === this.pswConfirmReg);
+
+    },
+    submitForm() {
+      this.step = 1;
     },
     checkMemberTerms() {
       this.memberTerms = true;
+      console.log(this.memberTerms);
     },
     checkMemberPrivacy() {
       this.memberPrivacy = true;
+      console.log(this.memberPrivacy);
     },
+
   },
   mounted() {
 

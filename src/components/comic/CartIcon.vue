@@ -58,7 +58,7 @@ export default {
       
       if (!this.login) {
         this.infoOpen = false;
-        this.toggleLogin()
+        this.toggleLogin(true);
       } else {
         this.$router.push('/comic_cart');
       }

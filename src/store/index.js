@@ -7,7 +7,11 @@ export default createStore({
     cart: [],
     isLoginOpen: false,
     forgotPsw: false,
-    isRegister:false
+    isRegister: false,
+    keepLoginStatus: false,
+    userTokenKey: "user_token",
+    googleInfo: {},
+    loginModal: false,
   },
   getters: {
   },
@@ -18,34 +22,51 @@ export default createStore({
     deleteBook(state, index) {
       state.cart.splice(index, 1);
     },
-    toggleLogin(state) {
-      state.isLoginOpen = !state.isLoginOpen;
+    toggleLogin(state,payload) {
+      state.isLoginOpen = payload;
     },
     //給member物件
     setInfo(state, payload) {
       state.member = payload;
     },
-    toggleForgotPsw(state,payload) {
+    setRegisterInfo(state, payload) {
+      state.googleInfo = payload;
+    },
+    toggleForgotPsw(state, payload) {
       state.forgotPsw = !state.forgotPsw;
       state.isLoginOpen = payload;
     },
-    toggleRegister(state,payload) {
-      state.isRegister = !state.isRegister;
-      state.isLoginOpen = payload;
+    toggleRegister(state, payload) {
+      state.isRegister = payload;
     },
+    //確定登入
+    loginOk(state, payload) {
+      state.login = payload;
+      state.isLoginOpen = false;
+    },
+    //確認登入
+    toggleLoginModal(state,payload){
+      state.loginModal = payload;
+    },
+    setToStorage(state) {
+      localStorage.setItem(state.userTokenKey, state.member.email);
+    },
+    loginOut(state) {
+      state.login = false;
+      state.keepLoginStatus = false;
+      localStorage.clear(state.userTokenKey, state.member.email);
+      state.member = {};
+    },
+    //保持登入狀態
+    toggleLoginStatus(state) {
+      state.keepLoginStatus = !state.keepLoginStatus;
+    }
 
 
 
   },
   actions: {
-    //抓會員資料
-    getInfo(context, payload) {
-      fetch('/data/member.json')
-        .then(res => res.json())
-        .then(res => {
-          context.commit('setInfo', res)
-        })
-    }
+
 
   },
   modules: {

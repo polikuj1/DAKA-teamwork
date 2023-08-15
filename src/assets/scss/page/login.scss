@@ -1,10 +1,12 @@
+
+
 .container {
   width: 100%;
   max-width: 1920px;
   height: 100%;
   top: 0;
   position: fixed;
-  z-index: 999;
+  z-index: 9999;
   background-color: rgba(68, 68, 68, 0.5);
 
   .login {
@@ -27,6 +29,7 @@
 
     .login_form {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       padding: 30px 0;
       margin: 15px;
@@ -63,7 +66,7 @@
         box-sizing: border-box;
         gap: 15px;
         margin: 10px;
-
+        white-space: nowrap;
         .error_message {
           color: red;
           font-size: 1.1rem;
@@ -77,6 +80,7 @@
           border-radius: 10px;
           border: 1px solid;
           margin: 5px;
+          
         }
         span {
           font-size: 1.8rem;
@@ -107,16 +111,17 @@
             color: $secondary_blue;
           }
         }
-
-        .login_connect {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          background-color: $secondary_blue;
-          letter-spacing: 2px;
-          padding: 10px;
-          justify-content: center;
-        }
+      }
+      .login_connect {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: $secondary_blue;
+        letter-spacing: 2px;
+        padding: 10px;
+        justify-content: center;
+        margin-bottom: 15px;
+        white-space: nowrap;
       }
     }
   }
@@ -418,7 +423,6 @@
 
   .enter_modify_success {
     width: 100%;
-
     padding: 100px;
     position: fixed;
     z-index: 999;
@@ -483,6 +487,72 @@
       cursor: pointer;
     }
   }
+  .register_success {
+    width: 100%;
+    padding: 100px;
+    position: fixed;
+    z-index: 99999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+    display: flex;
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+      cover;
+    justify-content: center;
+    gap: 30px;
+    .register_success_logo {
+      width: 70%;
+      margin-top: 35px;
+    }
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.8rem;
+    }
+
+    .enter_modify_input {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      label {
+        font-size: 1.3rem;
+      }
+      input {
+        font-size: 2rem;
+        padding: 10px;
+        margin-bottom: 40px;
+        width: 100%;
+
+        border-radius: 10px;
+      }
+    }
+
+    .register_close_success_modal {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+    }
+    button {
+      font-size: 1.4rem;
+      background-color: $btn_bg_color;
+      border: 1px solid transparent;
+      color: #fff;
+      padding: 20px 40px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
 }
 
 @include sm {
@@ -498,6 +568,8 @@
       width: 70%;
       height: 75%;
       flex-direction: row;
+      border-radius: 20px;
+      overflow: hidden;
       .login_pic {
         width: 50%;
         display: flex;
@@ -506,6 +578,7 @@
         align-items: center;
         background-color: $main_bg;
         gap: 20px;
+
         img {
           width: 60%;
         }
@@ -520,11 +593,6 @@
         width: 50%;
         position: relative;
 
-        form {
-          width: 100%;
-          gap: 5px;
-          margin: 0 70px;
-        }
         button {
           padding: 15px 75px;
           border-radius: 10px;
@@ -545,6 +613,10 @@
         }
 
         form {
+          width: 80%;
+          gap: 5px;
+          box-sizing: border-box;
+          margin: 0 auto;
           .error_message {
             color: red;
             font-size: 1.1rem;
@@ -556,11 +628,12 @@
           span {
             font-size: 2rem;
             align-self: center;
-            margin: 5px 0;
+            margin: 20px 0;
             font-weight: 300;
           }
           .login_form_submit {
             margin-bottom: 10px;
+
             &:hover {
               background-color: #fff;
               color: $btn_bg_color;
@@ -596,19 +669,21 @@
               color: $secondary_blue;
             }
           }
-          .login_connect {
-            padding: 10px 10px;
-            text-align: center;
-            margin: 10px 0;
-            &:hover {
-              background-color: #fff;
-              color: $secondary_blue;
-              border: 1px solid $secondary_blue;
-            }
+        }
+        .login_connect {
+          width: 80%;
+          padding: 20px 10px;
+          text-align: center;
+          margin: 0 auto 15px;
+          font-size: 1rem;
+          &:hover {
+            background-color: #fff;
+            color: $secondary_blue;
+            border: 1px solid $secondary_blue;
+          }
 
-            &:hover img {
-              background-color: $secondary_blue;
-            }
+          &:hover img {
+            background-color: $secondary_blue;
           }
         }
       }
@@ -631,7 +706,6 @@
         width: 100%;
         max-width: 1000px;
         height: 100%;
-
         background-color: #fff;
         font-size: 1.1rem;
         border-radius: 10px;
@@ -987,6 +1061,60 @@
         }
       }
     }
+    .register_success{
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 50px;
+      .register_success_logo {
+        width: 30%;
+        margin-top: 35px;
+      }
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 2rem;
+      }
+
+      .register_close_success_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      button {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: #fff;
+          color: $btn_bg_color;
+          border: 1px solid $btn_bg_color;
+        }
+      }
+    }
   }
 }
 
@@ -1027,9 +1155,9 @@
 
         margin-bottom: 30px;
         form {
-          width: 100%;
+          width: 80%;
 
-          margin: 0 70px;
+          margin: 0 auto;
         }
         button {
           padding: 15px 75px;
@@ -1091,11 +1219,12 @@
             }
           }
           .login_connect {
+            width: 80%;
             font-size: 1.2rem;
             gap: 20px;
             padding: 20px 40px;
             text-align: center;
-            white-space: nowrap;
+            
           }
         }
       }
@@ -1428,6 +1557,55 @@
       }
 
       .modify_close_success_modal {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+      }
+      button {
+        font-size: 1.3rem;
+        background-color: $btn_bg_color;
+        border: 1px solid transparent;
+        color: #fff;
+        padding: 20px 60px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    .register_success {
+      width: 50%;
+      height: 85%;
+      position: fixed;
+      z-index: 999;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      display: flex;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      background: url("@/assets/images/login/signup_bg.svg") no-repeat center /
+        cover;
+      justify-content: center;
+      gap: 50px;
+      .register_success_logo {
+        width: 30%;
+        margin-top: 35px;
+      }
+      h2 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-top: 60px;
+        margin-bottom: 30px;
+      }
+      p {
+        font-size: 2rem;
+      }
+  
+      .register_close_success_modal {
         width: 40px;
         height: 40px;
         position: absolute;

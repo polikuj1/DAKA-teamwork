@@ -3,16 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// //引入viewFire
-// import { initializeApp } from 'firebase/app'
-// import { getFirestore } from 'firebase/firestore'
-// import { VueFire, VueFireAuth } from 'vuefire'
-// import { VueFireFirestoreOptionsAPI,VueFireDatabaseOptionsAPI } from 'vuefire'
+
+//引入viewFire
+import { VueFire, VueFireAuth } from 'vuefire'
+import { firebaseApp } from './firebase'
 
 //aos引入
-import AOS from 'aos';
+import AOS from 'aos'
 import 'aos/dist/aos.css'
-
 // ajax引入
 import axios from 'axios'
 import VueAxios from 'vue-axios'
@@ -28,21 +26,8 @@ import "@/assets/fonts/font.css"
 import Images from '@/components/Images.vue'
 // 全域樣式
 import "@/assets/scss/_style.scss"
-
-
-
-
-// firebase.initializeApp(firebaseConfig);
-  
-//   const db = getFirestore(firebaseApp);
-//   const firebaseApp = initializeApp({
-//     // your application settings
-//   })
- 
-
-  
-
-
+// 打API用的路徑變數
+import { URL, URL_MAC } from '@/assets/js/common.js'
 
 
 AOS.init({
@@ -50,23 +35,16 @@ AOS.init({
     
 });
 const app = createApp(App)
+app.config.globalProperties.$URL = URL;
+app.config.globalProperties.$URL_MAC = URL_MAC;
 
-// app.use(VueFire, {
-//     firebaseApp,
-//     modules: [
+app.use(VueFire, {
+    firebaseApp,
+    modules: [
     
-//     //   VueFireFirestoreOptionsAPI({
-//     //     reset: true,
-//     //   wait: false,
-//     //   }),
-//     // to use the `firebase` option
-//     //   VueFireDatabaseOptionsAPI({
-//     //     reset: true,
-//     //   wait: false,
-//     //   }),
-//       VueFireAuth(),
-//     ]
-//   })
+      VueFireAuth(),
+    ]
+  })
 
 
 

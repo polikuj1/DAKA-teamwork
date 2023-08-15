@@ -12,7 +12,7 @@
         <div class="card" v-for="item in comicData" :key="item.title">
             <div class="pic">
                 <!-- <img :src="item.img"> -->
-                <Images :imgURL="`${item.img}`" :alt="`${item.title}`" />
+                <Images :imgURL="`comic/${item.img}`" :alt="`${item.title}`" />
             </div>
             <div class="text">
                 <div class="text_title">
@@ -63,7 +63,7 @@ export default {
     },
     methods: {
         filter() {
-            this.comicData = this.comicData.filter(item => item.id === parseInt(this.id));
+            this.comicData = this.comicData.filter(item => item.comics_id === this.id);
         },
         addToCart(item) {
             if (this.$store.state.cart.length === 5) return;
@@ -74,7 +74,7 @@ export default {
         }
     },
     mounted() {
-        GET('/data/comic.json')
+        GET(`${this.$URL}/getAllComic.php`)
             .then((res) => {
                 console.log(res);
                 this.comicData = res;

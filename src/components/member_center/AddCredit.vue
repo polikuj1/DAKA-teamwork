@@ -7,13 +7,13 @@
       <div class="add_credit">
         <form action="">
           <label for="credit_num">輸入卡號</label>
-          <input type="text" id="credit_num" maxlength="16" v-model.number="credit_data.number">
+          <input type="text" id="credit_num" maxlength="16" v-model.number="credit_data.card_number">
           <label for="credit_expire">輸入卡片有效期限</label>
-          <input type="month" id="credit_expire" v-model="credit_data.date">
+          <input type="month" id="credit_expire" v-model="credit_data.valid">
           <label for="security_num" >輸入安全碼</label>
-          <input type="text" id="security_num" maxlength="3" v-model.number="credit_data.security">
+          <input type="text" id="security_num" maxlength="3" v-model.number="credit_data.card_cvv">
           <div>
-            <input type="checkbox" id="default_card" v-model="credit_data.default">
+            <input type="checkbox" id="default_card" v-model="credit_data.preset">
             <label for="default_card">是否將此信用卡設為預設卡片</label>
           </div>
           <p v-show="warnTxt">輸入資料格式有誤，請確認</p>
@@ -25,7 +25,7 @@
       <MbModal v-show="modalSwitch">
         <template v-slot:modal_txt>
           <div class="bind_success">
-            <span>綁定成功</span>
+            <span>綁定成功！</span>
             <button @click="back">返回</button>
           </div>
         </template>
@@ -45,10 +45,11 @@ export default {
     return {
       title: '新增信用卡',
       credit_data: {
-        number: null,
-        date: '',
-        security: null,
-        default: false,
+        card_number: null,
+        valid: '',
+        card_cvv: null,
+        preset: false,
+        mem_id: this.$store.state.member.mem_id,
       },
       modalSwitch: false,
       warnTxt: false,
@@ -60,18 +61,29 @@ export default {
       this.$router.push('/member_center/member_bind_credit');
     },
     submit() {
-      if(this.credit_data.number === null) {this.warnTxt = true;return};
-      let num = this.credit_data.number.toString();
+      if(this.credit_data.card_number === null) {this.warnTxt = true;return};
+      let num = this.credit_data.card_number.toString();
       let regex = /^[0-9]{3}$/;
-      let result = regex.test(this.credit_data.security);
+      let result = regex.test(this.credit_data.card_cvv);
       // 表單驗證
-      if(!this.credit_data.number || !this.credit_data.date || !this.credit_data.security || num.length !== 16 || !result) {
+      if(!this.credit_data.card_number || !this.credit_data.valid || !this.credit_data.card_cvv || num.length !== 16 || !result) {
         this.warnTxt = true;
         return;
       } else {
         this.warnTxt = false;
         // 送出表單到後端
         // this.$router.push('/member_center/member_bind_credit')
+        const year = this.credit_data.valid.substring(2,4);
+        const month = this.credit_data.valid.substring(5,this.credit_data.valid.length);
+        const valid = year + month;
+        this.credit_data.valid = valid;
+        this.axios.post(`${this.$URL}/addCredit.php`, JSON.stringify(this.credit_data))
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          })
         this.modalSwitch = true;
       }
     }

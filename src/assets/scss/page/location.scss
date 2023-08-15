@@ -14,6 +14,7 @@
         position: relative;
         box-sizing: border-box;
         padding: 40px 0;
+        color: $main-bg;
         .fa-location-dot{
             color: #ED6F68;
         }
@@ -43,6 +44,7 @@
     flex-direction: column;
     gap: 30px;
     margin-top: 20px;
+    color: $main-bg;
 }
 .price_content, .price_list{
     display: flex;
@@ -93,6 +95,7 @@
         justify-content:space-between;
         box-sizing: border-box;
         padding-top: 20px;
+        color: $main-bg;
         .location_serve{
             display: flex;
             flex-direction: column;

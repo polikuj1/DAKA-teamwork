@@ -74,7 +74,7 @@ export default {
     },
     checkLogin() {   
       if (!this.login) {
-        this.toggleLogin()
+        this.toggleLogin(true);
       } else {
         this.$router.push('/game');
       }

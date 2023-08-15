@@ -2,7 +2,7 @@ const seat_a = [
     {
       area: 'A', //A=大廳電競區
       no: '01',
-      state:'1',//0=空位、1=使用中、2=預約中
+      state:'1',//0=空位、1=預約中
       index: '01',
     },
     {
@@ -38,13 +38,13 @@ const seat_a = [
       {
         area: 'A',
         no: '07',
-        state:'2',
+        state:'1',
         index: '07',
       },
       {
         area: 'A',
         no: '08',
-        state:'2',
+        state:'1',
         index: '08',
       },
       {
@@ -98,13 +98,13 @@ const seat_a = [
       {
         area: 'A',
         no: '17',
-        state:'2',
+        state:'1',
         index: '17',
       },
       {
         area: 'A',
         no: '18',
-        state:'2',
+        state:'1',
         index: '18',
       },
       {
@@ -146,7 +146,7 @@ const seat_a = [
       {
         area: 'A',
         no: '25',
-        state:'2',
+        state:'0',
         index: '25',
       },
       {
@@ -170,7 +170,7 @@ const seat_a = [
       {
         area: 'A',
         no: '29',
-        state:'2',
+        state:'0',
         index: '29',
       },
       {
@@ -209,13 +209,13 @@ const seat_a = [
       {
         area: 'B',
         no: '05',
-        state:'2',
+        state:'0',
         index: '05',
       },
       {
         area: 'B',
         no: '06',
-        state:'2',
+        state:'1',
         index: '06',
       },
       {
@@ -245,13 +245,13 @@ const seat_a = [
       {
         area: 'B',
         no: '11',
-        state:'2',
+        state:'1',
         index: '11',
       },
       {
         area: 'B',
         no: '12',
-        state:'2',
+        state:'1',
         index: '12',
       },
       {
@@ -361,13 +361,13 @@ const seat_a = [
       {
         area: 'C',
         no: '05',
-        state:'2',
+        state:'1',
         index: '05',
       },
       {
         area: 'C',
         no: '06',
-        state:'2',
+        state:'1',
         index: '06',
       },
       {
@@ -391,7 +391,7 @@ const seat_a = [
       {
         area: 'C',
         no: '10',
-        state:'2',
+        state:'1',
         index: '10',
       },
   ];
@@ -411,7 +411,7 @@ const seat_a = [
       {
         area: 'D',
         no: '03',
-        state:'2',
+        state:'1',
         index: '03',
       },
       {
@@ -429,7 +429,7 @@ const seat_a = [
       {
         area: 'D',
         no: '06',
-        state:'2',
+        state:'0',
         index: '06',
       },
   ];

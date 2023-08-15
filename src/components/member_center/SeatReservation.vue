@@ -9,33 +9,33 @@
                 <div class="reservation_card">
                     <div class="reservation_number">
                         <p>訂位序號</p>
-                        <p>{{ reservation.bookingNumber }}</p>
+                        <p>{{ reservation.seat_order_no }}</p>
                     </div>
                     <div class="reservation_list">
                         <div class="reservation_usetime">
                             <p class="seat_usetime">開台時間</p> 
-                            <p>{{ reservation.date }}<br>{{ reservation.time }}</p>
+                            <p>{{ reservation.seat_order_dates }}<br>{{ reservation.time }}</p>
                         </div>
                         <div class="member_reservation_seat">
                             <p class="seat_number">座位編號</p> 
-                            <p>{{ reservation.seatArea }}<br>{{ reservation.seatNumber }}</p>
+                            <p>{{ reservation.seat_areas }}<br>{{ reservation.seat_numbers }}</p>
                         </div>
                         <div class="reservation_amount">
                             <p class="seat_cost">金額</p> 
-                            <p>{{ reservation.amount }}</p>
+                            <p>{{ reservation.seat_order_sums }}</p>
                         </div>
                         <div class="reservation_payment">
                             <p class="seat_pay">付款方式</p> 
-                            <p>{{ reservation.paymentMethod }}</p>
+                            <p>儲值金</p>
                         </div>
                     </div>
                 </div>
                 <div class="seat_reservation_status">
                     <div class="reservation_status" :style="statusStyle(reservation.status)">
-                        <p>{{ reservation.status }}</p>
+                        <p>{{ reservation.seat_order_states }}</p>
                     </div>
-                    <div v-if="reservation.status === '預約中'">
-                        <button @click="cancelReservation(reservation.id)">取消預約</button>
+                    <div v-if="reservation.seat_order_states === '預約中'">
+                        <button @click="cancelReservation(reservation.seat_order_ids)">取消預約</button>
                     </div>
                 </div>
             </div>
@@ -51,13 +51,13 @@
           </div>
         </template>
       </MbModal>
-    </template>
+      </template>
     </MbForm>
   </template>
   
   <script>
-  import {GET} from '@/plugin/axios'
-  import MbModal from '@/components/member_center/MemberModal.vue'
+//   import {GET} from '@/plugin/axios';
+  import MbModal from '@/components/member_center/MemberModal.vue';
   import MbForm from '@/components/member_center/form_style.vue';
   export default {
     components: {
@@ -68,22 +68,71 @@
             title: '座位預約紀錄',
             reservations: [],
             modalSwitch: false,
-            reservationId: null,
+            seat_order_id: null,
         };
       
     },
     methods: {
+        getData() {
+            const params = {
+                id: this.$store.state.member.mem_id
+            }
+            this.axios.get(`${this.$URL}/getSeatRecord.php`, {params: params})
+                .then((res) => {
+                    console.log(res);
+                    this.reservations = res.data;
+                    // 將座位的代碼轉換成對應的名稱
+                    this.reservations.forEach(item => {
+                        switch (item.seat_areas) {
+                            case 'A':
+                                item.seat_areas = '大廳一般區';
+                                break;
+                            case 'B':
+                                item.seat_areas = '大廳電競區';
+                                break;
+                            case 'C':
+                                item.seat_areas = '包廂單人房';
+                                break;
+                            case 'D':
+                                item.seat_areas = '包廂雙人房';
+                                break;
+                        }
+                        switch (item.seat_order_states) {
+                            case '0':
+                                item.seat_order_states = '預約中';
+                                break;
+                            case '1':
+                                item.seat_order_states = '已完成';
+                                break;
+                            case '2':
+                                item.seat_order_states = '已取消';
+                                break;
+                        }
+                    })
+                })
+                .catch((err) => {
+                console.log(err);
+                })
+            },
         cancelReservation(reservationId) {
+            // 將要取消的座位訂單編號存下來
             this.modalSwitch = true;
-            this.reservationId = reservationId;
+            this.seat_order_id = reservationId;
         },
         confirmCancel() {
-            this.reservations = this.reservations.map((reservation) => {
-                if (reservation.id === this.reservationId) {
-                reservation.status = '已取消';
-                }
-                return reservation;
-            });
+            this.axios.post(`${this.$URL}/cancelSeatReservation.php`, JSON.stringify({ seat_order_id: this.seat_order_id }) ,{
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+            })
+                .then(res => {
+                    console.log(res);
+                    this.getData();
+                    alert('取消成功');
+                })
+                .catch(err => {
+                    console.log(err);
+                })
             this.modalSwitch = false;
         },
         preserve() {
@@ -109,18 +158,11 @@
         },
   },
     computed: {
-  
+        
     },
     created() {
         this.$emit('emit-title',this.title);
-        GET('/data/seat_reservation.json')
-                .then((res) => {
-                console.log(res);
-                this.reservations = res;
-                })
-                .catch((err) => {
-                console.log(err);
-                })
+        this.getData();
     }
   }
   </script>

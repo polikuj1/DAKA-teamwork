@@ -43,25 +43,26 @@
     font-size: 1.25rem;
     line-height: 1.5;
     color: $main_txt_color;
-    background-color: $btn_bg_color;
+    background-color: #f9bb8a;
     border-radius: $btn_br;
     border: none;
     cursor: pointer;
+    width: 40px;
   }
 
   .category_buttons :hover {
     color: $main_txt_color;
-    background-color: #f9bb8a;
+    background-color: $btn_bg_color;
   }
 
   .category_buttons button.comboHover:hover {
-    background-color: #f9bb8a;
+    background-color: $btn_bg_color;
     background-color: $main_txt_color;
   }
 
   .category_buttons button.active {
     color: $main_txt_color;
-    background-color: #f9bb8a;
+    background-color: $btn_bg_color;
   }
 
   .variousmeal_card_area {
@@ -79,6 +80,7 @@
 
       .food_cards_meal_pic {
         overflow: hidden;
+        cursor: pointer;
 
         img {
           @include img;
@@ -92,6 +94,7 @@
   .variousmeal_container {
     .category_buttons button {
       padding: 20px 40px;
+      width: 150px;
     }
 
     .variousmeal_card_area {

@@ -15,7 +15,8 @@
           <label for="creditCard" class="charge_card">選擇扣款信用卡</label>
           <select id="creditCard" class="card_option" v-model="selectedCreditCard" required>
             <option value="請選擇" disabled selected>請選擇</option>
-            <option v-for="card in boundCreditCards" :key="card" :value="card">{{ card }}</option>
+            <option v-if="creditData.length === 0" disabled>尚未有綁定的信用卡</option>
+            <option v-for="card in creditData" :key="card.card_number" :value="card.card_number">{{ card.card_number }}</option>
             <option value="其他">其他</option>
           </select>
           
@@ -49,6 +50,7 @@
             </div>
           </div>
           <br>
+          <p class="check_alert" v-show="warnTxt">需填寫所有欄位，請確認</p>
           <button type="button" @click="submit" class="submit_btn">確認送出</button>
         </form>
       </div>
@@ -57,7 +59,7 @@
       <MbModal v-show="modalSwitch">
         <template v-slot:modal_txt>
           <div class="bind_success">
-            <span>儲值成功</span>
+            <span>儲值成功！</span>
             <button @click="back">返回</button>
           </div>
         </template>
@@ -91,28 +93,82 @@ export default {
       showCardNumberWarning: false,
       showVerificationCodeWarning: false,
       modalSwitch: false,
+      warnTxt: false,
+      creditData:[],
     }
   },
   methods: {
     back() {
       this.modalSwitch = false;
-      this.$router.push('/member_center/member_add_value');
+      this.$router.push('/member_center/member_nav');
     },
     submit() {
-      /*獲取填寫的假資料和選擇的信用卡資訊*/
-      const amount = this.selectedAmount;
-      const selectedCreditCard = this.selectedCreditCard;
-      const cardNumber = this.cardNumber;
-      const expiryDate = this.selectedYear + this.selectedMonth;
-      const verificationCode = this.verificationCode;
-      const isBound = this.isBound;
-      const isDefault = this.isDefault;
+      if (this.isFormValid()) {
+        // 會員已經綁定的信用卡儲值
+        this.modalSwitch = true;
+        let form;
+        let memberRemain;
+        if(this.selectedCreditCard !== '其他') {
+          let time = new Date();
+          let year = time.getFullYear();
+          let month = (time.getMonth() + 1).toString().padStart(2, '0');
+          let day = time.getDate().toString().padStart(2, '0');
+          let hours = time.getHours().toString().padStart(2, '0');
+          let minutes = time.getMinutes().toString().padStart(2, '0');
+          let seconds = time.getSeconds().toString().padStart(2, '0');
+          let formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+          let id;
+          this.creditData.forEach(item => {
+            if(item.card_number === this.selectedCreditCard) {
+              id = item.credit_id;
+            }
+          })
+          form = {
+            mem_id: this.$store.state.member.mem_id,
+            credit_id: id,
+            sdate: formattedDateTime,
+            sval: this.selectedAmount,
+            add_method: '1'
+          };
 
-      /*將填寫的假資料和選擇的信用卡資訊一起處理*/
-      /*可以透過 AJAX 或 Fetch 將資料傳送到後端 API 進行處理*/
-      this.modalSwitch = true;
+        } else {
 
-      alert('儲值成功！');
+        }
+        memberRemain += this.selectedAmount;
+        // 增加一筆儲值紀錄
+        this.axios.post(`${this.$URL}/addValue.php`, JSON.stringify(form))
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        // 更新會員的餘額狀態
+        this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
+          mem_id: this.$store.state.member.mem_id,
+          remain: memberRemain
+        }))
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+      } else {
+        this.warnTxt = true;
+      }
+    },
+    isFormValid() {
+      if (this.selectedAmount === '請選擇' || this.selectedCreditCard === '請選擇') {
+        return false;
+      }
+      if (this.selectedCreditCard === '其他') {
+        if (this.cardNumber === '' || this.selectedYear === '請選擇' || this.selectedMonth === '請選擇' || this.verificationCode === '') {
+          return false;
+        }
+      }
+
+      return true;
     },
     checkCardNumberInput() {
       const regex = /^[0-9]*$/; 
@@ -124,10 +180,29 @@ export default {
     },
     triggerParent() {
       this.$emit('emit-title','');
+    },
+    getData() {
+      const params = {
+        id: this.$store.state.member.mem_id
+      }
+      this.axios.get(`${this.$URL}/getCredit.php`, { params: params})
+        .then(res => {
+          // console.log(res);
+          this.creditData = res.data;
+          this.creditData.forEach(item => {
+            item.card_number = item.card_number.slice(-4);
+          })
+          this.creditData = this.creditData.filter(item => item.outofdate === '1');
+          console.log(this.creditData);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
   created() {
     this.$emit('emit-title',this.title);
+    this.getData();
   },
 }
 </script>

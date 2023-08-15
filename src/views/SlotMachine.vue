@@ -182,28 +182,28 @@ export default {
       setTimeout(() => {
         console.log('變換圖片');
         pic_one.forEach(item => {
-          item.src= `/game/fruit0${rand(1,5)}.svg`;
+          item.src= `/chd102/g6/img/fruit0${rand(1,5)}.svg`;
           if(item.dataset.index === 'last') {
             fruitArr.push(item.src.slice(-5,-4));
           }
         });
         pic_two.forEach(item => {
-          item.src= `/game/fruit0${rand(1,5)}.svg`;
+          item.src= `/chd102/g6/img/fruit0${rand(1,5)}.svg`;
           if(item.dataset.index === 'last') {
             fruitArr.push(item.src.slice(-5,-4));
           }
         });
         pic_three.forEach(item => {
-          item.src= `/game/fruit0${rand(1,5)}.svg`;
+          item.src= `/chd102/g6/img/fruit0${rand(1,5)}.svg`;
           if(item.dataset.index === 'last') {
             fruitArr.push(item.src.slice(-5,-4));
           }
         });
       },1500);
       setTimeout(() => {
-        pic_one[0].src = `/game/fruit0${fruitArr[0]}.svg`;
-        pic_two[0].src = `/game/fruit0${fruitArr[1]}.svg`;
-        pic_three[0].src = `/game/fruit0${fruitArr[2]}.svg`;
+        pic_one[0].src = `/chd102/g6/img/fruit0${fruitArr[0]}.svg`;
+        pic_two[0].src = `/chd102/g6/img/fruit0${fruitArr[1]}.svg`;
+        pic_three[0].src = `/chd102/g6/img/fruit0${fruitArr[2]}.svg`;
       }, 2700)
       setTimeout(() => {
         if(fruitArr[0] === fruitArr[1] && fruitArr[0] === fruitArr[2]) {

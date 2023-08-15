@@ -4,6 +4,7 @@
   right: 0;
   bottom: 270px;
   right: 20px;
+  z-index: 1000;
   > div {
     width: 80px;
     margin-bottom: 10px;
@@ -16,6 +17,7 @@
 
 .main_game_btn {
   position: fixed;
+  z-index: 1001;
   color: red;
   right: 0;
   bottom: 180px;

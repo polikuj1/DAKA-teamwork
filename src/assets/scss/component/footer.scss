@@ -4,6 +4,8 @@
   background: $main_bg;
   padding-top: 150px;
   position: relative;
+  z-index: 998;
+  overflow: hidden;
   .logo {
     width: 50%;
     margin: 0 auto 50px;
@@ -44,7 +46,25 @@
       line-height: $line_height;
     }
   }
+  .circle {
+    width: 200%;
+    position: absolute;
+    left: -52%;
+    top: 80px;
+    animation: rotate 80s linear infinite;
+    img {
+      @include img;
+    }
+  }
 }
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
 
 @include sm() {
   .footer {
@@ -61,6 +81,9 @@
         width: 30%;
         margin: 0;
       }
+    }
+    .circle {
+      top: 20px;
     }
   }
 }

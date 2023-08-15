@@ -9,23 +9,28 @@
   </BreadCrumb>
   <div class="member_center">
     <div class="user_profile">
-      <div class="pic">
-        <img :src="member_img" alt="會員照片">
+      <form class="pic" id="pic">
+        <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
+        <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
+        <Images v-if="member.pic" :imgURL="`memberPic/${member.pic}`" alt="會員照片"/>
+        <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
+        <!-- <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/> -->
+        <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
-        <input type="file" id="user" @change="getImage">
-      </div>
-      <span><i class="fa-solid fa-crown"></i> 白金會員</span>
+        <input type="file" id="user" @change="getImage" name="image">
+      </form>
+      <span><i class="fa-solid fa-crown"></i> {{ member.grade }}會員</span>
       <ul>
         <li>
           <span><i class="fa-solid fa-user"></i></span>
-          <span>張嘉哲</span>
+          <span>{{ member.mname}}</span>
         </li>
         <li>
           <span><i class="fa-solid fa-envelope"></i></span>
-          <span>123@yahoo.com.w</span>
+          <span>{{ member.email }}</span>
         </li>
         <li>
-          <span>編號</span>
+          <!-- <span>編號</span> -->
           <span>
             <img src="@/assets/images/member/qrcode.svg" alt="qrcode">
             <span class="random_num">1234567890ABC</span>
@@ -33,13 +38,13 @@
         </li>
         <li>
           <span><i class="fa-solid fa-piggy-bank"></i> 儲值金金額</span>
-          <span>NTD$ 1,000</span>
+          <span>NTD$ {{ member.remain }}</span>
         </li>
         <li>
-          目前消費金額 NTD$ 5,000
+          目前消費金額 NTD$ {{ member.value }}
         </li>
       </ul>
-      <button type="button">線上儲值</button>
+      <button type="button" @click="this.$router.push('/member_center/member_add_value')">線上儲值</button>
     </div>
     <router-view @emit-title="getContent"></router-view>
   </div>
@@ -55,26 +60,94 @@ export default {
   data() {
     return {
       title: '會員中心',
+      member:{},
       member_img: require('@/assets/images/member/user_pic.png'),
       content: '',
+      id: null,
     }
   },
   methods: {
     getImage(e) {
-      // console.log(e);
+      // 預覽圖片
       const file = e.target.files.item(0);
+      console.log(file);
       if(file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/jpg') {alert('只能上傳圖檔');return;};
-      // console.log(file);
       const reader = new FileReader();
       reader.addEventListener('load', this.imageLoaded);
       reader.readAsDataURL(file);
+      this.uploadImg();
     },
     imageLoaded(e) {
-      this.member_img = e.target.result;
+      console.log(e);
+      // this.member.pic = e.target.result;
+    },
+    uploadImg() {
+      console.log('觸發上傳');
+      const formData = new FormData(document.getElementById('pic'));
+      this.axios.post(`${this.$URL}/uploadMemberImg.php`, formData)
+        .then(res => {
+          console.log(res);
+          this.getData();
+        })
+        .catch(err => {
+          console.log(err);
+        })
     },
     getContent(title) {
       this.content = title;
+    },
+    getData() {
+      const params = { id:this.id };
+      this.axios.get(`${this.$URL}/getMember.php`,{params: params})
+        .then(res => {
+          // console.log(res);
+          this.member = res.data[0];
+          this.$store.commit('setInfo', this.member);
+          // switch (this.member.grade) {
+          //   case 0:
+          //     this.member.grade = '普通';
+          //     break;
+          //   case 1:
+          //     this.member.grade = '白銀';
+          //     break;
+          //   case 2:
+          //     this.member.grade = '黃金';
+          //     break;
+          //   case 3:
+          //     this.member.grade = '白金';
+          //     break;
+          //   case 4:
+          //     this.member.grade = '鑽石';
+          //     break;
+          // }
+          console.log(this.member);
+        })
+        .catch(err => {
+          console.log(err);
+        })
     }
   },
+  created() {
+    // this.id = this.$store.state.member.mem_id;
+    // this.getData();
+    this.member = this.$store.state.member;
+    switch (this.member.grade) {
+      case '0':
+        this.member.grade = '普通';
+        break;
+      case '1':
+        this.member.grade = '白銀';
+        break;
+      case '2':
+        this.member.grade = '黃金';
+        break;
+      case '3':
+        this.member.grade = '白金';
+        break;
+      case '4':
+        this.member.grade = '鑽石';
+        break;
+    }
+  }
 }
 </script>

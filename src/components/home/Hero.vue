@@ -17,7 +17,8 @@
         <ul>
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
-        <button @click.prevent="toggleLogin">登入 | 註冊</button>
+        <button @click.prevent="toggleLogin(true)" v-show="!login">登入 | 註冊</button>
+        <button @click.prevent="loggingOut" v-show="login">登出</button>
         <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{
           btn.title }}</button>
       </nav>
@@ -28,15 +29,14 @@
       </div>
     </div>
   </section>
-  <login v-show="isLoginOpen"> </login>
-  <forgot v-show="forgotPsw"></forgot>
-  <register v-show="isRegister"></register>
+
 </template>
 <script>
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import login from '@/components/LoginView.vue';
 import forgot from '@/components/ForgotPassword.vue';
 import register from '@/components/Register.vue';
+
 export default {
   components: {
     login, forgot, register
@@ -77,19 +77,22 @@ export default {
           site: '/comic_search',
         },
       ],
+      loginWord: '登入 | 註冊'
     }
   },
   methods: {
-    ...mapMutations(['toggleLogin', 'toggleRegister', 'toggleRegister']),
+    ...mapMutations(['toggleLogin', 'toggleRegister', 'toggleRegister','loginOut']),
     goBottom() {
       this.$emit('emit-go');
     },
-    loginOpen() {
-      this.$store.state.login = true;
+    loggingOut() {
+      
+      this.loginOut();
     }
+  
   },
   computed: {
-    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister'])
+    ...mapState(['isLoginOpen', 'forgotPsw', 'isRegister', 'login','isRegister','member','keepLoginStatus'])
   }
 }
 </script>

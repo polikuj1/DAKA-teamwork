@@ -13,26 +13,28 @@
       </label>
       <nav ref="nav">
         <ul>
-          <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{ li.title }}</li>
-          <li ><span class="fa-solid fa-user"></span>{{ memberWord=login === true ? member.name : memberWord }}</li>
-          <li @click.prevent="loginOpen">{{ loginWord=login === true ? '登出' : loginWord }}</li>
+          <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{
+            li.title }}</li>
+          <li @click.prevent="goMemberCenter" v-show="login"><span class="fa-solid fa-user"></span>會員中心</li>
+          <li @click.prevent="loginOpen" v-show="!login">登入 | 註冊</li>
+          <li @click.prevent="loginClose" v-show="login">登出</li>
         </ul>
       </nav>
     </div>
   </div>
-  <login v-show="isLoginOpen" ></login>
-  <forgot v-show="forgotPsw"></forgot>
-  <register v-show="isRegister"></register>
+ 
+  
 </template>
 
 <script>
-import { mapMutations,mapActions,mapGetters,mapState } from "vuex";
+import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import login from '@/components/LoginView.vue';
 import forgot from '@/components/ForgotPassword.vue';
 import register from '@/components/Register.vue';
+
 export default {
-  components:{
-    login,forgot,register
+  components: {
+    login, forgot, register
   },
   data() {
     return {
@@ -43,7 +45,7 @@ export default {
           site: '/about_origin',
         },
         {
-          title: '服務項目',
+          title: '環境介紹',
           class: '',
           site: '/about',
         },
@@ -72,20 +74,14 @@ export default {
           class: 'fa-solid fa-calendar-days',
           site: '/reservation',
         },
-        // {
-        //   title: '會員中心',
-        //   class: 'fa-solid fa-user',
-        //   site: '/member_center/member_nav',
-        // },
-     
       ],
       isOpen: false,
       loginWord: '登入 | 註冊',
-      memberWord:'會員中心'
+      memberWord: '會員中心'
     }
   },
   methods: {
-    ...mapMutations(['toggleLogin','toggleForgotPsw','toggleRegister']),
+    ...mapMutations(['toggleLogin', 'toggleForgotPsw', 'toggleRegister', 'loginOk', 'loginOut']),
     goPage(site) {
       this.$router.push(site);
       this.$refs.nav.classList.add('disappear');
@@ -93,34 +89,52 @@ export default {
       this.isOpen = false;
       setTimeout(() => {
         this.$refs.check.checked = false;
-      },100)
+      }, 100)
     },
     openMenu() {
-      if(!this.isOpen) {
+      if (!this.isOpen) {
         this.isOpen = true;
         this.$refs.nav.classList.remove('disappear');
         setTimeout(() => {
           this.$refs.nav.classList.add('show');
-        },100)
+        }, 100)
       } else {
         this.isOpen = false;
         this.$refs.nav.classList.remove('show');
       }
     },
-    loginOpen(){
-      this.toggleLogin()
-      this.$store.state.login=true;
-      this.openMenu()
+    loginOpen() {
+      this.toggleLogin(true);
+      this.openMenu();
       this.$refs.nav.classList.add('disappear');
       this.$refs.nav.classList.remove('show');
       this.isOpen = false;
       setTimeout(() => {
         this.$refs.check.checked = false;
-      },100)
+      }, 100)
+    },
+    loginClose() {
+      this.$refs.nav.classList.add('disappear');
+      this.$refs.nav.classList.remove('show');
+      setTimeout(() => {
+        this.$refs.check.checked = false;
+      }, 100)
+     
+      this.loginOut();
+    },
+    goMemberCenter(){
+      this.$refs.nav.classList.add('disappear');
+      this.$refs.nav.classList.remove('show');
+      setTimeout(() => {
+        this.$refs.check.checked = false;
+      }, 100)
+      this.$router.push('/member_center/member_nav')
     }
+
   },
-  computed:{
-  ...mapState(['isLoginOpen","forgotPsw','member','isRegister'])
-}
+  computed: {
+    ...mapState(['isLoginOpen","forgotPsw', 'member', 'isRegister', 'login', 'member','keepLoginStatus']),
+  },
+
 }
 </script>

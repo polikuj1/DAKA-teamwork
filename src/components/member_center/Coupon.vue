@@ -7,12 +7,14 @@
         <div class="coupon_container">
           <div class="member_coupon" v-for="coupon in coupons" :key="coupon.id">
             <div class="coupon_title">
-              <img :src="coupon.image" alt="">
-              &nbsp;<p>{{ coupon.title }}</p>
+              <!-- <img :src="require(`@/assets/images/member/${coupon.pic}`)" alt=""> -->
+              <Images :imgURL="`/images/${coupon.pic}`" :alt="`${coupon.coupon_id}`"/>
+              &nbsp;<p v-if="coupon.exchange_food">{{ coupon.exchange_food }}</p>
+              <p v-else>{{ coupon.exchange_time }}</p>
             </div>
-            <p>到期日: {{ coupon.expirationDate }}</p>
-            <p>優惠序號: {{ coupon.couponCode }}</p>
-            <div class="exchange_container" v-show="coupon.exchange">
+            <p>到期日: {{ coupon.close_date}}</p>
+            <p>優惠序號: {{ coupon.member_coupon_no }}</p>
+            <div class="exchange_container" v-show="coupon.exchange === 0">
               <img src="@/assets/images/member/exchange.png" alt="">
             </div>
           </div>
@@ -34,6 +36,7 @@
     data() {
       return {
         title: '優惠券',
+        date: null,
         coupons: [
         {
           id: 1,
@@ -77,16 +80,33 @@
           couponCode: "DEF777",
           exchange:false,
         },
-      ],
+        ],
       }
+    },
+    computed: {
+
     },
     methods: {
       triggerParent() {
         this.$emit('emit-title','');
+      },
+      getData() {
+        const params = {
+          id: this.$store.state.member.mem_id
+        }
+        this.axios.get(`${this.$URL}/getCoupon.php`,{ params: params })
+          .then(res => {
+            console.log(res);
+            this.coupons = res.data;
+          })
+          .catch(err => {
+            console.log(err);
+          })
       }
     },
     created() {
       this.$emit('emit-title',this.title);
+      this.getData();
     },
   }
   </script>
