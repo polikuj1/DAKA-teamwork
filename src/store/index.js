@@ -29,6 +29,9 @@ export default createStore({
     setInfo(state, payload) {
       state.member = payload;
     },
+    setMemberRemain(state, payload) {
+      state.member.remain = payload;
+    },
     setRegisterInfo(state, payload) {
       state.googleInfo = payload;
     },
