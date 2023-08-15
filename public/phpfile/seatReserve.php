@@ -10,20 +10,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $post_data = file_get_contents("php://input"); // 获取 POST 数据
         $seatData = json_decode($post_data, true); // 将 JSON 数据解码为关联数组
         
-        $sql = "INSERT INTO member (mname, sex, email, mobile, password, address, member_birth) VALUES (:name, :sex, :email, :mobile, :password, :address, :member_birth)";
+        $sql = "INSERT INTO seat_order (mem_id, seat_order_date, seat_order_sum, seat_order_startdate, seat_order_enddate,seat_order_time, seat_order_state) VALUES (:mem_id, :seat_order_date, :seat_order_sum, :seat_order_startdate, :seat_order_enddate,:seat_order_time, :seat_order_state)";
         $member = $pdo->prepare($sql);
-        $member->bindValue(":name", $seatData["nameReg"]);
-        $member->bindValue(":sex", $seatData["sexReg"]);
-        $member->bindValue(":email", $seatData["emailReg"]);
-        $member->bindValue(":mobile", $seatData["telReg"]);
-        $member->bindValue(":password", $seatData["pswReg"]);
-        $member->bindValue(":address", $seatData["addReg"]); 
-        $member->bindValue(":member_birth", $seatData["birthReg"]);
+        $member->bindValue(":mem_id", $seatData["mem_id"]);
+        $member->bindValue(":seat_order_date", $seatData["seat_order_date"]);
+        $member->bindValue(":seat_order_sum", $seatData["seat_order_sum"]);
+        $member->bindValue(":seat_order_startdate", $seatData["seat_order_startdate"]);
+        $member->bindValue(":seat_order_enddate", $seatData["seat_order_enddate"]);
+        $member->bindValue(":seat_order_time", $seatData["seat_order_time"]); 
+        $member->bindValue(":seat_order_state", $seatData["seat_order_state"]);
         $member->execute();
         //-----------------------
-        $mem_id = $pdo->lastInsertId();
-        $mem_no = "S" . str_pad($mem_id, 4, "0", STR_PAD_LEFT );
-        $sql = "update member set mem_no = '$mem_no' where mem_id = $mem_id";
+        $seat_order_id = $pdo->lastInsertId();
+        $seat_order_no = "S" . str_pad($seat_order_id, 4, "0", STR_PAD_LEFT );
+        $sql = "update seat_order set seat_order_no = '$seat_order_no' where seat_order_id =  $seat_order_id";
         $pdo->exec($sql);
     
         echo json_encode(["message" => "預約成功"]); // Return a JSON response

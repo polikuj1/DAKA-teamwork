@@ -92,7 +92,7 @@
                       seat_btn: true,
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true,
                     }" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
@@ -296,7 +296,8 @@ export default {
       formattedDate: "",
       singleSeatState: 0,
       seatStatus: 0,
-      currentTime:''
+      formattedCurrentDateTime: '',
+
     };
   },
 
@@ -347,7 +348,7 @@ export default {
       console.log(this.formattedDate);
     },
     seatSelected(item) {
-    
+
       if (
         !item.seat_status
           ?.split("")
@@ -410,9 +411,6 @@ export default {
           0
         );
       }
-      // } else {
-      // return;
-      // }
     },
     selectSeat(item) {
       this.selectedSeats.push(item);
@@ -429,21 +427,22 @@ export default {
       // const now = new Date();
       // this.currentTime = now.toLocaleString();
       // this.currentTime=this.currentTime.substring(10);
-      
+
 
       // this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
       // console.log(this.formattedDate);
-
-console.log(this.currentTime);
+      const startDateTime = `${this.formattedDate} ${this.reservation.startTime}:00`;
+      const endDateTime = `${this.formattedDate} ${this.reservation.endTime}:00`;
 
 
       const reserveData = {
-        mem_id: this.mem_id,
-        seat_order_date: this.formattedDate,
+        mem_id: this.member.mem_id,
+        seat_order_date: this.formattedCurrentDateTime,
         seat_order_sum: this.totalSal,
-        seat_order_startdate: this.telReg,
-        seat_order_enddate: this.pswReg,
-        seat_order_time: this.addReg,
+        seat_order_startdate: startDateTime,
+        seat_order_enddate: endDateTime,
+        seat_order_time: this.totalTime,
+        seat_order_state: 1,
       };
 
       axios
@@ -521,14 +520,23 @@ console.log(this.currentTime);
       this.$router.push('/member_center/member_seat_reservation');
       this.modalSwitch = false;
     },
-    updateTime() {
+    updateFormattedCurrentDateTime() {
       const now = new Date();
-      this.currentTime = now.toLocaleString();
-    }
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      this.formattedCurrentDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
+
+
   },
   computed: {
     ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey']),
- 
+
 
   },
   watch: {},
@@ -536,11 +544,11 @@ console.log(this.currentTime);
     this.fetchSeatData();
     // this.fetchSeatStateData();
     this.formatDateString();
+
   },
   mounted() {
-// 每秒更新一次时间
-this.currentTime = setInterval(this.updateTime, 1000);
-
+    this.updateFormattedCurrentDateTime(); // 在 mounted 階段更新一次格式化後的現在時間
+    setInterval(this.updateFormattedCurrentDateTime, 1000); // 每秒更新一次格式化後的現在時間
   }
 };
 </script>
