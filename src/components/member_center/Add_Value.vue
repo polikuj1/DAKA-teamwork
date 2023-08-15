@@ -15,7 +15,7 @@
           <label for="creditCard" class="charge_card">選擇扣款信用卡</label>
           <select id="creditCard" class="card_option" v-model="selectedCreditCard" required>
             <option value="請選擇" disabled selected>請選擇</option>
-            <!-- <option v-for="card in boundCreditCards" :key="card" :value="card">{{ card }}</option> -->
+            <option v-if="creditData.length === 0" disabled>尚未有綁定的信用卡</option>
             <option v-for="card in creditData" :key="card.card_number" :value="card.card_number">{{ card.card_number }}</option>
             <option value="其他">其他</option>
           </select>
@@ -106,15 +106,54 @@ export default {
       if (this.isFormValid()) {
         // 會員已經綁定的信用卡儲值
         this.modalSwitch = true;
-        const time = new Date();
-        const form = {
+        let form;
+        let memberRemain;
+        if(this.selectedCreditCard !== '其他') {
+          let time = new Date();
+          let year = time.getFullYear();
+          let month = (time.getMonth() + 1).toString().padStart(2, '0');
+          let day = time.getDate().toString().padStart(2, '0');
+          let hours = time.getHours().toString().padStart(2, '0');
+          let minutes = time.getMinutes().toString().padStart(2, '0');
+          let seconds = time.getSeconds().toString().padStart(2, '0');
+          let formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+          let id;
+          this.creditData.forEach(item => {
+            if(item.card_number === this.selectedCreditCard) {
+              id = item.credit_id;
+            }
+          })
+          form = {
+            mem_id: this.$store.state.member.mem_id,
+            credit_id: id,
+            sdate: formattedDateTime,
+            sval: this.selectedAmount,
+            add_method: '1'
+          };
+
+        } else {
+
+        }
+        memberRemain += this.selectedAmount;
+        // 增加一筆儲值紀錄
+        this.axios.post(`${this.$URL}/addValue.php`, JSON.stringify(form))
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        // 更新會員的餘額狀態
+        this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
           mem_id: this.$store.state.member.mem_id,
-          credit_id: this.creditData.credit_id,
-          sdate: time,
-          sval: this.selectedAmount,
-          add_method: 1
-        };
-        this.axios.post(`${this.$URL}/addValue.php`,)
+          remain: memberRemain
+        }))
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          })
       } else {
         this.warnTxt = true;
       }
@@ -131,18 +170,6 @@ export default {
 
       return true;
     },
-    // submit() {
-    //   /*獲取填寫的假資料和選擇的信用卡資訊*/
-    //   const amount = this.selectedAmount;
-    //   const selectedCreditCard = this.selectedCreditCard;
-    //   const cardNumber = this.cardNumber;
-    //   const expiryDate = this.selectedYear + this.selectedMonth;
-    //   const verificationCode = this.verificationCode;
-    //   const isBound = this.isBound;
-    //   const isDefault = this.isDefault;
-
-    //   this.modalSwitch = true;
-    // },
     checkCardNumberInput() {
       const regex = /^[0-9]*$/; 
       this.showCardNumberWarning = !regex.test(this.cardNumber);
@@ -160,11 +187,13 @@ export default {
       }
       this.axios.get(`${this.$URL}/getCredit.php`, { params: params})
         .then(res => {
-          console.log(res);
+          // console.log(res);
           this.creditData = res.data;
           this.creditData.forEach(item => {
             item.card_number = item.card_number.slice(-4);
           })
+          this.creditData = this.creditData.filter(item => item.outofdate === '1');
+          console.log(this.creditData);
         })
         .catch(err => {
           console.log(err);
