@@ -442,7 +442,7 @@ export default {
         seat_order_startdate: startDateTime,
         seat_order_enddate: endDateTime,
         seat_order_time: this.totalTime,
-        seat_order_state: 1,
+        seat_order_state: 0,
       };
 
       axios
@@ -467,6 +467,22 @@ export default {
           console.log(error);
           alert('預約失敗');
         });
+
+
+
+
+      // const remain=this.member.remain-this.totalSal;
+      this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
+          mem_id: this.$store.state.member.mem_id,
+          remain: (this.member.remain-this.totalSal).toString()
+        }))
+          .then(res => {
+            console.log(res);
+            this.$store.commit('setMemberRemain', (this.member.remain-this.totalSal).toString());
+          })
+          .catch(err => {
+            console.log(err);
+          })
     },
 
     fetchSeatData() {
