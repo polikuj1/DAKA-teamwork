@@ -15,7 +15,8 @@
           <label for="creditCard" class="charge_card">選擇扣款信用卡</label>
           <select id="creditCard" class="card_option" v-model="selectedCreditCard" required>
             <option value="請選擇" disabled selected>請選擇</option>
-            <option v-for="card in boundCreditCards" :key="card" :value="card">{{ card }}</option>
+            <!-- <option v-for="card in boundCreditCards" :key="card" :value="card">{{ card }}</option> -->
+            <option v-for="card in creditData" :key="card.card_number" :value="card.card_number">{{ card.card_number }}</option>
             <option value="其他">其他</option>
           </select>
           
@@ -93,6 +94,7 @@ export default {
       showVerificationCodeWarning: false,
       modalSwitch: false,
       warnTxt: false,
+      creditData:[],
     }
   },
   methods: {
@@ -102,7 +104,17 @@ export default {
     },
     submit() {
       if (this.isFormValid()) {
+        // 會員已經綁定的信用卡儲值
         this.modalSwitch = true;
+        const time = new Date();
+        const form = {
+          mem_id: this.$store.state.member.mem_id,
+          credit_id: this.creditData.credit_id,
+          sdate: time,
+          sval: this.selectedAmount,
+          add_method: 1
+        };
+        this.axios.post(`${this.$URL}/addValue.php`,)
       } else {
         this.warnTxt = true;
       }
@@ -149,6 +161,10 @@ export default {
       this.axios.get(`${this.$URL}/getCredit.php`, { params: params})
         .then(res => {
           console.log(res);
+          this.creditData = res.data;
+          this.creditData.forEach(item => {
+            item.card_number = item.card_number.slice(-4);
+          })
         })
         .catch(err => {
           console.log(err);
