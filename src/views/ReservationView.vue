@@ -92,7 +92,7 @@
                       seat_btn: true,
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
                     }" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
@@ -113,12 +113,12 @@
                       seat_btn: true,
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
                     }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
-                          {{ item.seat_id }}
+                          {{ item.seat_number }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -141,11 +141,11 @@
                   <!--狀態管理 :class="`state-${item.state}`" -->
                   <div class="reservation_single_seat">
                     <button
-                      :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true }"
+                      :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
                       v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4 class="text">
-                          {{ item.seat_area }}{{ item.seat_no }}
+                          {{ item.seat_area }}{{ item.seat_number }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -155,11 +155,11 @@
                   <!-- 狀態管理:class="`state-${item.state}`" -->
                   <div class="reservation_double_seat">
                     <button
-                      :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('0') ? 1 : 0}`]: true }"
+                      :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
                       v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
                       <div class="content">
                         <h4>
-                          {{ item.seat_area }}{{ item.seat_no }}
+                          {{ item.seat_area }}{{ item.seat_number }}
                         </h4>
                         <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
@@ -198,7 +198,7 @@
                       ? "大廳一般"
                       : item.seat_area === "C"
                         ? "包廂單人"
-                        : "包廂雙人" }} {{ item.seat_area }}-{{ item.seat_id }}
+                        : "包廂雙人" }} {{ item.seat_area }}-{{ item.seat_number }}
                 </div>
               </div>
             </div>
@@ -252,6 +252,10 @@ export default {
 
   data() {
     return {
+      isReserveSeatVisible: false,
+      isReserveUserVisible: false,
+      isSeatInputsDisabled: false,
+      isUserInputsDisabled: false,
       title: "訂位預約",
       reservation: {
         startDate: "",
@@ -274,6 +278,8 @@ export default {
       selectedSeats: [],
       seatData: [],
       selectedData: [],
+      selectedAandB: [],
+      selectedCandD: [],
       modalSwitch: false,
       id: '',
       area: '',
@@ -341,47 +347,82 @@ export default {
       console.log(this.formattedDate);
     },
     seatSelected(item) {
-      let selectedAandB = [];
-      let selectedCandD = [];
-      const indexA = selectedAandB[0];
-      const indexC = selectedCandD[0];
-
-
-
-      if (item.seat_status?.split('').slice((+this.reservation.startTimeNum), (+this.reservation.endTimeNum)).includes('1')) {
-        if (this.selectedSeats.length < 7) {
-          //點一下選，再點一下取消
-          selectedAandB = this.selectedSeats.filter(seat => seat.seat_area === 'A' || seat.seat_area === 'B');
-          selectedCandD = this.selectedSeats.filter(seat => seat.seat_area === 'C' || seat.seat_area === 'D');
-          if (this.selectedSeats.includes(item)) {
-            this.deselectSeat(item);
-          } else {
-            if ((item.seat_area === 'A' || item.seat_area === 'B') && selectedAandB.length >= this.maxAandB) {
-              this.selectedSeats.splice(indexA, 1);
+    
+      if (
+        !item.seat_status
+          ?.split("")
+          .slice(+this.reservation.startTimeNum, +this.reservation.endTimeNum)
+          .includes("1")
+      ) {
+        switch (item.seat_area) {
+          case "A":
+          case "B":
+            if (this.selectedAandB.includes(item)) {
+              this.deselectSeat(this.selectedAandB, item);
+            } else {
+              this.selectedAandB.push(item);
             }
-            else if ((item.seat_area === 'C' || item.seat_area === 'D') && selectedCandD.length >= this.maxCandD) {
-              this.selectedSeats.splice(indexC, 1);
+
+            if (this.selectedAandB.length > this.maxAandB) {
+              this.selectedAandB.splice(0, 1);
             }
-            this.selectSeat(item);
-
-
-          }
-          this.totalTime = (+this.reservation.endTimeNum) - (this.reservation.startTimeNum);
-          this.totalSal = this.selectedSeats.reduce((total, seat) => total + seat.seat_sal * this.totalTime, 0);
+            break;
+          case "C":
+          case "D":
+            if (this.selectedCandD.includes(item)) {
+              this.deselectSeat(this.selectedCandD, item);
+            } else {
+              this.selectedCandD.push(item);
+            }
+            if (this.selectedCandD.length > this.maxCandD) {
+              this.selectedCandD.splice(0, 1);
+            }
+            break;
         }
-      } else {
-        return;
+
+        // if (item.seat_area === "A" || item.seat_area === "B") {
+        //   if (this.selectedAandB.includes(item)) {
+        //     this.deselectSeat(this.selectedAandB, item);
+        //   }else{
+        //     this.selectedAandB.push(item);
+        //   }
+
+        //   if (this.selectedAandB.length > this.maxAandB) {
+        //     this.selectedAandB.splice(0, 1);
+        //   }
+        // } else if (item.seat_area === "C" || item.seat_area === "D") {
+
+        //   if (this.selectedCandD.includes(item)) {
+        //     this.deselectSeat(this.selectedCandD, item);
+        //   }else{
+        //     this.selectedCandD.push(item);
+        //   }
+        //   if (this.selectedCandD.length > this.maxCandD) {
+        //     this.selectedCandD.splice(0, 1);
+        //   }
+        // }
+        this.selectedSeats = [...this.selectedAandB, ...this.selectedCandD];
+
+        this.totalTime =
+          +this.reservation.endTimeNum - this.reservation.startTimeNum;
+        this.totalSal = this.selectedSeats.reduce(
+          (total, seat) => total + seat.seat_sal * this.totalTime,
+          0
+        );
       }
+      // } else {
+      // return;
+      // }
     },
     selectSeat(item) {
       this.selectedSeats.push(item);
     },
 
-    deselectSeat(item) {
+    deselectSeat(array, item) {
       //原本選到的座位刪除
-      const index = this.selectedSeats.findIndex(seat => seat.seat_id === item.seat_id);
+      const index = array.findIndex(seat => seat.seat_id === item.seat_id);
       if (index !== -1) {
-        this.selectedSeats.splice(index, 1);
+        array.splice(index, 1);
       }
     },
     confirmReserve() {
