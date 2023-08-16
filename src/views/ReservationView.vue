@@ -93,7 +93,7 @@
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
                       [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" @click.prevent="seatSelected(item)">
+                    }" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled" >
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
@@ -114,7 +114,7 @@
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
                       [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)">
+                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
@@ -142,7 +142,7 @@
                   <div class="reservation_single_seat">
                     <button
                       :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
+                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }}{{ item.seat_number }}
@@ -156,7 +156,7 @@
                   <div class="reservation_double_seat">
                     <button
                       :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
+                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }}{{ item.seat_number }}
@@ -252,6 +252,7 @@ export default {
 
   data() {
     return {
+      isButtonDisabled: true,
       isReserveSeatVisible: false,
       isReserveUserVisible: false,
       isSeatInputsDisabled: false,
@@ -312,6 +313,8 @@ export default {
       this.reservation.startDate = date.toString().substr(4, 11);
       console.log(this.reservation.startDate);
       this.formatDateString();
+
+      this.checkButtonState();
     },
     //轉換時間
     timeConvert(time) {
@@ -328,6 +331,12 @@ export default {
       this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
       this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
 
+      this.checkButtonState();
+    },
+    checkButtonState() {
+        if (this.reservation.startDate && this.reservation.startTime && this.reservation.endTime) {
+            this.isButtonDisabled = false;
+        }
     },
     getMonthNumber(monthName) {
       const months = {
@@ -347,6 +356,7 @@ export default {
       console.log(this.formattedDate);
     },
     seatSelected(item) {
+      
     
       if (
         !item.seat_status
