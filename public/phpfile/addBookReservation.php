@@ -7,20 +7,21 @@ try {
   $postData = json_decode(file_get_contents('php://input'), true);
 	require_once("connectDaka.php");
 	//執行sql指令
-  // $mem_id = $postData["mem_id"];
-	$sql = "INSERT INTO credit (mem_id, card_number, valid, outofdate, preset, card_cvv)
-          VALUES (:mem_id, :card_number, :valid, 1, :preset, :card_cvv)";
+	$sql = "INSERT INTO comics_order (mem_id, comics_order_status, comics_order_date, comics_borrow_duedate, comics_return_duedate, comics_return_date, comics_quantity, comics_order_sum, comics_payment_method, comic_ruin_penalty, comic_delay_penalty)
+          VALUES (:mem_id, :comics_order_status, :comics_order_date, :comics_borrow_duedate, NULL, NULL, :comics_quantity, :comics_order_sum, :comics_payment_method, 0, 0)";
 	$member = $pdo-> prepare($sql);
   $member->bindValue(":mem_id", $postData["mem_id"]);
-	$member->bindValue(":card_number", $postData["card_number"]);
-	$member->bindValue(":valid", $postData["valid"]);
-	$member->bindValue(":preset", $postData["preset"]);
-  $member->bindValue(":card_cvv", $postData["card_cvv"]);
+	$member->bindValue(":comics_order_status", $postData["comics_order_status"]);
+	$member->bindValue(":comics_order_date", $postData["comics_order_date"]);
+	$member->bindValue(":comics_borrow_duedate", $postData["comics_borrow_duedate"]);
+  $member->bindValue(":comics_quantity", $postData["comics_quantity"]);
+	$member->bindValue(":comics_order_sum", $postData["comics_order_sum"]);
+	$member->bindValue(":comics_payment_method", $postData["comics_payment_method"]);
 	$member->execute();
 
-  $credit_id = $pdo->lastInsertId();
-  $credit_no = "CD" . str_pad($credit_id, 4, "0", STR_PAD_LEFT);
-  $sql = "update credit set credit_no = '$credit_no' where credit_id = $credit_id";
+  $comics_order_id = $pdo->lastInsertId();
+  $comics_order_no = "C" . str_pad($comics_order_id, 4, "0", STR_PAD_LEFT);
+  $sql = "update comics_order set comics_order_no = '$comics_order_no' where comics_order_id = $comics_order_id";
   $pdo->exec($sql);
 
 	echo 'success';

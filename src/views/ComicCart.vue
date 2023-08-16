@@ -58,13 +58,11 @@
     <div class="comiclist_content">
       <div class="cart_l_count_title">
         <p class="cart_m_text">取書日期</p>
-        <!-- <p class="cart_m_text">歸還日期</p> -->
         <p class="cart_m_text">數量</p>
         <p class="cart_m_text">總計</p>
       </div>
       <div class="cart_m_count_title">
         <p class="cart_m_text">{{ comics_borrow_duedate }} 前</p>
-        <!-- <p class="cart_m_text">{{ returnDate }}</p> -->
         <p class="cart_m_text">{{ comics_quantity.length }}</p>
         <p class="cart_m_text">${{ comics_order_sum }}</p>
       </div>
@@ -85,7 +83,7 @@
       </div>
     </div>
     <div class="btn_content">
-      <a @click="modalSwitch = true"
+      <a @click="submit"
         ><button class="comiclist_cartbtn">
           送出預約<i class="fa-solid fa-book-open-reader bookgap"></i></button
       ></a>
@@ -140,10 +138,9 @@ export default {
   data() {
     return {
       title: "我的預約清單",
-      comics_quantity: [],
+      comics_borrow_date: "",
       comics_borrow_duedate: "",
       modalSwitch: false,
-      member: {},
       borrowingrulesarea: {
         rulesTitle: "預約須知",
         rulesDetails: [
@@ -177,50 +174,7 @@ export default {
     },
     /*總計*/
     comics_order_sum() {
-      return this.shoppingCartProducts.length * 10;
-    },
-    // 借閱日期
-    getBorrowDays() {
-      return 3 + Math.max(this.shoppingCartItemsCount - 1, 0); // 借書天数規則：3天 + (購物車中書本 - 1)
-    },
-    // 歸還日期
-    returnDate() {
-      // 計算歸還日期
-      // if (!this.comics_borrow_duedate) return ""; // 如果没有借書日期，則歸還日期為空
-      // console.log(this.comics_borrow_duedate);
-
-      // 將借書日期轉成日期對象
-      const comics_borrow_duedateObj = new Date(this.comics_borrow_duedate);
-      console.log(comics_borrow_duedateObj);
-
-      // 獲取借書日期
-      const borrowDays = this.getBorrowDays;
-      console.log(borrowDays);
-      // 計算歸還日期
-      const returnDateObj = new Date(
-        comics_borrow_duedateObj.getTime() + borrowDays * 24 * 60 * 60 * 1000
-      );
-
-      // 格式化歸還日期字串
-      const returnYear = returnDateObj.getFullYear();
-      const returnMonth =
-        returnDateObj.getMonth() + 1 < 10
-          ? "0" + (returnDateObj.getMonth() + 1)
-          : returnDateObj.getMonth() + 1;
-      const returnDate =
-        returnDateObj.getDate() < 10
-          ? "0" + returnDateObj.getDate()
-          : returnDateObj.getDate();
-
-      return returnYear + "/" + returnMonth + "/" + returnDate;
-    },
-    // 判斷儲值金是否足夠
-    remainingEnough() {
-      if (this.member.remain > this.comics_order_sum) {
-        return true;
-      } else {
-        return false;
-      }
+      return this.comics_quantity.length * 10;
     },
     member() {return this.$store.state.member},
     comics_quantity() {return this.$store.state.cart},
@@ -241,36 +195,86 @@ export default {
       this.$store.commit("deleteBook", id);
       // this.comics_quantity.splice(id, 1);
     },
-
-    // 總計
-    // calculatePrice(price, quantity) {
-    //   return Math.floor(price * quantity * 10) / 10;
-    // },
-
-    // 取書日期
-    timeFormate(timeStamp) {
-      let newdate = new Date(timeStamp);
-      let year = newdate.getFullYear();
-      let month =
-        newdate.getMonth() + 1 < 10
-          ? "0" + (newdate.getMonth() + 1)
-          : newdate.getMonth() + 1;
-      let date =
-        newdate.getDate() < 10 ? "0" + newdate.getDate() : newdate.getDate();
-      this.comics_borrow_duedate = year + "/" + month + "/" + date;
-      console.log(this.comics_borrow_duedate);
+    // 取書的所有相關日期
+    getBookDate() {
+      // 預約日期
+      let time = new Date();
+      let year = time.getFullYear();
+      let month = (time.getMonth() + 1).toString().padStart(2, '0');
+      let day = time.getDate().toString().padStart(2, '0');
+      let formattedDateTime = `${year}-${month}-${day}`;
+      this.comics_borrow_date = formattedDateTime;
+      // 取書到期日
+      let comics_borrow_duedate = `${year}-${month}-${parseInt(day)+3}`;
+      this.comics_borrow_duedate = comics_borrow_duedate;
     },
-    // 定時器函數
-    nowTimes() {
-      let self = this;
-      self.timeFormate(new Date());
-    },
+    submit() {
+      if(this.member.remain < this.comics_order_sum) {
+        alert('儲值金不足');
+        this.$router.push('/member_center/member_add_value');
+        return;
+      }
+      const form = {
+        mem_id: this.member.mem_id,
+        comics_order_status: 1,
+        comics_order_date: this.comics_borrow_date,
+        comics_borrow_duedate: this.comics_borrow_duedate,
+        comics_quantity: this.comics_quantity.length,
+        comics_order_sum: this.comics_order_sum,
+        comics_payment_method: '儲值金扣款',
+      };
+      console.log(form);
+      // 新增一筆書籍訂單
+      this.axios.post(`${this.$URL}/addBookReservation.php`, JSON.stringify(form))
+        .then(res => {
+          console.log(res);
+          // 取得最新一筆書籍訂單的id
+          this.axios.get(`${this.$URL}/getNewestBookId.php`)
+            .then(res => {
+                console.log(res);
+                // 新增一筆書籍訂單詳細明細
+                for (let i = 0; i < this.comics_quantity.length; i++) {
+                  const detail = {
+                    comics_order_id: res.data[0].comics_order_id,
+                    comics_id: this.comics_quantity[i].comics_id,
+                  };
+                  this.axios.post(`${this.$URL}/addBookReservationDetail.php`, JSON.stringify(detail))
+                    .then(res => {
+                      console.log(res);
+                    })
+                    .catch(err => {
+                      console.log(err);
+                    })
+                }
+              })
+              .catch(err => {
+                console.log(err);
+              })
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      // 更新會員儲值餘額
+      const memberRemain = parseInt(this.member.remain) - parseInt(this.comics_order_sum); 
+      this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
+        mem_id: this.member.mem_id,
+        remain: memberRemain.toString()
+      }))
+        .then(res => {
+          console.log(res);
+          this.$store.commit('setMemberRemain', memberRemain);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      
+      
+    }
   },
-  // 掛載完成時
   mounted() {
     // this.member = this.$store.state.member;
     // this.comics_quantity = this.$store.state.cart;
-    this.nowTimes();
+    this.getBookDate();
   },
 };
 </script>

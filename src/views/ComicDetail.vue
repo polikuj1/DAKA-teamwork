@@ -79,8 +79,8 @@ export default {
         this.axios.get(`${this.$URL}/getAllComic.php`)
             .then((res) => {
                 console.log(res);
-                this.comicData = res;
-                this.id = this.$route.params.id;
+                this.comicData = res.data;
+                this.id = this.$route.params.id;3
                 this.filter();
             })
             .catch((err) => {
