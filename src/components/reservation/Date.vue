@@ -1,22 +1,19 @@
 <template>
-    <Space size="large" wrap class="reservation_date_time">
-        <DatePicker size="large" type="date" placeholder="Select date" v-model="selectedDate" @on-change="convertDate" />
-        <TimePicker size="large" type="timerange" :steps="[1, 60, 60]"  placement="bottom-end" placeholder="Select time" style="width: 168px" v-model="selectedTime" @on-change="convertTime"
-        />
-      </Space>
-
-
+  <Space size="large" wrap class="reservation_date_time">
+    <DatePicker size="large" type="date" placeholder="Select date" v-model="selectedDate" @on-change="convertDate"
+      :options="options1" />
+    <TimePicker size="large" type="timerange" :steps="[1, 60, 60]" placement="bottom-end" placeholder="Select time"
+      style="width: 168px" v-model="selectedTime" @on-change="convertTime" />
+  </Space>
 </template>
 <style>
-
-.reservation_date_time{
+.reservation_date_time {
   display: flex;
   justify-content: center;
- padding:0 50px;
-  
+  padding: 0 50px;
+
 
 }
-
 </style>
 <script>
 
@@ -24,24 +21,29 @@ export default {
 
 
 
-data(){
-  
-  return{
-    selectedDate:'',
-    selectedTime:'',
-  }
-},
-computed(){
-  
+  data() {
 
-},
-methods:{
-convertDate(){
-  this.$emit('convert-date',this.selectedDate);
-},
-convertTime(){
-  this.$emit('convert-time',this.selectedTime);
-}
-}
+    return {
+      selectedDate: '',
+      selectedTime: '',
+      options1: {
+        disabledDate(date) {
+          return date && date.valueOf() < Date.now() - 86400000;
+        }
+      },
+    }
+  },
+  computed() {
+
+
+  },
+  methods: {
+    convertDate() {
+      this.$emit('convert-date', this.selectedDate);
+    },
+    convertTime() {
+      this.$emit('convert-time', this.selectedTime);
+    }
+  }
 }
 </script>

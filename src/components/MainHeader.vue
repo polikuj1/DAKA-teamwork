@@ -125,21 +125,21 @@ export default {
     },
     loggingOut() {
       //待處理
-      axios.post(`${this.$URL}/loginOut.php`,{withCredentials:true})
-        .then((res) => {
-          console.log(res);
-          if (res.data === 'success') {
-            this.loginOut();
-            if (this.$route.matched.some(record => record.path.includes('/member_center'))) {
-              this.$router.push('/index');
-            }
-          } else {
-            console.error('Failed to clear session');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+      // axios.post(`${this.$URL}/loginOut.php`,{withCredentials:true})
+      //   .then((res) => {
+      //     console.log(res);
+      //     if (res.data === 'success') {
+      //       this.loginOut();
+      //       if (this.$route.matched.some(record => record.path.includes('/member_center'))) {
+      //         this.$router.push('/index');
+      //       }
+      //     } else {
+      //       console.error('Failed to clear session');
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   })
 
         // this.loginOut();
         //     if (this.$route.matched.some(record => record.path.includes('/member_center'))) {
