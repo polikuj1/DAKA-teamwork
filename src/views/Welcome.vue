@@ -6,7 +6,7 @@
 
         <a @click.prevent="this.$router.push('/front')" class="front">Front</a>
 
-        <a href="" class="back">Back</a>
+        <a href="https://tibamef2e.com/chd102/g6/back" class="back">Back</a>
     </div>
 
 </template>
