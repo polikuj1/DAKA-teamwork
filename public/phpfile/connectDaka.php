@@ -1,12 +1,8 @@
 <?php 
     $dbname = "daka";
     $user = "root";
-    $password = "root";
+    $password = "";
     $port = 3306;
-
-    // $dbname = "tibamefe_chd102g6";
-    // $user = "tibamefe_since2021";
-    // $password = "vwRBSb.j&K#E";
 
     $dsn = "mysql:host=localhost;port=$port;dbname=$dbname;charset=utf8";
 
