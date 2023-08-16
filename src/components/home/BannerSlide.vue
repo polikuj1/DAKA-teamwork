@@ -1,13 +1,18 @@
 <template>
     <section class="home_banner">
-        <Carousel  :autoplay="2000" :wrap-around="true">
-            <Slide v-for="item in bannerSlides" :key="item.id">
+        <Carousel v-bind="settings"
+        :autoplay="2000"
+        :wrap-around="true"
+        :breakpoints="breakpoints">
+            <Slide v-for="item in bannerSlides" 
+            :key="item.id">
                 <!-- <div class="carousel__item">{{ slide }}</div> -->
                 <img :src="item.imgSrc" alt="ad">
             </Slide>
-    
+
             <template #addons>
                 <Pagination />
+                <Navigation />
             </template>
         </Carousel>
     </section>
@@ -15,7 +20,7 @@
 
 <script>
 import { defineComponent } from 'vue'
-import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import { Carousel, Pagination, Slide, Navigation } from 'vue3-carousel'
 
 import 'vue3-carousel/dist/carousel.css'
 
@@ -25,6 +30,7 @@ export default defineComponent({
         Carousel,
         Slide,
         Pagination,
+        Navigation,
     },
     data: () => ({
         title: 'BannerSlide',
@@ -42,6 +48,22 @@ export default defineComponent({
                 imgSrc: require('@/assets/images/home/banner03.svg'),
             },
         ],
+        settings: {
+            itemsToShow: 1,
+            snapAlign: 'center',
+        },
+        breakpoints: {
+            // 700px and up
+            700: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            // 1025 and up
+            1025: {
+                itemsToShow: 1.25,
+                snapAlign: 'center',
+            },
+        },
     }),
 })
 </script>

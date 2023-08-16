@@ -31,3 +31,25 @@
     @include img;
   }
 }
+
+@include screen_one(415) {
+  .main_side_btn {
+
+    bottom: 170px;
+    right: 0;
+
+    img {
+      width: 70%;
+    }
+  }
+
+  .main_game_btn {
+
+    bottom: 100px;
+    right: 0;
+
+    img {
+      width: 70%;
+    }
+  }
+}

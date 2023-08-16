@@ -5,6 +5,7 @@
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+  height: 700px;
 
   aside {
     width: 25%;
@@ -14,9 +15,13 @@
 
     .scroll {
       position: absolute;
-      bottom: 120px;
+      bottom: 80px;
       right: -30px;
       animation: slide-bottom 3s ease-in-out 1s infinite both;
+
+      img {
+        width: 80%;
+      }
     }
 
     @keyframes slide-bottom {
@@ -30,28 +35,31 @@
     
 
     .pic {
-      margin: 0 auto 60px;
-      width: 300px;
-      height: 200px;
+      margin: 0 auto 30px;
 
       img {
-        @include img;
+        width: 60%;
+        margin: 0 auto;
       }
     }
 
     li {
-      margin-bottom: 30px;
+      margin-bottom: 15px;
+      
+      &:last-child {
+        margin-bottom: 30px;
+      }
     }
 
     a {
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
 
     button {
-      font-size: 1.5rem;
-      padding: 16px 40px;
-      margin: 0 auto 30px;
+      font-size: 1.25rem;
+      padding: 8px 36px;
+      margin: 0 auto 20px;
       border-radius: $border_radius;
       background-color: $btn_bg_color;
       color: $main_txt_color;
@@ -73,9 +81,9 @@
       background-image: url(@/assets/images/home/sprite.svg);
       background-position: 0 center;
       background-repeat: no-repeat;
-      overflow: hidden;
+      // overflow: hidden;
       animation: hero_animation 3.5s steps(6, end) infinite;
-      transform: scale(1.2);
+      transform: scale(.85);
 
       img {
         opacity: 0;
@@ -134,6 +142,8 @@
 }
 @include screen_one(1023) {
   .hero_section {
+    height: 800px;
+
     .circle {
       &:nth-child(1) {
         bottom: -250px;
@@ -155,6 +165,8 @@
 }
 @include screen_one(767) {
   .hero_section {
+    height: 700px;
+
     .circle {
       &:nth-child(1) {
         bottom: -230px;
@@ -169,14 +181,14 @@
 
       .pic {
         overflow: inherit;
-        transform: scale(0.7);
+        transform: scale(0.6);
       }
     }
   }
 }
 @include screen_one(415) {
   .hero_section {
-    height: 600px;
+    height: 475px;
 
     .circle {
       &:nth-child(1) {
@@ -193,7 +205,7 @@
 
       .pic {
         overflow: inherit;
-        transform: scale(0.4);
+        transform: scale(0.35);
       }
     }
   }

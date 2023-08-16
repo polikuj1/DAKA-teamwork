@@ -2,14 +2,17 @@
   <section class="comics_newin">
     <h3>\ 新進漫畫 /</h3>
     <div class="comics_slides">
-      <Carousel v-bind="settings" :breakpoints="breakpoints" :wrap-around="true">
+      <Carousel v-bind="settings" 
+      :breakpoints="breakpoints" 
+      :wrap-around="true"
+      :autoplay="2000">
 
         <Slide v-for="item in comicData" :key="item.id">
 
           <div class="card">
             <div class="pic" @click="this.$router.push(`/comic_detail/${item.id}`)">
               <!-- <img :src="item.img" alt="漫畫封面"> -->
-              <Images :imgURL="`${item.img}`" :alt="`${item.title}`"/>
+              <Images :imgURL="`comic/${item.img}`" :alt="`${item.title}`"/>
             </div>
             <div class="txt">
               <div class="title">
@@ -212,6 +215,7 @@ export default defineComponent({
         "index": "01"
       }
     ],
+    data:[],
     // carousel settings
     settings: {
       itemsToShow: 1,
@@ -232,14 +236,25 @@ export default defineComponent({
     },
   }),
   created() {
-    GET('/data/comic.json')
+    // GET('/data/comic.json')
+    GET(`${this.$URL}/getAllComic.php`)
       .then((res) => {
         console.log(res);
-        this.comicData = res;
+        this.comicData = this.data = res;
       })
       .catch((err) => {
         console.log(err);
       })
-  }
+  },
+  // created() {
+  //   this.axios.get(`${this.$URL}/getAllComic.php`)
+  //     .then(res => {
+  //       console.log(res);
+  //       this.comicData = res.data;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     })
+  // },
 })
 </script>
