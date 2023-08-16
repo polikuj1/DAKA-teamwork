@@ -7,14 +7,6 @@ try {
 	
 	//執行sql指令並取得pdoStatement
   $id = $_GET["id"];
-	// $sql = "select m.mem_id, so.seat_order_id, so.seat_order_no, so.seat_order_date,
-  //         so.seat_order_startdate, so.seat_order_enddate, so.seat_order_sum, so.seat_order_state,
-  //         sod.seat_id, sod.seat_order_detail_id, s.seat_id, s.seat_area,
-  //         s.seat_number, s.seat_sal
-  //         FROM member m JOIN seat_order so ON m.mem_id = so.mem_id
-  //                       JOIN seat_order_detail sod ON so.seat_order_id = sod.seat_order_id
-  //                       JOIN seat s ON sod.seat_id = s.seat_id
-  //         WHERE m.mem_id = $id";
   $sql = "SELECT 
   m.mem_id,
   GROUP_CONCAT(DISTINCT so.seat_order_id) AS seat_order_ids,

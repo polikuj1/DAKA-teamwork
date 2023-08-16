@@ -113,7 +113,7 @@
                 .catch((err) => {
                 console.log(err);
                 })
-            },
+        },
         cancelReservation(reservationId) {
             // 將要取消的座位訂單編號存下來
             this.modalSwitch = true;

@@ -23,10 +23,10 @@
         </div>
         <div class="txt">
           <div class="title">
-            <h4>{{ item.title }} {{ item.index }}</h4>
+            <h4>{{ item.title }} {{ item.comics_index }}</h4>
             <span>{{ item.author }}</span>
           </div>
-          <button @click="reserve(item)" :class="{bt_hover: item.comics_id != 1 }">{{ item.comics_id==="1"? '已被預約' : '預約此書'}} <i class="fa-solid fa-book-open-reader"></i></button>
+          <button @click="reserve(item)" :class="{bt_hover: item.comics_status == 1 }">{{ item.comics_status != "1"? '不可預約' : '預約此書'}} <i class="fa-solid fa-book-open-reader"></i></button>
         </div>
       </div>
       <div class="warn_txt" v-if="comicData.length === 0">

@@ -91,6 +91,7 @@
       ></a>
     </div>
   </div>
+  <!-- 預約彈窗 -->
   <div class="comic_modal" v-show="modalSwitch">
     <div class="modal">
       <div class="pic">
@@ -174,24 +175,10 @@ export default {
     shoppingCartProducts() {
       return [...this.comics_quantity];
     },
-
-    shoppingCartItemsCount() {
-      return this.shoppingCartProducts.length;
-    },
-
     /*總計*/
     comics_order_sum() {
       return this.shoppingCartProducts.length * 10;
-      // return (
-      //   Math.floor(
-      //     this.shoppingCartProducts.reduce(
-      //       (acc, product) => acc + product.price * 1,
-      //       0
-      //     ) * 10
-      //   ) / 10
-      // );
     },
-
     // 借閱日期
     getBorrowDays() {
       return 3 + Math.max(this.shoppingCartItemsCount - 1, 0); // 借書天数規則：3天 + (購物車中書本 - 1)
@@ -227,7 +214,6 @@ export default {
 
       return returnYear + "/" + returnMonth + "/" + returnDate;
     },
-
     // 判斷儲值金是否足夠
     remainingEnough() {
       if (this.member.remain > this.comics_order_sum) {
@@ -236,8 +222,9 @@ export default {
         return false;
       }
     },
+    member() {return this.$store.state.member},
+    comics_quantity() {return this.$store.state.cart},
   },
-
   methods: {
     updateQuantityOfProduct(item, feature) {
       // const item = this.comics_quantity.find((item) => item.id === id);
@@ -281,8 +268,8 @@ export default {
   },
   // 掛載完成時
   mounted() {
-    this.member = this.$store.state.member;
-    this.comics_quantity = this.$store.state.cart;
+    // this.member = this.$store.state.member;
+    // this.comics_quantity = this.$store.state.cart;
     this.nowTimes();
   },
 };

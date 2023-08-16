@@ -2,16 +2,6 @@
   <footer class="footer">
     <div class="circle">
       <img src="@/assets/images/home/footer_welcome.svg" alt="">
-      <!-- <svg viewBox="-80 0 40 10">
-        <g class="g_circle">
-          <path d="M 50 150 m -50 0 a 120 60 0 1 1 10 0 a 50 50 0 1 1 10 0 z" id="circle" />
-          <text fill="none" stroke="#FF5E1E" stroke-width="0.2">
-            <textPath xlink:href="#circle">
-              Welcome to DAKA ! Welcome to DAKA ! Welcome to DAKA ! Welcome to DAKA ! Welcome DAKA 
-            </textPath>
-          </text>
-        </g>
-      </svg> -->
     </div>
     <div class="logo">
       <router-link to="/index">
