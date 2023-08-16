@@ -76,7 +76,7 @@ export default {
         }
     },
     mounted() {
-        GET(`${this.$URL}/getAllComic.php`)
+        this.axios.get(`${this.$URL}/getAllComic.php`)
             .then((res) => {
                 console.log(res);
                 this.comicData = res;
