@@ -51,9 +51,8 @@
       </section>
 
       <!-- 座位先開啟 -->
-      <section class="reservation_info">
+      <section class="reservation_info" v-show="login">
         <section class="reservation_choose">
-          <!-- <section class="reservation_date" v-show="login"> -->
           <section class="reservation_date">
             <h2 class="reservation_text">
               <span>2</span> 選擇日期、時間及座位
@@ -86,7 +85,6 @@
                     <div class="eSports_seat_title">
                       <p>電競區</p>
                     </div>
-                    <!-- a[0].seat_status.split('').slice(0,3).includes('0') -->
                     <!-- `state-${item.state}`判定座位狀態 -->
                     <button v-for=" item in seats_a" :key="item.no" :class="{
                       seat_btn: true,
@@ -175,9 +173,8 @@
           </section>
         </section>
         <!-- 確認先開啟 -->
-        <section class="reservation_confirm">
+        <section class="reservation_confirm" v-show="login">
           <h2 class="reservation_text">
-            <!-- <span>4</span> {{ seatData[0] }}確認預約細項 -->
             <span>3</span>確認預約細項
           </h2>
           <div class="reservation_confirm_data">

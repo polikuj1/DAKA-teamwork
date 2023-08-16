@@ -1,4 +1,3 @@
-//我是viewfire，是firebase的擴充套件，vue官方用的唷!
 
 //firebas的引入區塊
 import { initializeApp } from 'firebase/app'
@@ -19,11 +18,11 @@ export const firebaseApp = initializeApp({
 // used for the firestore refs
 const db = getFirestore(firebaseApp)
 // here we can export reusable database references
-export const todosRef = collection(db, 'todos')
+export const todosRef = collection(db, 'todos');
 
-  // // Initialize Firebase
-  // const firebaseApp = initializeApp(firebaseConfig);
-  // // const analytics = getAnalytics(firebaseApp);
-  // export const firebaseAuth = getAuth(firebaseApp);
-  // export default firebaseApp
+//   // Initialize Firebase
+//   // const firebaseApp = initializeApp(firebaseConfig);
+//   // const analytics = getAnalytics(firebaseApp);
+//   export const firebaseAuth = getAuth(firebaseApp);
+//   export default firebaseApp
 

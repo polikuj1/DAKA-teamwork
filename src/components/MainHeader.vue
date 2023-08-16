@@ -141,10 +141,10 @@ export default {
       //     console.log(err);
       //   })
 
-        // this.loginOut();
-        //     if (this.$route.matched.some(record => record.path.includes('/member_center'))) {
-        //       this.$router.push('/index');
-        //     }
+        this.loginOut();
+            if (this.$route.matched.some(record => record.path.includes('/member_center'))) {
+              this.$router.push('/index');
+            }
     }
   
   },
