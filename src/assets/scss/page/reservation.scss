@@ -220,6 +220,10 @@ img {
                   font-size: 12px;
                 }
               }
+              .disabled {
+                background-color: #e0e0e0; /* 這是一個灰色，您可以根据需要調整 */
+                cursor: not-allowed; 
+              }
               .eSports_seat {
                 background-color: #54c1ba;
               }
@@ -737,6 +741,10 @@ img {
                       font-size: 20px;
                     }
                   }
+                  .disabled {
+                        background-color: lightgreen;
+                        cursor: not-allowed;
+                    }
                   .seat_btn {
                     border-radius: 5px;
                     .content {

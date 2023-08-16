@@ -92,8 +92,8 @@
                       seat_btn: true,
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true,
-                    }" @click.prevent="seatSelected(item)">
+                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
+                    }" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled" >
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
@@ -114,7 +114,7 @@
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
                       [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)">
+                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
@@ -142,7 +142,7 @@
                   <div class="reservation_single_seat">
                     <button
                       :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)">
+                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }}{{ item.seat_number }}
@@ -156,7 +156,7 @@
                   <div class="reservation_double_seat">
                     <button
                       :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)">
+                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }}{{ item.seat_number }}
@@ -252,6 +252,7 @@ export default {
 
   data() {
     return {
+      isButtonDisabled: true,
       isReserveSeatVisible: false,
       isReserveUserVisible: false,
       isSeatInputsDisabled: false,
@@ -313,6 +314,8 @@ export default {
       this.reservation.startDate = date.toString().substr(4, 11);
       console.log(this.reservation.startDate);
       this.formatDateString();
+
+      this.checkButtonState();
     },
     //轉換時間
     timeConvert(time) {
@@ -329,6 +332,12 @@ export default {
       this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
       this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
 
+      this.checkButtonState();
+    },
+    checkButtonState() {
+        if (this.reservation.startDate && this.reservation.startTime && this.reservation.endTime) {
+            this.isButtonDisabled = false;
+        }
     },
     getMonthNumber(monthName) {
       const months = {
@@ -348,7 +357,8 @@ export default {
       console.log(this.formattedDate);
     },
     seatSelected(item) {
-
+      
+    
       if (
         !item.seat_status
           ?.split("")
@@ -424,13 +434,8 @@ export default {
       }
     },
     confirmReserve() {
-      // const now = new Date();
-      // this.currentTime = now.toLocaleString();
-      // this.currentTime=this.currentTime.substring(10);
 
-
-      // this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
-      // console.log(this.formattedDate);
+      //新增預約訂單
       const startDateTime = `${this.formattedDate} ${this.reservation.startTime}:00`;
       const endDateTime = `${this.formattedDate} ${this.reservation.endTime}:00`;
 
@@ -459,6 +464,7 @@ export default {
             setTimeout(() => {
               this.modalSwitch = false;
             }, 3000);
+            this.$router.push('/member_center/member_seat_reservation');
           } else {
             alert('預約失敗');
           }
@@ -473,16 +479,29 @@ export default {
 
       // const remain=this.member.remain-this.totalSal;
       this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
-          mem_id: this.$store.state.member.mem_id,
-          remain: (this.member.remain-this.totalSal).toString()
-        }))
-          .then(res => {
-            console.log(res);
-            this.$store.commit('setMemberRemain', (this.member.remain-this.totalSal).toString());
-          })
-          .catch(err => {
-            console.log(err);
-          })
+        mem_id: this.$store.state.member.mem_id,
+        remain: (this.member.remain - this.totalSal).toString()
+      }))
+        .then(res => {
+          console.log(res);
+          this.$store.commit('setMemberRemain', (this.member.remain - this.totalSal).toString());
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+      //新增座位訂單明細
+      const selectedSeatIds = this.selectedSeats.map(seat => seat.seat_id);
+
+      this.axios.post(`${this.$URL}/seatOrderDetail.php`, JSON.stringify(selectedSeatIds))
+        .then(res => {
+          console.log(res);
+          console.log(this.selectedSeats);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
     },
 
     fetchSeatData() {
