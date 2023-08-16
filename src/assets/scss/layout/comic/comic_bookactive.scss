@@ -16,7 +16,7 @@
     padding: 0 30px 50px 30px;
     background-color: $main_txt_color;
     border-radius: 10PX;
-    background-image: url(/src/assets/images/comic/wood.jpg);
+    background-image: url(/public/comic/wood.jpg);
     .bk-list {
         list-style: none;
         position: relative;
@@ -239,6 +239,7 @@
 		text-orientation: sideways;
 		transform: rotate(-180deg);
         padding-left: 20px;
+		padding-bottom: 10px;
 	}
 }
 
@@ -487,7 +488,7 @@ body {
 	height: 63px;
 	z-index: 0;
 	margin-top: -110px;
-	background: transparent url(../../../images/comic/shelf.png) no-repeat center center;
+	background: transparent url(/public/comic/shelf.png) no-repeat center center;
 	position: relative;
 }
 

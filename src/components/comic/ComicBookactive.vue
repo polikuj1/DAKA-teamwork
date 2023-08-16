@@ -36,10 +36,6 @@
                       {{ i }}<br>
                     </template>
                   </span>
-                  
-                  <!-- <span class="text">鬼<br />滅<br />之<br />刃</span> -->
-                  <!-- <span  class="text">{{ item.title }}</span> -->
-                  <span>{{ item.title }}</span>
                   <span class="text">{{ item.comics_index }}</span>
                   <span>{{ item.author }}</span>
                 </h2>
