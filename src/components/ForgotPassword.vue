@@ -14,7 +14,46 @@
     </div>
   </section>
 
+  
 
+  <section v-show="forgotPsw && step === 1">
+    <div class="container">
+      <div class="enter_valid">
+        <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin(true)">
+        <h2>輸入驗證碼</h2>
+        <p>已發送驗證碼至sm********@gmail.com</p>
+        <div class="enter_valid_input">
+          <input type="text" required="required" v-model="number1" max-length="1">
+          <input type="text" required="required" v-model="number2" max-length="1">
+          <input type="text" required="required" v-model="number3" max-length="1">
+          <input type="text" required="required" v-model="number4" max-length="1">
+        </div>
+        <div class="enter_valid_re">
+          <p>10 分鐘內若未收到驗證碼</p>
+          <p>請<a href="">按此</a>重新發送</p>
+        </div>
+        <input @click="validCheck" type="submit" value="送出" class="enter_valid_submit">
+      </div>
+    </div>
+  </section>
+
+  <section v-show="forgotPsw && step === 2">
+    <div class="container">
+      <div class="enter_modify">
+        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_modal" @click="closeLogin(true)">
+        <h2>修改密碼</h2>
+        <p>請輸入 6 -12 位包含英文及數字的密碼</p>
+        <div class="enter_modify_input">
+          <label for="modifyPsw">新密碼</label>
+          <input type="password" required="required" v-model="modify.psw" maxlength="12" minlength="6" id="modifyPsw">
+          <label for="modifyNewPsw">再次輸入新密碼</label>
+          <input type="password" required="required" v-model="modify.newPsw" maxlength="12" minlength="6"
+            id="modifyNewPsw">
+        </div>
+        <input @click="modifyCheck" type="submit" value="送出" class="enter_modify_submit">
+      </div>
+    </div>
+  </section>
 
   <section v-show="forgotPsw && step === 3">
     <div class="container">

@@ -37,50 +37,7 @@
       return {
         title: '優惠券',
         date: null,
-        coupons: [
-        {
-          id: 1,
-          image: require("@/assets/images/member/fried_chicken_coupon.png"),
-          title: "鮮嫩多汁炸雞腿一隻",
-          expirationDate: "2024/12/31",
-          couponCode: "ABC123",
-          exchange:false,
-        },
-        {
-          id: 2,
-          image: require("@/assets/images/member/takoyaki_coupon.png"),
-          title: "外酥內嫩章魚燒三球",
-          expirationDate: "2024/03/15",
-          couponCode: "DEF456",
-          exchange:true,
-          
-        },
-        {
-          id: 3,
-          image: require("@/assets/images/member/coupon.png"),
-          title: "不多不少座位一小時",
-          expirationDate: "2024/05/15",
-          couponCode: "ABC333",
-          exchange: true,
-        },
-        {
-          id: 4,
-          image: require("@/assets/images/member/coupon.png"),
-          title: "不多不少座位一小時",
-          expirationDate: "2024/06/15",
-          couponCode: "ABC666",
-          exchange:false,
-          
-        },
-        {
-          id: 5,
-          image: require("@/assets/images/member/coupon.png"),
-          title: "不多不少座位一小時",
-          expirationDate: "2024/09/15",
-          couponCode: "DEF777",
-          exchange:false,
-        },
-        ],
+        coupons: [],
       }
     },
     computed: {
