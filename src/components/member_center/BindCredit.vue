@@ -70,7 +70,7 @@ export default {
       this.axios.get(`${this.$URL}/getCredit.php`, { params: params} )
         .then(res => {
           console.log(res);
-          this.credit_card = res.data.filter(item => item.outofdate ==='1');
+          this.credit_card = res.data.filter(item => item.outofdate === 1);
         })
         .catch(err => {
           console.log(err);

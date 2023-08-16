@@ -6,7 +6,7 @@
       <i class="fa-solid fa-circle-chevron-left"></i>
     </button>
    </div>
-   <slot name="mb_content">預設內容</slot>
+   <slot name="mb_content">無任何紀錄</slot>
    <slot name="mb_modal"></slot>
   </div>
 </template>

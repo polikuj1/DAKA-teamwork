@@ -44,7 +44,7 @@ export default {
                     this.$router.push(`/news_detail/${parseInt(this.news.news_id) + 1}`);
                 }
             } else {
-                if(this.news.news_id === '1') {
+                if(this.news.news_id == '1') {
                     this.$router.push(`/news_detail/${this.res.length}`);
                 } else {
                     this.$router.push(`/news_detail/${parseInt(this.news.news_id) - 1}`);
@@ -59,7 +59,7 @@ export default {
             this.axios.get(`${this.$URL}/getAllNews.php`)
                 .then(res => {
                     this.res = res.data;
-                    this.news = this.res.filter(item => item.news_id === this.$route.params.id)[0];
+                    this.news = this.res.filter(item => item.news_id == this.$route.params.id)[0];
                     console.log(this.res);
                     console.log(this.news);
                 })

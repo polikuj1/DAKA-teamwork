@@ -70,16 +70,16 @@ export default {
     myMember() {return this.$store.state.member},
     myGrade() {
       switch (this.myMember.grade) {
-        case '0':
+        case 0:
           return '普通';
         
-        case '1':
+        case 1:
         return '白銀';
-        case '2':
+        case 2:
         return '黃金';
-        case '3':
+        case 3:
         return '白金';
-        case '4':
+        case 4:
         return '鑽石';
     }
     },
@@ -129,7 +129,7 @@ export default {
     }
   },
   created() {
-    // this.id = this.$store.state.member.mem_id;
+    this.id = this.$store.state.member.mem_id;
     // this.getData();
     // this.member = this.$store.state.member;
     // switch (this.member.grade) {

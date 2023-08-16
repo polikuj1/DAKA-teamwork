@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { GET } from '@/plugin/axios';
 import CartIcon from '@/components/comic/CartIcon.vue';
 import ComicSwiper from '@/components/comic/ComicSwiper.vue'
 import PageTitle from '@/components/PageTitle.vue';
@@ -63,11 +62,12 @@ export default {
     },
     methods: {
         filter() {
-            this.comicData = this.comicData.filter(item => item.comics_id === this.id);
+            this.comicData = this.comicData.filter(item => item.comics_id == this.id);
+            console.log(this.comicData);
         },
         addToCart(item) {
             if(this.$store.state.cart.length >= 5) return;
-            if(this.$store.state.cart.findIndex((v)=> v.comics_id === item.comics_id) === -1) {
+            if(this.$store.state.cart.findIndex((v)=> v.comics_id == item.comics_id) == -1) {
             console.log(123);
             this.$store.commit('getBook',item);
             } else {
