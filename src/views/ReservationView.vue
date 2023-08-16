@@ -93,7 +93,7 @@
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
                       [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled" >
+                    }" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
@@ -114,7 +114,8 @@
                       eSports_seat: true,
                       selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
                       [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
+                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
@@ -142,7 +143,8 @@
                   <div class="reservation_single_seat">
                     <button
                       :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
+                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }}{{ item.seat_number }}
@@ -156,7 +158,8 @@
                   <div class="reservation_double_seat">
                     <button
                       :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
+                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }}{{ item.seat_number }}
@@ -274,29 +277,18 @@ export default {
         1: "大廳區",
         2: "包廂區"
       },
-      selectedArea: "",
-      selectedAreaWord: "",
       selectedSeats: [],
       seatData: [],
       selectedData: [],
       selectedAandB: [],
       selectedCandD: [],
       modalSwitch: false,
-      id: '',
-      area: '',
-      no: '',
-      sal: '',
       totalSal: 0,
       totalTime: 0,
-      seatLobby: [],
-      seatRoom: [],
       isSelected: false,
       maxAandB: 5,
       maxCandD: 2,
-      seatState: [],
       formattedDate: "",
-      singleSeatState: 0,
-      seatStatus: 0,
       formattedCurrentDateTime: '',
 
     };
@@ -335,9 +327,9 @@ export default {
       this.checkButtonState();
     },
     checkButtonState() {
-        if (this.reservation.startDate && this.reservation.startTime && this.reservation.endTime) {
-            this.isButtonDisabled = false;
-        }
+      if (this.reservation.startDate && this.reservation.startTime && this.reservation.endTime) {
+        this.isButtonDisabled = false;
+      }
     },
     getMonthNumber(monthName) {
       const months = {
@@ -357,8 +349,8 @@ export default {
       console.log(this.formattedDate);
     },
     seatSelected(item) {
-      
-    
+
+
       if (
         !item.seat_status
           ?.split("")
@@ -420,6 +412,8 @@ export default {
           (total, seat) => total + seat.seat_sal * this.totalTime,
           0
         );
+
+        console.log(this.selectedSeats);
       }
     },
     selectSeat(item) {
@@ -435,72 +429,80 @@ export default {
     },
     confirmReserve() {
 
-      //新增預約訂單
-      const startDateTime = `${this.formattedDate} ${this.reservation.startTime}:00`;
-      const endDateTime = `${this.formattedDate} ${this.reservation.endTime}:00`;
+      if (this.member.remain >= this.totalSal && this.selectedSeats.length > 0) {
+        //新增預約訂單
+        const startDateTime = `${this.formattedDate} ${this.reservation.startTime}:00`;
+        const endDateTime = `${this.formattedDate} ${this.reservation.endTime}:00`;
 
 
-      const reserveData = {
-        mem_id: this.member.mem_id,
-        seat_order_date: this.formattedCurrentDateTime,
-        seat_order_sum: this.totalSal,
-        seat_order_startdate: startDateTime,
-        seat_order_enddate: endDateTime,
-        seat_order_time: this.totalTime,
-        seat_order_state: 0,
-      };
+        const reserveData = {
+          mem_id: this.member.mem_id,
+          seat_order_date: this.formattedCurrentDateTime,
+          seat_order_sum: this.totalSal,
+          seat_order_startdate: startDateTime,
+          seat_order_enddate: endDateTime,
+          seat_order_time: this.totalTime,
+          seat_order_state: 0,
+        };
 
-      axios
-        .post(`${this.$URL}/seatReserve.php`, JSON.stringify(reserveData), {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(response => {
-          const responseData = response.data;
-          console.log(responseData);
-          if (responseData.message === '預約成功') { // Check the response message
-            this.modalSwitch = true;
-            setTimeout(() => {
-              this.modalSwitch = false;
-            }, 3000);
-            this.$router.push('/member_center/member_seat_reservation');
-          } else {
+        axios
+          .post(`${this.$URL}/seatReserve.php`, JSON.stringify(reserveData), {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(response => {
+            const responseData = response.data;
+            console.log(responseData);
+            if (responseData.message === '預約成功') { // Check the response message
+              this.modalSwitch = true;
+              setTimeout(() => {
+                this.modalSwitch = false;
+                this.$router.push('/member_center/member_seat_reservation');
+              }, 3000);
+              this.reset();
+            } else {
+              alert('預約失敗');
+            }
+          })
+          .catch(error => {
+            console.log(error);
             alert('預約失敗');
-          }
-        })
-        .catch(error => {
-          console.log(error);
-          alert('預約失敗');
-        });
+          });
 
 
 
 
-      // const remain=this.member.remain-this.totalSal;
-      this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
-        mem_id: this.$store.state.member.mem_id,
-        remain: (this.member.remain - this.totalSal).toString()
-      }))
-        .then(res => {
-          console.log(res);
-          this.$store.commit('setMemberRemain', (this.member.remain - this.totalSal).toString());
-        })
-        .catch(err => {
-          console.log(err);
-        })
+        // const remain=this.member.remain-this.totalSal;
+        this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
+          mem_id: this.$store.state.member.mem_id,
+          remain: (this.member.remain - this.totalSal).toString()
+        }))
+          .then(res => {
+            console.log(res);
+            this.$store.commit('setMemberRemain', (this.member.remain - this.totalSal).toString());
+          })
+          .catch(err => {
+            console.log(err);
+          })
 
-      //新增座位訂單明細
-      const selectedSeatIds = this.selectedSeats.map(seat => seat.seat_id);
+        //新增座位訂單明細
 
-      this.axios.post(`${this.$URL}/seatOrderDetail.php`, JSON.stringify(selectedSeatIds))
-        .then(res => {
-          console.log(res);
-          console.log(this.selectedSeats);
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        const requestData = {
+          selectedSeats: this.selectedSeats
+        };
+        this.axios.post(`${this.$URL}/seatOrderDetail.php`, JSON.stringify(requestData))
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+
+      } else {
+        return;
+      }
+
 
     },
 
@@ -566,7 +568,23 @@ export default {
 
       this.formattedCurrentDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
+    reset() {
+      this.reservation.startDate = "";
+      this.reservation.startTime = "";
+      this.reservation.endTime = "";
+      this.reservation.startTimeNum = "";
+      this.reservation.endTimeNum = "";
+      this.selectedSeats = [];
+      this.seatData = [];
+      this.selectedData = [];
+      this.totalSal = 0;
+      this.totalTime = 0;
+      this.isSelected = false;
+      this.formattedDate = "";
+      this.singleSeatState = 0;
+      this.formattedCurrentDateTime = '';
 
+    }
 
   },
   computed: {
