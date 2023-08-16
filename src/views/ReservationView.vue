@@ -18,30 +18,43 @@
         <div class="reservation_read_rules">
           <ul>
             <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
+              <img
+                :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img"
+              />
               為利於其餘客戶權益，每次預約僅保留30分鐘，逾時未到視同放棄，
               如需取消預約，請於1日前取消。
             </li>
             <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+              <img
+                :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img"
+              />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
             </li>
             <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
+              <img
+                :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img"
+              />目前線上付款僅提供扣除儲值金。
             </li>
             <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+              <img
+                :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img"
+              />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
             </li>
             <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+              <img
+                :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img"
+              />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
               恕不另行通知。
             </li>
             <li>
-              <img :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img" /><span>座位區預約上限5位，包廂區預約上限2間。</span>
+              <img
+                :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img"
+              /><span>座位區預約上限5位，包廂區預約上限2間。</span>
             </li>
           </ul>
         </div>
@@ -58,15 +71,23 @@
             <h2 class="reservation_text">
               <span>2</span> 選擇日期、時間及座位
             </h2>
-            <DateComponent @convert-date="dateConvert" @convert-time="timeConvert"></DateComponent>
+            <DateComponent
+              @convert-date="dateConvert"
+              @convert-time="timeConvert"
+            ></DateComponent>
           </section>
           <section class="reservation_seat">
             <!-- <h2 class="reservation_text"><span>3</span> 選擇座位</h2> -->
             <div class="reservation_all_seat">
               <main class="tabs">
                 <div class="tabs_list">
-                  <div class="seat_tabs_item" v-for="(item, key) in tabItems" :class="{ active: key == tabActive }"
-                    @click="updateTab(key)" :key="item.key">
+                  <div
+                    class="seat_tabs_item"
+                    v-for="(item, key) in tabItems"
+                    :class="{ active: key == tabActive }"
+                    @click="updateTab(key)"
+                    :key="item.key"
+                  >
                     {{ item }}
                     <!-- split再slice去判斷，寫在div裡面 -->
                   </div>
@@ -88,18 +109,40 @@
                     </div>
                     <!-- a[0].seat_status.split('').slice(0,3).includes('0') -->
                     <!-- `state-${item.state}`判定座位狀態 -->
-                    <button v-for=" item in seats_a" :key="item.no" :class="{
-                      seat_btn: true,
-                      eSports_seat: true,
-                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
+                    <button
+                      v-for="item in seats_a"
+                      :key="item.no"
+                      :class="{
+                        seat_btn: true,
+                        eSports_seat: true,
+                        selected: selectedSeats.some(
+                          (seat) => seat.seat_id === item.seat_id
+                        ),
+                        [`state-${
+                          item.seat_status
+                            ?.split('')
+                            .slice(
+                              +reservation.startTimeNum,
+                              +reservation.endTimeNum
+                            )
+                            .includes('1')
+                            ? 1
+                            : 0
+                        }`]: true
+                      }"
+                      @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled"
+                    >
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
                           {{ item.seat_id }}
                         </h4>
-                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
+                        <img
+                          class="chair"
+                          src="../assets/images/reservation/chair.svg"
+                          alt=""
+                        />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -109,19 +152,40 @@
                       <p>一般區</p>
                     </div>
                     <!--狀態管理 :class="`state-${item.state}`" -->
-                    <button :class="{
-                      seat_btn: true,
-                      eSports_seat: true,
-                      selected: selectedSeats.some(seat => seat.seat_id === item.seat_id),
-                      [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true
-                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled">
+                    <button
+                      :class="{
+                        seat_btn: true,
+                        eSports_seat: true,
+                        selected: selectedSeats.some(
+                          (seat) => seat.seat_id === item.seat_id
+                        ),
+                        [`state-${
+                          item.seat_status
+                            ?.split('')
+                            .slice(
+                              +reservation.startTimeNum,
+                              +reservation.endTimeNum
+                            )
+                            .includes('1')
+                            ? 1
+                            : 0
+                        }`]: true
+                      }"
+                      v-for="item in seats_b"
+                      :key="item.no"
+                      @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled"
+                    >
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
                           {{ item.seat_number }}
                         </h4>
-                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
+                        <img
+                          class="chair"
+                          src="../assets/images/reservation/chair.svg"
+                          alt=""
+                        />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -142,14 +206,38 @@
                   <!--狀態管理 :class="`state-${item.state}`" -->
                   <div class="reservation_single_seat">
                     <button
-                      :class="{ seat_btn: true, single_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled">
+                      :class="{
+                        seat_btn: true,
+                        single_seat: true,
+                        selected: selectedSeats.some(
+                          (seat) => seat.seat_id === item.seat_id
+                        ),
+                        [`state-${
+                          item.seat_status
+                            ?.split('')
+                            .slice(
+                              +reservation.startTimeNum,
+                              +reservation.endTimeNum
+                            )
+                            .includes('1')
+                            ? 1
+                            : 0
+                        }`]: true
+                      }"
+                      v-for="item in seats_c"
+                      :key="item.no"
+                      @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled"
+                    >
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }}{{ item.seat_number }}
                         </h4>
-                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
+                        <img
+                          class="chair"
+                          src="../assets/images/reservation/chair.svg"
+                          alt=""
+                        />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -157,14 +245,36 @@
                   <!-- 狀態管理:class="`state-${item.state}`" -->
                   <div class="reservation_double_seat">
                     <button
-                      :class="{ seat_btn: true, double_seat: true, selected: selectedSeats.some(seat => seat.seat_id === item.seat_id), [`state-${item.seat_status?.split('').slice((+reservation.startTimeNum), (+reservation.endTimeNum)).includes('1') ? 1 : 0}`]: true }"
-                      v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled">
+                      :class="{
+                        seat_btn: true,
+                        double_seat: true,
+                        selected: selectedSeats.some(
+                          (seat) => seat.seat_id === item.seat_id
+                        ),
+                        [`state-${
+                          item.seat_status
+                            ?.split('')
+                            .slice(
+                              +reservation.startTimeNum,
+                              +reservation.endTimeNum
+                            )
+                            .includes('1')
+                            ? 1
+                            : 0
+                        }`]: true
+                      }"
+                      v-for="item in seats_d"
+                      :key="item.no"
+                      @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled"
+                    >
                       <div class="content">
-                        <h4>
-                          {{ item.seat_area }}{{ item.seat_number }}
-                        </h4>
-                        <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
+                        <h4>{{ item.seat_area }}{{ item.seat_number }}</h4>
+                        <img
+                          class="chair"
+                          src="../assets/images/reservation/double_chair.svg"
+                          alt=""
+                        />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -184,37 +294,62 @@
             <div class="confirm_data_time">
               <div class="data_time_start">
                 <p>預約開始時間</p>
-                <input type="text" readonly :value="`${reservation.startDate}  ${reservation.startTime}`" />
+                <input
+                  type="text"
+                  readonly
+                  :value="`${reservation.startDate}  ${reservation.startTime}`"
+                />
               </div>
               <div class="data_time_end">
                 <p>預約結束時間</p>
-                <input type="text" readonly :value="`${reservation.startDate}  ${reservation.endTime}`" />
+                <input
+                  type="text"
+                  readonly
+                  :value="`${reservation.startDate}  ${reservation.endTime}`"
+                />
               </div>
             </div>
             <div class="confirm_data_seat">
               <p>選定座位</p>
               <div class="data_seat">
-                <div class="data_seat_info" v-for=" item in selectedSeats " :key="item.seat_no">
-                  {{ item.seat_area === "A"
-                    ? "大廳電競"
-                    : item.seat_area === "B"
+                <div
+                  class="data_seat_info"
+                  v-for="item in selectedSeats"
+                  :key="item.seat_no"
+                >
+                  {{
+                    item.seat_area === "A"
+                      ? "大廳電競"
+                      : item.seat_area === "B"
                       ? "大廳一般"
                       : item.seat_area === "C"
-                        ? "包廂單人"
-                        : "包廂雙人" }} {{ item.seat_area }}-{{ item.seat_number }}
+                      ? "包廂單人"
+                      : "包廂雙人"
+                  }}
+                  {{ item.seat_area }}-{{ item.seat_number }}
                 </div>
               </div>
             </div>
             <div class="data_time_sum">
               <p>金額總計</p>
-              <input type="text" readonly :value="`${totalSal === 0 ? 0 : totalSal}元`" />
+              <input
+                type="text"
+                readonly
+                :value="`${totalSal === 0 ? 0 : totalSal}元`"
+              />
             </div>
             <div class="data_time_stored">
               <p>目前儲值金</p>
-              <input type="text" readonly :value="`${member.remain == undefined ? 0 : member.remain}元`" />
+              <input
+                type="text"
+                readonly
+                :value="`${member.remain == undefined ? 0 : member.remain}元`"
+              />
               <div class="stored_error" v-show="member.remain < totalSal">
                 儲值金不足，請先至
-                <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
+                <a @click="this.$router.push('/member_center/member_nav')"
+                  >會員中心</a
+                >
                 儲值。
               </div>
             </div>
@@ -250,7 +385,7 @@ import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 export default {
   components: {
     PageTitle,
-    DateComponent,
+    DateComponent
   },
 
   data() {
@@ -266,7 +401,7 @@ export default {
         startTime: "",
         endTime: "",
         startTimeNum: "",
-        endTimeNum: "",
+        endTimeNum: ""
       },
       seats_a: [],
       seats_b: [],
@@ -289,13 +424,12 @@ export default {
       maxAandB: 5,
       maxCandD: 2,
       formattedDate: "",
-      formattedCurrentDateTime: '',
-
+      formattedCurrentDateTime: ""
     };
   },
 
   methods: {
-    ...mapMutations(["toggleLogin", "toggleForgotPsw", 'toggleRegister']),
+    ...mapMutations(["toggleLogin", "toggleForgotPsw", "toggleRegister"]),
 
     // 切換tab
     updateTab(index) {
@@ -317,40 +451,64 @@ export default {
       this.reservation.endTimeNum = time.toString().substr(9, 2);
 
       //選出相同日期的座位陣列
-      const allSeatState = this.selectedData.filter((i) => i.seat_state_date === this.formattedDate);
+      const allSeatState = this.selectedData.filter(
+        (i) => i.seat_state_date === this.formattedDate
+      );
       this.seatData = allSeatState;
-      this.seats_a = this.seatData.filter(item => item.seat_id <= 30);
-      this.seats_b = this.seatData.filter(item => 31 <= item.seat_id && item.seat_id <= 55);
-      this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
-      this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
+      this.seats_a = this.seatData.filter((item) => item.seat_id <= 30);
+      this.seats_b = this.seatData.filter(
+        (item) => 31 <= item.seat_id && item.seat_id <= 55
+      );
+      this.seats_c = this.seatData.filter(
+        (item) => 56 <= item.seat_id && item.seat_id <= 65
+      );
+      this.seats_d = this.seatData.filter(
+        (item) => 66 <= item.seat_id && item.seat_id <= 71
+      );
 
       this.checkButtonState();
     },
     checkButtonState() {
-      if (this.reservation.startDate && this.reservation.startTime && this.reservation.endTime) {
+      if (
+        this.reservation.startDate &&
+        this.reservation.startTime &&
+        this.reservation.endTime
+      ) {
         this.isButtonDisabled = false;
       }
     },
     getMonthNumber(monthName) {
       const months = {
-        Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6,
-        Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12
+        Jan: 1,
+        Feb: 2,
+        Mar: 3,
+        Apr: 4,
+        May: 5,
+        Jun: 6,
+        Jul: 7,
+        Aug: 8,
+        Sep: 9,
+        Oct: 10,
+        Nov: 11,
+        Dec: 12
       };
       return months[monthName];
     },
     formatDateString() {
-      const dateParts = this.reservation.startDate.split(' ');
+      const dateParts = this.reservation.startDate.split(" ");
       const month = this.getMonthNumber(dateParts[0]);
       const day = parseInt(dateParts[1], 10);
       const year = parseInt(dateParts[2], 10);
       const dateObject = new Date(year, month - 1, day);
 
-      this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
+      this.formattedDate = `${dateObject.getFullYear()}-${(
+        dateObject.getMonth() + 1
+      )
+        .toString()
+        .padStart(2, "0")}-${dateObject.getDate().toString().padStart(2, "0")}`;
       console.log(this.formattedDate);
     },
     seatSelected(item) {
-
-
       if (
         !item.seat_status
           ?.split("")
@@ -422,18 +580,25 @@ export default {
 
     deselectSeat(array, item) {
       //原本選到的座位刪除
-      const index = array.findIndex(seat => seat.seat_id === item.seat_id);
+      const index = array.findIndex((seat) => seat.seat_id === item.seat_id);
       if (index !== -1) {
         array.splice(index, 1);
       }
     },
-    confirmReserve() {
+    member() {
+      return this.$store.state.member;
+    },
 
-      if (this.member.remain >= this.totalSal && this.selectedSeats.length > 0) {
+    confirmReserve() {
+      console.log("formattedDate", this.formattedDate);
+      console.log("reservation.startTime", this.reservation.startTime);
+      if (
+        this.member.remain >= this.totalSal &&
+        this.selectedSeats.length > 0
+      ) {
         //新增預約訂單
         const startDateTime = `${this.formattedDate} ${this.reservation.startTime}:00`;
         const endDateTime = `${this.formattedDate} ${this.reservation.endTime}:00`;
-
 
         const reserveData = {
           mem_id: this.member.mem_id,
@@ -442,73 +607,70 @@ export default {
           seat_order_startdate: startDateTime,
           seat_order_enddate: endDateTime,
           seat_order_time: this.totalTime,
-          seat_order_state: 0,
+          seat_order_state: 0
         };
-
-        axios
-          .post(`${this.$URL}/seatReserve.php`, JSON.stringify(reserveData), {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          .then(response => {
-            const responseData = response.data;
-            console.log(responseData);
-            if (responseData.message === '預約成功') { // Check the response message
-              this.modalSwitch = true;
-              setTimeout(() => {
-                this.modalSwitch = false;
-                this.$router.push('/member_center/member_seat_reservation');
-              }, 3000);
-              this.reset();
-            } else {
-              alert('預約失敗');
-            }
-          })
-          .catch(error => {
-            console.log(error);
-            alert('預約失敗');
+        console.log("reserveData", reserveData);
+        // 新增一筆座位訂單
+        this.axios
+          .post(`${this.$URL}/seatReserve.php`, JSON.stringify(reserveData))
+          .then((res) => {
+            console.log(res);
+            // 取得最新一筆座位訂單的id
+            this.axios
+              .get(`${this.$URL}/getSeatId.php`)
+              .then((res) => {
+                console.log(res);
+                // 新增一筆座位訂單詳細明細
+                for (let i = 0; i < this.selectedSeats.length; i++) {
+                  const detail = {
+                    seat_order_id: res.data[0].seat_order_id,
+                    seat_id: this.selectedSeats[i].seat_id
+                  };
+                  this.axios
+                    .post(
+                      `${this.$URL}/seatOrderDetail.php`,
+                      JSON.stringify(detail)
+                    )
+                    .then((res) => {
+                      console.log(res);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           });
+        // 更新會員儲值餘額
 
-
-
-
-        // const remain=this.member.remain-this.totalSal;
-        this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
-          mem_id: this.$store.state.member.mem_id,
-          remain: (this.member.remain - this.totalSal).toString()
-        }))
-          .then(res => {
+        const memberRemain =
+          parseInt(this.member.remain) - parseInt(this.totalSal);
+        this.axios
+          .post(
+            `${this.$URL}/updateMemberRemain.php`,
+            JSON.stringify({
+              mem_id: this.member.mem_id,
+              remain: memberRemain.toString()
+            })
+          )
+          .then((res) => {
             console.log(res);
-            this.$store.commit('setMemberRemain', (this.member.remain - this.totalSal).toString());
+            this.$store.commit("setMemberRemain", memberRemain);
           })
-          .catch(err => {
-            console.log(err);
-          })
-
-        //新增座位訂單明細
-
-        const requestData = {
-          selectedSeats: this.selectedSeats
-        };
-        this.axios.post(`${this.$URL}/seatOrderDetail.php`, JSON.stringify(requestData))
-          .then(res => {
-            console.log(res);
-          })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
           });
 
       } else {
         return;
       }
-
-
     },
 
     fetchSeatData() {
-
-      axios.get(`${this.$URL}/getSeat.php`)
+      axios
+        .get(`${this.$URL}/getSeat.php`)
         .then((res) => {
           // this.seatData = res.data;
           this.selectedData = res.data;
@@ -516,19 +678,26 @@ export default {
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
 
-      axios.get(`${this.$URL}/getAllSeat.php`)
+      axios
+        .get(`${this.$URL}/getAllSeat.php`)
         .then((res) => {
           this.seatData = res.data;
-          this.seats_a = this.seatData.filter(item => item.seat_id <= 30);
-          this.seats_b = this.seatData.filter(item => 31 <= item.seat_id && item.seat_id <= 55);
-          this.seats_c = this.seatData.filter(item => 56 <= item.seat_id && item.seat_id <= 65);
-          this.seats_d = this.seatData.filter(item => 66 <= item.seat_id && item.seat_id <= 71);
+          this.seats_a = this.seatData.filter((item) => item.seat_id <= 30);
+          this.seats_b = this.seatData.filter(
+            (item) => 31 <= item.seat_id && item.seat_id <= 55
+          );
+          this.seats_c = this.seatData.filter(
+            (item) => 56 <= item.seat_id && item.seat_id <= 65
+          );
+          this.seats_d = this.seatData.filter(
+            (item) => 66 <= item.seat_id && item.seat_id <= 71
+          );
         })
         .catch((err) => {
           console.log(err);
-        })
+        });
 
       // axios
       //   .get("data/seat.json")
@@ -542,7 +711,6 @@ export default {
       //   .catch((err) => {
       //     console.log(err);
       //   });
-
     },
 
     //檢查登入狀態，沒登入就跳登入彈窗
@@ -554,17 +722,17 @@ export default {
       }
     },
     goReservation() {
-      this.$router.push('/member_center/member_seat_reservation');
+      this.$router.push("/member_center/member_seat_reservation");
       this.modalSwitch = false;
     },
     updateFormattedCurrentDateTime() {
       const now = new Date();
       const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, '0');
-      const day = String(now.getDate()).padStart(2, '0');
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const seconds = String(now.getSeconds()).padStart(2, "0");
 
       this.formattedCurrentDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     },
@@ -582,22 +750,24 @@ export default {
       this.isSelected = false;
       this.formattedDate = "";
       this.singleSeatState = 0;
-      this.formattedCurrentDateTime = '';
-
+      this.formattedCurrentDateTime = "";
     }
-
   },
   computed: {
-    ...mapState(["isLoginOpen", "forgotPsw", 'login', 'member', 'keepLoginStatus', 'userTokenKey']),
-
-
+    ...mapState([
+      "isLoginOpen",
+      "forgotPsw",
+      "login",
+      "member",
+      "keepLoginStatus",
+      "userTokenKey"
+    ])
   },
   watch: {},
   created() {
     this.fetchSeatData();
     // this.fetchSeatStateData();
     this.formatDateString();
-
   },
   mounted() {
     this.updateFormattedCurrentDateTime(); // 在 mounted 階段更新一次格式化後的現在時間
@@ -638,7 +808,7 @@ export default {
   }
 }
 
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
   .reservation_modal {
     .modal {
       width: 60%;
