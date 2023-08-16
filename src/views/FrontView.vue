@@ -9,6 +9,12 @@
     </div>
   </div>
   <SideButton v-show="btn_show"/>
+  <div class="loading" v-show="loading">
+    <p>網頁載入中，請稍後...</p>
+    <div class="pic">
+      <img src="@/assets/images/loading_page.svg" alt="載入中">
+    </div>
+  </div>
 </template>
 
 
@@ -27,6 +33,7 @@ export default {
   },
   data() {
     return {
+      loading: true,
       path: '',
       show: false,
       windowWidth: 0,
@@ -94,11 +101,55 @@ export default {
       this.show_btn()
       this.reviseStatus();
     })
+    setTimeout(() => {
+      this.loading = false;
+    },5000)
   }
 }
 </script>
 
 
 <style lang="scss" scoped>
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  background-color: #123749;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  p {
+    font-size: 50px;
+    margin-bottom: 50px;
+    animation: bling 1s linear infinite;
+  }
+  .pic {
+    // transform: scale(0.7);
+    width: 200px;
+    height: 200px;
+    animation: rotate 2s linear infinite;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 
+}
+ @keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+ }
+ @keyframes bling {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 8;
+  }
+ }
 </style>
