@@ -22,7 +22,7 @@
         >
           <div
             class="cart_book_pic"
-            @click="this.$router.push(`/comic_detail/${item.id}`)"
+            @click="this.$router.push(`/comic_detail/${item.comics_id}`)"
           >
             <!-- <img :src="item.img" :alt="item.name" /> -->
             <Images :imgURL="`comic/${item.img}`" :alt="`${item.title}`" />
@@ -114,7 +114,7 @@
           親愛的
           {{ member.mname }} 會員，您好！<br />請於以下日期前完成取書，謝謝您！
         </p>
-        <span class="get_book">2023 - 07 - 16 </span>
+        <span class="get_book">{{ comics_borrow_duedate }}</span>
         <button
           @click="this.$router.push('/member_center/member_book_reservation')"
         >
@@ -168,6 +168,9 @@ export default {
   },
 
   computed: {
+    remainingEnough() {
+      return this.member.remain < this.comics_order_sum ? false : true;
+    },
     /*書籍數量*/
     shoppingCartProducts() {
       return [...this.comics_quantity];
@@ -210,8 +213,7 @@ export default {
     },
     submit() {
       if(this.member.remain < this.comics_order_sum) {
-        alert('儲值金不足');
-        this.$router.push('/member_center/member_add_value');
+        this.modalSwitch = true;
         return;
       }
       const form = {
@@ -246,6 +248,7 @@ export default {
                       console.log(err);
                     })
                 }
+                this.modalSwitch = true;
               })
               .catch(err => {
                 console.log(err);
