@@ -424,13 +424,8 @@ export default {
       }
     },
     confirmReserve() {
-      // const now = new Date();
-      // this.currentTime = now.toLocaleString();
-      // this.currentTime=this.currentTime.substring(10);
 
-
-      // this.formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')}`;
-      // console.log(this.formattedDate);
+      //新增預約訂單
       const startDateTime = `${this.formattedDate} ${this.reservation.startTime}:00`;
       const endDateTime = `${this.formattedDate} ${this.reservation.endTime}:00`;
 
@@ -459,6 +454,7 @@ export default {
             setTimeout(() => {
               this.modalSwitch = false;
             }, 3000);
+            this.$router.push('/member_center/member_seat_reservation');
           } else {
             alert('預約失敗');
           }
@@ -473,16 +469,29 @@ export default {
 
       // const remain=this.member.remain-this.totalSal;
       this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
-          mem_id: this.$store.state.member.mem_id,
-          remain: (this.member.remain-this.totalSal).toString()
-        }))
-          .then(res => {
-            console.log(res);
-            this.$store.commit('setMemberRemain', (this.member.remain-this.totalSal).toString());
-          })
-          .catch(err => {
-            console.log(err);
-          })
+        mem_id: this.$store.state.member.mem_id,
+        remain: (this.member.remain - this.totalSal).toString()
+      }))
+        .then(res => {
+          console.log(res);
+          this.$store.commit('setMemberRemain', (this.member.remain - this.totalSal).toString());
+        })
+        .catch(err => {
+          console.log(err);
+        })
+
+      //新增座位訂單明細
+      const selectedSeatIds = this.selectedSeats.map(seat => seat.seat_id);
+
+      this.axios.post(`${this.$URL}/seatOrderDetail.php`, JSON.stringify(selectedSeatIds))
+        .then(res => {
+          console.log(res);
+          console.log(this.selectedSeats);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
     },
 
     fetchSeatData() {
