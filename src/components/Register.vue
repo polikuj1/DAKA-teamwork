@@ -58,12 +58,13 @@
           </div>
           <div class="register_form_bottom">
             <div>
-              <input type="checkbox" name="membership" id="membership" required="required">
+              <input type="checkbox" name="membership" id="membership" required="required" :disabled="!(memberTerms && memberPrivacy)">
 
-              <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
-                  href="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
+              <label for="membership">我已詳閱並同意<a href="chd102/g6/member_terms" target="_blank" @click="checkMemberTerms" >會員條款</a>與<a
+                  href="chd102/g6/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
             </div>
-            <div c>
+            <div class="register_form_bottom_confirm" v-show="!(memberTerms && memberPrivacy)">請先閱覽會員條款及隱私權規定，方可點選</div>
+            <div >
               <input type="checkbox" name="news_daka" id="news_daka" required="required">
               <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
             </div>
