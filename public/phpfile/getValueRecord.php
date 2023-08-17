@@ -7,7 +7,7 @@ try {
 	
 	//執行sql指令並取得pdoStatement
   $id = $_GET["id"];
-	$sql = "select * from storedvalue where mem_id = $id";
+	$sql = "select * from storedvalue where mem_id = $id order by sto_id desc";
 	$products = $pdo->query($sql); 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($prodRows);

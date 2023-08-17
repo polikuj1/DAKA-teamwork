@@ -222,7 +222,7 @@ export default {
           this.creditData.forEach(item => {
             item.card_number = item.card_number.slice(-4);
           })
-          this.creditData = this.creditData.filter(item => item.outofdate === '1');
+          this.creditData = this.creditData.filter(item => item.outofdate === 1);
           console.log(this.creditData);
         })
         .catch(err => {

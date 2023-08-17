@@ -1,10 +1,10 @@
 <template>
-  <comicSearch @emit-txt="getSearch"></comicSearch>
+  <comicSearch @emit-txt="getSearch" :searchTxt="search"></comicSearch>
   <div class="comic_type">
     <!-- <span @click="searchType('全部')" :class="{active: type === currentType}">全部</span> -->
     <span v-for="type in comicType" :key="type" @click="searchType(type)" :class="{active: type === currentType}">{{ type }}</span>
   </div>
-  <div class="search_result" v-show="search">
+  <div class="search_result" v-show="search.length !== 0">
     &ldquo;{{ search }}&rdquo; 共有 {{ comicData.length }} 筆符合的漫畫
   </div>
   <div class="comic_card_wrap">
@@ -69,6 +69,7 @@ export default {
   },
   methods: {
     searchType(type) {
+      this.search = '';
       this.comicData = [];
       this.currentType = type;
       this.comicData = this.originData.filter(item => item.type === type);
@@ -81,6 +82,7 @@ export default {
     },
     getSearch(txt) {
       this.search = txt;
+      this.currentType = '全部';
       if (this.search === '') {
         this.renderComic(this.currentPage);
         this.currentPage = 1;

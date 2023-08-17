@@ -26,7 +26,8 @@ try {
           FROM comics_order co 
           JOIN comics_order_detail cod ON co.comics_order_id = cod.comics_order_id
           JOIN comics_collection cc ON cod.comics_id = cc.comics_id
-          WHERE co.mem_id = $id";
+          WHERE co.mem_id = $id
+          ORDER BY co.comics_borrow_date DESC, co.comics_order_id DESC";
                   
   $products = $pdo->query($sql); 
   $prodRows = $products->fetchAll(PDO::FETCH_ASSOC);

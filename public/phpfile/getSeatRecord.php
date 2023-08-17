@@ -33,7 +33,8 @@ GROUP BY
   m.mem_id,
   s.seat_sal
 ORDER BY
-  so.seat_order_state;
+  so.seat_order_state,
+  so.seat_order_id DESC;
 ";
 	$products = $pdo->query($sql); 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);

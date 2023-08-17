@@ -14,7 +14,7 @@
                     <div class="reservation_list">
                         <div class="reservation_usetime">
                             <p class="seat_usetime">開台時間</p> 
-                            <p>{{ reservation.seat_order_dates }}<br>{{ reservation.time }}</p>
+                            <p>{{ reservation.seat_order_startdates }}</p>
                         </div>
                         <div class="member_reservation_seat">
                             <p class="seat_number">座位編號</p> 
