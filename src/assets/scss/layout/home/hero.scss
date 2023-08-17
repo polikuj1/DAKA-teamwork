@@ -3,10 +3,9 @@
   padding: 0px 50px 50px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   position: relative;
   overflow: hidden;
-  height: 700px;
-
   aside {
     width: 25%;
     padding-top: 60px;
@@ -15,7 +14,7 @@
 
     .scroll {
       position: absolute;
-      bottom: 80px;
+      bottom: 120px;
       right: -30px;
       animation: slide-bottom 3s ease-in-out 1s infinite both;
 
@@ -125,8 +124,7 @@
 @include screen_one(1199) {
   .hero_section {
     padding: 200px 50px 100px;
-    height: fit-content;
-
+    height: 900px;
     aside {
       display: none;
     }
@@ -143,7 +141,6 @@
 @include screen_one(1023) {
   .hero_section {
     height: 800px;
-
     .circle {
       &:nth-child(1) {
         bottom: -250px;
@@ -166,7 +163,6 @@
 @include screen_one(767) {
   .hero_section {
     height: 700px;
-
     .circle {
       &:nth-child(1) {
         bottom: -230px;
@@ -189,7 +185,6 @@
 @include screen_one(415) {
   .hero_section {
     height: 475px;
-
     .circle {
       &:nth-child(1) {
         bottom: -150px;

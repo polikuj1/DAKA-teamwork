@@ -28,7 +28,7 @@
                     <img :src="[item.category === 'ACTIVITY' ? require('@/assets/images/index/arrow_orange.png') : require('@/assets/images/index/arrow_green.png')]" alt="箭頭" class="arrow_green">
                 </div>
             </a>
-            <a href="/">
+            <a href="chd102/g6/news">
                 <div class="btn_more">
                     more <img src="@/assets/images/index/arrow_orange.png" alt="arrow">
                 </div>

@@ -7,9 +7,10 @@ try {
 	require_once("connectDaka.php");
 
 	if (isset($postData["remain"])) {
-		$sql = "UPDATE member SET remain = :remain WHERE mem_id = :mem_id";
+		$sql = "UPDATE member SET remain = :remain, value = :value WHERE mem_id = :mem_id";
 		$member = $pdo->prepare($sql);
 		$member->bindValue(":remain", $postData["remain"]);
+		$member->bindValue(":value", $postData["value"]);
     $member->bindValue(":mem_id", $postData["mem_id"]);
 		$member->execute();
 		echo 'success';

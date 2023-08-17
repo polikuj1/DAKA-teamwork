@@ -28,9 +28,12 @@ export default {
       selectedTime: '',
       options1: {
         disabledDate(date) {
-          return date && date.valueOf() < Date.now() - 86400000;
+          const today = new Date();
+          today.setHours(0, 0, 0, 0); // Set time to midnight
+          return date.valueOf() <= today.valueOf();
         }
       },
+     
     }
   },
   computed() {

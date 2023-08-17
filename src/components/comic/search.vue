@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  props: ['searchTxt'],
   data() {
     return {
       search: '',
@@ -20,6 +21,9 @@ export default {
         this.$emit('emit-txt', this.search);
       }
     },
+    searchTxt() {
+      this.search = this.searchTxt;
+    }
   },
   methods: {
     emitTxt() {

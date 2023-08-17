@@ -15,7 +15,7 @@
         <ul>
           <li v-for="li in nav" :key="li.title" @click.prevent.stop="goPage(li.site)"><span :class="li.class"></span>{{
             li.title }}</li>
-          <li @click.prevent="goMemberCenter" v-show="login"><span class="fa-solid fa-user"></span>會員中心</li>
+          <li @click.prevent="goMemberCenter" v-show="login"><span class="fa-solid fa-user"></span>{{member.mname}}</li>
           <li @click.prevent="loginOpen" v-show="!login">登入 | 註冊</li>
           <li @click.prevent="loginClose" v-show="login">登出</li>
         </ul>
