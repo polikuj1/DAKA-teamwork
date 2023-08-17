@@ -18,43 +18,30 @@
         <div class="reservation_read_rules">
           <ul>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />
+              <img :src="require('@/assets/images/reservation/Vector.svg')" class="reservation_rules_img" />
               為利於其餘客戶權益，每次預約僅保留30分鐘，逾時未到視同放棄，
               如需取消預約，請於1日前取消。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />系統僅提供座位消費金額作為參考，實際消費金額將以當日使用情況為主，最終金額可能因餐點選擇、特殊要求或其他因素而有所變動。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />目前線上付款僅提供扣除儲值金。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />目前線上付款僅提供扣除儲值金。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />我司將不會以簡訊方式另行通知，如有疑慮，請撥打聯絡電話。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" />我司保有最終修改、變更、活動解釋及取消本活動之權利，若有相關異動將會公告於網站，
               恕不另行通知。
             </li>
             <li>
-              <img
-                :src="require('@/assets/images/reservation/Vector.svg')"
-                class="reservation_rules_img"
-              /><span>座位區預約上限5位，包廂區預約上限2間。</span>
+              <img :src="require('@/assets/images/reservation/Vector.svg')"
+                class="reservation_rules_img" /><span>座位區預約上限5位，包廂區預約上限2間。</span>
             </li>
           </ul>
         </div>
@@ -70,23 +57,15 @@
             <h2 class="reservation_text">
               <span>2</span> 選擇日期、時間及座位
             </h2>
-            <DateComponent
-              @convert-date="dateConvert"
-              @convert-time="timeConvert"
-            ></DateComponent>
+            <DateComponent @convert-date="dateConvert" @convert-time="timeConvert"></DateComponent>
           </section>
           <section class="reservation_seat">
             <!-- <h2 class="reservation_text"><span>3</span> 選擇座位</h2> -->
             <div class="reservation_all_seat">
               <main class="tabs">
                 <div class="tabs_list">
-                  <div
-                    class="seat_tabs_item"
-                    v-for="(item, key) in tabItems"
-                    :class="{ active: key == tabActive }"
-                    @click="updateTab(key)"
-                    :key="item.key"
-                  >
+                  <div class="seat_tabs_item" v-for="(item, key) in tabItems" :class="{ active: key == tabActive }"
+                    @click="updateTab(key)" :key="item.key">
                     {{ item }}
                     <!-- split再slice去判斷，寫在div裡面 -->
                   </div>
@@ -107,40 +86,29 @@
                       <p>電競區</p>
                     </div>
                     <!-- `state-${item.state}`判定座位狀態 -->
-                    <button
-                      v-for="item in seats_a"
-                      :key="item.no"
-                      :class="{
-                        seat_btn: true,
-                        eSports_seat: true,
-                        selected: selectedSeats.some(
-                          (seat) => seat.seat_id === item.seat_id
-                        ),
-                        [`state-${
-                          item.seat_status
-                            ?.split('')
-                            .slice(
-                              +reservation.startTimeNum,
-                              +reservation.endTimeNum
-                            )
-                            .includes('1')
-                            ? 1
-                            : 0
+                    <button v-for="item in seats_a" :key="item.no" :class="{
+                      seat_btn: true,
+                      eSports_seat: true,
+                      selected: selectedSeats.some(
+                        (seat) => seat.seat_id === item.seat_id
+                      ),
+                      [`state-${item.seat_status
+                          ?.split('')
+                          .slice(
+                            +reservation.startTimeNum,
+                            +reservation.endTimeNum
+                          )
+                          .includes('1')
+                          ? 1
+                          : 0
                         }`]: true
-                      }"
-                      @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled"
-                    >
+                    }" @click.prevent="seatSelected(item)" :disabled="isButtonDisabled">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }} <br />
                           {{ item.seat_id }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -150,40 +118,30 @@
                       <p>一般區</p>
                     </div>
                     <!--狀態管理 :class="`state-${item.state}`" -->
-                    <button
-                      :class="{
-                        seat_btn: true,
-                        eSports_seat: true,
-                        selected: selectedSeats.some(
-                          (seat) => seat.seat_id === item.seat_id
-                        ),
-                        [`state-${
-                          item.seat_status
-                            ?.split('')
-                            .slice(
-                              +reservation.startTimeNum,
-                              +reservation.endTimeNum
-                            )
-                            .includes('1')
-                            ? 1
-                            : 0
+                    <button :class="{
+                      seat_btn: true,
+                      eSports_seat: true,
+                      selected: selectedSeats.some(
+                        (seat) => seat.seat_id === item.seat_id
+                      ),
+                      [`state-${item.seat_status
+                          ?.split('')
+                          .slice(
+                            +reservation.startTimeNum,
+                            +reservation.endTimeNum
+                          )
+                          .includes('1')
+                          ? 1
+                          : 0
                         }`]: true
-                      }"
-                      v-for="item in seats_b"
-                      :key="item.no"
-                      @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled"
-                    >
+                    }" v-for="item in seats_b" :key="item.no" @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>
                           {{ item.seat_area }} <br />
                           {{ item.seat_number }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -203,76 +161,56 @@
                   </div>
                   <!--狀態管理 :class="`state-${item.state}`" -->
                   <div class="reservation_single_seat">
-                    <button
-                      :class="{
-                        seat_btn: true,
-                        single_seat: true,
-                        selected: selectedSeats.some(
-                          (seat) => seat.seat_id === item.seat_id
-                        ),
-                        [`state-${
-                          item.seat_status
-                            ?.split('')
-                            .slice(
-                              +reservation.startTimeNum,
-                              +reservation.endTimeNum
-                            )
-                            .includes('1')
-                            ? 1
-                            : 0
+                    <button :class="{
+                      seat_btn: true,
+                      single_seat: true,
+                      selected: selectedSeats.some(
+                        (seat) => seat.seat_id === item.seat_id
+                      ),
+                      [`state-${item.seat_status
+                          ?.split('')
+                          .slice(
+                            +reservation.startTimeNum,
+                            +reservation.endTimeNum
+                          )
+                          .includes('1')
+                          ? 1
+                          : 0
                         }`]: true
-                      }"
-                      v-for="item in seats_c"
-                      :key="item.no"
-                      @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled"
-                    >
+                    }" v-for="item in seats_c" :key="item.no" @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled">
                       <div class="content">
                         <h4 class="text">
                           {{ item.seat_area }}{{ item.seat_number }}
                         </h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
                   </div>
                   <!-- 狀態管理:class="`state-${item.state}`" -->
                   <div class="reservation_double_seat">
-                    <button
-                      :class="{
-                        seat_btn: true,
-                        double_seat: true,
-                        selected: selectedSeats.some(
-                          (seat) => seat.seat_id === item.seat_id
-                        ),
-                        [`state-${
-                          item.seat_status
-                            ?.split('')
-                            .slice(
-                              +reservation.startTimeNum,
-                              +reservation.endTimeNum
-                            )
-                            .includes('1')
-                            ? 1
-                            : 0
+                    <button :class="{
+                      seat_btn: true,
+                      double_seat: true,
+                      selected: selectedSeats.some(
+                        (seat) => seat.seat_id === item.seat_id
+                      ),
+                      [`state-${item.seat_status
+                          ?.split('')
+                          .slice(
+                            +reservation.startTimeNum,
+                            +reservation.endTimeNum
+                          )
+                          .includes('1')
+                          ? 1
+                          : 0
                         }`]: true
-                      }"
-                      v-for="item in seats_d"
-                      :key="item.no"
-                      @click.prevent="seatSelected(item)"
-                      :disabled="isButtonDisabled"
-                    >
+                    }" v-for="item in seats_d" :key="item.no" @click.prevent="seatSelected(item)"
+                      :disabled="isButtonDisabled">
                       <div class="content">
                         <h4>{{ item.seat_area }}{{ item.seat_number }}</h4>
-                        <img
-                          class="chair"
-                          src="../assets/images/reservation/double_chair.svg"
-                          alt=""
-                        />
+                        <img class="chair" src="../assets/images/reservation/double_chair.svg" alt="" />
                         <!-- NOTE RWD手機板時只有顯示椅子圖，780px以上時跳轉成座位編號 -->
                       </div>
                     </button>
@@ -291,37 +229,25 @@
             <div class="confirm_data_time">
               <div class="data_time_start">
                 <p>預約開始時間</p>
-                <input
-                  type="text"
-                  readonly
-                  :value="`${reservation.startDate}  ${reservation.startTime}`"
-                />
+                <input type="text" readonly :value="`${reservation.startDate}  ${reservation.startTime}`" />
               </div>
               <div class="data_time_end">
                 <p>預約結束時間</p>
-                <input
-                  type="text"
-                  readonly
-                  :value="`${reservation.startDate}  ${reservation.endTime}`"
-                />
+                <input type="text" readonly :value="`${reservation.startDate}  ${reservation.endTime}`" />
               </div>
             </div>
             <div class="confirm_data_seat">
               <p>選定座位</p>
               <div class="data_seat">
-                <div
-                  class="data_seat_info"
-                  v-for="item in selectedSeats"
-                  :key="item.seat_no"
-                >
+                <div class="data_seat_info" v-for="item in selectedSeats" :key="item.seat_no">
                   {{
                     item.seat_area === "A"
-                      ? "大廳電競"
-                      : item.seat_area === "B"
+                    ? "大廳電競"
+                    : item.seat_area === "B"
                       ? "大廳一般"
                       : item.seat_area === "C"
-                      ? "包廂單人"
-                      : "包廂雙人"
+                        ? "包廂單人"
+                        : "包廂雙人"
                   }}
                   {{ item.seat_area }}-{{ item.seat_number }}
                 </div>
@@ -329,24 +255,14 @@
             </div>
             <div class="data_time_sum">
               <p>金額總計</p>
-              <input
-                type="text"
-                readonly
-                :value="`${totalSal === 0 ? 0 : totalSal}元`"
-              />
+              <input type="text" readonly :value="`${totalSal === 0 ? 0 : totalSal}元`" />
             </div>
             <div class="data_time_stored">
               <p>目前儲值金</p>
-              <input
-                type="text"
-                readonly
-                :value="`${member.remain == undefined ? 0 : member.remain}元`"
-              />
+              <input type="text" readonly :value="`${member.remain == undefined ? 0 : member.remain}元`" />
               <div class="stored_error" v-show="member.remain < totalSal">
                 儲值金不足，請先至
-                <a @click="this.$router.push('/member_center/member_nav')"
-                  >會員中心</a
-                >
+                <a @click="this.$router.push('/member_center/member_nav')">會員中心</a>
                 儲值。
               </div>
             </div>
@@ -630,6 +546,7 @@ export default {
                     )
                     .then((res) => {
                       console.log(res);
+
                     })
                     .catch((err) => {
                       console.log(err);
@@ -654,11 +571,16 @@ export default {
           )
           .then((res) => {
             console.log(res);
+            
             this.$store.commit("setMemberRemain", memberRemain);
           })
           .catch((err) => {
             console.log(err);
           });
+          this.modalSwitch = true;
+            setTimeout(() => {
+              this.goReservation();
+            }, 3000);
 
       } else {
         return;
