@@ -36,8 +36,7 @@ export default createStore({
       state.googleInfo = payload;
     },
     toggleForgotPsw(state, payload) {
-      state.forgotPsw = !state.forgotPsw;
-      state.isLoginOpen = payload;
+      state.forgotPsw = payload;
     },
     toggleRegister(state, payload) {
       state.isRegister = payload;

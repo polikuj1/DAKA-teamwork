@@ -29,7 +29,7 @@
           <button @click.prevent="toRegister" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
         </form>
-        <button class="login_connect" @click="signInRedirect">
+        <button class="login_connect" >
           <i class="fa-brands fa-square-facebook"></i>
           以FACEBOOK帳號登入
         </button>
@@ -38,7 +38,7 @@
           <i class="fa-brands fa-google"></i>
           以GOOGLE帳號登入
         </button>
-        <button class="login_connect" @click="signInRedirect">
+        <button class="login_connect" >
           <i class="fa-brands fa-apple"></i>
           以APPLE帳號登入
         </button>
@@ -68,6 +68,10 @@ export default {
       error: null,
       memberData: [],
       matchedUser: null,
+      googleUser: {
+        name: '',
+        email: '',
+      },
     }
   },
   computed: {
@@ -82,50 +86,51 @@ export default {
       this.reset();
     },
     closeForgot() {
-      this.toggleForgotPsw();
+      this.toggleForgotPsw(true);
+      this.toggleLogin(false);
     },
-    toRegister(){
+    toRegister() {
       this.toggleRegister(true);
       this.toggleLogin(false);
     },
     checkLogin() {
-  const loginData = {
-    memId: this.memId,
-    memPsw: this.memPsw,
-  };
+      const loginData = {
+        memId: this.memId,
+        memPsw: this.memPsw,
+      };
 
-  axios.post(`${this.$URL}/login.php`, JSON.stringify(loginData), {
-    // headers: {
-    //   'Content-Type': 'application/json',
-    //   withCredentials:true
-    // }
-  })
-  .then(response => {
-    const responseData = response.data;
-    
-    //登入成功
-    if (responseData.mem_no) { 
-      this.setInfo(responseData);
-      this.loginOk(true);
-      this.toggleLoginModal(true);
-      setTimeout(() => {
-        this.toggleLoginModal(false);
-      }, 3000)
-      if (this.keepLoginStatus) {
-        this.setToStorage();
-      } else {
-        this.reset(); 
-      }
-    } else {
-      this.errorMsg = "帳號密碼錯誤"; // 登入失敗
-    }
+      axios.post(`${this.$URL}/login.php`, JSON.stringify(loginData), {
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   withCredentials:true
+        // }
+      })
+        .then(response => {
+          const responseData = response.data;
 
-    
-  })
-  .catch(error => {
-    console.log(error);
-  });
-},
+          //登入成功
+          if (responseData.mem_no) {
+            this.setInfo(responseData);
+            this.loginOk(true);
+            this.toggleLoginModal(true);
+            setTimeout(() => {
+              this.toggleLoginModal(false);
+            }, 3000)
+            if (this.keepLoginStatus) {
+              this.setToStorage();
+            } else {
+              this.reset();
+            }
+          } else {
+            this.errorMsg = "帳號密碼錯誤"; // 登入失敗
+          }
+
+
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
 
     reset() {
       this.memId = this.memPsw = this.errorMsg = '';
@@ -135,7 +140,10 @@ export default {
       const auth = useFirebaseAuth(); // 只有在客戶端有效，這行只能存在於前端(client side)
       const googleAuthProvider = new GoogleAuthProvider();
 
-      signInWithRedirect(auth, googleAuthProvider)
+      signInWithRedirect(auth, googleAuthProvider).then((res) => {
+        console.log(res);
+       
+      })
         .catch((reason) => {
           console.error('Failed signInRedirect', reason);
           this.error = reason;
@@ -144,7 +152,6 @@ export default {
     fetchMemberData() {
       axios.get(`${this.$URL}/getAllMember.php`)
         .then((res) => {
-          console.log(res);
           this.memberData = res.data;
           // 抓到資料後執行tokenCheck()比對localstorage裡的資料
           this.tokenCheck();
@@ -155,15 +162,15 @@ export default {
 
 
     },
-
     onMounted() {
       const auth = useFirebaseAuth();
       getRedirectResult(auth)
         .then((Response) => {
-
-          console.log(Response);
-          this.setRegisterInfo(Response);
-
+          // this.googleUser.name=auth.currentUser.displayName;
+          // this.googleUser.email=auth.currentUser.email;
+          // this.setInfo(auth.currentUser);
+          // this.toRegister();
+          // this.loginOk(true);
         })
         .catch((reason) => {
           console.error('Failed redirect result', reason);
@@ -181,7 +188,8 @@ export default {
       } else {
         return;
       }
-    }
+    },
+   
 
   },
 
@@ -189,7 +197,9 @@ export default {
   mounted() {
     this.onMounted();
     this.fetchMemberData();
+    
   },
+ 
 }
 
 

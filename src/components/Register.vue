@@ -12,22 +12,22 @@
               <div class="inputBox">
                 <span>名字</span>
                 <input type="text" class="payment-name-input" required="required" v-model="nameReg">
-                <div class="payment-name"></div>
+
               </div>
               <div class="inputBox">
                 <span>信箱</span>
                 <input type="email" class="payment-email-input" v-model="emailReg" required="required" />
-                <div class="payment-email"></div>
+
               </div>
               <div class="inputBox">
                 <span>密碼</span>
                 <input type="password" class="payment-address-input" v-model="pswReg" required="required" />
-                <div class="payment-address"></div>
+                <div>請輸入6-12位英數字</div>
               </div>
               <div class="inputBox">
                 <span>再次輸入密碼</span>
                 <input type="password" class="payment-nation-input" required="required" v-model="pswConfirmReg">
-                <div class="payment-nation"></div>
+
               </div>
 
 
@@ -124,7 +124,7 @@ export default {
       this.clearInput();
     },
     clearInput() {
-      this.nameReg = this.emailReg = this.pswReg = this.pswConfirmReg = this.sexReg = this.birthReg = this.telReg = this.addReg='';
+      this.nameReg = this.emailReg = this.pswReg = this.pswConfirmReg = this.sexReg = this.birthReg = this.telReg = this.addReg = '';
       this.step = 0;
       this.memberTerms = this.memberPrivacy = false;
     },
@@ -136,6 +136,32 @@ export default {
     },
 
     handleSubmit() {
+
+      if (this.validateForm() && this.memberTerms && this.memberPrivacy && this.sexReg && this.telReg && this.sexReg) {
+        this.submitForm();
+        setTimeout(() => {
+          this.backLogin();
+        }, 3000);
+      } else {
+        alert('輸入不完整!');
+      }
+
+    },
+
+    validateForm() {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+      const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+
+      const isEmailValid = emailRegex.test(this.emailReg);
+      const isPswValid = passwordRegex.test(this.pswReg);
+      const isPswConfirmValid = passwordConfirmRegex.test(this.pswConfirmReg);
+
+      return isEmailValid && isPswValid && isPswConfirmValid && (this.pswReg === this.pswConfirmReg);
+
+    },
+    submitForm() {
+      this.step = 1;
       const registerData = {
         nameReg: this.nameReg,
         sexReg: this.sexReg,
@@ -168,22 +194,6 @@ export default {
           console.log(error);
           alert('註冊失敗');
         });
-    },
-
-    validateForm() {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
-      const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
-
-      const isEmailValid = emailRegex.test(this.emailReg);
-      const isPswValid = passwordRegex.test(this.pswReg);
-      const isPswConfirmValid = passwordConfirmRegex.test(this.pswConfirmReg);
-
-      return isEmailValid && isPswValid && isPswConfirmValid && (this.pswReg === this.pswConfirmReg);
-
-    },
-    submitForm() {
-      this.step = 1;
     },
     checkMemberTerms() {
       this.memberTerms = true;

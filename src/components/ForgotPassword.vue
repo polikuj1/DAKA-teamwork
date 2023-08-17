@@ -2,7 +2,7 @@
   <section v-show="forgotPsw && step === 0">
     <div class="container">
       <div class="forget_password">
-        <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin(true)">
+        <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin">
         <h2>忘記密碼</h2>
         <p>請輸入您的註冊信箱，進行密碼變更</p>
         <div class="forget_password_enter">
@@ -14,19 +14,21 @@
     </div>
   </section>
 
-  
-
   <section v-show="forgotPsw && step === 1">
     <div class="container">
       <div class="enter_valid">
-        <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin(true)">
+        <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin">
         <h2>輸入驗證碼</h2>
-        <p>已發送驗證碼至sm********@gmail.com</p>
+        <p>已發送驗證碼至{{ memEmail }}</p>
         <div class="enter_valid_input">
-          <input type="text" required="required" v-model="number1" max-length="1">
-          <input type="text" required="required" v-model="number2" max-length="1">
-          <input type="text" required="required" v-model="number3" max-length="1">
-          <input type="text" required="required" v-model="number4" max-length="1">
+          <input type="text" required="required" v-model="verification.number1" max-length="1"
+            @input="handleSingleDigitInput($event, 'verification', 'number1')">
+          <input type="text" required="required" v-model="verification.number2" max-length="1"
+            @input="handleSingleDigitInput($event, 'verification', 'number2')">
+          <input type="text" required="required" v-model="verification.number3" max-length="1"
+            @input="handleSingleDigitInput($event, 'verification', 'number3')">
+          <input type="text" required="required" v-model="verification.number4" max-length="1"
+            @input="handleSingleDigitInput($event, 'verification', 'number4')">
         </div>
         <div class="enter_valid_re">
           <p>10 分鐘內若未收到驗證碼</p>
@@ -40,7 +42,7 @@
   <section v-show="forgotPsw && step === 2">
     <div class="container">
       <div class="enter_modify">
-        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_modal" @click="closeLogin(true)">
+        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_modal" @click="closeLogin">
         <h2>修改密碼</h2>
         <p>請輸入 6 -12 位包含英文及數字的密碼</p>
         <div class="enter_modify_input">
@@ -59,22 +61,20 @@
     <div class="container">
       <div class="enter_modify_success">
         <img :src="require('@/assets/images/login/cross.png')" class="modify_close_success_modal"
-          @click="closeLogin(true)">
+          @click="closeLogin">
         <img :src="require('@/assets/images/footerLogo.png')" alt="" class="enter_modify_success_logo">
         <p>修改完成！</p>
         <p>請重新登入</p>
-        <button @click="backLogin">返回會員登入</button>
+        <button @click="closeLogin">返回會員登入</button>
       </div>
     </div>
   </section>
 </template>
 <script >
 
-
-
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
-
-// import { firebaseAuth } from "@/assets/config/firebase.js";
+import axios from "axios";
+// import { firebaseAuth } from "@/firebase.js";
 // import {
 //   sendPasswordResetEmail,
 //   sendEmailVerification,
@@ -83,7 +83,7 @@ import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 // import { signInWithPopup, GoogleAuthProvider, getAdditionalUserInfo  } from "firebase/auth";
 // const provider = new GoogleAuthProvider();
 // // 檢查使用者的登錄狀態
-// import authMixin from "@/assets/js/authMixin.js";
+// // import authMixin from "@/assets/js/authMixin.js";
 // import axios from "axios";
 // import { BASE_URL } from "@/assets/js/common.js";
 
@@ -105,6 +105,7 @@ export default {
         number3: '',
         number4: '',
       },
+      responseData: [],
     }
   },
   methods: {
@@ -129,57 +130,112 @@ export default {
     //     });
     // },
 
+    handleSingleDigitInput(event, objName, fieldName) {
+      const input = event.target.value;
 
-
-
-    closeLogin(status) {
-      this.toggleForgotPsw(status);
+      // 只允許單個數字
+      if (input.length > 1) {
+        event.target.value = input[input.length - 1];
+      }
+      // 更新相關數據
+      this[objName][fieldName] = event.target.value;
+    },
+    closeLogin() {
+      this.toggleForgotPsw(false);
+      this.toggleLogin(true);
       this.clearInput();
     },
     clearInput() {
       this.memEmail = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
       this.step = 0;
     },
-    backLogin() {
-      this.toggleForgotPsw(true);
-      this.step = 0;
-      this.clearInput()
-    },
     checkEmail() {
-      if (!this.memEmail) {
-        return alert("輸入錯誤或無輸入");
-      } else {
-        this.step = 1;
-        this.memEmail = '';
-      }
+      const memEmail = {
+        email: this.memEmail,
+      };
 
+      axios.post(`${this.$URL}/getMemberMail.php`, JSON.stringify(memEmail), {
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   withCredentials:true
+        // }
+      })
+        .then(response => {
+          this.responseData = response.data;
+          //登入成功
+          if (this.memEmail && this.validateForm()) {
+            this.step = 1;
+          } else {
+            return alert("輸入錯誤或無輸入");
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
 
+    },
+    validateForm() {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const isEmailValid = emailRegex.test(this.memEmail);
+      return isEmailValid;
     },
     validCheck() {
-      if (!this.number1 || !this.number2 || !this.number3 || !this.number4) {
+      if (!this.verification.number1 || !this.verification.number2 || !this.verification.number3 || !this.verification.number4) {
         alert("請輸入驗證碼");
       } else {
-        this.number1 = this.number2 = this.number3 = this.number4 = '';
+        this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
         this.step = 2;
       }
+    },
+    validatePsw() {
+      const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+      const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
+      const isPswValid = passwordRegex.test(this.modify.psw);
+      const isPswConfirmValid = passwordConfirmRegex.test(this.modify.newPsw);
+
+      return isPswValid && isPswConfirmValid && (this.modify.psw === this.modify.newPsw);
 
     },
     modifyCheck() {
-      if (!this.modify.psw || !this.modify.newPsw) {
-        alert("請輸入密碼");
-        return;
-      }
-      else if ((this.modify.psw === this.modify.newPsw && this.modify.psw.length >= 6 && this.modify.psw.length <= 12)) {
-        this.step = 3;
+      const editMember = {
+        mem_id: this.responseData.mem_id,
+        password: this.modify.psw,
+      };
+
+      if (this.validatePsw() && this.modify.psw !== this.responseData.password) {
+        axios.post(`${this.$URL}/editMemberPsw.php`, JSON.stringify(editMember), {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => {
+            console.log(res);
+            if (res.data === 'success') {
+              alert('修改成功');
+              this.step = 3;
+              setTimeout(()=>{
+                this.clearInput();
+                this.toggleForgotPsw(false);
+                this.toggleLogin(true);
+              },3000)
+            } else {
+              alert('異動失敗');
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        
+          this.memEmail = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
+
         return;
       } else {
         alert("請輸入密碼");
       }
-      this.clearInput();
     },
     modifySuccess() {
       this.step = 0;
-      closeLogin(false);
+      this.closeLogin();
     },
 
 
