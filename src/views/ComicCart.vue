@@ -257,15 +257,18 @@ export default {
         .catch(err => {
           console.log(err);
         })
-      // 更新會員儲值餘額
+      // 更新會員儲值餘額、累積消費
       const memberRemain = parseInt(this.member.remain) - parseInt(this.comics_order_sum); 
+      const memberValue = parseInt(this.member.value) + parseInt(this.comics_order_sum);
       this.axios.post(`${this.$URL}/updateMemberRemain.php`, JSON.stringify({
         mem_id: this.member.mem_id,
-        remain: memberRemain.toString()
+        remain: memberRemain.toString(),
+        value: memberValue.toString(),
       }))
         .then(res => {
           console.log(res);
           this.$store.commit('setMemberRemain', memberRemain);
+          this.$store.commit('setMemberValue', memberValue);
         })
         .catch(err => {
           console.log(err);
