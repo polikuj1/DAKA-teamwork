@@ -12,7 +12,7 @@
       <form class="pic" id="pic">
         <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
-        <Images v-if="myMember.pic" :imgURL="`back/memberPic/${myMember.pic}`" alt="會員照片"/>
+        <Images :imgURL="`memberPic/${myMember.pic}`" alt="會員照片"/>
         <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
         <!-- <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/> -->
         <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
@@ -71,19 +71,19 @@ export default {
     myMember() {return this.$store.state.member},
     myGrade() {
       switch (this.myMember.grade) {
-        case 0:
+        case '0':
           this.grade = '';
           return '普通';
-        case 1:
+        case '1':
           this.grade = 'white_silver';
           return '白銀';
-        case 2:
+        case '2':
           this.grade = 'gold';
           return '黃金';
-        case 3:
+        case '3':
           this.grade = 'white_gold';
           return '白金';
-        case 4:
+        case '4':
           this.grade = 'diamond';
           return '鑽石';
     }
