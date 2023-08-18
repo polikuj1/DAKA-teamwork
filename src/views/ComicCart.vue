@@ -25,7 +25,7 @@
             @click="this.$router.push(`/comic_detail/${item.comics_id}`)"
           >
             <!-- <img :src="item.img" :alt="item.name" /> -->
-            <Images :imgURL="`comic/${item.img}`" :alt="`${item.title}`" />
+            <Images :imgURL="`back/comic/${item.img}`" :alt="`${item.title}`" />
           </div>
 
           <!-- 書本名稱 -->

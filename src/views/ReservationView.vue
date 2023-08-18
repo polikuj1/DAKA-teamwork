@@ -559,20 +559,19 @@ export default {
           });
         // 更新會員儲值餘額
 
-        const memberRemain =
-          parseInt(this.member.remain) - parseInt(this.totalSal);
-        this.axios
-          .post(
-            `${this.$URL}/updateMemberRemain.php`,
+        const memberRemain = parseInt(this.member.remain) - parseInt(this.totalSal);
+        const memberValue = parseInt(this.member.value) + parseInt(this.totalSal);
+        this.axios.post(`${this.$URL}/updateMemberRemain.php`,
             JSON.stringify({
               mem_id: this.member.mem_id,
-              remain: memberRemain.toString()
+              remain: memberRemain.toString(),
+              value: memberValue.toString()
             })
           )
           .then((res) => {
             console.log(res);
-            
             this.$store.commit("setMemberRemain", memberRemain);
+            this.$store.commit('setMemberValue', memberValue);
           })
           .catch((err) => {
             console.log(err);

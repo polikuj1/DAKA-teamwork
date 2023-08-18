@@ -13,7 +13,7 @@ try {
   JOIN seat s on sod.seat_id = s.seat_id
   join member m on so.mem_id = m.mem_id
   where so.mem_id = $id 
-  ORDER BY so.seat_order_id desc, so.seat_order_state";
+  ORDER BY so.seat_order_state, so.seat_order_id desc";
 	$products = $pdo->query($sql); 
 	$prodRows = $products->fetchAll(PDO::FETCH_ASSOC);
   $orders = array();

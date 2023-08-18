@@ -17,22 +17,20 @@
             </div>
             <div class="reservation_list">
               <div class="reservation_usetime">
-                <p class="seat_usetime">開台時間</p>
+                <p class="seat_usetime">開台起訖時間</p>
                 <p>
-                  {{ reservation.seat_order_dates }}<br />{{ reservation.time }}
+                  {{ reservation.seat_order_startdate }} <br> {{ reservation.seat_order_enddate }}
                 </p>
               </div>
               <div class="member_reservation_seat">
                 <p class="seat_number">座位編號</p>
-                <p>
-                  {{ reservation.seat_areas }}<br />{{
-                    reservation.seat_numbers
-                  }}
+                <p v-for="seat in reservation.items" :key="seat.seat_area">
+                  {{ seat.seat_area }} {{ seat.seat_number }}
                 </p>
               </div>
               <div class="reservation_amount">
                 <p class="seat_cost">金額</p>
-                <p>{{ reservation.seat_order_sums }}</p>
+                <p>{{ reservation.seat_order_sum }}</p>
               </div>
               <div class="reservation_payment">
                 <p class="seat_pay">付款方式</p>
@@ -43,12 +41,12 @@
           <div class="seat_reservation_status">
             <div
               class="reservation_status"
-              :style="statusStyle(reservation.status)"
+              :style="statusStyle(reservation.seat_order_state)"
             >
-              <p>{{ reservation.seat_order_states }}</p>
+              <p>{{ reservation.seat_order_state }}</p>
             </div>
-            <div v-if="reservation.seat_order_states === '預約中'">
-              <button @click="cancelReservation(reservation.seat_order_ids)">
+            <div v-if="reservation.seat_order_state === '預約中'">
+              <button @click="cancelReservation(reservation.seat_order_id)">
                 取消預約
               </button>
             </div>
@@ -71,7 +69,6 @@
 </template>
 
 <script>
-//   import {GET} from '@/plugin/axios';
 import MbModal from "@/components/member_center/MemberModal.vue";
 import MbForm from "@/components/member_center/form_style.vue";
 export default {
@@ -88,72 +85,65 @@ export default {
       seat_order_id: null
     };
   },
-  mounted() {
-    const params = {
-      id: this.$store.state.member.mem_id
-    };
-    this.axios
-      .get(`${this.$URL}/getSeatRecord.php`, { params: params })
-      .then((res) => {
-        console.log(res);
-        this.seatOrder = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    // let a=this.currentTime.substring(10,12)==='下午'?12:0;
-    // let aa=this.currentTime.substring(12,14)
-    // let b = +(aa.includes(':') ? aa.replace(':', '') : aa);
-    // console.log("currentTime",this.currentTime)
-    // console.log("a",a)
-    // console.log("aa",aa)
-    // console.log("b",b)
-    // this.currentTime_hours=a+b;
-    // console.log("currentTime_hours",this.currentTime_hours)
-    console.log("seatOrder", this.seatOrder);
-  },
+  // mounted() {
+  //   const params = {
+  //     id: this.$store.state.member.mem_id
+  //   };
+  //   this.axios
+  //     .get(`${this.$URL}/getSeatRecord.php`, { params: params })
+  //     .then((res) => {
+  //       console.log(res);
+  //       this.seatOrder = res.data;
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  //   console.log("seatOrder", this.seatOrder);
+  // },
   methods: {
     getData() {
-      //   const params = {
-      //       id: this.$store.state.member.mem_id
-      //   }
-      //   this.axios
-      //     .get(`${this.$URL}/getSeatRecord.php`, { params: params })
-      //     .then((res) => {
-      //       console.log(res);
-      //       this.reservations = res.data;
-      //       將座位的代碼轉換成對應的名稱
-      //       this.reservations.forEach(item => {
-      //           switch (item.seat_areas) {
-      //               case 'A':
-      //                   item.seat_areas = '大廳一般區';
-      //                   break;
-      //               case 'B':
-      //                   item.seat_areas = '大廳電競區';
-      //                   break;
-      //               case 'C':
-      //                   item.seat_areas = '包廂單人房';
-      //                   break;
-      //               case 'D':
-      //                   item.seat_areas = '包廂雙人房';
-      //                   break;
-      //           }
-      //           switch (item.seat_order_states) {
-      //               case '0':
-      //                   item.seat_order_states = '預約中';
-      //                   break;
-      //               case '1':
-      //                   item.seat_order_states = '已完成';
-      //                   break;
-      //               case '2':
-      //                   item.seat_order_states = '已取消';
-      //                   break;
-      //           }
-      //       })
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+        const params = {
+            id: this.$store.state.member.mem_id
+        }
+        this.axios
+          .get(`${this.$URL}/getSeatRecord.php`, { params: params })
+          .then((res) => {
+            console.log(res);
+            this.reservations = res.data;
+            //將座位的代碼轉換成對應的名稱
+            this.reservations.forEach(item => {
+              item.items.forEach(seat => {
+                switch (seat.seat_area) {
+                    case 'A':
+                        seat.seat_area = '大廳一般區';
+                        break;
+                    case 'B':
+                        seat.seat_area = '大廳電競區';
+                        break;
+                    case 'C':
+                        seat.seat_area = '包廂單人房';
+                        break;
+                    case 'D':
+                        seat.seat_area = '包廂雙人房';
+                        break;
+                }
+              })
+              switch (item.seat_order_state) {
+                  case 0:
+                      item.seat_order_state = '預約中';
+                      break;
+                  case 1:
+                      item.seat_order_state = '已完成';
+                      break;
+                  case 2:
+                      item.seat_order_state = '已取消';
+                      break;
+              }
+            })
+          })
+          .catch((err) => {
+            console.log(err);
+          });
     },
     cancelReservation(reservationId) {
       // 將要取消的座位訂單編號存下來

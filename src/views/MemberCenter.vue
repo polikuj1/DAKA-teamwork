@@ -12,14 +12,14 @@
       <form class="pic" id="pic">
         <input type="hidden" name="mem_no" v-model="this.$store.state.member.mem_no">
         <input type="hidden" name="mem_id" v-model="this.$store.state.member.mem_id">
-        <Images v-if="myMember.pic" :imgURL="`memberPic/${myMember.pic}`" alt="會員照片"/>
+        <Images v-if="myMember.pic" :imgURL="`back/memberPic/${myMember.pic}`" alt="會員照片"/>
         <!-- <img v-if="member.pic" :src="`/images/memberPic/${member.pic}`" alt="會員照片"> -->
         <!-- <Images v-else :imgURL="member_img" :alt="會員上傳預覽照片"/> -->
         <!-- <img v-else :src="member_img" alt="會員上傳預覽照片"> -->
         <label for="user"><i class="fa-solid fa-square-pen"></i></label>
         <input type="file" id="user" @change="getImage" name="image">
       </form>
-      <span><i class="fa-solid fa-crown"></i> {{ myGrade }}會員</span>
+      <span :class="grade"><i class="fa-solid fa-crown"></i> {{ myGrade }}會員</span>
       <ul>
         <li>
           <span><i class="fa-solid fa-user"></i></span>
@@ -64,6 +64,7 @@ export default {
       member_img: require('@/assets/images/member/user_pic.png'),
       content: '',
       id: null,
+      grade: '',
     }
   },
   computed: {
@@ -71,16 +72,20 @@ export default {
     myGrade() {
       switch (this.myMember.grade) {
         case 0:
+          this.grade = '';
           return '普通';
-        
         case 1:
-        return '白銀';
+          this.grade = 'white_silver';
+          return '白銀';
         case 2:
-        return '黃金';
+          this.grade = 'gold';
+          return '黃金';
         case 3:
-        return '白金';
+          this.grade = 'white_gold';
+          return '白金';
         case 4:
-        return '鑽石';
+          this.grade = 'diamond';
+          return '鑽石';
     }
     },
   },

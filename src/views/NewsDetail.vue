@@ -11,7 +11,7 @@
         <div class="news_detail_card">
             <div class="card">
                 <!-- <img src="../assets/images/news/lol.png" alt="英雄聯盟"> -->
-                <Images :imgURL="`/news/${news.news_pic}`" :alt="`${news.news_title}`" />
+                <Images :imgURL="`back/news/${news.news_pic}`" :alt="`${news.news_title}`" />
                 <div class="text" v-html="news.news_text"></div>
                 <div class="options">
                     <a @click="goNews" class="a">＜上一篇</a>
