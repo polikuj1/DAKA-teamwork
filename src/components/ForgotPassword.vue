@@ -1,23 +1,18 @@
 <template>
-  <section v-show="forgotPsw && step === 0" >
+  <section v-show="forgotPsw && step === 0">
     <div class="container">
       <form ref="form">
-      <div class="forget_password">
-        <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin">
-        <h2>忘記密碼</h2>
-        <p>請輸入您的註冊信箱，進行密碼變更</p>
-        <div class="forget_password_enter">
-          <label for="">請輸入您的信箱</label>
-          <input type="email" placeholder="信箱" v-model="email" required="required" name="email">
+        <div class="forget_password">
+          <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin">
+          <h2>忘記密碼</h2>
+          <p>請輸入您的註冊信箱，進行密碼變更</p>
+          <div class="forget_password_enter">
+            <label for="">請輸入您的信箱</label>
+            <input type="email" placeholder="信箱" v-model="email" required="required" name="email">
+          </div>
+          <input type="submit" value="下一步" class="forget_password_submit" @click.prevent="checkEmail">
         </div>
-        <input
-          type="submit"
-          value="下一步"
-          class="forget_password_submit"
-          @click.prevent="checkEmail"
-        >
-      </div>
-    </form>
+      </form>
     </div>
   </section>
 
@@ -67,8 +62,7 @@
   <section v-show="forgotPsw && step === 3">
     <div class="container">
       <div class="enter_modify_success">
-        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_success_modal"
-          @click="closeLogin">
+        <img :src="require('@/assets/images/login/cross.png')" class="modify_close_success_modal" @click="closeLogin">
         <img :src="require('@/assets/images/footerLogo.png')" alt="" class="enter_modify_success_logo">
         <p>修改完成！</p>
         <p>請重新登入</p>
@@ -135,11 +129,11 @@ export default {
     //     });
     // },
     sendEmail() {
-      emailjs.sendForm('daka','template_2gc59e5',this.$refs.form,'dTmmmssJvAjvKxo4a')
+      emailjs.sendForm('daka', 'template_2gc59e5', this.$refs.form, 'dTmmmssJvAjvKxo4a')
         .then((result) => {
-            console.log('SUCCESS!', result.text);
+          console.log('SUCCESS!', result.text);
         }, (error) => {
-            console.log('FAILED...', error.text);
+          console.log('FAILED...', error.text);
         });
     },
     handleSingleDigitInput(event, objName, fieldName) {
@@ -178,6 +172,7 @@ export default {
           if (this.email && this.validateForm()) {
             this.step = 1;
             this.sendEmail();
+            alert('已發送，請至信箱確認');
           } else {
             return alert("輸入錯誤或無輸入");
           }
@@ -192,8 +187,26 @@ export default {
       const isEmailValid = emailRegex.test(this.email);
       return isEmailValid;
     },
-    resend(){
-      this.sendEmail();
+    resend() {
+      
+      // 在发送验证码之后记录当前时间的分钟数
+      const sentTime = new Date().getMinutes();
+      // 等待十分钟后尝试重新发送验证码
+
+      const currentTime = new Date().getMinutes();
+
+      // 检查时间是否已经过去了十分钟
+      if (currentTime - sentTime >= 10) {
+        // 进行重新发送操作
+        this.sendEmail();
+        alert('已發送，請至信箱確認');
+      } else {
+        const remainingTime = 10 - (currentTime - sentTime);
+        alert(`請等待 ${remainingTime} 分鐘後才能發送`);
+        console.log(123);
+      }
+
+
     },
     validCheck() {
       if (!this.verification.number1 || !this.verification.number2 || !this.verification.number3 || !this.verification.number4) {
@@ -229,11 +242,11 @@ export default {
             if (res.data === 'success') {
               alert('修改成功');
               this.step = 3;
-              setTimeout(()=>{
+              setTimeout(() => {
                 this.clearInput();
                 this.toggleForgotPsw(false);
                 this.toggleLogin(true);
-              },3000)
+              }, 3000)
             } else {
               alert('異動失敗');
             }
@@ -241,8 +254,8 @@ export default {
           .catch(err => {
             console.log(err);
           })
-        
-          this.email = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
+
+        this.email = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
 
         return;
       } else {
