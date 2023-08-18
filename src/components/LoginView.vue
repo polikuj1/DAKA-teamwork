@@ -20,7 +20,7 @@
           <div class="error_message">{{ errorMsg }}</div>
           <div class="login_keep">
             <div class="login_keep_status" @click="toggleLoginStatus">
-              <input type="checkbox" id="check">
+              <input type="checkbox" id="check" ref="statusCheckbox">
               <label for="check">保持登入狀態</label>
             </div>
             <div class="forget_psw" @click="closeForgot">忘記密碼?</div>
@@ -29,7 +29,7 @@
           <button @click.prevent="toRegister" class="login_form_register" type="submit">註冊會員</button>
           <span>OR</span>
         </form>
-        <button class="login_connect" >
+        <button class="login_connect">
           <i class="fa-brands fa-square-facebook"></i>
           以FACEBOOK帳號登入
         </button>
@@ -38,7 +38,7 @@
           <i class="fa-brands fa-google"></i>
           以GOOGLE帳號登入
         </button>
-        <button class="login_connect" >
+        <button class="login_connect">
           <i class="fa-brands fa-apple"></i>
           以APPLE帳號登入
         </button>
@@ -119,8 +119,10 @@ export default {
             if (this.keepLoginStatus) {
               this.setToStorage();
             } else {
-              this.reset();
+
+              this.toggleLoginStatus();
             }
+            this.reset();
           } else {
             this.errorMsg = "帳號密碼錯誤"; // 登入失敗
           }
@@ -133,8 +135,14 @@ export default {
     },
 
     reset() {
+      const statusCheckbox = this.$refs.statusCheckbox;
+
+      if (statusCheckbox) {
+        statusCheckbox.checked = false;
+      }
+
       this.memId = this.memPsw = this.errorMsg = '';
-      this.toggleLoginStatus();
+
     },
     signInRedirect() {
       const auth = useFirebaseAuth(); // 只有在客戶端有效，這行只能存在於前端(client side)
@@ -142,7 +150,7 @@ export default {
 
       signInWithRedirect(auth, googleAuthProvider).then((res) => {
         console.log(res);
-       
+
       })
         .catch((reason) => {
           console.error('Failed signInRedirect', reason);
@@ -189,7 +197,7 @@ export default {
         return;
       }
     },
-   
+
 
   },
 
@@ -197,9 +205,9 @@ export default {
   mounted() {
     this.onMounted();
     this.fetchMemberData();
-    
+
   },
- 
+
 }
 
 

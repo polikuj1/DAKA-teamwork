@@ -18,7 +18,7 @@
           <li v-for="item in nav" :key="item.title"><router-link :to="item.site"> {{ item.title }}</router-link></li>
         </ul>
         <button @click.prevent="toggleLogin(true)" v-show="!login">登入 | 註冊</button>
-        <button @click="this.$router.push('/member_center/member_seat_reservation')" v-show="login"><span class="fa-solid fa-user"></span>{{ member.mname }}</button>
+        <button @click="this.$router.push('/member_center/member_nav')" v-show="login"><span class="fa-solid fa-user"></span>{{ member.mname }}</button>
         <button @click.prevent="loggingOut" v-show="login">登出</button>
         <button v-for="btn in btns" :key="btn.title" @click="this.$router.push(btn.site)"><i :class="btn.class"></i> {{
           btn.title }}</button>

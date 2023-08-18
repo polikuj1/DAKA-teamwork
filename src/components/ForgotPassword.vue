@@ -1,16 +1,23 @@
 <template>
-  <section v-show="forgotPsw && step === 0">
+  <section v-show="forgotPsw && step === 0" >
     <div class="container">
+      <form ref="form">
       <div class="forget_password">
         <img :src="require('@/assets/images/login/cross.png')" class="forget_close_modal" @click="closeLogin">
         <h2>忘記密碼</h2>
         <p>請輸入您的註冊信箱，進行密碼變更</p>
         <div class="forget_password_enter">
           <label for="">請輸入您的信箱</label>
-          <input type="email" placeholder="信箱" v-model="memEmail" required="required">
+          <input type="email" placeholder="信箱" v-model="email" required="required" name="email">
         </div>
-        <input @click="checkEmail" type="submit" value="下一步" class="forget_password_submit">
+        <input
+          type="submit"
+          value="下一步"
+          class="forget_password_submit"
+          @click.prevent="checkEmail"
+        >
       </div>
+    </form>
     </div>
   </section>
 
@@ -32,7 +39,7 @@
         </div>
         <div class="enter_valid_re">
           <p>10 分鐘內若未收到驗證碼</p>
-          <p>請<a href="">按此</a>重新發送</p>
+          <p>請<a @click="resend">按此</a>重新發送</p>
         </div>
         <input @click="validCheck" type="submit" value="送出" class="enter_valid_submit">
       </div>
@@ -71,7 +78,7 @@
   </section>
 </template>
 <script >
-
+import emailjs from 'emailjs-com';
 import { mapMutations, mapActions, mapGetters, mapState } from "vuex";
 import axios from "axios";
 // import { firebaseAuth } from "@/firebase.js";
@@ -93,7 +100,7 @@ export default {
   data() {
     return {
       step: 0,
-      memEmail: '',
+      email: '',
       errorMsg: '',
       modify: {
         psw: '',
@@ -111,8 +118,6 @@ export default {
   methods: {
     ...mapMutations(["toggleLogin", "toggleForgotPsw"])
     ,
-
-
     // resetPsw() {
     //   sendPasswordResetEmail(firebaseAuth, this.memEmail)
     //     .then(() => {
@@ -129,7 +134,14 @@ export default {
     //       }
     //     });
     // },
-
+    sendEmail() {
+      emailjs.sendForm('daka','template_2gc59e5',this.$refs.form,'dTmmmssJvAjvKxo4a')
+        .then((result) => {
+            console.log('SUCCESS!', result.text);
+        }, (error) => {
+            console.log('FAILED...', error.text);
+        });
+    },
     handleSingleDigitInput(event, objName, fieldName) {
       const input = event.target.value;
 
@@ -146,12 +158,12 @@ export default {
       this.clearInput();
     },
     clearInput() {
-      this.memEmail = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
+      this.email = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
       this.step = 0;
     },
     checkEmail() {
       const memEmail = {
-        email: this.memEmail,
+        email: this.email,
       };
 
       axios.post(`${this.$URL}/getMemberMail.php`, JSON.stringify(memEmail), {
@@ -163,8 +175,9 @@ export default {
         .then(response => {
           this.responseData = response.data;
           //登入成功
-          if (this.memEmail && this.validateForm()) {
+          if (this.email && this.validateForm()) {
             this.step = 1;
+            this.sendEmail();
           } else {
             return alert("輸入錯誤或無輸入");
           }
@@ -176,8 +189,11 @@ export default {
     },
     validateForm() {
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const isEmailValid = emailRegex.test(this.memEmail);
+      const isEmailValid = emailRegex.test(this.email);
       return isEmailValid;
+    },
+    resend(){
+      this.sendEmail();
     },
     validCheck() {
       if (!this.verification.number1 || !this.verification.number2 || !this.verification.number3 || !this.verification.number4) {
@@ -226,7 +242,7 @@ export default {
             console.log(err);
           })
         
-          this.memEmail = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
+          this.email = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
 
         return;
       } else {
