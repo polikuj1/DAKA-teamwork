@@ -32,22 +32,25 @@ export default {
             title:'消息詳情',
             news: [],
             res: [],
+            newsId: [],
         }
     },
     methods: {
         goNews(e) {
             console.log(e.target.textContent);
+            const currentIdIndex = this.newsId.indexOf(this.news.news_id);
+            console.log(currentIdIndex);
             if(e.target.textContent === '下一篇＞') {
-                if(parseInt(this.news.news_id) === this.res.length) {
-                    this.$router.push(`/news_detail/1`);
+                if(this.newsId[currentIdIndex] == this.newsId[`${this.newsId.length}-1`]) {
+                    this.$router.push(`/news_detail/${this.newsId[0]}`);
                 } else {
-                    this.$router.push(`/news_detail/${parseInt(this.news.news_id) + 1}`);
+                    this.$router.push(`/news_detail/${this.newsId[currentIdIndex + 1]}`);
                 }
             } else {
-                if(this.news.news_id == '1') {
-                    this.$router.push(`/news_detail/${this.res.length}`);
+                if(this.newsId[currentIdIndex] == this.newsId[0]) {
+                    this.$router.push(`/news_detail/${this.newsId[`${this.newsId.length-1}`]}`);
                 } else {
-                    this.$router.push(`/news_detail/${parseInt(this.news.news_id) - 1}`);
+                    this.$router.push(`/news_detail/${this.newsId[currentIdIndex - 1]}`);
                 }
             }
             this.getData();
@@ -60,6 +63,9 @@ export default {
                 .then(res => {
                     this.res = res.data;
                     this.news = this.res.filter(item => item.news_id == this.$route.params.id)[0];
+                    this.res.forEach(news => {
+                        this.newsId.push(news.news_id);
+                    })
                     console.log(this.res);
                     console.log(this.news);
                 })
