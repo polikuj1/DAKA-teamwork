@@ -157,9 +157,14 @@
         cursor: pointer;
       }
       .row {
+        
         .col {
           flex: 1 1 250px;
           margin: 0 16px;
+          .password_alert{
+            text-align: center;
+            font-size: 0.9rem;
+          }
           .inputBox {
             display: flex;
             align-items: center;
@@ -173,7 +178,9 @@
               padding: 10px;
               text-transform: none;
               border-radius: 10px;
+              
             }
+            
             span {
               width: 30%;
               margin-bottom: 10px;
@@ -667,6 +674,10 @@
               display: flex;
               gap: 5px;
               align-items: center;
+              input{
+                display: inline-block;
+                margin-top: 10px;
+              }
             }
             .forget_psw {
               font-size: 1.2rem;
@@ -731,12 +742,16 @@
           right: 15px;
           cursor: pointer;
         }
+       
         .row {
           display: flex;
 
           .col {
             flex: 1 1 250px;
             margin: 0 16px;
+            .password_alert{
+              text-align: left;
+            }
             .inputBox {
               display: block;
               margin: 16px 0;
@@ -748,6 +763,7 @@
                 text-transform: none;
                 border-radius: 10px;
                 outline: 1px solid #ccc;
+                
               }
               span {
                 width: 100%;
