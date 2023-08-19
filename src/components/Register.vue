@@ -21,9 +21,9 @@
               </div>
               <div class="inputBox">
                 <span>密碼</span>
-                <input type="password" class="payment-address-input" v-model="pswReg" required="required" />
-                <div>請輸入6-12位英數字</div>
+                <input type="password" v-model="pswReg" required="required" />
               </div>
+              <div class="password_alert">請輸入6-12位英數字</div>
               <div class="inputBox">
                 <span>再次輸入密碼</span>
                 <input type="password" class="payment-nation-input" required="required" v-model="pswConfirmReg">
@@ -58,13 +58,14 @@
           </div>
           <div class="register_form_bottom">
             <div>
-              <input ref="membershipCheckbox" type="checkbox" name="membership" id="membership" required="required" :disabled="!(memberTerms && memberPrivacy)">
+              <input ref="membershipCheckbox" type="checkbox" name="membership" id="membership" required="required"
+                :disabled="!(memberTerms && memberPrivacy)">
 
-              <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms" >會員條款</a>與<a
+              <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
                   href="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
             </div>
             <div class="register_form_bottom_confirm" v-show="!(memberTerms && memberPrivacy)">請先閱覽會員條款及隱私權規定，方可點選</div>
-            <div >
+            <div>
               <input ref="newsCheckbox" type="checkbox" name="news_daka" id="news_daka" required="required">
               <label for="news_daka">我願意收到打咖DAKA的最新消息</label>
             </div>

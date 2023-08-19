@@ -34,7 +34,7 @@
         </div>
         <div class="enter_valid_re">
           <p>10 分鐘內若未收到驗證碼</p>
-          <p>請<a @click="resend">按此</a>重新發送</p>
+          <p>請<a @click="resendOrSendEmail">按此</a>重新發送</p>
         </div>
         <input @click="validCheck" type="submit" value="送出" class="enter_valid_submit">
       </div>
@@ -107,6 +107,10 @@ export default {
         number4: '',
       },
       responseData: [],
+      canSend: true,
+      cooldown: 600000,
+      remainingTime: 0,
+      timerInterval: null,
     }
   },
   methods: {
@@ -147,6 +151,7 @@ export default {
       this[objName][fieldName] = event.target.value;
     },
     closeLogin() {
+
       this.toggleForgotPsw(false);
       this.toggleLogin(true);
       this.clearInput();
@@ -154,68 +159,76 @@ export default {
     clearInput() {
       this.email = this.modify.psw = this.modify.newPsw = this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
       this.step = 0;
+      this.canSend = false;
+      this.cooldown = 600000;
+      this.remainingTime = 0;
+      this.timerInterval = null;
+    },
+
+    validateForm() {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const isEmailValid = emailRegex.test(this.email);
+      return isEmailValid;
     },
     checkEmail() {
       const memEmail = {
         email: this.email,
       };
 
-      axios.post(`${this.$URL}/getMemberMail.php`, JSON.stringify(memEmail), {
-        // headers: {
-        //   'Content-Type': 'application/json',
-        //   withCredentials:true
-        // }
-      })
+      axios.post(`${this.$URL}/getMemberMail.php`, JSON.stringify(memEmail))
         .then(response => {
           this.responseData = response.data;
-          //登入成功
-          if (this.email && this.validateForm()) {
-            this.step = 1;
-            this.sendEmail();
-            alert('已發送，請至信箱確認');
+          const emailCheck = this.responseData.email === this.email;
+
+          if (emailCheck) {
+            if (this.email && this.validateForm()) {
+              this.step = 1;
+              this.startCooldown();
+              this.sendEmail();
+              alert('已發送，請至信箱確認');
+            } else {
+              alert("輸入錯誤或無輸入");
+              this.clearInput();
+            }
           } else {
-            return alert("輸入錯誤或無輸入");
+            alert("輸入的 Email 不對");
+            this.clearInput();
           }
         })
         .catch(error => {
           console.log(error);
         });
-
     },
-    validateForm() {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      const isEmailValid = emailRegex.test(this.email);
-      return isEmailValid;
+    startCooldown() {
+      this.canSend = false;
+      this.remainingTime = this.cooldown;
+
+      clearInterval(this.timerInterval); // 清除之前的計時器
+
+      this.timerInterval = setInterval(() => {
+        this.remainingTime -= 1000; // 每次減少一秒
+        console.log(this.remainingTime);
+        if (this.remainingTime <= 0) {
+          clearInterval(this.timerInterval);
+          this.canSend = true;
+        }
+      }, 1000);
     },
-    resend() {
-      
-      // 在发送验证码之后记录当前时间的分钟数
-      const sentTime = new Date().getMinutes();
-      // 等待十分钟后尝试重新发送验证码
 
-      const currentTime = new Date().getMinutes();
-
-      // 检查时间是否已经过去了十分钟
-      if (currentTime - sentTime >= 10) {
-        // 进行重新发送操作
+    resendOrSendEmail() {
+      if (this.canSend) {
         this.sendEmail();
         alert('已發送，請至信箱確認');
       } else {
-        const remainingTime = 10 - (currentTime - sentTime);
-        alert(`請等待 ${remainingTime} 分鐘後才能發送`);
-        console.log(123);
-      }
-
-
-    },
-    validCheck() {
-      if (!this.verification.number1 || !this.verification.number2 || !this.verification.number3 || !this.verification.number4) {
-        alert("請輸入驗證碼");
-      } else {
-        this.verification.number1 = this.verification.number2 = this.verification.number3 = this.verification.number4 = '';
-        this.step = 2;
+        const minutesLeft = Math.ceil(this.remainingTime / 60000);
+        if (minutesLeft >= 10) {
+          alert('已經超過10分鐘，可以重新發送');
+        } else {
+          alert(`請等待 ${minutesLeft} 分鐘後才能再次發送`);
+        }
       }
     },
+
     validatePsw() {
       const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
       const passwordConfirmRegex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/;
