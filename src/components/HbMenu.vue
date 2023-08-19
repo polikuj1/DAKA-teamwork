@@ -114,8 +114,10 @@ export default {
       }, 100)
     },
     loginClose() {
+      this.openMenu();
       this.$refs.nav.classList.add('disappear');
       this.$refs.nav.classList.remove('show');
+      this.isOpen = false;
       setTimeout(() => {
         this.$refs.check.checked = false;
       }, 100)
@@ -123,8 +125,10 @@ export default {
       this.loginOut();
     },
     goMemberCenter(){
+      this.openMenu();
       this.$refs.nav.classList.add('disappear');
       this.$refs.nav.classList.remove('show');
+      this.isOpen = false;
       setTimeout(() => {
         this.$refs.check.checked = false;
       }, 100)

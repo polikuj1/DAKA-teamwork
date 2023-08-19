@@ -1,7 +1,7 @@
 <template>
   <div class="header" :class="style">
     <h1 class="logo" @click="this.$router.push('/index')">
-      <img :src="logoImg" alt="DAKA網咖">
+      <div><img :src="logoImg" alt="DAKA網咖"></div>
       <span>打</span>
       <span>咖</span>
     </h1>

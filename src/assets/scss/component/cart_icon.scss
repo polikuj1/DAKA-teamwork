@@ -1,6 +1,6 @@
 .cart_icon {
   position: fixed;
-  right: 20px;
+  right: 0px;
   bottom: 100px;
   z-index: 1002;
   // pointer-events: none;
@@ -33,6 +33,7 @@
       img {
         cursor: pointer;
         @include img;
+        width: 70%;
       }
     }
     .cart_info {
@@ -127,7 +128,18 @@
     }
   }
 }
-
+@media screen and (min-width:415px ){
+  .cart_icon {
+    right: 20px;
+    .wrap {
+      .icon {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
 @include md() {
   .cart_icon {
     right: 20px;
