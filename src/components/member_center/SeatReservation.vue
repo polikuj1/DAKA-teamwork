@@ -129,13 +129,13 @@ export default {
                 }
               })
               switch (item.seat_order_state) {
-                  case 0:
+                  case '0':
                       item.seat_order_state = '預約中';
                       break;
-                  case 1:
+                  case '1':
                       item.seat_order_state = '已完成';
                       break;
-                  case 2:
+                  case '2':
                       item.seat_order_state = '已取消';
                       break;
               }

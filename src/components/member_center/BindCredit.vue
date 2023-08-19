@@ -22,8 +22,8 @@
             </div>
           </div>
           <label>
-            <input type="radio" name="default_card" :checked="card.preset === 1">
-            <span v-if="card.preset === 1">預設卡片</span>
+            <input type="radio" name="default_card" :checked="card.preset == '1'">
+            <span v-if="card.preset == '1'">預設卡片</span>
             <span v-else>選擇此卡為預設卡片</span>
           </label>
         </div>
@@ -70,7 +70,7 @@ export default {
       this.axios.get(`${this.$URL}/getCredit.php`, { params: params} )
         .then(res => {
           console.log(res);
-          this.credit_card = res.data.filter(item => item.outofdate === 1);
+          this.credit_card = res.data.filter(item => item.outofdate == '1');
         })
         .catch(err => {
           console.log(err);

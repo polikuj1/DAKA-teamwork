@@ -10,7 +10,7 @@
                 <div class="record_date">{{ record.sdate }}</div>
             </div>
             <div class="record_content">
-                <div class="record_method">儲值方式 {{ record.add_method=== '1'? '信用卡儲值' : '現金儲值' }}</div>
+                <div class="record_method">儲值方式 {{ record.add_method== '1'? '信用卡儲值' : '現金儲值' }}</div>
                 <div class="record_amount">金額 {{ record.sval }}</div>
             </div>
         </div>

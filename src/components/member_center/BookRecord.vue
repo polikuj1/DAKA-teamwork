@@ -139,22 +139,22 @@ export default {
           this.reservation = res.data;
           this.reservation.forEach(item => {
             switch (item.comics_order_status) {
-              case 0:
+              case '0':
                 item.comics_order_status = '預約過期';
                 break;
-              case 1:
+              case '1':
                 item.comics_order_status = '未取書';
                 break;
-              case 2:
+              case '2':
                 item.comics_order_status = '已取消';
                 break;
-              case 3:
+              case '3':
                 item.comics_order_status = '已取書';
                 break;
-              case 4:
+              case '4':
                 item.comics_order_status = '有罰金';
                 break;
-              case 5:
+              case '5':
                 item.comics_order_status = '預約過期';
                 break;
             }

@@ -14,7 +14,7 @@
             </div>
             <p>到期日: {{ coupon.close_date}}</p>
             <p>優惠序號: {{ coupon.member_coupon_no }}</p>
-            <div class="exchange_container" v-show="coupon.exchange === 0">
+            <div class="exchange_container" v-show="coupon.exchange == '0'">
               <img src="@/assets/images/member/exchange.png" alt="">
             </div>
           </div>
