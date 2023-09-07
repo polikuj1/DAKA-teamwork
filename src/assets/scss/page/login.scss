@@ -157,11 +157,10 @@
         cursor: pointer;
       }
       .row {
-        
         .col {
           flex: 1 1 250px;
           margin: 0 16px;
-          .password_alert{
+          .password_alert {
             text-align: center;
             font-size: 0.9rem;
             white-space: nowrap;
@@ -179,9 +178,8 @@
               padding: 10px;
               text-transform: none;
               border-radius: 10px;
-              
             }
-            
+
             span {
               width: 30%;
               margin-bottom: 10px;
@@ -206,7 +204,6 @@
       }
 
       .register_form_bottom {
-        
         align-self: center;
         display: flex;
         flex-direction: column;
@@ -220,9 +217,8 @@
           border-bottom: 1px solid $secondary_blue;
           margin: 0 5px;
           cursor: pointer;
-          
         }
-        
+
         .register_form_bottom_confirm {
           font-size: 0.8rem;
           margin-left: 35px;
@@ -678,7 +674,7 @@
               display: flex;
               gap: 5px;
               align-items: center;
-              input{
+              input {
                 display: inline-block;
                 margin-top: 10px;
               }
@@ -710,7 +706,7 @@
     }
     .register {
       width: 60%;
-      height: 88%;
+      height: 80%;
       position: fixed;
       left: 50%;
       top: 45%;
@@ -746,14 +742,14 @@
           right: 15px;
           cursor: pointer;
         }
-       
+
         .row {
           display: flex;
 
           .col {
             flex: 1 1 250px;
             margin: 0 16px;
-            .password_alert{
+            .password_alert {
               text-align: left;
             }
             .inputBox {
@@ -767,7 +763,6 @@
                 text-transform: none;
                 border-radius: 10px;
                 outline: 1px solid #ccc;
-                
               }
               span {
                 width: 100%;
@@ -805,7 +800,7 @@
             font-size: 1.1rem;
             color: $secondary_blue;
             border-bottom: 1px solid $secondary_blue;
-            
+
             cursor: pointer;
           }
 
@@ -818,7 +813,7 @@
             background-color: $btn_bg_color;
             color: #fff;
             cursor: pointer;
-           
+
             &:hover {
               background-color: #fff;
               color: $btn_bg_color;
@@ -1143,21 +1138,25 @@
   }
 }
 
-@include sm{
+@include sm {
   .container {
-    .login{
+    .login {
       height: 80%;
-  }
+    }
 
-  .register{
-    height: 90%;
-    form {
-      padding: 95px 100px 80px 100px;
+    .register {
+      height: 82%;
+      form {
+        padding: 95px 100px 80px 100px;
+        .register_form_bottom {
+          .register_form_bottom_confirm {
+            margin-left: 13px;
+          }
+        }
+      }
     }
   }
 }
-}
-
 
 @include lg {
   .container {
@@ -1271,7 +1270,7 @@
     }
     .register {
       width: 60%;
-      height: 94%;
+      height: 95%;
       position: fixed;
       left: 50%;
       top: 50%;
@@ -1287,7 +1286,6 @@
         width: 100%;
         max-width: 1000px;
         height: 100%;
-        padding: 120px 100px 80px 100px;
         background-color: #fff;
         font-size: 1.1rem;
         border-radius: 10px;
@@ -1350,6 +1348,9 @@
           align-self: center;
           display: flex;
           flex-direction: column;
+          .register_form_bottom_confirm{
+            margin-left: 33px;
+          }
           input {
             transform: scale(1.5);
             margin: 20px 10px;
@@ -1365,7 +1366,7 @@
           .register_submit {
             align-self: center;
             font-size: 1.3rem;
-            
+
             border-radius: 10px;
             border: 1px solid transparent;
             background-color: $btn_bg_color;

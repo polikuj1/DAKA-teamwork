@@ -61,8 +61,7 @@
               <input ref="membershipCheckbox" type="checkbox" name="membership" id="membership" required="required"
                 :disabled="!(memberTerms && memberPrivacy)">
 
-              <label for="membership">我已詳閱並同意<a href="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</a>與<a
-                  href="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</a></label>
+              <label for="membership">我已詳閱並同意 <router-link to="/member_terms" target="_blank" @click="checkMemberTerms">會員條款</router-link>與 <router-link to="/member_privacy" target="_blank" @click="checkMemberPrivacy">隱私權規定</router-link></label>
             </div>
             <div class="register_form_bottom_confirm" v-show="!(memberTerms && memberPrivacy)">請先閱覽會員條款及隱私權規定，方可點選</div>
             <div>
